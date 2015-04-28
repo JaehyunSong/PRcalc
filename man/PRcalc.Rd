@@ -5,9 +5,6 @@
 \alias{PRcalc}
 \alias{PRcalc-package}
 \title{PRcalc}
-\usage{
-PRcalc(nseat, vote, method, threshold = 0, viewer = TRUE)
-}
 \arguments{
 \item{nseat}{Numver of seats(numeric)}
 
