@@ -1,3 +1,52 @@
+#========================================================
+# PRcalc for R 0.4.1
+# Author: Jaehyun SONG (Kobe University)
+# Homepage: http://www.JaySong.net
+# Date: 2014-04-24
+# Modified: 2014-04-25 (0.2.0)
+#           2014-04-26 (0.3.0, 0.3.1)
+#           2014-04-27 (0.4.0) (0.4.1)
+#========================================================
+#' @name PRcalc
+#' @title PRcalc
+#' @description Proportional Representation Calculator for R
+#' @docType package
+#'
+#' @param nseat Numver of seats(numeric)
+#' @param vote Votes(vector or data.frame)
+#' @param method
+#' \itemize {
+#'  \item dt: d'Hondt
+#'  \item sl: Sainte-Laguë
+#'  \item msl: Modified Sainte-Laguë
+#'  \item denmark: Danish
+#'  \item imperiali: Imperiali
+#'  \item hh: Huntington-Hill
+#'  \item hare: Hare
+#'  \item droop: Droop
+#'  \item hh: Huntington-Hill
+#' }
+#' @param threshold Threshold(numeric, 0~1, default is 0)
+#' @param viewr Showing the result(default is TRUE)
+#'
+#' @return List type
+#'
+#' @examples
+#' #Number of seats=50, (PartyA 100 votes, PartyB 80 votes, PartyC 60 votes), Method = Hare
+#' PR.calc(nseat = 50, vote = c(“Party A” = 100,
+#'                              “Party B” = 80,
+#'                              “Party C” = 60),
+#'         method = “hare”)
+#'
+#' #Number of seats = 54, ( 700 votes, 80 votes, 100 votes, 70 votes (without party names)), Method = d’Hondt, Threshold = 5%
+#' PR.calc(nseat = 54, vote = c(700, 80, 100, 70),
+#'         method = “dt”, threshold = 0.05)
+#'
+#' # Number of seats = 183, Using Austrian sample dataset, Method = d’Hondt, Threshold = 4%
+#' PR.calc(nseat = 183, vote = austrian.sample,
+#'         method = “dt”, threshold = 0.04)
+NULL
+
 PRcalc <- function(nseat, # Number of seats
                    vote,  # Voteshare(and Party name)
                    method, # Method
@@ -5,16 +54,6 @@ PRcalc <- function(nseat, # Number of seats
                    viewer = TRUE # Result viewer
 )
 {
-  #========================================================
-  # PRcalc for R 0.4.1
-  # Author: Jaehyun SONG (Kobe University)
-  # Homepage: http://www.JaySong.net
-  # Date: 2014-04-24
-  # Modified: 2014-04-25 (0.2.0)
-  #           2014-04-26 (0.3.0, 0.3.1)
-  #           2014-04-27 (0.4.0) (0.4.1)
-  #========================================================
-
   if(viewer == TRUE){ #Showing Welcome Message
     cat("PRcalc for R 0.4.1 \n")
     cat("Proportional Representation Calculator \n \n")
