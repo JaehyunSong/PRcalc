@@ -17,7 +17,7 @@ korean.sample <- data.frame(Party = c("새누리당", "민주통합당", "자유
                                      14133, 19962, 36262, 48648, 243065, 73194,
                                      54332, 23330, 181822))
 
-austria.sample <- data.frame(Party = c("Social Democratic Party of Austria",
+austrian.sample <- data.frame(Party = c("Social Democratic Party of Austria",
                                        "Austrian People's Party", "Freedom Party of Austria",
                                        "The Greens – The Green Alternative", "Team Stronach",
                                        "NEOS – The New Austria", "Alliance for the Future of Austria",
