@@ -5,6 +5,10 @@
 \alias{PRcalc}
 \alias{PRcalc-package}
 \title{PRcalc}
+\usage{
+PRcalc(nseat, vote, method,
+              threshold = 0, viewer = TRUE)
+}
 \arguments{
 \item{nseat}{Numver of seats(numeric)}
 
@@ -22,9 +26,9 @@
  \item hh: Huntington-Hill
 }}
 
-\item{threshold}{Threshold(numeric, 0~1, default is 0)}
+\item{threshold}{Threshold(numeric, 0~1)}
 
-\item{viewr}{Showing the result(default is TRUE)}
+\item{viewr}{Showing the result}
 }
 \value{
 List type

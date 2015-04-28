@@ -14,6 +14,8 @@
 #' @description Proportional Representation Calculator for R
 #' @docType package
 #'
+#' @usage PRcalc(nseat, vote, method,
+#'               threshold = 0, viewer = TRUE)
 #' @param nseat Numver of seats(numeric)
 #' @param vote Votes(vector or data.frame)
 #' @param method
@@ -28,8 +30,8 @@
 #'  \item droop: Droop
 #'  \item hh: Huntington-Hill
 #' }
-#' @param threshold Threshold(numeric, 0~1, default is 0)
-#' @param viewr Showing the result(default is TRUE)
+#' @param threshold Threshold(numeric, 0~1)
+#' @param viewr Showing the result
 #'
 #' @return List type
 #'
