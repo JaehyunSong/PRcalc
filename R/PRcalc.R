@@ -1,5 +1,5 @@
 #========================================================
-# PRcalc for R 0.5.0
+# PRcalc for R 0.5.1
 # Author: Jaehyun SONG (Kobe University)
 # Homepage: http://www.JaySong.net
 # Date: 2014-04-24
@@ -67,7 +67,7 @@ PRcalc <- function(nseat, # Number of seats
     cat("Proportional Representation Calculator \n \n")
     cat("Author: Jaehyun Song (Kobe University) \n")
     cat("Homepate: http://www.JaySong.net \n")
-    cat("Latest Update: 2014-04-27 \n")
+    cat("Latest Update: 2014-04-28 \n")
   }
 
   #Calculating Processing Time
