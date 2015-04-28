@@ -1,0 +1,58 @@
+PRcalc.ex <- function(country){
+  switch(country,
+         japan = {
+           PR.calc(nseat = 48, vote = c("自民党" = 18460335,
+                                        "公明党" = 7568082,
+                                        "民主党" = 7134215,
+                                        "日本維新の会" = 6355299,
+                                        "日本共産党" = 5154055,
+                                        "みんなの党" = 4755160,
+                                        "社会民主党" = 1255235,
+                                        "生活の党" = 943836,
+                                        "緑の党" = 457862,
+                                        "みどりの風" = 430742,
+                                        "新党大地" = 523146,
+                                        "幸福実現党" = 191643),
+                   method = "dt")
+         },
+         korea = {
+           PR.calc(nseat = 54,
+                   vote = c("새누리당" = 9130651,
+                            "민주통합당" = 7777123,
+                            "자유선진당" = 690754,
+                            "통합진보당" = 2198405,
+                            "창조한국당" = 91935,
+                            "국민생각" = 156241,
+                            "가자!대국민중심당" = 60428,
+                            "친박연합" = 134898,
+                            "국민행복당" = 35846,
+                            "기독자유민주당" = 257190,
+                            "녹색당" = 103842,
+                            "대한국당" = 14133,
+                            "미래연합" = 19962,
+                            "불교연합당" = 36262,
+                            "정통민주당" = 48648,
+                            "진보신당" = 243065,
+                            "청년당" = 73194,
+                            "한국기독당" = 54332,
+                            "한국문화예술당" = 23330,
+                            "한나라당" = 181822),
+                   method = "hare", threshold = 0.02)
+         },
+         austria = {
+           PR.calc(nseat = 183,
+                   vote = c("Social Democratic Party of Austria" = 1258605,
+                            "Austrian People's Party" = 1125876,
+                            "Freedom Party of Austria" = 962313,
+                            "The Greens – The Green Alternative" = 582657,
+                            "Team Stronach" = 268679,
+                            "NEOS – The New Austria" = 232946,
+                            "Alliance for the Future of Austria" = 165746,
+                            "Communist Party of Austria" = 48175,
+                            "Pirate Party of Austria" = 36265,
+                            "Christian Party of Austria" = 6647,
+                            "Others" = 4998),
+                   method = "dt", threshold = 0.04)
+         }
+  )
+}
