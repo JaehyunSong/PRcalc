@@ -1,11 +1,12 @@
 #========================================================
-# PRcalc for R 0.4.1
+# PRcalc for R 0.5.0
 # Author: Jaehyun SONG (Kobe University)
 # Homepage: http://www.JaySong.net
 # Date: 2014-04-24
 # Modified: 2014-04-25 (0.2.0)
 #           2014-04-26 (0.3.0, 0.3.1)
 #           2014-04-27 (0.4.0) (0.4.1)
+#           2014-04-28 (0.5.0)
 #========================================================
 #' @name PRcalc
 #' @title PRcalc
@@ -55,7 +56,7 @@ PRcalc <- function(nseat, # Number of seats
 )
 {
   if(viewer == TRUE){ #Showing Welcome Message
-    cat("PRcalc for R 0.4.1 \n")
+    cat("PRcalc for R 0.5.1 \n")
     cat("Proportional Representation Calculator \n \n")
     cat("Author: Jaehyun Song (Kobe University) \n")
     cat("Homepate: http://www.JaySong.net \n")
