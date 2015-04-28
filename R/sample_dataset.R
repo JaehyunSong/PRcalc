@@ -1,0 +1,27 @@
+japanese.sample <- data.frame(Party = c("自民党", "公明党", "民主党",
+                                        "日本維新の会", "日本共産党", "みんなの党",
+                                        "社会民主党", "生活の党", "緑の党", "みどりの風",
+                                        "新党大地", "幸福実現党"),
+                              Vote =c(18460335, 7568082, 7134215, 6355299,
+                                      5154055, 4755160, 1255235, 943836,
+                                      457862, 430742, 523146, 191643))
+korean.sample <- data.frame(Party = c("새누리당", "민주통합당", "자유선진당",
+                                      "통합진보당", "창조한국당", "국민생각",
+                                      "가자!대국민중심당", "친박연합", "국민행복당",
+                                      "기독자유민주당", "녹색당", "대한국당",
+                                      "미래연합", "불교연합당", "정통민주당",
+                                      "진보신당", "청년당", "한국기독당",
+                                      "한국문화예술당", "한나라당"),
+                            Vote = c(9130651, 7777123, 690754, 2198405, 91935,
+                                     156241, 60428, 134898, 35846, 257190, 103842,
+                                     14133, 19962, 36262, 48648, 243065, 73194,
+                                     54332, 23330, 181822))
+
+austria.sample <- data.frame(Party = c("Social Democratic Party of Austria",
+                                       "Austrian People's Party", "Freedom Party of Austria",
+                                       "The Greens – The Green Alternative", "Team Stronach",
+                                       "NEOS – The New Austria", "Alliance for the Future of Austria",
+                                       "Communist Party of Austria", "Pirate Party of Austria",
+                                       "Christian Party of Austria", "Others"),
+                             Vote = c(1258605, 1125876, 962313, 582657, 268679,
+                                      232946, 165746, 48175, 36265, 6647, 4998))
