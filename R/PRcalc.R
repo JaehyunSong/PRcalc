@@ -10,6 +10,7 @@
 #========================================================
 #' @name PRcalc
 #' @title PRcalc
+#' @author Jaehyun SONG
 #' @description Proportional Representation Calculator for R
 #' @docType package
 #'

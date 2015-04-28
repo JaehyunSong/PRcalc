@@ -47,4 +47,7 @@ PR.calc(nseat = 54, vote = c(700, 80, 100, 70),
 PR.calc(nseat = 183, vote = austrian.sample,
         method = “dt”, threshold = 0.04)
 }
+\author{
+Jaehyun SONG
+}
 
