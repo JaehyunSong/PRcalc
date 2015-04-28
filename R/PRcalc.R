@@ -15,7 +15,8 @@
 #' @docType package
 #'
 #' @usage PRcalc(nseat, vote, method,
-#'               threshold = 0, viewer = TRUE)
+#'        threshold = 0, viewer = TRUE)
+#'
 #' @param nseat Numver of seats(numeric)
 #' @param vote Votes(vector or data.frame)
 #' @param method
