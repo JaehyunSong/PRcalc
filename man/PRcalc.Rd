@@ -38,21 +38,21 @@ Proportional Representation Calculator for R
 }
 \examples{
 #Number of seats=50, (PartyA 100 votes, PartyB 80 votes, PartyC 60 votes), Method = Hare
-PR.calc(nseat = 50,
-        vote = c(“Party A” = 100,
-                 “Party B” = 80,
-                 “Party C” = 60),
-        method = “hare”)
+PRcalc(nseat = 50,
+      vote = c(“Party A” = 100,
+               “Party B” = 80,
+               “Party C” = 60),
+      method = “hare”)
 
 #Number of seats = 54, ( 700 votes, 80 votes, 100 votes, 70 votes (without party names)), Method = d’Hondt, Threshold = 5\%
-PR.calc(nseat = 54,
-        vote = c(700, 80, 100, 70),
-        method = “dt”, threshold = 0.05)
+PRcalc(nseat = 54,
+      vote = c(700, 80, 100, 70),
+      method = “dt”, threshold = 0.05)
 
 # Number of seats = 183, Using Austrian sample dataset, Method = d’Hondt, Threshold = 4\%
-PR.calc(nseat = 183,
-        vote = austrian.sample,
-        method = “dt”, threshold = 0.04)
+PRcalc(nseat = 183,
+      vote = austrian.sample,
+      method = “dt”, threshold = 0.04)
 }
 \author{
 Jaehyun SONG

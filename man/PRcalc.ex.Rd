@@ -20,7 +20,7 @@ Sample of PRcalc for R
 }
 \examples{
 #2012 Korean General Election
-PR.calc("korea")
+PRcalc.ex("korea")
 }
 \author{
 Jaehyun SONG

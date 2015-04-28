@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' #2012 Korean General Election
-#' PR.calc("korea")
+#' PRcalc.ex("korea")
 NULL
 
 PRcalc.ex <- function(country){
