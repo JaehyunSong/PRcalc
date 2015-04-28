@@ -1,3 +1,22 @@
+#' @name PRcalc.ex
+#' @title PRcalc.ex
+#' @author Jaehyun SONG
+#' @description Sample of PRcalc for R
+#' @docType package
+#'
+#' @usage PRcalc.ex(country)
+#' @param country
+#' \itemize {
+#'  \item "korea": 2012 Korean General Election
+#'  \item "japan": 2013 Japanese Upper House Election
+#'  \item "austria": 2012 Austrian General election
+#' }
+#'
+#' @examples
+#' #2012 Korean General Election
+#' PR.calc("korea")
+NULL
+
 PRcalc.ex <- function(country){
   switch(country,
          japan = {
