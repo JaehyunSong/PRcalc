@@ -1,12 +1,14 @@
 #========================================================
-# PRcalc for R 0.5.1
+# PRcalc for R 0.6.0
 # Author: Jaehyun SONG (Kobe University)
 # Homepage: http://www.JaySong.net
+# E-mail: jaehyun.song@stu.kobe-u.ac.jp
 # Date: 2014-04-24
-# Modified: 2014-04-25 (0.2.0)
-#           2014-04-26 (0.3.0, 0.3.1)
-#           2014-04-27 (0.4.0) (0.4.1)
-#           2014-04-28 (0.5.0)
+# Modified: 2014-04-25 (0.2.x)
+#           2014-04-26 (0.3.x)
+#           2014-04-27 (0.4.x)
+#           2014-04-28 (0.5.x)
+#           2014-05-07 (0.6.x)
 #========================================================
 #' @name PRcalc
 #' @title PRcalc
@@ -15,9 +17,9 @@
 #' @docType package
 #'
 #' @usage PRcalc(nseat, vote, method
-#'        threshold = 0, viewer = TRUE)
+#'        threshold = 0, multiple = FALSE, viewer = TRUE)
 #'
-#' @param nseat Numver of seats(numeric)
+#' @param nseat Number of seats(scalar or vector)
 #' @param vote Votes(vector or data.frame)
 #' @param method
 #' \itemize {
@@ -59,61 +61,14 @@ PRcalc <- function(nseat, # Number of seats
                    vote,  # Voteshare(and Party name)
                    method, # Method
                    threshold = 0, #Threshold
+                   multiple = FALSE, # Multiple Districts
                    viewer = TRUE # Result viewer
 )
 {
-  if(viewer == TRUE){ #Showing Welcome Message
-    cat("PRcalc for R 0.5.1 \n")
-    cat("Proportional Representation Calculator \n \n")
-    cat("Author: Jaehyun Song (Kobe University) \n")
-    cat("Homepate: http://www.JaySong.net \n")
-    cat("Latest Update: 2014-04-28 \n")
-  }
+  #======================================================================
+  # Defining the functions, HA.M and LR.M
+  #======================================================================
 
-  #Calculating Processing Time
-  start.time <- Sys.time()
-
-  #vote가 벡터인지 데이터프레임인지 판별
-  if(is.data.frame(vote) == 1){
-    vote.temp <- vote[, 2]
-    names(vote.temp) <- vote[, 1]
-    vote <- vote.temp
-  }else{}
-
-  #Creating vector combining the names of the parties
-  if(is.null(names(vote)) == 1 ){
-    party.name = paste("Party", seq(1,nparty,1))
-  }else{
-    party.name = names(vote)
-  }
-
-  #Creating Raw data frame
-  raw.vote <- vote
-  raw.vote.ratio <- vote/sum(vote)
-  raw.df <- data.frame(Party = party.name,
-                       voteshare = raw.vote,
-                       voterate = raw.vote.ratio)
-
-  for(i in 1:nrow(raw.df)){
-    if(raw.df[i, 3] < threshold){
-      raw.df[i, 2] <- 0
-    }else{
-      raw.df[i, 2] <- raw.df[i, 2]
-    }
-  }
-
-  vote <- raw.df$voteshare
-
-  #Specifying the number of parties
-  nparty = length(vote)
-
-  #Error Message
-  if(nparty < 2){
-    stop("nparty must equal or more than two.")
-  }
-  if(nparty != length(vote)){
-    stop("The length of vote must equal to nparty.")
-  }
 
   #Highest Average Method
   HA.M <- function(nparty, nseat, vote, method){
@@ -197,84 +152,251 @@ PRcalc <- function(nseat, # Number of seats
     return(result.vec)
   }
 
-  switch(method,
-         all = {
-           stop("Wait a minute!")
-         },
-         dt = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "dt")
-           method.name <- c("d'Hondt")
-         },
-         sl = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "sl")
-           method.name <- c("Sainte-Laguë")
-         },
-         msl = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "msl")
-           method.name <- c("Modified Sainte-Laguë")
-         },
-         denmark = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "denmark")
-           method.name <- c("Denmark")
-         },
-         imperiali = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "imperiali")
-           method.name <- c("Imperiali")
-         },
-         hh = {
-           result.vec <- HA.M(nparty, nseat, vote, method = "hh")
-           method.name <- c("Hungtinton-Hill")
-         },
-         hare = {
-           result.vec <- LR.M(nparty, nseat, vote, method = "hare")
-           method.name <- c("Hare")
-         },
-         droop = {
-           result.vec <- LR.M(nparty, nseat, vote, method = "droop")
-           method.name <- c("Droop")
-         },
-         imperialiQ = {
-           result.vec <- LR.M(nparty, nseat, vote, method = "imperialiQ")
-           method.name <- c("Imperiali Quota")
-         })
+#======================================================================
+#
+#======================================================================
 
-  seats.ratio <- result.vec/sum(result.vec)
-  vote.seat.ratio <- seats.ratio / raw.vote.ratio
-
-  #Creating the data frame of result
-  result.df <- data.frame(Party = party.name,
-                          Voteshare = raw.vote,
-                          Vote_ratio = paste(round(raw.vote.ratio * 100, 2), "%"),
-                          Seats = result.vec,
-                          Seats_ratio = paste(round(seats.ratio * 100, 2), "%"),
-                          Vote_Seats_Ratio = round(vote.seat.ratio, 2))
-  rownames(result.df) <- NULL
-
-  #Calculating Processing Time
-  finish.time <- Sys.time()
-
-  method <- method.name
-  ENP_before <- 1/sum(raw.vote.ratio^2)
-  ENP_after <- 1/sum((result.df$Seats/sum(result.df$Seats))^2)
-  G.index <- sqrt(0.5 * sum((((raw.vote/sum(raw.vote))*100) - ((result.vec/sum(result.vec))*100))^2))
-  time <- finish.time - start.time
-
-  if(viewer == TRUE){
-    cat("======================================================= \n
-        Method:", method, "\n \n")
-    print(result.df)
-    cat(paste("ENP(Before):", round(ENP_before, 2)), "\n")
-    cat(paste("ENP(After):", round(ENP_after, 2)), "\n")
-    cat(paste("Gallagher Index:", round(G.index, 3)), "\n")
-    cat(paste("Processing Time:", round(time, 5)), "s. \n")
+  # Identifying whether there are multiple district using the length of vote
+  if(length(vote) > 1){
+    multiple = TRUE
   }else{
-    result <- list(df = result.df,
-                   method = method,
-                   ENP_before = ENP_before,
-                   ENP_after = ENP_after,
-                   index = G.index,
-                   time = time)
-    return(result)
+    multiple = FALSE
   }
 
+  if(viewer == TRUE){ #Showing Welcome Message
+    cat("PRcalc for R 0.6.0 \n")
+    cat("Proportional Representation Calculator \n \n")
+    cat("Author: Jaehyun Song (Kobe University) \n")
+    cat("Homepate: http://www.JaySong.net \n")
+    cat("Latest Update: 2014-05-07 \n")
+  }
+
+  #Calculating Processing Time
+  start.time <- Sys.time()
+
+  if(multiple == TRUE){
+    # Showing an error message 1
+    if(is.data.frame(vote) == 0){
+      stop("vote must be a data frame if multiple was TRUE")
+      }else{
+        # Showing an error message 2
+      if(ncol(vote) - 1 != length(nseat)){
+        stop("the length of nseat must equal to number of districts")
+        }else{}
+    }
+  }else{}
+
+  #=============================================
+  # In case of single district
+  #=============================================
+  if(multiple == FALSE){
+    # Indeifying whether vote is a vector
+    if(is.data.frame(vote) == 1){ # If vote was a data frame, vote will be changed into a vector
+      vote.temp <- vote[, 2]
+      names(vote.temp) <- vote[, 1]
+      vote <- vote.temp
+    }else{} # Or not, go through
+
+    #Creating vector combining the names of the parties
+    if(is.null(names(vote)) == 1 ){
+      party.name = paste("Party", seq(1,nparty,1))
+    }else{
+      party.name = names(vote)
+    }
+
+    #Creating Raw data frame
+    raw.vote <- vote
+    raw.vote.ratio <- vote/sum(vote)
+    raw.df <- data.frame(Party = party.name,
+                         voteshare = raw.vote,
+                         voterate = raw.vote.ratio)
+
+    for(i in 1:nrow(raw.df)){
+      if(raw.df[i, 3] < threshold){
+        raw.df[i, 2] <- 0
+      }else{
+        raw.df[i, 2] <- raw.df[i, 2]
+      }
+    }
+
+    vote <- raw.df$voteshare
+
+    #Specifying the number of parties
+    nparty = length(vote)
+
+    #Error Message
+    if(nparty < 2){
+      stop("nparty must equal or more than two.")
+    }
+    if(nparty != length(vote)){
+      stop("The length of vote must equal to nparty.")
+    }
+
+    switch(method,
+           all = {
+             stop("Wait a minute!")
+           },
+           dt = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "dt")
+             method.name <- c("d'Hondt")
+           },
+           sl = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "sl")
+             method.name <- c("Sainte-Laguë")
+           },
+           msl = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "msl")
+             method.name <- c("Modified Sainte-Laguë")
+           },
+           denmark = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "denmark")
+             method.name <- c("Denmark")
+           },
+           imperiali = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "imperiali")
+             method.name <- c("Imperiali")
+           },
+           hh = {
+             result.vec <- HA.M(nparty, nseat, vote, method = "hh")
+             method.name <- c("Hungtinton-Hill")
+           },
+           hare = {
+             result.vec <- LR.M(nparty, nseat, vote, method = "hare")
+             method.name <- c("Hare")
+           },
+           droop = {
+             result.vec <- LR.M(nparty, nseat, vote, method = "droop")
+             method.name <- c("Droop")
+           },
+           imperialiQ = {
+             result.vec <- LR.M(nparty, nseat, vote, method = "imperialiQ")
+             method.name <- c("Imperiali Quota")
+           })
+
+    seats.ratio <- result.vec/sum(result.vec)
+    vote.seat.ratio <- seats.ratio / raw.vote.ratio
+
+    #Creating the data frame of result
+    result.df <- data.frame(Party = party.name,
+                            Voteshare = raw.vote,
+                            Vote_ratio = paste(round(raw.vote.ratio * 100, 2), "%"),
+                            Seats = result.vec,
+                            Seats_ratio = paste(round(seats.ratio * 100, 2), "%"),
+                            Vote_Seats_Ratio = round(vote.seat.ratio, 2))
+    rownames(result.df) <- NULL
+
+    #Calculating Processing Time
+    finish.time <- Sys.time()
+
+    method <- method.name
+    ENP_before <- 1/sum(raw.vote.ratio^2)
+    ENP_after <- 1/sum((result.df$Seats/sum(result.df$Seats))^2)
+    G.index <- sqrt(0.5 * sum((((raw.vote/sum(raw.vote))*100) - ((result.vec/sum(result.vec))*100))^2))
+    time <- finish.time - start.time
+
+    if(viewer == TRUE){
+      cat("======================================================= \n
+          Method:", method, "\n \n")
+      print(result.df)
+      cat(paste("ENP(Before):", round(ENP_before, 2)), "\n")
+      cat(paste("ENP(After):", round(ENP_after, 2)), "\n")
+      cat(paste("Gallagher Index:", round(G.index, 3)), "\n")
+      cat(paste("Processing Time:", round(time, 5)), "s. \n")
+    }else{
+      result <- list(df = result.df,
+                     method = method,
+                     ENP_before = ENP_before,
+                     ENP_after = ENP_after,
+                     index = G.index,
+                     time = time)
+      return(result)
+    }
+  }else{}
+
+  #=============================================
+  # In case of multiple district
+  #=============================================
+  if(multiple == TRUE){
+    result.df <- data.frame(Party = vote[, 1])
+
+    for(i in 1:(ncol(vote)-1)){
+      nparty <- nrow(vote)
+
+      temp.vote <- c()
+      for(j in 1:nrow(vote)){ # Changing vote to zero, if vote was lower than threshold.
+        if((vote[j, i+1]/sum(vote[, i+1])) < threshold){
+          temp.vote[j] <- 0
+        }else{
+          temp.vote[j] <- vote[j, i+1]
+        }
+      }
+
+      switch(method,
+             dt = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "dt")
+               method.name <- c("d'Hondt")
+             },
+             sl = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "sl")
+               method.name <- c("Sainte-Laguë")
+             },
+             msl = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "msl")
+               method.name <- c("Modified Sainte-Laguë")
+             },
+             denmark = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "denmark")
+               method.name <- c("Denmark")
+             },
+             imperiali = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "imperiali")
+               method.name <- c("Imperiali")
+             },
+             hh = {
+               result.vec <- HA.M(nparty, nseat[i], temp.vote, method = "hh")
+               method.name <- c("Hungtinton-Hill")
+             },
+             hare = {
+               result.vec <- LR.M(nparty, nseat[i], temp.vote, method = "hare")
+               method.name <- c("Hare")
+             },
+             droop = {
+               result.vec <- LR.M(nparty, nseat[i], temp.vote, method = "droop")
+               method.name <- c("Droop")
+             },
+             imperialiQ = {
+               result.vec <- LR.M(nparty, nseat[i], temp.vote, method = "imperialiQ")
+               method.name <- c("Imperiali Quota")
+             })
+      temp.df <- data.frame(vote = vote[, 1+i],
+                            seat = result.vec)
+      colnames(temp.df) <- c(paste("Vote", i), paste("Seat", i))
+      result.df <- cbind(result.df, temp.df)
+    }
+    Vote.Sum <- c()
+    for(i in 1:nparty){ Vote.Sum[i] <- sum(result.df[i, seq(from = 2, to = ncol(result.df)-1, by = 2)]) }
+    Seat.Sum <- c()
+    for(i in 1:nparty){ Seat.Sum[i] <- sum(result.df[i, seq(from = 3, to = ncol(result.df), by = 2)]) }
+
+    result.df <- cbind(result.df, Vote.Sum, Seat.Sum)
+
+    #ENP_before <- 1/sum(raw.vote.ratio^2)
+    #ENP_after <- 1/sum((result.df$Seats/sum(result.df$Seats))^2)
+    #G.index <- sqrt(0.5 * sum((((raw.vote/sum(raw.vote))*100) - ((result.vec/sum(result.vec))*100))^2))
+    finish.time <- Sys.time()
+    time <- finish.time - start.time
+
+    if(viewer == TRUE){
+      cat("======================================================= \n
+          Method:", method.name, "\n \n")
+      print(result.df)
+      #cat(paste("ENP(Before):", round(ENP_before, 2)), "\n")
+      #cat(paste("ENP(After):", round(ENP_after, 2)), "\n")
+      #cat(paste("Gallagher Index:", round(G.index, 3)), "\n")
+      cat(paste("Processing Time:", round(time, 5)), "s. \n")
+    }else{
+      return(result.df)
+    }
+
+  }
 }

@@ -7,10 +7,10 @@
 \title{PRcalc}
 \usage{
 PRcalc(nseat, vote, method
-       threshold = 0, viewer = TRUE)
+       threshold = 0, multiple = FALSE, viewer = TRUE)
 }
 \arguments{
-\item{nseat}{Numver of seats(numeric)}
+\item{nseat}{Number of seats(scalar or vector)}
 
 \item{vote}{Votes(vector or data.frame)}
 
@@ -27,6 +27,8 @@ PRcalc(nseat, vote, method
 }}
 
 \item{threshold}{Threshold(numeric, 0~1)}
+
+\item{multiple}{Option for multiple district}
 
 \item{viewr}{Showing the result}
 }
