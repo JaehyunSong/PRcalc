@@ -28,8 +28,6 @@ PRcalc(nseat, vote, method
 
 \item{threshold}{Threshold(numeric, 0~1)}
 
-\item{multiple}{Option for multiple district}
-
 \item{viewr}{Showing the result}
 }
 \value{
