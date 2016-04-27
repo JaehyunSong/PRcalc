@@ -156,8 +156,8 @@ PRcalc <- function(nseat, # Number of seats
 #
 #======================================================================
 
-  # Identifying whether there are multiple district using the length of vote
-  if(length(vote) > 1){
+  # Identifying whether there are multiple district using the length of nseat
+  if(length(nseat) > 1){
     multiple = TRUE
   }else{
     multiple = FALSE
