@@ -176,7 +176,7 @@ PRcalc <- function(nseat, # Number of seats
 
   if(multiple == TRUE){
     # Showing an error message 1
-    if(is.data.frame(vote) == 0){
+    if(!is.data.frame(vote)){
       stop("vote must be a data frame if multiple was TRUE")
       }else{
         # Showing an error message 2
