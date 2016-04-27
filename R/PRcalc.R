@@ -157,7 +157,7 @@ PRcalc <- function(nseat, # Number of seats
 #======================================================================
   
   nparty = length(vote)
-  
+
   # Identifying whether there are multiple district using the length of nseat
   if(length(nseat) > 1){
     multiple = TRUE
@@ -166,11 +166,11 @@ PRcalc <- function(nseat, # Number of seats
   }
 
   if(viewer == TRUE){ #Showing Welcome Message
-    cat("PRcalc for R 0.6.0 \n")
+    cat("PRcalc for R 0.6.1 \n")
     cat("Proportional Representation Calculator \n \n")
     cat("Author: Jaehyun Song (Kobe University) \n")
     cat("Homepate: http://www.JaySong.net \n")
-    cat("Latest Update: 2014-05-07 \n")
+    cat("Latest Update: 2016-04-27 \n")
   }
 
   #Calculating Processing Time

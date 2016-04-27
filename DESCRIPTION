@@ -1,8 +1,8 @@
 Package: PRcalc
 Type: Package
 Title: Proportional Representation Calculator
-Version: 0.5.1
-Date: 2015-04-28
+Version: 0.6.1
+Date: 2016-04-27
 Author: Jaehyun SONG
 Maintainer: Jaehyun SONG <jaehyun.song@stu.kobe-u.ac.jp>
 Description: Proportional Representation Calculator
