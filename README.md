@@ -18,6 +18,6 @@ Current Version: 0.6.0 (2015/05/07)
 ## Installation
 
 ```r
-install("devtools")
-install_github("JaehyunSong/PRcalc")
+install("devtools") # if devtools is not installed
+devtools::install_github("JaehyunSong/PRcalc")
 ```
