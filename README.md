@@ -14,3 +14,10 @@ Current Version: 0.6.0 (2015/05/07)
 * [English](http://www.jaysong.net/software/prcalc/)
 * [Japanese](http://www.jaysong.net/software/prcalc_j/)
 * [Korean](http://www.jaysong.net/software/prcalc_k/)
+
+## Installation
+
+```r
+install("devtools")
+install_github("JaehyunSong/PRcalc")
+```
