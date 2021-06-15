@@ -7,7 +7,7 @@ Current Version: 0.6.0 (2015/05/07)
 
 ## Author Information
 * Jaehyun SONG (Korean)
-* Assistant Professor at Doshisha University, Japan
+* Associate Professor at Kansai University, Japan
 * Ph.D in Political Science (Kobe University)
 * Majoring in voting behavior, political methodology.
 
