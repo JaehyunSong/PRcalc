@@ -224,8 +224,42 @@ PR_index2 <- index(PR_example2)
 PR_index3 <- index(PR_example3)
 
 PR_index1
+```
+
+```
+##             Index Value
+## 1      ENP (Vote) 4.047
+## 2      ENP (Seat) 4.000
+## 3       Gallagher 5.393
+## 4 Loosemore–Hanby 7.143
+## 5             Rae 2.857
+## 6   Sainte–Laguë 2.473
+## 7         D'Hondt 1.278
+## 8    D'Hondt (5%) 1.278
+```
+
+```r
 print(PR_index2, digits = 1)
+```
+
+```
+##             Index Value
+## 1      ENP (Vote)   4.0
+## 2      ENP (Seat)   3.2
+## 3       Gallagher   9.2
+## 4 Loosemore–Hanby  11.6
+## 5             Rae   3.3
+## 6   Sainte–Laguë  12.2
+## 7         D'Hondt   1.2
+## 8    D'Hondt (5%)   1.2
+```
+
+```r
 PR_index3$gallagher # Gallagher非比例性指標のみ抽出
+```
+
+```
+## [1] 5.181161
 ```
 
 # 可視化
@@ -254,9 +288,21 @@ Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
 PR_example2 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", threshold = 0)
 
 plot(PR_example2) # PR_example2の可視化
+```
+
+![](figures/fig2.png)
+
+```r
 plot(PR_example2, text_angle = 25) # X軸ラベルの回転
+```
+
+![](figures/fig3.png)
+
+```r
 plot(PR_example2, summary = TRUE) # ブロックごとの図を省略
 ```
+
+![](figures/fig4.png)
 
 # 比較
 
@@ -271,6 +317,17 @@ PR_example4 <- PRcalc(Election_Data3, seats = 11, method = "hare")
 compare(PR_example3, PR_example4)
 ```
 
+```
+##     Party Votes Method1 Method2 Diff
+## 1 Party A  5665       5       6    1
+## 2 Party B  3685       3       4    1
+## 3 Party C  1650       2       1   -1
+## Information 
+##  # Method1: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Method2: Hare–Niemeyer (Number of seats =  11 / threshold:  0 )
+##  # Diff   : Method2 - Method1
+```
+
 ```r
 # 議席割当方式の比較
 PR_example5 <- PRcalc(Election_Data3, seats = 10, method = "dt")
@@ -278,12 +335,55 @@ PR_example5 <- PRcalc(Election_Data3, seats = 10, method = "dt")
 compare(PR_example3, PR_example5)
 ```
 
+```
+##     Party Votes Method1 Method2 Diff
+## 1 Party A  5665       5       6    1
+## 2 Party B  3685       3       3    0
+## 3 Party C  1650       2       1   -1
+## Information 
+##  # Method1: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Method2: D'Hondt (Jefferson) (Number of seats =  10 / threshold:  0 )
+##  # Diff   : Method2 - Method1
+```
+
 ```r
 compare(PR_example3, PR_example4, type = "index")
 ```
 
+```
+##             Index Method1 Method2   Diff
+## 1      ENP (Vote)   2.500   2.500  0.000
+## 2      ENP (Seat)   2.632   2.283 -0.349
+## 3       Gallagher   4.444   5.118  0.674
+## 4 Loosemore–Hanby   5.000   5.909  0.909
+## 5             Rae   3.333   3.939  0.606
+## 6    Sainte–Laguë   2.076   2.753  0.677
+## 7         D'Hondt   1.333   1.085 -0.248
+## 8    D'Hondt (5%)   1.333   1.085 -0.248
+## Information 
+##  # Method1: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Method2: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Diff   : Method2 - Method1
+```
+
 ```r
 compare(PR_example3, PR_example5, type = "index", digits = 1)
+```
+
+```
+##             Index Method1 Method2 Diff
+## 1      ENP (Vote)     2.5     2.5  0.0
+## 2      ENP (Seat)     2.6     2.2 -0.5
+## 3       Gallagher     4.4     7.4  3.0
+## 4 Loosemore–Hanby     5.0     8.5  3.5
+## 5             Rae     3.3     5.7  2.3
+## 6    Sainte–Laguë     2.1     3.4  1.4
+## 7         D'Hondt     1.3     1.2 -0.2
+## 8    D'Hondt (5%)     1.3     1.2 -0.2
+## Information 
+##  # Method1: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Method2: D'Hondt (Jefferson) (Number of seats =  10 / threshold:  0 )
+##  # Diff   : Method2 - Method1
 ```
 
 # サンプルデータ
@@ -313,13 +413,54 @@ compare(PR_example3, PR_example5, type = "index", digits = 1)
 data(jp_census_1920)
 
 head(jp_census_1920)
-tail(jp_census_1920)
+```
 
+```
+##     Pref     Pop
+## 1 北海道 2359183
+## 2 青森県  756454
+## 3 岩手県  845540
+## 4 宮城県  961768
+## 5 秋田県  898537
+## 6 山形県  968925
+```
+
+```r
+tail(jp_census_1920)
+```
+
+```
+##        Pref     Pop
+## 42   長崎県 1136182
+## 43   熊本県 1233233
+## 44   大分県  860282
+## 45   宮崎県  651097
+## 46 鹿児島県 1415582
+## 47   沖縄県  571572
+```
+
+```r
 PR_sample1 <- PRcalc(jp_census_1920, seats = 250, method = "dt")
-PR_sample1
 index(PR_sample1)
+```
+
+```
+##             Index  Value
+## 1      ENP (Vote) 36.658
+## 2      ENP (Seat) 35.471
+## 3       Gallagher  0.633
+## 4 Loosemore–Hanby  2.414
+## 5             Rae  0.103
+## 6    Sainte–Laguë  0.455
+## 7         D'Hondt  1.075
+## 8    D'Hondt (5%)  1.075
+```
+
+```r
 plot(PR_sample1, xlab = "Region", text_angle = 45)
 ```
+
+![](figures/fig5.png)
 
 ```r
 data(jp_census_2015)
@@ -328,8 +469,81 @@ PR_sample2 <- PRcalc(jp_census_2015, seats = 250, method = "adams")
 PR_sample3 <- PRcalc(jp_census_2015, seats = 250, method = "dt")
 
 compare(PR_sample2, PR_sample3)
+```
 
+```
+##       Party    Votes Method1 Method2 Diff
+## 1    北海道  5381733      10      11    1
+## 2    青森県  1308265       3       2   -1
+## 3    岩手県  1279594       3       2   -1
+## 4    宮城県  2333899       5       5    0
+## 5    秋田県  1023119       2       2    0
+## 6    山形県  1123891       2       2    0
+## 7    福島県  1914039       4       4    0
+## 8    茨城県  2916976       6       6    0
+## 9    栃木県  1974255       4       4    0
+## 10   群馬県  1973115       4       4    0
+## 11   埼玉県  7266534      13      15    2
+## 12   千葉県  6222666      11      13    2
+## 13   東京都 13515271      24      29    5
+## 14 神奈川県  9126214      17      19    2
+## 15   新潟県  2304264       5       4   -1
+## 16   富山県  1066328       2       2    0
+## 17   石川県  1154008       3       2   -1
+## 18   福井県   786740       2       1   -1
+## 19   山梨県   834930       2       1   -1
+## 20   長野県  2098804       4       4    0
+## 21   岐阜県  2031903       4       4    0
+## 22   静岡県  3700305       7       7    0
+## 23   愛知県  7483128      14      16    2
+## 24   三重県  1815865       4       3   -1
+## 25   滋賀県  1412916       3       3    0
+## 26   京都府  2610353       5       5    0
+## 27   大阪府  8839469      16      18    2
+## 28   兵庫県  5534800      10      11    1
+## 29   奈良県  1364316       3       2   -1
+## 30 和歌山県   963579       2       2    0
+## 31   鳥取県   573441       2       1   -1
+## 32   島根県   694352       2       1   -1
+## 33   岡山県  1921525       4       4    0
+## 34   広島県  2843990       6       6    0
+## 35   山口県  1404729       3       3    0
+## 36   徳島県   755733       2       1   -1
+## 37   香川県   976263       2       2    0
+## 38   愛媛県  1385262       3       2   -1
+## 39   高知県   728276       2       1   -1
+## 40   福岡県  5101556      10      10    0
+## 41   佐賀県   832832       2       1   -1
+## 42   長崎県  1377187       3       2   -1
+## 43   熊本県  1786170       4       3   -1
+## 44   大分県  1166338       3       2   -1
+## 45   宮崎県  1104069       2       2    0
+## 46 鹿児島県  1648177       3       3    0
+## 47   沖縄県  1433566       3       3    0
+## Information 
+##  # Method1: Adams's (Number of seats =  250 / threshold:  0 )
+##  # Method2: D'Hondt (Jefferson) (Number of seats =  250 / threshold:  0 )
+##  # Diff   : Method2 - Method1
+```
+
+```r
 compare(PR_sample2, PR_sample3, type = "index")
+```
+
+```
+##             Index Method1 Method2   Diff
+## 1      ENP (Vote)  23.540  23.540  0.000
+## 2      ENP (Seat)  26.238  21.448 -4.790
+## 3       Gallagher   1.261   1.130 -0.131
+## 4 Loosemore–Hanby   4.385   3.977 -0.408
+## 5             Rae   0.183   0.166 -0.017
+## 6   Sainte–Laguë   1.432   1.176 -0.256
+## 7         D'Hondt   1.773   1.091 -0.682
+## 8    D'Hondt (5%)   1.464   1.091 -0.373
+## Information 
+##  # Method1: Adams's (Number of seats =  250 / threshold:  0 )
+##  # Method2: D'Hondt (Jefferson) (Number of seats =  250 / threshold:  0 )
+##  # Diff   : Method2 - Method1
 ```
 
 ```r
@@ -339,8 +553,30 @@ PR_sample4 <- PRcalc(jp_lower_2021, method = "hare",
                      seats = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21))
 
 summary(PR_sample4)
+```
+
+```
+##     Party Total_Vote Total_Seat
+## 1    自民   19914883         64
+## 2    公明    7114282         24
+## 3    立憲   11492095         38
+## 4    共産    4166076         13
+## 5    維新    8050830         26
+## 6    国民    2593397          8
+## 7    社民    1018588          1
+## 8    れ新    2215648          6
+## 9     N党     796788          0
+## 10 支なし      46142          0
+## 11   第一      33661          0
+## 12 やまと      16970          0
+## 13 コロナ       6620          0
+```
+
+```r
 plot(PR_sample4, text_angle = 90)
 ```
+
+![](figures/fig6.png)
 
 ```r
 data(kr_lower_2016)
@@ -349,5 +585,24 @@ PR_sample5 <- PRcalc(kr_lower_2016, method = "hare", seats = 47)
 PR_sample6 <- PRcalc(kr_lower_2016, method = "hare", seats = 47, threshold = 0.05)
 
 compare(PR_sample5, PR_sample6)
+```
+
+```
+##      Party   Votes Method1 Method2 Diff
+## 1   セヌリ 7960272      16      17    1
+## 2 共に民主 6069744      13      13    0
+## 3     国民 6355572      13      13    0
+## 4     正義 1719891       4       4    0
+## 5     基督  626853       1       0   -1
+## 6     民主  209872       0       0    0
+## Information 
+##  # Method1: Hare–Niemeyer (Number of seats =  47 / threshold:  0 )
+##  # Method2: Hare–Niemeyer (Number of seats =  47 / threshold:  0.05 )
+##  # Diff   : Method2 - Method1
+```
+
+```r
 plot(PR_sample6, text_size = 16)
 ```
+
+![](figures/fig7.png)
