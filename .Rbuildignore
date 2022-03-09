@@ -1,2 +1,5 @@
-^.*\.Rproj$
+
+^dev$
+^LICENSE\.md$
+^PRcalc2\.Rproj$
 ^\.Rproj\.user$

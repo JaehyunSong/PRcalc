@@ -1,10 +1,25 @@
-Package: PRcalc
-Type: Package
-Title: Proportional Representation Calculator
-Version: 0.6.1
-Date: 2016-04-27
-Author: Jaehyun SONG
-Maintainer: Jaehyun SONG <jaehyun.song@stu.kobe-u.ac.jp>
-Description: Proportional Representation Calculator
-License: MIT
-LazyData: yes
+Package: PRcalc2
+Title: A Proportional Representation Calculator
+Version: 0.7.0
+Authors@R: 
+    person("Jaehyun", "Song", , "song@kansai-u.ac.jp", role = c("aut", "cre"))
+Description: A Proportional Representation Calculator.
+License: MIT + file LICENSE
+Imports: 
+    dplyr,
+    forcats,
+    ggplot2,
+    magrittr,
+    purrr,
+    stringr,
+    tidyr,
+    utils
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: TRUE
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
