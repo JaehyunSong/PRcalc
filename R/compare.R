@@ -87,9 +87,11 @@ compare.PRcalc <- function(x,
     print(result)
     cat("Information \n",
         "# Method1:", x$Method, 
-        "(Number of seats = ", x$N_Block, "/ threshold: ", x$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]), 
+        "/ threshold: ", x$threshold, ")\n",
         "# Method2:", y$Method, 
-        "(Number of seats = ", y$N_Block, "/ threshold: ", y$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]),
+        "/ threshold: ", y$threshold, ")\n",
         "# Diff   : Method2 - Method1")  
   } else {
     stop('"type" must be "seat" or "index".')
@@ -166,9 +168,11 @@ compare.PRcalc <- function(x,
     print(result)
     cat("Information \n",
         "# Method1:", x$Method, 
-        "(Number of seats = ", x$N_Block, "/ threshold: ", x$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]), 
+        "/ threshold: ", x$threshold, ")\n",
         "# Method2:", y$Method, 
-        "(Number of seats = ", y$N_Block, "/ threshold: ", y$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]),
+        "/ threshold: ", y$threshold, ")\n",
         "# Diff   : Method2 - Method1")  
   } else {
     stop('"type" must be "seat" or "index".')
@@ -242,9 +246,11 @@ compare.PRcalc <- function(x,
     print(result)
     cat("Information \n",
         "# Method1:", x$Method, 
-        "(Number of seats = ", x$N_Block, "/ threshold: ", x$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]), 
+        "/ threshold: ", x$threshold, ")\n",
         "# Method2:", y$Method, 
-        "(Number of seats = ", y$N_Block, "/ threshold: ", y$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]),
+        "/ threshold: ", y$threshold, ")\n",
         "# Diff   : Method2 - Method1")  
   } else {
     stop('"type" must be "seat" or "index".')
@@ -318,9 +324,11 @@ compare.PRcalc <- function(x,
     print(result)
     cat("Information \n",
         "# Method1:", x$Method, 
-        "(Number of seats = ", x$N_Block, "/ threshold: ", x$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]), 
+        "/ threshold: ", x$threshold, ")\n",
         "# Method2:", y$Method, 
-        "(Number of seats = ", y$N_Block, "/ threshold: ", y$threshold, ")\n",
+        "(Number of seats = ", sum(x$N_Seat[-1]),
+        "/ threshold: ", y$threshold, ")\n",
         "# Diff   : Method2 - Method1")  
   } else {
     stop('"type" must be "seat" or "index".')
