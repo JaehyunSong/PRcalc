@@ -34,7 +34,7 @@ Current Version: 0.7.0 (2022/03/09)
 
 ---
 
-## Installation
+## インストール
 
 ```r
 install("remotes") # if {remotes} is not installed
@@ -45,9 +45,9 @@ remotes::install_github("JaehyunSong/PRcalc")
 
 ## 使い方
 
-# 比例代表の議席割当計算
+### 比例代表の議席割当計算
 
-## 例1) 全国区 & 5つの政党
+#### 例1) 全国区 & 5つの政党
 
 * 議席数8 (`seats = 8`)、修正サン＝ラゲ方式 (`method = "msl"`)、阻止条項なし (`threshold = 0`)
 
@@ -93,7 +93,7 @@ PR_example1
 ## 5 Party E  230000       1
 ```
 
-## 例2) 全国区 & 5つの政党 & 阻止条項10%
+#### 例2) 全国区 & 5つの政党 & 阻止条項10%
 
 * `Election_Data1`と同じ設定 + 阻止条項10% (`threshold = 0.1`)
 
@@ -114,7 +114,7 @@ PR_example2
 ## 5 Party E  230000       0
 ```
 
-## 例3) ブロック制 & 5つの政党
+#### 例3) ブロック制 & 5つの政党
 
 * 議席数8、13 (`seats = c(8, 13)`)、ドント方式 (`method = "dt"`)、阻止条項なし (`threshold = 0`)
 
@@ -204,7 +204,7 @@ summary(PR_example3, prop = TRUE, digits = 2)
 ## 5 Party E     541000          1
 ```
 
-# 各種指標の計算
+### 各種指標の計算
 
 ```r
 Election_Data1 <- data.frame(Party = c("Party A", "Party B", "Party C",
@@ -262,7 +262,7 @@ PR_index3$gallagher # Gallagher非比例性指標のみ抽出
 ## [1] 5.181161
 ```
 
-# 可視化
+### 可視化
 
 可視化の場合、得票**率**と議席**率**が表示されます。
 
@@ -304,7 +304,7 @@ plot(PR_example2, summary = TRUE) # ブロックごとの図を省略
 
 ![](figures/fig4.png)
 
-# 比較
+### 比較
 
 ```r
 # アラバマのパラドックス
@@ -386,7 +386,7 @@ compare(PR_example3, PR_example5, type = "index", digits = 1)
 ##  # Diff   : Method2 - Method1
 ```
 
-# サンプルデータ
+### サンプルデータ
 
 サンプルデータは以下の通りです。
 
