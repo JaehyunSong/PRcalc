@@ -248,10 +248,6 @@ index(x)
 Election_Data1 <- data.frame(Party = c("Party A", "Party B", "Party C",
                                        "Party D", "Party E"),
                              Votes = c(778000, 714000, 331000, 299000, 230000))
-Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
-                                         "Party D", "Party E"),
-                             Region1 = c(778000, 714000, 331000, 299000, 230000),
-                             Region2 = c(1454000, 761000, 913000, 464000, 311000))
 
 PR_example1 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0)
 
@@ -303,6 +299,11 @@ print(PR_index2, digits = 1)
 * `$dt5`: D'Hondt Index (5%)
 
 ```r
+Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
+                                         "Party D", "Party E"),
+                             Region1 = c(778000, 714000, 331000, 299000, 230000),
+                             Region2 = c(1454000, 761000, 913000, 464000, 311000))
+
 PR_example3 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", 
                       threshold = 0)
 PR_index3   <- index(PR_example3)
