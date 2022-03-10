@@ -14,6 +14,7 @@
 #' 
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
+#' @importFrom dplyr case_when
 #' @importFrom tidyr separate
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
@@ -54,6 +55,15 @@ plot.PRcalc <- function (x,
   
   Party <- Type <- Share <- Region <- NULL
   vote <- seat <- temp_df <- NULL
+  text_hjust <- text_vjust <- NULL
+  
+  text_hjust <- case_when(text_angle == 0  ~ 0.5,
+                          text_angle == 90 ~ 1,
+                          TRUE             ~ 1)
+  
+  text_vjust <- case_when(text_angle == 0  ~ 1,
+                          text_angle == 90 ~ 0.5,
+                          TRUE             ~ 1)
   
   if (summary | x$N_Block == 1) {
     vote <- select(x$VoteShare, 1, TV = last_col())
@@ -88,7 +98,8 @@ plot.PRcalc <- function (x,
     theme_bw(base_size = 12) +
     theme(legend.position = "bottom",
           axis.text.x     = element_text(angle = text_angle, 
-                                         hjust = 1),
+                                         hjust = text_hjust,
+                                         vjust = text_vjust),
           text            = element_text(size  = text_size))
   
   if (summary | x$N_Block == 1) {
@@ -112,6 +123,7 @@ plot.PRcalc <- function (x,
 #' 
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
+#' @importFrom dplyr case_when
 #' @importFrom tidyr separate
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot
@@ -155,6 +167,15 @@ plot.PRcalc <- function (x,
   
   Party <- Type <- Share <- Region <- NULL
   vote <- seat <- temp_df <- NULL
+  text_hjust <- text_vjust <- NULL
+  
+  text_hjust <- case_when(text_angle == 0  ~ 0.5,
+                          text_angle == 90 ~ 1,
+                          TRUE             ~ 1)
+  
+  text_vjust <- case_when(text_angle == 0  ~ 1,
+                          text_angle == 90 ~ 0.5,
+                          TRUE             ~ 1)
   
   if (summary | x$N_Block == 1) {
     vote <- select(x$VoteShare, 1, TV = last_col())
@@ -189,7 +210,8 @@ plot.PRcalc <- function (x,
     theme_bw(base_size = 12) +
     theme(legend.position = "bottom",
           axis.text.x     = element_text(angle = text_angle, 
-                                         hjust = 1),
+                                         hjust = text_hjust,
+                                         vjust = text_vjust),
           text            = element_text(size  = text_size))
   
   if (summary | x$N_Block == 1) {
