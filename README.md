@@ -1,9 +1,11 @@
 # PRcalc for R
 Proportional Representation Calculator for R
 
----
-
 Current Version: 0.7.0 (2022/03/09)
+
+PRcalc for Web: <https://jaysong.shinyapps.io/prcalc4web/>
+
+---
 
 ## Author Information
 * Jaehyun SONG, Ph.D.
