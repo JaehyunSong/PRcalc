@@ -18,11 +18,79 @@ compare <- function(x, ...) {
 #' @param x \code{PRcalc}オブジェクト
 #' @param y \code{PRcalc}オブジェクト
 #' @param type 比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)
-#' @param digits 小数点の表示桁数 (\code{type = "index"}の場合のみ有効)
 #' @param ... Ignored
 #'
 #' @return
-#' none
+#' A \code{PRcalc_compare} object
+#' @export
+#'
+compare.PRcalc <- function(x, 
+                           y, 
+                           type   = "seat", 
+                           ...) {
+  party <- x$Vote[, 1]
+  vote1 <- x$Vote[, ncol(y$Vote)]
+  vote2 <- y$Vote[, ncol(x$Vote)]
+  seat1 <- x$Seat[, ncol(x$Seat)]
+  seat2 <- y$Seat[, ncol(y$Seat)]
+  
+  if (all(vote1 != vote2)) {
+    stop("Total votes of x are incompatible with that of y.")
+  }
+  
+  if (type == "seat") {
+    result <- data.frame(Party   = party,
+                         Votes   = vote1,
+                         Method1 = seat1,
+                         Method2 = seat2)
+    
+    result$Diff <- result$Method2 - result$Method1
+    
+    rownames(result) <- NULL
+
+    result_list <- list(result     = result,
+                        method1    = x$Method,
+                        method2    = y$Method,
+                        threshold1 = x$threshold,
+                        threshold2 = y$threshold,
+                        seat1      = sum(x$N_Seat[-1]),
+                        seat2      = sum(y$N_Seat[-1]),
+                        type       = "seat")
+  } else if (type == "index") {
+    result <- data.frame(Index = c(c("ENP (Vote)", "ENP (Seat)", "Gallagher",
+                                     "Loosemore\u2013Hanby", "Rae",
+                                     "Sainte\u2013Lagu\u00eb", "D\'Hondt",
+                                     "D\'Hondt (5%)")),
+                         Method1 = unlist(index(x)),
+                         Method2 = unlist(index(y)))
+    
+    result$Diff    <- result$Method2 - result$Method1
+
+    rownames(result) <- NULL
+    
+    result_list <- list(result     = result,
+                        method1    = x$Method,
+                        method2    = y$Method,
+                        threshold1 = x$threshold,
+                        threshold2 = y$threshold,
+                        seat1      = sum(x$N_Seat[-1]),
+                        seat2      = sum(y$N_Seat[-1]),
+                        type       = "index")
+  } else {
+    stop('"type" must be "seat" or "index".')
+  }
+  
+  return(structure(result_list, class = c("PRcalc_compare", "list")))
+}
+
+#' \code{PRcalc}オブジェクトの比較
+#' 
+#' @param x \code{PRcalc_compare}オブジェクト
+#' @param digits 小数点の表示桁数
+#' @param ... Ignored
+#'
+#' @return
+#' A \code{PRcalc_compare} object
 #' @export
 #'
 #' @examples
@@ -34,80 +102,34 @@ compare <- function(x, ...) {
 #' PR_example4 <- PRcalc(Election_Data3, seats = 11, method = "hare")
 #' 
 #' compare(PR_example3, PR_example4)
-compare.PRcalc <- function(x, 
-                           y, 
-                           type   = "seat", 
-                           digits = 3,
-                           ...) {
-  party <- x$Vote[, 1]
-  vote1 <- x$Vote[, ncol(y$Vote)]
-  vote2 <- y$Vote[, ncol(x$Vote)]
-  seat1 <- x$Seat[, ncol(x$Seat)]
-  seat2 <- y$Seat[, ncol(y$Seat)]
+print.PRcalc_compare <- function(x, digits = 3, ...) {
+  result <- x[["result"]]
   
-  if (all(vote1 != vote2)) {
-    stop("Total votes of x are incompatible with that of y.")
-  }
-  
-  if (type == "seat") {
-    result <- data.frame(Party   = party,
-                         Votes   = vote1,
-                         Method1 = seat1,
-                         Method2 = seat2)
-    
-    result$Diff <- result$Method2 - result$Method1
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(y$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")
-  } else if (type == "index") {
-    result <- data.frame(Index = c(c("ENP (Vote)", "ENP (Seat)", "Gallagher",
-                                     "Loosemore\u2013Hanby", "Rae",
-                                     "Sainte\u2013Lagu\u00eb", "D\'Hondt",
-                                     "D\'Hondt (5%)")),
-                         Method1 = unlist(index(x)),
-                         Method2 = unlist(index(y)))
-    
-    result$Diff    <- result$Method2 - result$Method1
-    
+  if (x$type == "index") {
     result$Method1 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method1))
     result$Method2 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method2))
     result$Diff    <- sprintf(paste0("%.", digits, "f"), unlist(result$Diff))
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")  
-  } else {
-    stop('"type" must be "seat" or "index".')
   }
+  
+  print(result)
+  cat("Information \n",
+      "# Method1:", x$method1, 
+      "(Number of seats = ", x$seat1, 
+      "/ threshold: ", x$threshold1, ")\n",
+      "# Method2:", x$method2, 
+      "(Number of seats = ", x$seat2,
+      "/ threshold: ", x$threshold2, ")\n",
+      "# Diff   : Method2 - Method1")  
 }
 
 #' \code{PRcalc}オブジェクトの比較
 #' 
-#' @param x \code{PRcalc}オブジェクト
-#' @param y \code{PRcalc}オブジェクト
-#' @param type 比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)
-#' @param digits 小数点の表示桁数 (\code{type = "index"}の場合のみ有効)
+#' @param x \code{PRcalc_compare}オブジェクト
+#' @param digits 小数点の表示桁数
 #' @param ... Ignored
 #'
 #' @return
-#' none
+#' A \code{PRcalc_compare} object
 #' @export
 #'
 #' @examples
@@ -115,222 +137,88 @@ compare.PRcalc <- function(x,
 #' PR_example5 <- PRcalc(Election_Data3, seats = 10, method = "dt")
 #' 
 #' compare(PR_example3, PR_example5)
-compare.PRcalc <- function(x, 
-                           y, 
-                           type   = "seat", 
-                           digits = 3,
-                           ...) {
-  party <- x$Vote[, 1]
-  vote1 <- x$Vote[, ncol(y$Vote)]
-  vote2 <- y$Vote[, ncol(x$Vote)]
-  seat1 <- x$Seat[, ncol(x$Seat)]
-  seat2 <- y$Seat[, ncol(y$Seat)]
+print.PRcalc_compare <- function(x, digits = 3, ...) {
+  result <- x[["result"]]
   
-  if (all(vote1 != vote2)) {
-    stop("Total votes of x are incompatible with that of y.")
-  }
-  
-  if (type == "seat") {
-    result <- data.frame(Party   = party,
-                         Votes   = vote1,
-                         Method1 = seat1,
-                         Method2 = seat2)
-    
-    result$Diff <- result$Method2 - result$Method1
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(y$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")
-  } else if (type == "index") {
-    result <- data.frame(Index = c(c("ENP (Vote)", "ENP (Seat)", "Gallagher",
-                                     "Loosemore\u2013Hanby", "Rae",
-                                     "Sainte\u2013Lagu\u00eb", "D\'Hondt",
-                                     "D\'Hondt (5%)")),
-                         Method1 = unlist(index(x)),
-                         Method2 = unlist(index(y)))
-    
-    result$Diff    <- result$Method2 - result$Method1
-    
+  if (x$type == "index") {
     result$Method1 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method1))
     result$Method2 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method2))
     result$Diff    <- sprintf(paste0("%.", digits, "f"), unlist(result$Diff))
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")  
-  } else {
-    stop('"type" must be "seat" or "index".')
   }
+  
+  print(result)
+  cat("Information \n",
+      "# Method1:", x$method1, 
+      "(Number of seats = ", x$seat1, 
+      "/ threshold: ", x$threshold1, ")\n",
+      "# Method2:", x$method2, 
+      "(Number of seats = ", x$seat2,
+      "/ threshold: ", x$threshold2, ")\n",
+      "# Diff   : Method2 - Method1")  
 }
 
 #' \code{PRcalc}オブジェクトの比較
 #' 
-#' @param x \code{PRcalc}オブジェクト
-#' @param y \code{PRcalc}オブジェクト
-#' @param type 比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)
-#' @param digits 小数点の表示桁数 (\code{type = "index"}の場合のみ有効)
+#' @param x \code{PRcalc_compare}オブジェクト
+#' @param digits 小数点の表示桁数
 #' @param ... Ignored
 #'
 #' @return
-#' none
+#' A \code{PRcalc_compare} object
 #' @export
 #'
 #' @examples
-#' compare(PR_example3, PR_example4, type = "index")
-compare.PRcalc <- function(x, 
-                           y, 
-                           type   = "seat", 
-                           digits = 3,
-                           ...) {
-  party <- x$Vote[, 1]
-  vote1 <- x$Vote[, ncol(y$Vote)]
-  vote2 <- y$Vote[, ncol(x$Vote)]
-  seat1 <- x$Seat[, ncol(x$Seat)]
-  seat2 <- y$Seat[, ncol(y$Seat)]
+#' compare1 <- compare(PR_example3, PR_example4, type = "index")
+#' compare1
+print.PRcalc_compare <- function(x, digits = 3, ...) {
+  result <- x[["result"]]
   
-  if (all(vote1 != vote2)) {
-    stop("Total votes of x are incompatible with that of y.")
-  }
-  
-  if (type == "seat") {
-    result <- data.frame(Party   = party,
-                         Votes   = vote1,
-                         Method1 = seat1,
-                         Method2 = seat2)
-    
-    result$Diff <- result$Method2 - result$Method1
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(y$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")
-  } else if (type == "index") {
-    result <- data.frame(Index = c(c("ENP (Vote)", "ENP (Seat)", "Gallagher",
-                                     "Loosemore\u2013Hanby", "Rae",
-                                     "Sainte\u2013Lagu\u00eb", "D\'Hondt",
-                                     "D\'Hondt (5%)")),
-                         Method1 = unlist(index(x)),
-                         Method2 = unlist(index(y)))
-    
-    result$Diff    <- result$Method2 - result$Method1
-    
+  if (x$type == "index") {
     result$Method1 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method1))
     result$Method2 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method2))
     result$Diff    <- sprintf(paste0("%.", digits, "f"), unlist(result$Diff))
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")  
-  } else {
-    stop('"type" must be "seat" or "index".')
   }
+  
+  print(result)
+  cat("Information \n",
+      "# Method1:", x$method1, 
+      "(Number of seats = ", x$seat1, 
+      "/ threshold: ", x$threshold1, ")\n",
+      "# Method2:", x$method2, 
+      "(Number of seats = ", x$seat2,
+      "/ threshold: ", x$threshold2, ")\n",
+      "# Diff   : Method2 - Method1")  
 }
 
 #' \code{PRcalc}オブジェクトの比較
 #' 
-#' @param x \code{PRcalc}オブジェクト
-#' @param y \code{PRcalc}オブジェクト
-#' @param type 比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)
-#' @param digits 小数点の表示桁数 (\code{type = "index"}の場合のみ有効)
+#' @param x \code{PRcalc_compare}オブジェクト
+#' @param digits 小数点の表示桁数
 #' @param ... Ignored
 #'
 #' @return
-#' none
+#' A \code{PRcalc_compare} object
 #' @export
 #'
 #' @examples
-#' compare(PR_example3, PR_example5, type = "index", digits = 1)
-compare.PRcalc <- function(x, 
-                           y, 
-                           type   = "seat", 
-                           digits = 3,
-                           ...) {
-  party <- x$Vote[, 1]
-  vote1 <- x$Vote[, ncol(y$Vote)]
-  vote2 <- y$Vote[, ncol(x$Vote)]
-  seat1 <- x$Seat[, ncol(x$Seat)]
-  seat2 <- y$Seat[, ncol(y$Seat)]
+#' compare2 <- compare(PR_example3, PR_example5, type = "index")
+#' print(compare2, digits = 1)
+print.PRcalc_compare <- function(x, digits = 3, ...) {
+  result <- x[["result"]]
   
-  if (all(vote1 != vote2)) {
-    stop("Total votes of x are incompatible with that of y.")
-  }
-  
-  if (type == "seat") {
-    result <- data.frame(Party   = party,
-                         Votes   = vote1,
-                         Method1 = seat1,
-                         Method2 = seat2)
-    
-    result$Diff <- result$Method2 - result$Method1
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(y$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")
-  } else if (type == "index") {
-    result <- data.frame(Index = c(c("ENP (Vote)", "ENP (Seat)", "Gallagher",
-                                     "Loosemore\u2013Hanby", "Rae",
-                                     "Sainte\u2013Lagu\u00eb", "D\'Hondt",
-                                     "D\'Hondt (5%)")),
-                         Method1 = unlist(index(x)),
-                         Method2 = unlist(index(y)))
-    
-    result$Diff    <- result$Method2 - result$Method1
-    
+  if (x$type == "index") {
     result$Method1 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method1))
     result$Method2 <- sprintf(paste0("%.", digits, "f"), unlist(result$Method2))
     result$Diff    <- sprintf(paste0("%.", digits, "f"), unlist(result$Diff))
-    
-    rownames(result) <- NULL
-    
-    print(result)
-    cat("Information \n",
-        "# Method1:", x$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]), 
-        "/ threshold: ", x$threshold, ")\n",
-        "# Method2:", y$Method, 
-        "(Number of seats = ", sum(x$N_Seat[-1]),
-        "/ threshold: ", y$threshold, ")\n",
-        "# Diff   : Method2 - Method1")  
-  } else {
-    stop('"type" must be "seat" or "index".')
   }
+  
+  print(result)
+  cat("Information \n",
+      "# Method1:", x$method1, 
+      "(Number of seats = ", x$seat1, 
+      "/ threshold: ", x$threshold1, ")\n",
+      "# Method2:", x$method2, 
+      "(Number of seats = ", x$seat2,
+      "/ threshold: ", x$threshold2, ")\n",
+      "# Diff   : Method2 - Method1")  
 }

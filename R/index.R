@@ -26,6 +26,10 @@ index <- function(x, ...) {
 #' A \code{PRcalc_index} object.
 #' @export
 #'
+#' @reference
+#' Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.
+#' Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.
+#'
 index.PRcalc <- function (x, ...) {
   
   Vote <- NULL

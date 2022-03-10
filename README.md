@@ -12,32 +12,32 @@ Current Version: 0.7.0 (2022/03/09)
 
 ## History
 
-* 2015/04/24 (0.1.0): Release {PRclac}
+* 2015/04/24 (0.1.0): 初公開
 * 2015/04/25 (0.2.0)
-  * An argument, `nparty`, was removed.
-  * A name of an argument was changed, voteshare to vote. Also, you can define party names. (Of course, it is okay to left blank.)
-  * Disproportionality Index(Gallagher Index) is indicated.
-  * Optimized function. You can call the package more faster (a little)
-  * `PR.calc.ex()` is included. This function show a sample result.
-* 2015/04/26 (0.3.0): You can specify a threshold.
-* 2015/04/27 (0.4.0): data.frame type is available for vote argument! You don’t have to type troublesome vector argument.
+  * `nparty`引数の削除
+  * 仮引数`voteshare`の名称を`vote`に変更
+  * 非比例性指標 (Gallagher Index) の出力
+  * 関数の効率化
+  * 例を出力する`PR.calc.ex()`関数の追加
+* 2015/04/26 (0.3.0): 阻止条項が指定可能
+* 2015/04/27 (0.4.0): `vote`の実引数としてdata.frame型が使用可能
 * 2015/04/28 (0.5.0)
-  * {PRcalc} come be available as an R package!
-  * Sample datasets included.
+  * {PRcalc}のパッケージ化
+  * サンプルデータの追加
 * 2015/05/07 (0.6.0)
-  * New sample dataset added, `japanese.sample2` (2014 Japanese Lower House Election)
-  * Calculating multiple districts simultaneously is possible.
+  * 新しいサンプルデータ`japanese.sample2`の追加
+  * ブロック制比例代表が計算可能
 * 2016/04/27 (0.6.1)
-  * Bugs fixed
+  * バグ修正
 * 2016/04/27 (0.7.0)
-  * Major update
+  * 大幅なアップデート (というか、作り直しました)
 
 ---
 
 ## インストール
 
 ```r
-install("remotes") # if {remotes} is not installed
+install("remotes") # {remotes}がインストールされていない場合
 remotes::install_github("JaehyunSong/PRcalc")
 ```
 
@@ -45,7 +45,33 @@ remotes::install_github("JaehyunSong/PRcalc")
 
 ## 使い方
 
-### 比例代表の議席割当計算
+### `PRcalc()`: 比例代表の議席割当計算
+
+**使い方**
+
+```r
+PRcalc(x, seats, method, threshold)
+```
+
+* `x`: 各政党の得票数が格納されたdata.frame、またはtibble
+   * 1列目は政党名、2列目以降は各ブロックごとの得票数
+* `seats`: 議席数
+   * ブロック制比例代表の場合、ベクトルを指定
+* `method`: 議席割当方式
+   * 最高平均法 (Highest Averages Method)
+      * `dt`: ドント方式 (d’Hondt / Jefferson)
+      * `sl`: サン＝ラゲ方式 (Sainte-Laguë / Webster)
+      * `msl`: 修正サン＝ラゲ方式 (Modified Sainte-Laguë)
+      * `denmark`: デンマーク方式 (Danish)
+      * `adams`: アダムス方式 (Adams)
+      * `imperiali`: インペリアリ方式 (Imperiali)
+      * `hh`: ハンチントン＝ヒール方式 (Huntington-Hill)
+      * `dean`: ディーン方式 (Dean)
+   * 最大剰余法 (Largest Remainder Method)
+      * `hare`: ヘア＝ニーマイヤー方式 (Hare-Niemeyer)
+      * `droop`: ドループ方式 (Droop)
+      * `imperialiQ`: インペリアリ・クオタ―方式 (Imperiali Quota)
+* `threshold`: 阻止条項 (0~1)
 
 #### 例1) 全国区 & 5つの政党
 
@@ -160,8 +186,9 @@ PR_example3
 ## 5 Party E    230000    311000  541000         0         1       1
 ```
 
+得票**数**、議席**数**でなく、得票**率**と議席**率**を示す場合、`print()`関数を使用し、`prop = TRUE`を指定します。
+
 ```r
-# 得票「率」と議席「率」を示す場合
 print(PR_example3, prop = TRUE)
 ```
 
@@ -174,8 +201,9 @@ print(PR_example3, prop = TRUE)
 ## 5 Party E     9.779     7.968   8.649     0.000     7.692   4.762
 ```
 
+割合出力の際、`digits`引数で小数点の桁数を調整することができます。
+
 ```r
-# 小数点の桁数を調整する場合
 print(PR_example3, prop = TRUE, digits = 1)
 ```
 
@@ -188,7 +216,7 @@ print(PR_example3, prop = TRUE, digits = 1)
 ## 5 Party E       9.8       8.0     8.6       0.0       7.7     4.8
 ```
 
-`summary()`関数を使用するとブロックごとの得票数 (率)、議席数 (率)が省略されます。使い方は`print()`と同じです。
+`summary()`関数を使用するとブロックごとの得票数 (or 率)、議席数 (or 率) が省略されます。使い方は`print()`と同じです。
 
 ```r
 summary(PR_example3)
@@ -204,7 +232,15 @@ summary(PR_example3, prop = TRUE, digits = 2)
 ## 5 Party E     541000          1
 ```
 
-### 各種指標の計算
+### `index()`: 各種指標の計算
+
+**使い方**
+
+```r
+index(x)
+```
+
+* `x`: `PRcalc()`関数から得られた`PRcalc`オブジェクト
 
 ```r
 Election_Data1 <- data.frame(Party = c("Party A", "Party B", "Party C",
@@ -216,14 +252,8 @@ Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
                              Region2 = c(1454000, 761000, 913000, 464000, 311000))
 
 PR_example1 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0)
-PR_example2 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0.1)
-PR_example3 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", threshold = 0)
 
-PR_index1 <- index(PR_example1)
-PR_index2 <- index(PR_example2)
-PR_index3 <- index(PR_example3)
-
-PR_index1
+index(PR_example1)
 ```
 
 ```
@@ -233,12 +263,17 @@ PR_index1
 ## 3       Gallagher 5.393
 ## 4 Loosemore–Hanby 7.143
 ## 5             Rae 2.857
-## 6   Sainte–Laguë 2.473
+## 6    Sainte–Laguë 2.473
 ## 7         D'Hondt 1.278
 ## 8    D'Hondt (5%) 1.278
 ```
 
+小数点桁数を調整する場合は、`print()`関数の`digits`引数を指定します。
+
 ```r
+PR_example2 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0.1)
+PR_index2   <- index(PR_example2)
+
 print(PR_index2, digits = 1)
 ```
 
@@ -249,12 +284,27 @@ print(PR_index2, digits = 1)
 ## 3       Gallagher   9.2
 ## 4 Loosemore–Hanby  11.6
 ## 5             Rae   3.3
-## 6   Sainte–Laguë  12.2
+## 6    Sainte–Laguë  12.2
 ## 7         D'Hondt   1.2
 ## 8    D'Hondt (5%)   1.2
 ```
 
+`$`で特定の指数のみ抽出することができます。
+
+* `$enp_vote`: 得票率に基づく有効性頭数
+* `$enp_seat`: 議席率に基づく有効性頭数
+* `$gallagher`: Gallagher Index
+* `$rose`: Loosemore–Hanby (Rose) Index
+* `$rae`: Rae Index
+* `$sl`: Sainte–Laguë Index
+* `$dt`: D'Hondt Index
+* `$dt5`: D'Hondt Index (5%)
+
 ```r
+PR_example3 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", 
+                      threshold = 0)
+PR_index3   <- index(PR_example3)
+
 PR_index3$gallagher # Gallagher非比例性指標のみ抽出
 ```
 
@@ -262,49 +312,19 @@ PR_index3$gallagher # Gallagher非比例性指標のみ抽出
 ## [1] 5.181161
 ```
 
-### 可視化
+### `compare()`: 割当結果の比較
 
-可視化の場合、得票**率**と議席**率**が表示されます。
-
-
-```r
-Election_Data1 <- data.frame(Party = c("Party A", "Party B", "Party C",
-                                       "Party D", "Party E"),
-                             Votes = c(778000, 714000, 331000, 299000, 230000))
-
-PR_example1 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0)
-
-plot(PR_example1) # PR_example1の可視化
-```
-
-![](figures/fig1.png)
+**使い方**
 
 ```r
-Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
-                                         "Party D", "Party E"),
-                             Region1 = c(778000, 714000, 331000, 299000, 230000),
-                             Region2 = c(1454000, 761000, 913000, 464000, 311000))
-
-PR_example2 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", threshold = 0)
-
-plot(PR_example2) # PR_example2の可視化
+compare(x, y, type)
 ```
 
-![](figures/fig2.png)
-
-```r
-plot(PR_example2, text_angle = 25) # X軸ラベルの回転
-```
-
-![](figures/fig3.png)
-
-```r
-plot(PR_example2, summary = TRUE) # ブロックごとの図を省略
-```
-
-![](figures/fig4.png)
-
-### 比較
+* `x`: `PRcalc()`関数から得られた`PRcalc`オブジェクト
+* `y`: `PRcalc()`関数から得られた`PRcalc`オブジェクト
+* `type`: 比較指標
+   * `"seat"`: 議席数の比較
+   * `"index"`: 各種指標の比較
 
 ```r
 # アラバマのパラドックス
@@ -362,12 +382,15 @@ compare(PR_example3, PR_example4, type = "index")
 ## 8    D'Hondt (5%)   1.333   1.085 -0.248
 ## Information 
 ##  # Method1: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
-##  # Method2: Hare–Niemeyer (Number of seats =  10 / threshold:  0 )
+##  # Method2: Hare–Niemeyer (Number of seats =  11 / threshold:  0 )
 ##  # Diff   : Method2 - Method1
 ```
 
+小数点桁数を調整する場合は、`print()`関数の`digits`引数を指定します。
+
 ```r
-compare(PR_example3, PR_example5, type = "index", digits = 1)
+compare1 <- compare(PR_example3, PR_example5, type = "index")
+print(compare1, digits = 1)
 ```
 
 ```
@@ -386,9 +409,67 @@ compare(PR_example3, PR_example5, type = "index", digits = 1)
 ##  # Diff   : Method2 - Method1
 ```
 
+### `plot()`: 可視化
+
+**使い方**
+
+```r
+plot(x, summary, xlab, ylab, text_size, text_angle)
+```
+
+* `x`: `PRcalc()`関数から得られた`PRcalc`オブジェクト
+* `summary`: `FALSE`の場合、各ブロックの図が省略されます。既定値は`TRUE`
+* `xlab`: 横軸のタイトル; 既定値は`"Party"`
+* `ylab`: 縦軸のタイトル; 既定値は`"%"`
+* `text_size`: 文字の大きさ; 既定値は12
+* `text_size`: 横軸ラベルの角度; 既定値は0
+
+可視化の場合、得票**率**と議席**率**が表示されます。
+
+```r
+Election_Data1 <- data.frame(Party = c("Party A", "Party B", "Party C",
+                                       "Party D", "Party E"),
+                             Votes = c(778000, 714000, 331000, 299000, 230000))
+
+PR_example1 <- PRcalc(Election_Data1, seats = 8, method = "msl", threshold = 0)
+
+plot(PR_example1) # PR_example1の可視化
+```
+
+![](figures/fig1.png)
+
+```r
+Election_Data2 <- data.frame(Party   = c("Party A", "Party B", "Party C",
+                                         "Party D", "Party E"),
+                             Region1 = c(778000, 714000, 331000, 299000, 230000),
+                             Region2 = c(1454000, 761000, 913000, 464000, 311000))
+
+PR_example2 <- PRcalc(Election_Data2, seats = c(8, 13), method = "dt", threshold = 0)
+
+plot(PR_example2) # PR_example2の可視化
+```
+
+![](figures/fig2.png)
+
+横軸ラベルが重なる場合、`text_angle`で回転させることができます。
+
+```r
+plot(PR_example2, text_angle = 25) # X軸ラベルの回転
+```
+
+![](figures/fig3.png)
+
+ブロック制比例代表の場合、`summary = TRUE`を指定すると、各ブロックの結果が省略されます。
+
+```r
+plot(PR_example2, summary = TRUE) # ブロックごとの図を省略
+```
+
+![](figures/fig4.png)
+
 ### サンプルデータ
 
-サンプルデータは以下の通りです。
+{PRcalc}は2022年3月現在、15種類のサンプルデータを提供しております。サンプルデータは以下の通りです。
 
 | データ名 | 説明 | 国 |
 |:---------|:-----|:---|
@@ -410,7 +491,7 @@ compare(PR_example3, PR_example5, type = "index", digits = 1)
 
 
 ```r
-data(jp_census_1920)
+data(jp_census_1920) # 1920年都道府県別人口データ
 
 head(jp_census_1920)
 ```
