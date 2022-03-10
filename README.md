@@ -673,13 +673,13 @@ compare(PR_sample5, PR_sample6)
 ```
 
 ```
-##      Party   Votes Method1 Method2 Diff
-## 1   セヌリ 7960272      16      17    1
-## 2 共に民主 6069744      13      13    0
-## 3     国民 6355572      13      13    0
-## 4     正義 1719891       4       4    0
-## 5     基督  626853       1       0   -1
-## 6     民主  209872       0       0    0
+#>          Party   Votes Method1 Method2 Diff
+#> 1     새누리당 7960272      16      17    1
+#> 2 더불어민주당 6069744      13      13    0
+#> 3     국민의당 6355572      13      13    0
+#> 4       정의당 1719891       4       4    0
+#> 5   기독자유당  626853       1       0   -1
+#> 6       민주당  209872       0       0    0
 ## Information 
 ##  # Method1: Hare–Niemeyer (Number of seats =  47 / threshold:  0 )
 ##  # Method2: Hare–Niemeyer (Number of seats =  47 / threshold:  0.05 )
