@@ -820,6 +820,8 @@ print(compare2, digits = 1)
 #' @param summary \code{TRUE}、または\code{FALSE} (既定値); \code{TRUE}の場合、ブロックごとのプロットが省略されます。
 #' @param xlab 横軸のタイトル
 #' @param ylab 縦軸のタイトル
+#' @param vs_lab 凡例ラベル (得票率)
+#' @param ss_lab 凡例ラベル (議席率)
 #' @param text_size 文字の大きさ; 既定値は12
 #' @param text_angle 横軸ラベルの角度; 既定値は0
 #' @param ... Ingnored
@@ -850,6 +852,8 @@ plot.PRcalc <- function (x,
                          summary    = FALSE, 
                          xlab       = "Party",
                          ylab       = "%",
+                         vs_lab     = "Vote share",
+                         ss_lab     = "Seat share",
                          text_size  = 12,
                          text_angle = 0, 
                          ...) {
@@ -875,7 +879,7 @@ plot.PRcalc <- function (x,
                    names_to  = "Type",
                    values_to = "Share") %>%
       mutate(Type  = factor(Type, levels = c("TV", "TS"), 
-                            labels = c("Total Vote", "Total Seat")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share)
   } else {
     temp_df <- left_join(x$VoteShare, x$SeatShare, by = "Party",
@@ -886,7 +890,7 @@ plot.PRcalc <- function (x,
       separate(Region, into = c("Region", "Type"), sep = "_") %>%
       mutate(Region = fct_inorder(Region)) %>%
       mutate(Type  = factor(Type, levels = c("V", "S"), 
-                            labels = c("Vote Share", "Seat Share")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share) 
   }
   
@@ -1285,7 +1289,9 @@ tail(jp_census_1920)
 PR_sample1 <- PRcalc(jp_census_1920, seats = 250, method = "dt")
 PR_sample1
 index(PR_sample1)
-plot(PR_sample1, xlab = "Region", text_angle = 45)
+plot(PR_sample1, 
+     xlab = "都道府県", vs_lab = "人口割合", ss_lab = "割当議席率",
+     text_angle = 45)
 ```
 
 ```{r examples-data-2}
@@ -1327,7 +1333,9 @@ PR_sample6 <- PRcalc(kr_lower_2016, method = "hare", seats = 47,
                      threshold = 0.05)
 
 compare(PR_sample5, PR_sample6)
-plot(PR_sample6, xlab = "정당명", text_size = 16)
+plot(PR_sample6, 
+     xlab = "정당명", vs_lab = "득표율", ss_lab = "의석비율",
+     text_size = 16)
 ```
 
 ```{r development-inflate, eval = FALSE}

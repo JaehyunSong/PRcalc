@@ -8,6 +8,8 @@
 #' @param summary \code{TRUE}、または\code{FALSE} (既定値); \code{TRUE}の場合、ブロックごとのプロットが省略されます。
 #' @param xlab 横軸のタイトル
 #' @param ylab 縦軸のタイトル
+#' @param vs_lab 凡例ラベル (得票率)
+#' @param ss_lab 凡例ラベル (議席率)
 #' @param text_size 文字の大きさ; 既定値は12
 #' @param text_angle 横軸ラベルの角度; 既定値は0
 #' @param ... Ingnored
@@ -49,6 +51,8 @@ plot.PRcalc <- function (x,
                          summary    = FALSE, 
                          xlab       = "Party",
                          ylab       = "%",
+                         vs_lab     = "Vote share",
+                         ss_lab     = "Seat share",
                          text_size  = 12,
                          text_angle = 0, 
                          ...) {
@@ -74,7 +78,7 @@ plot.PRcalc <- function (x,
                    names_to  = "Type",
                    values_to = "Share") %>%
       mutate(Type  = factor(Type, levels = c("TV", "TS"), 
-                            labels = c("Total Vote", "Total Seat")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share)
   } else {
     temp_df <- left_join(x$VoteShare, x$SeatShare, by = "Party",
@@ -85,7 +89,7 @@ plot.PRcalc <- function (x,
       separate(Region, into = c("Region", "Type"), sep = "_") %>%
       mutate(Region = fct_inorder(Region)) %>%
       mutate(Type  = factor(Type, levels = c("V", "S"), 
-                            labels = c("Vote Share", "Seat Share")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share) 
   }
   
@@ -117,6 +121,8 @@ plot.PRcalc <- function (x,
 #' @param summary \code{TRUE}、または\code{FALSE} (既定値); \code{TRUE}の場合、ブロックごとのプロットが省略されます。
 #' @param xlab 横軸のタイトル
 #' @param ylab 縦軸のタイトル
+#' @param vs_lab 凡例ラベル (得票率)
+#' @param ss_lab 凡例ラベル (議席率)
 #' @param text_size 文字の大きさ; 既定値は12
 #' @param text_angle 横軸ラベルの角度; 既定値は0
 #' @param ... Ingnored
@@ -161,6 +167,8 @@ plot.PRcalc <- function (x,
                          summary    = FALSE, 
                          xlab       = "Party",
                          ylab       = "%",
+                         vs_lab     = "Vote share",
+                         ss_lab     = "Seat share",
                          text_size  = 12,
                          text_angle = 0, 
                          ...) {
@@ -186,7 +194,7 @@ plot.PRcalc <- function (x,
                    names_to  = "Type",
                    values_to = "Share") %>%
       mutate(Type  = factor(Type, levels = c("TV", "TS"), 
-                            labels = c("Total Vote", "Total Seat")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share)
   } else {
     temp_df <- left_join(x$VoteShare, x$SeatShare, by = "Party",
@@ -197,7 +205,7 @@ plot.PRcalc <- function (x,
       separate(Region, into = c("Region", "Type"), sep = "_") %>%
       mutate(Region = fct_inorder(Region)) %>%
       mutate(Type  = factor(Type, levels = c("V", "S"), 
-                            labels = c("Vote Share", "Seat Share")),
+                            labels = c(vs_lab, ss_lab)),
              Share = Share) 
   }
   

@@ -295,7 +295,9 @@ tail(jp_census_1920)
 PR_sample1 <- PRcalc(jp_census_1920, seats = 250, method = "dt")
 PR_sample1
 index(PR_sample1)
-plot(PR_sample1, xlab = "Region", text_angle = 45)
+plot(PR_sample1, 
+     xlab = "都道府県", vs_lab = "人口割合", ss_lab = "割当議席率",
+     text_angle = 45)
 ```
 
 ```{r examples-data-2}
@@ -337,6 +339,8 @@ PR_sample6 <- PRcalc(kr_lower_2016, method = "hare", seats = 47,
                      threshold = 0.05)
 
 compare(PR_sample5, PR_sample6)
-plot(PR_sample6, xlab = "정당명", text_size = 16)
+plot(PR_sample6, 
+     xlab = "정당명", vs_lab = "득표율", ss_lab = "의석비율",
+     text_size = 16)
 ```
 

@@ -9,6 +9,8 @@
   summary = FALSE,
   xlab = "Party",
   ylab = "\%",
+  vs_lab = "Vote share",
+  ss_lab = "Seat share",
   text_size = 12,
   text_angle = 0,
   ...
@@ -19,6 +21,8 @@
   summary = FALSE,
   xlab = "Party",
   ylab = "\%",
+  vs_lab = "Vote share",
+  ss_lab = "Seat share",
   text_size = 12,
   text_angle = 0,
   ...
@@ -32,6 +36,10 @@
 \item{xlab}{横軸のタイトル}
 
 \item{ylab}{縦軸のタイトル}
+
+\item{vs_lab}{凡例ラベル (得票率)}
+
+\item{ss_lab}{凡例ラベル (議席率)}
 
 \item{text_size}{文字の大きさ; 既定値は12}
 

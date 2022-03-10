@@ -424,6 +424,8 @@ plot(x, summary, xlab, ylab, text_size, text_angle)
 * `summary`: `FALSE`の場合、各ブロックの図が省略されます。既定値は`TRUE`
 * `xlab`: 横軸のタイトル; 既定値は`"Party"`
 * `ylab`: 縦軸のタイトル; 既定値は`"%"`
+* `vs_lab`: 凡例ラベル (得票率); 既定値は`"Vote share"`
+* `ss_lab`: 凡例ラベル (議席率); 既定値は`"Seat share"`
 * `text_size`: 文字の大きさ; 既定値は12
 * `text_size`: 横軸ラベルの角度; 既定値は0
 
@@ -541,7 +543,9 @@ index(PR_sample1)
 ```
 
 ```r
-plot(PR_sample1, xlab = "Region", text_angle = 45)
+plot(PR_sample1, 
+     xlab = "都道府県", vs_lab = "人口割合", ss_lab = "割当議席率",
+     text_angle = 45)
 ```
 
 ![](figures/fig5.png)
@@ -687,7 +691,9 @@ compare(PR_sample5, PR_sample6)
 ```
 
 ```r
-plot(PR_sample6, xlab = "정당명", text_size = 16)
+plot(PR_sample6, 
+     xlab = "정당명", vs_lab = "득표율", ss_lab = "의석비율",
+     text_size = 16)
 ```
 
 ![](figures/fig7.png)
