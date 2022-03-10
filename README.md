@@ -666,7 +666,8 @@ plot(PR_sample4, text_angle = 90)
 data(kr_lower_2016)
 
 PR_sample5 <- PRcalc(kr_lower_2016, method = "hare", seats = 47)
-PR_sample6 <- PRcalc(kr_lower_2016, method = "hare", seats = 47, threshold = 0.05)
+PR_sample6 <- PRcalc(kr_lower_2016, method = "hare", seats = 47, 
+                     threshold = 0.05)
 
 compare(PR_sample5, PR_sample6)
 ```
@@ -686,7 +687,7 @@ compare(PR_sample5, PR_sample6)
 ```
 
 ```r
-plot(PR_sample6, text_size = 16)
+plot(PR_sample6, xlab = "정당명", text_size = 16)
 ```
 
 ![](figures/fig7.png)
