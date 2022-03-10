@@ -9,9 +9,9 @@ PRcalc(x, seats, method, threshold = 0)
 \arguments{
 \item{x}{a \code{data.frame} or \code{tibble} object.}
 
-\item{seats}{長さ1以上の\code{numeric}型ベクトル}
+\item{seats}{議席数; 長さ1以上の\code{numeric}型ベクトル}
 
-\item{method}{a string}
+\item{method}{議席割当方式;}
 
 \item{threshold}{a numeric value}
 }

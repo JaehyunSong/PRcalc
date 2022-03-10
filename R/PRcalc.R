@@ -3,8 +3,8 @@
 #' PR Calculation
 #'
 #' @param x a \code{data.frame} or \code{tibble} object. 
-#' @param seats 長さ1以上の\code{numeric}型ベクトル
-#' @param method a string
+#' @param seats 議席数; 長さ1以上の\code{numeric}型ベクトル
+#' @param method 議席割当方式;
 #' @param threshold a numeric value
 #' 
 #' @importFrom dplyr case_when
@@ -19,6 +19,17 @@ PRcalc <- function (x,
                     seats, 
                     method, 
                     threshold = 0) {
+  
+  method_list <- c("hare", "droop", "imperialiQ", "dt", 
+                   "sl", "msl", "adams", "danish", "hh", 
+                   "dean", "imperiali")
+  
+  if (!(method %in% method_list)) {
+    stop("Invalid allocation method. Please see ?PRcalc")
+  }
+  if (threshold < 0 | threshold >= 1) {
+    stop("Invalid threshold (0 > threshold >= 0)")
+  }
   
   seat_vec <- seats
   temp_df  <- x

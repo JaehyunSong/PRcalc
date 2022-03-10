@@ -697,3 +697,41 @@ plot(PR_sample6,
 ```
 
 ![](figures/fig7.png)
+
+## パイプ演算子などの使用
+
+ほとんどの関数はパイプ演算子 (`%>%`) で繋ぐことができます。
+
+```r
+library(tidyverse)
+
+data(jp_upper_2019)
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt")
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  print(prop = TRUE, digits = 1)
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  index()
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  plot(xlab = "政党", vs_lab = "得票率", ss_lab = "議席率", 
+       text_size = 16)
+```
+
+![](figures/fig8.png)
+
+```r
+dt_sample <- jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt")
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt", threshold = 0.05) %>%
+  compare(dt_sample, type = "index")
+```
+

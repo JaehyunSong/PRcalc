@@ -297,8 +297,8 @@ prcalc_block(votes       = block_example,
 #' PR Calculation
 #'
 #' @param x a \code{data.frame} or \code{tibble} object. 
-#' @param seats 長さ1以上の\code{numeric}型ベクトル
-#' @param method a string
+#' @param seats 議席数; 長さ1以上の\code{numeric}型ベクトル
+#' @param method 議席割当方式;
 #' @param threshold a numeric value
 #' 
 #' @importFrom dplyr case_when
@@ -314,6 +314,17 @@ PRcalc <- function (x,
                     seats, 
                     method, 
                     threshold = 0) {
+  
+  method_list <- c("hare", "droop", "imperialiQ", "dt", 
+                   "sl", "msl", "adams", "danish", "hh", 
+                   "dean", "imperiali")
+  
+  if (!(method %in% method_list)) {
+    stop("Invalid allocation method. Please see ?PRcalc")
+  }
+  if (threshold < 0 | threshold >= 1) {
+    stop("Invalid threshold (0 > threshold >= 0)")
+  }
   
   seat_vec <- seats
   temp_df  <- x
@@ -569,7 +580,7 @@ index <- function(x, ...) {
 #' A \code{PRcalc_index} object.
 #' @export
 #'
-#' @reference
+#' @references
 #' Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.
 #' Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.
 #'
@@ -692,6 +703,7 @@ compare.PRcalc <- function(x,
                            y, 
                            type   = "seat", 
                            ...) {
+  
   party <- x$Vote[, 1]
   vote1 <- x$Vote[, ncol(y$Vote)]
   vote2 <- y$Vote[, ncol(x$Vote)]
@@ -1336,6 +1348,45 @@ compare(PR_sample5, PR_sample6)
 plot(PR_sample6, 
      xlab = "정당명", vs_lab = "득표율", ss_lab = "의석비율",
      text_size = 16)
+```
+
+# パイプ演算子などの使用
+
+ほとんどの関数はパイプ演算子 (`%>%`) で繋ぐことができます。
+
+```{r examples-tidyverse}
+#| dev: "ragg_png"
+#| fig.width: 10
+#| fig.height: 7
+#| out.width: 700
+#| dpi: 300
+#| message: FALSE
+library(tidyverse)
+
+data(jp_upper_2019)
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt")
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  print(prop = TRUE, digits = 1)
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  index()
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt") %>%
+  plot(xlab = "政党", vs_lab = "得票率", ss_lab = "議席率", 
+       text_size = 16)
+
+dt_sample <- jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt")
+
+jp_upper_2019 %>%
+  PRcalc(seats = 50, method = "dt", threshold = 0.05) %>%
+  compare(dt_sample, type = "index")
 ```
 
 ```{r development-inflate, eval = FALSE}

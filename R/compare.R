@@ -28,6 +28,7 @@ compare.PRcalc <- function(x,
                            y, 
                            type   = "seat", 
                            ...) {
+  
   party <- x$Vote[, 1]
   vote1 <- x$Vote[, ncol(y$Vote)]
   vote2 <- y$Vote[, ncol(x$Vote)]

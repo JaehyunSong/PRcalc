@@ -17,3 +17,7 @@ A \code{PRcalc_index} object.
 \description{
 各種指標の計算
 }
+\references{
+Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.
+Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.
+}

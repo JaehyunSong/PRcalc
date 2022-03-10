@@ -16,7 +16,8 @@ Imports:
     utils
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    tidyverse
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
