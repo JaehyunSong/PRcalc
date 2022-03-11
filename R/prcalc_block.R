@@ -37,6 +37,10 @@ prcalc_block <- function(votes,
   multi_result <- list()
   region_list  <- names(votes)[-1]
   
+  if (length(region_list) == 1) {
+    region_list <- "National"
+  }
+  
   LRM_methods <- c("hare", "droop", "imperialiQ")
   HAE_methods <- c("dt", "sl", "msl", "adams", "danish",
                    "hh", "dean", "imperiali")

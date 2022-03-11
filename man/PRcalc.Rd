@@ -2,22 +2,73 @@
 % Please edit documentation in R/prcalc.R
 \name{PRcalc}
 \alias{PRcalc}
-\title{PR Calculation}
+\title{比例代表の議席割当計算}
 \usage{
 PRcalc(x, seats, method, threshold = 0)
 }
 \arguments{
-\item{x}{a \code{data.frame} or \code{tibble} object.}
+\item{x}{\code{data.frame}、または\code{tibble}オブジェクト}
 
 \item{seats}{議席数; 長さ1以上の\code{numeric}型ベクトル}
 
 \item{method}{議席割当方式;}
 
-\item{threshold}{a numeric value}
+\item{threshold}{阻止条項 (0 ~ 1); 既定値は0}
 }
 \value{
-A \code{list} type object.
+\code{PRcalc}型オブジェクト
+\describe{
+\item{\code{Vote}}{得票数}
+\item{\code{Seat}}{獲得議席数}
+\item{\code{VoteShare}}{得票率}
+\item{\code{SeatShare}}{獲得議席率}
+\item{\code{N_Seat}}{各ブロックの議席数および総議席数}
+\item{\code{N_Block}}{ブロック数}
+\item{\code{threshold}}{阻止条項の閾値}
+\item{\code{method}}{議席割当方式}
+}
 }
 \description{
-PR Calculation
+比例代表の議席割当計算
+}
+\details{
+各引数の詳細は以下の通りです。
+\describe{
+\item{\code{x}}{2列以上の\code{data.frame}、または\code{tibble}オブジェクトです。1列目は政党名、2列目以降は各ブロックにおける当該政党の得票数が入ります。}
+\item{\code{seats}}{総議席数。全国区で50議席の場合は\code{seats = 50}、3ブロックで議席数がそれぞれ10、20、30の場合は\code{seats = c(10, 20, 30)}のように指定します。}
+\item{\code{method}}{
+議席割当方式
+\itemize{
+\item{\code{"dt"}: ドント方式 (d’Hondt / Jefferson)}
+\item{\code{"sl"}: サン＝ラゲ方式 (Sainte-Laguë / Webster)}
+\item{\code{"msl"}: 修正サン＝ラゲ方式 (Modified Sainte-Laguë)}
+\item{\code{"denmark"}: デンマーク方式 (Danish)}
+\item{\code{"adams"}: アダムス方式 (Adams)}
+\item{\code{"imperiali"}: インペリアリ方式 (Imperiali)}
+\item{\code{"hh"}: ハンチントン＝ヒール方式 (Huntington-Hill)}
+\item{\code{"dean"}: ディーン方式 (Dean)}
+\item{\code{"hare"}: ヘア＝ニーマイヤー方式 (Hare-Niemeyer)}
+\item{\code{"droop"}: ドループ方式 (Droop)}
+\item{\code{"imperialiQ"}: インペリアリ・クオタ―方式 (Imperiali Quota)}
+}
+}
+\item{\code{threshold}}{阻止条項。既定値は0ですが、例えば得票率が2\%未満の政党に議席を割り当てない場合は\code{threshold = 0.02}のように指定します。}
+}
+}
+\examples{
+\donttest{
+data(jp_upper_2019)
+PRcalc(jp_upper_2019, seats = 50, method = "dt")
+
+data(jp_lower_2021)
+japan_2021 <- PRcalc(jp_lower_2021, method = "hare",
+                     seats = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21))
+print(japan_2021)
+print(japan_2021, prop = TRUE, digits = 1)
+summary(japan_2021)
+plot(japan_2021)
+}
+}
+\seealso{
+\code{\link{print.PRcalc}}, \code{\link{summary.PRcalc}}, \code{\link{index.PRcalc}}, \code{\link{compare.PRcalc}}, \code{\link{plot.PRcalc}}
 }

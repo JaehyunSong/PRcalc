@@ -2,18 +2,25 @@
 % Please edit documentation in R/compare.R
 \name{compare}
 \alias{compare}
-\title{\code{compare}ジェネリック関数}
+\alias{compare.PRcalc}
+\title{\code{PRcalc}オブジェクトの比較}
 \usage{
 compare(x, ...)
+
+\method{compare}{PRcalc}(x, y, type = "seat", ...)
 }
 \arguments{
 \item{x}{\code{PRcalc}オブジェクト}
 
 \item{...}{Ignored}
+
+\item{y}{\code{PRcalc}オブジェクト}
+
+\item{type}{比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)}
 }
 \value{
-none
+A \code{PRcalc_compare} object
 }
 \description{
-\code{compare}ジェネリック関数
+\code{PRcalc}オブジェクトの比較
 }

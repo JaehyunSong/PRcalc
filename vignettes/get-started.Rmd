@@ -350,12 +350,12 @@ plot(PR_sample6,
 
 
 ```{r examples-tidyverse}
-#| message: FALSE
 #| dev: "ragg_png"
 #| fig.width: 10
 #| fig.height: 7
 #| out.width: 700
 #| dpi: 300
+#| message: FALSE
 library(tidyverse)
 
 data(jp_upper_2019)

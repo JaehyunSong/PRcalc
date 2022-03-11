@@ -2,9 +2,12 @@
 % Please edit documentation in R/index.R
 \name{index}
 \alias{index}
-\title{\code{index}ジェネリック関数}
+\alias{index.PRcalc}
+\title{各種指標の計算}
 \usage{
 index(x, ...)
+
+\method{index}{PRcalc}(x, ...)
 }
 \arguments{
 \item{x}{\code{PRcalc}オブジェクト}
@@ -12,8 +15,14 @@ index(x, ...)
 \item{...}{Ignored}
 }
 \value{
-none
+A \code{PRcalc_index} object.
 }
 \description{
-\code{index}ジェネリック関数
+各種指標の計算
+}
+\references{
+\itemize{
+\item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.}
+\item{Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.}
+}
 }

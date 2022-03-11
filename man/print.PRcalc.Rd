@@ -16,7 +16,7 @@
 \item{...}{Ingnored}
 }
 \value{
-A data.frame
+none
 }
 \description{
 Print \code{PRclac} Object
