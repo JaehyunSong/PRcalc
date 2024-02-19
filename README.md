@@ -8,6 +8,10 @@ PRcalc for Web: <https://jaysong.shinyapps.io/prcalc4web/>
 
 ---
 
+**CAUTION!!!** {PRcalc} is now on code refactoring. Do NOT use this pacakges for any purpose (acamdemic, commercial, or etc.). Please use for only testing.
+
+---
+
 ## Author Information
 
 * Jaehyun SONG, Ph.D.
