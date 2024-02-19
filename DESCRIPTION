@@ -1,26 +1,30 @@
 Package: PRcalc
 Title: A Proportional Representation Calculator
-Version: 0.7.0
-Authors@R: 
-    person("Jaehyun", "Song", , "song@kansai-u.ac.jp", role = c("aut", "cre"))
+Version: 0.8.0
+Authors@R: c(
+    person("Jaehyun", "Song", 
+           email = "song@kansai-u.ac.jp", 
+           role = c("aut", "cre")),
+    person("Yuta", "Kamahara", 
+           email = "y.kamahara@gmail.com", 
+           role  = "aut"))
 Description: A Proportional Representation Calculator.
 License: MIT + file LICENSE
-Imports: 
+Imports:
     dplyr,
-    forcats,
-    ggplot2,
-    magrittr,
     purrr,
-    stringr,
     tidyr,
-    utils
+    ggplot2,
+    forcats,
+    tibble,
+    gt
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+LazyData: true
+Depends: 
+    R (>= 3.5.0)
 Suggests: 
     knitr,
-    rmarkdown,
-    tidyverse
-VignetteBuilder: 
-    knitr
-Encoding: UTF-8
-LazyData: TRUE
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+    rmarkdown
+VignetteBuilder: knitr

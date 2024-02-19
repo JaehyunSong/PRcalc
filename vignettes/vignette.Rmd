@@ -1,0 +1,218 @@
+---
+title: "PRcalc 0.8.0"
+author:
+  - Jaehyun Song, Kansai University
+  - Yuta Kamahara, Yokohama National University
+output: 
+  rmarkdown::html_vignette:
+    toc: TRUE
+vignette: >
+  %\VignetteIndexEntry{PRcalc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**今後の方向**
+
+* `index()`の計算式は適当に入れたので、今度見直す
+   * 多分、全体的に間違っているはず
+* {gt}対応
+   * `print.prcalc()`
+   * `print.prcalc_compare()`
+* `plot.prcalc_compare()`で一部の政党のみ出力
+* `decompose()`関数実装
+* `index()`における未対応指標
+   * FragnelliとGambarelli & Biella
+   * これら要る???
+
+```{r opts, include=FALSE}
+knitr::opts_chunk$set(dev        = "ragg_png",
+                      fig.width  = 7,
+                      fig.height = 5,
+                      out.width  = 700,
+                      out.height = 500,
+                      dpi        = 150)
+```
+
+```{r setup}
+library(PRcalc)
+```
+
+## データセット
+
+```{r dataset1}
+# 2019年参院選
+data("jp_upper_2019")
+jp_upper_2019
+```
+
+```{r dataset2}
+# 2021年衆院選
+data("jp_lower_2021")
+jp_lower_2021
+```
+
+## `prcalc()`：議席配分
+
+### 計算
+
+```{r prcalc1}
+obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+obj1
+```
+
+```{r prcalc2}
+obj2 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "dt")
+obj2
+```
+
+### 出力
+
+```{r print1}
+obj3 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "hare")
+
+print(obj3, show_total = FALSE) # Total列の除外
+print(obj3, prop = TRUE) # 割合で出力
+summary(obj3) # 要約
+summary(obj3, prop = TRUE) # 要約（割合）
+```
+
+### 可視化
+
+```{r}
+plot(obj1)
+plot(obj2)
+# 自民、公明、立憲、維新、共産、国民のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))
+# 東京、近畿のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki")) 
+# 政党でfacet分け
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party")
+# 3列構成
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3)
+# facetごとに異なるy軸スケールを使用
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b  = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3,
+     free_y    = TRUE)
+```
+
+## `index()`：各種指標
+
+### 計算
+
+* 指定可能なパラメーターは3種類。いずれも既定値は2
+   * `k`：Generalized Gallagher計算時に使用
+   * `eta`：Atkinson（Gini）計算時に使用
+   * `alpha`：Entropy、$\alpha$-divergence計算時に使用
+
+```{r}
+obj2_index1 <- index(obj2)
+obj2_index1
+obj2_index2 <- index(obj2, alpha = 1) # alpha-divergenceのalphaを1に
+obj2_index2
+```
+
+### 出力
+
+```{r}
+# 一部の指標のみ抽出
+print(obj2_index1, subset = c("dhondt", "gallagher", "lh", "ad"))
+
+# ID列を隠す
+print(obj2_index1, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE)
+
+# 表で出力
+print(obj2_index2, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE,
+      use_gt  = TRUE)
+```
+
+### 可視化
+
+```{r, fig.height=6, out.height=600}
+plot(obj2_index2)
+plot(obj2_index2, style = "lollipop") # ロリポップ
+```
+
+```{r, fig.height=2, out.height=200}
+# 一部の指標のみ出力
+plot(obj2_index2, 
+     index = c("dhondt", "gallagher", "lh", "ad"))
+```
+
+## `decompose()`：分解
+
+あああああ
+
+## `compare()`：比較
+
+### 配分結果の比較
+
+```{r}
+obj4 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "sl")
+
+compare(list(obj2, obj3))
+# モデルに名前を付ける
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) 
+# 可視化
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot()
+# 政党ごとにfacet分割
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot(facet = TRUE)
+# 3列構成 + y軸スケール固定
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot(facet = TRUE, facet_col = 3, free_y = FALSE)
+```
+
+### 指標の比較
+
+```{r}
+compare(list(index(obj2), index(obj3), index(obj4)))
+
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4)))
+
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  print(hide_id = TRUE)
+
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  print(subset  = c("dhondt", "gallagher", "lh", "ad"),
+        hide_id = TRUE,
+        use_gt  = TRUE)
+```
+
+```{r, fig.height=7, out.height=700}
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  plot() +
+  ggplot2::labs(x = "値", y = "指標", fill = "割当方式")
+```

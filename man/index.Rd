@@ -2,23 +2,36 @@
 % Please edit documentation in R/index.R
 \name{index}
 \alias{index}
-\alias{index.PRcalc}
+\alias{index.prcalc}
 \title{各種指標の計算}
 \usage{
 index(x, ...)
 
-\method{index}{PRcalc}(x, ...)
+\method{index}{prcalc}(x, k = 2, eta = 2, alpha = 2, ...)
 }
 \arguments{
-\item{x}{\code{PRcalc}オブジェクト}
+\item{x}{a \code{prcalc} object.}
 
-\item{...}{Ignored}
+\item{...}{ignored}
+
+\item{k}{a parameter for Generalized Gallagher index. Default is \code{2}.}
+
+\item{eta}{a parameter for Atkinson (Gini) index. Default is \code{2}.}
+
+\item{alpha}{a parameter for Generalized Entropy and alpha-divergence. Default is \code{2}.}
 }
 \value{
-A \code{PRcalc_index} object.
+a \code{prcalc_index} object.
 }
 \description{
 各種指標の計算
+}
+\examples{
+data(jp_upper_2019)
+
+pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
+
+index(pr_obj)
 }
 \references{
 \itemize{

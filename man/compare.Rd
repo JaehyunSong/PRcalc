@@ -2,25 +2,37 @@
 % Please edit documentation in R/compare.R
 \name{compare}
 \alias{compare}
-\alias{compare.PRcalc}
-\title{\code{PRcalc}オブジェクトの比較}
+\alias{compare.list}
+\title{\code{prcalc} / \code{prcalc_index}オブジェクトの比較}
 \usage{
 compare(x, ...)
 
-\method{compare}{PRcalc}(x, y, type = "seat", ...)
+\method{compare}{list}(x, prop = FALSE, ...)
 }
 \arguments{
-\item{x}{\code{PRcalc}オブジェクト}
+\item{x}{a list. All elements in the list must be \code{prcalc} or \code{prcalc_index} objects.}
 
 \item{...}{Ignored}
 
-\item{y}{\code{PRcalc}オブジェクト}
-
-\item{type}{比較の基準; \code{"seat"} (議席数; 既定値)、または\code{"index"} (各種指標)}
+\item{prop}{Default is \code{FALSE}.}
 }
 \value{
-A \code{PRcalc_compare} object
+A \code{prcalc_compare} or \code{prcalc_index_compare} object
 }
 \description{
-\code{PRcalc}オブジェクトの比較
+\code{prcalc} / \code{prcalc_index}オブジェクトの比較
+}
+\examples{
+data(jp_upper_2019)
+
+pr_obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+pr_obj2 <- prcalc(jp_upper_2019, m = 50, method = "dt", threshold = 0.025)
+pr_obj3 <- prcalc(jp_upper_2019, m = 50, method = "dt", threshold = 0.05)
+
+compare(list("t = 0\%" = pr_obj1, "t = 2.5\%" = pr_obj2, "t = 5\%" = pr_obj3))
+
+list("t = 0\%"   = index(pr_obj1),
+     "t = 2.5\%" = index(pr_obj2),
+     "t = 5\%"   = index(pr_obj3)) |>
+  compare()
 }
