@@ -58,9 +58,6 @@ remotes::install_github("JaehyunSong/PRcalc")
 
 ## 使い方
 
-{PRcalc} is now on code refactoring. Do NOT use this pacakges for any purpose (acamdemic, commercial, or etc.). Please use for only testing.
-
-
 ### データセット
 
 ```r
@@ -453,4 +450,425 @@ summary(obj3, prop = TRUE) # 要約（割合）
 ## 11   第一 0.000586 0.00000
 ## 12 やまと 0.000295 0.00000
 ## 13 コロナ 0.000115 0.00000
+```
+
+#### 可視化
+
+```r
+plot(obj1)
+```
+
+```r
+plot(obj2)
+```
+
+```r
+# 自民、公明、立憲、維新、共産、国民のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))
+```
+
+```r
+# 東京、近畿のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki")) 
+```
+
+```r
+# 政党でfacet分け
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party")
+```
+
+```r
+# 3列構成
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3)
+```
+
+```r
+# facetごとに異なるy軸スケールを使用
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b  = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3,
+     free_y    = TRUE)
+```
+
+### `index()`：各種指標
+
+#### 計算
+
+```r
+obj2_index1 <- index(obj2)
+obj2_index1
+```
+
+```
+##             ID                         Index    Value
+## 1       dhondt                       D’Hondt  1.13647
+## 2       monroe                        Monroe  0.05321
+## 3       maxdev    Maximum Absolute Deviation  0.03413
+## 4          rae                           Rae  0.16323
+## 5           lh             Loosemore & Hanby  0.08162
+## 6      grofman                       Grofman  0.03943
+## 7     lijphart                      Lijphart  0.03071
+## 8    gallagher                     Gallagher  0.04129
+## 9  g_gallagher         Generalized Gallagher  0.04129
+## 10       gatev                         Gatev  0.08744
+## 11    ryabtsev                      Ryabtsev  0.06195
+## 12      szalai                        Szalai  2.47839
+## 13    w_szalai               Weighted Szalai  0.15384
+## 14          ap          Aleskerov & Platonov  1.09773
+## 15        gini               Atkinson (Gini)  1.00000
+## 16     entropy           Generalized Entropy  0.02912
+## 17          sl                  Sainte-Laguë  0.05825
+## 18          cs                 Cox & Shugart  1.13266
+## 19      farina                        Farina  0.10153
+## 20      ortona                        Ortona  0.12490
+## 21   fragnelli                     Fragnelli  0.00000
+## 22          gb           Gambarelli & Biella  0.00000
+## 23          cd          Cosine Dissimilarity  0.00417
+## 24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
+## 25         arr                  Lebeda’s ARR  0.87992
+## 26         srr                  Lebeda’s SRR  0.04488
+## 27        wdrr                 Lebeda’s WDRR  0.09444
+## 28          kl     Kullback-Leibler Surprise  0.04684
+## 29          lr    Likelihood Ratio Statistic -0.03720
+## 30       chisq                   Chi Squared  0.03308
+## 31   hellinger            Hellinger Distance  0.14218
+## 32          ad              alpha-Divergence  0.04582
+```
+
+```r
+obj2_index2 <- index(obj2, alpha = 1) # alpha-divergenceのalphaを1に
+obj2_index2
+```
+
+```
+##             ID                         Index    Value
+## 1       dhondt                       D’Hondt  1.13647
+## 2       monroe                        Monroe  0.05321
+## 3       maxdev    Maximum Absolute Deviation  0.03413
+## 4          rae                           Rae  0.16323
+## 5           lh             Loosemore & Hanby  0.08162
+## 6      grofman                       Grofman  0.03943
+## 7     lijphart                      Lijphart  0.03071
+## 8    gallagher                     Gallagher  0.04129
+## 9  g_gallagher         Generalized Gallagher  0.04129
+## 10       gatev                         Gatev  0.08744
+## 11    ryabtsev                      Ryabtsev  0.06195
+## 12      szalai                        Szalai  2.47839
+## 13    w_szalai               Weighted Szalai  0.15384
+## 14          ap          Aleskerov & Platonov  1.09773
+## 15        gini               Atkinson (Gini)  1.00000
+## 16     entropy           Generalized Entropy      NaN
+## 17          sl                  Sainte-Laguë  0.05825
+## 18          cs                 Cox & Shugart  1.13266
+## 19      farina                        Farina  0.10153
+## 20      ortona                        Ortona  0.12490
+## 21   fragnelli                     Fragnelli  0.00000
+## 22          gb           Gambarelli & Biella  0.00000
+## 23          cd          Cosine Dissimilarity  0.00417
+## 24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
+## 25         arr                  Lebeda’s ARR  0.87992
+## 26         srr                  Lebeda’s SRR  0.04488
+## 27        wdrr                 Lebeda’s WDRR  0.09444
+## 28          kl     Kullback-Leibler Surprise  0.04684
+## 29          lr    Likelihood Ratio Statistic -0.03720
+## 30       chisq                   Chi Squared  0.03308
+## 31   hellinger            Hellinger Distance  0.14218
+## 32          ad              alpha-Divergence  0.04684
+```
+
+#### 出力
+
+```r
+# 一部の指標のみ抽出
+print(obj2_index1, subset = c("dhondt", "gallagher", "lh", "ad"))
+```
+
+```
+##          ID             Index  Value
+## 1    dhondt           D’Hondt 1.1365
+## 2        lh Loosemore & Hanby 0.0816
+## 3 gallagher         Gallagher 0.0413
+## 4        ad  alpha-Divergence 0.0458
+```
+
+```r
+# ID列を隠す
+print(obj2_index1, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE)
+```
+
+```
+##               Index  Value
+## 1           D’Hondt 1.1365
+## 2 Loosemore & Hanby 0.0816
+## 3         Gallagher 0.0413
+## 4  alpha-Divergence 0.0458
+```
+
+```r
+# 表で出力
+print(obj2_index2, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE,
+      use_gt  = TRUE)
+```
+
+| Index | Value |
+|:------|------:|
+|D’Hondt|1.136|
+|Loosemore & Hanby|0.082|
+|Gallagher|0.041|
+|alpha-Divergence|0.047|
+
+#### 可視化
+
+```r
+plot(obj2_index2)
+```
+
+```r
+plot(obj2_index2, style = "lollipop") # ロリポップ
+```
+
+```r
+plot(obj2_index2, 
+     index = c("dhondt", "gallagher", "lh", "ad"))
+```
+
+### `decompose()`：分解
+
+明日から頑張る
+
+### `compare()`：比較
+
+#### 配分結果の比較
+
+```r
+obj4 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "sl")
+
+compare(list(obj2, obj3))
+```
+
+```
+##     Party Model1 Model2
+## 1    自民     67     62
+## 2    公明     24     23
+## 3    立憲     40     36
+## 4    共産     10     13
+## 5    維新     26     26
+## 6    国民      5      8
+## 7    社民      0      1
+## 8    れ新      4      7
+## 9     N党      0      0
+## 10 支なし      0      0
+## 11   第一      0      0
+## 12 やまと      0      0
+## 13 コロナ      0      0
+```
+
+```r
+# モデルに名前を付ける
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) 
+```
+
+```
+##     Party ドント式 ヘア式 サン＝ラゲ式
+## 1    自民       67     62           63
+## 2    公明       24     23           24
+## 3    立憲       40     36           36
+## 4    共産       10     13           13
+## 5    維新       26     26           26
+## 6    国民        5      8            7
+## 7    社民        0      1            1
+## 8    れ新        4      7            6
+## 9     N党        0      0            0
+## 10 支なし        0      0            0
+## 11   第一        0      0            0
+## 12 やまと        0      0            0
+## 13 コロナ        0      0            0
+```
+
+```r
+# 可視化
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot()
+```
+
+```r
+# 政党ごとにfacet分割
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot(facet = TRUE)
+```
+
+```r
+# 3列構成 + y軸スケール固定
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  plot(facet = TRUE, facet_col = 3, free_y = FALSE)
+```
+
+#### 指標の比較
+
+```r
+compare(list(index(obj2), index(obj3), index(obj4)))
+```
+
+```
+##             ID                         Index   Model1    Model2   Model3
+## 1       dhondt                       D’Hondt  1.13647  1.055589  1.10148
+## 2       monroe                        Monroe  0.05321  0.020396  0.02505
+## 3       maxdev    Maximum Absolute Deviation  0.03413  0.013865  0.01387
+## 4          rae                           Rae  0.16323  0.055416  0.07506
+## 5           lh             Loosemore & Hanby  0.08162  0.027708  0.03753
+## 6      grofman                       Grofman  0.03943  0.011857  0.01641
+## 7     lijphart                      Lijphart  0.03071  0.005143  0.00798
+## 8    gallagher                     Gallagher  0.04129  0.015827  0.01944
+## 9  g_gallagher         Generalized Gallagher  0.04129  0.015827  0.01944
+## 10       gatev                         Gatev  0.08744  0.034607  0.04227
+## 11    ryabtsev                      Ryabtsev  0.06195  0.024478  0.02990
+## 12      szalai                        Szalai  2.47839  2.294929  2.29695
+## 13    w_szalai               Weighted Szalai  0.15384  0.105784  0.10847
+## 14          ap          Aleskerov & Platonov  1.09773  1.029574  1.04611
+## 15        gini               Atkinson (Gini)  1.00000  1.000000  1.00000
+## 16     entropy           Generalized Entropy  0.02912  0.012455  0.01360
+## 17          sl                  Sainte-Laguë  0.05825  0.024911  0.02720
+## 18          cs                 Cox & Shugart  1.13266  1.035874  1.05312
+## 19      farina                        Farina  0.10153  0.047980  0.05482
+## 20      ortona                        Ortona  0.12490  0.042402  0.05743
+## 21   fragnelli                     Fragnelli  0.00000  0.000000  0.00000
+## 22          gb           Gambarelli & Biella  0.00000  0.000000  0.00000
+## 23          cd          Cosine Dissimilarity  0.00417  0.000932  0.00122
+## 24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008  0.052662  0.09213
+## 25         arr                  Lebeda’s ARR  0.87992  0.947338  0.90787
+## 26         srr                  Lebeda’s SRR  0.04488  0.023669  0.03500
+## 27        wdrr                 Lebeda’s WDRR  0.09444  0.036026  0.05573
+## 28          kl     Kullback-Leibler Surprise  0.04684  0.021767  0.02292
+## 29          lr    Likelihood Ratio Statistic -0.03720 -0.014052 -0.01174
+## 30       chisq                   Chi Squared  0.03308  0.026543  0.02888
+## 31   hellinger            Hellinger Distance  0.14218  0.098133  0.09959
+## 32          ad              alpha-Divergence  0.04582  0.020288  0.02143
+```
+
+```r
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4)))
+```
+
+```
+##             ID                         Index ドント式    ヘア式 サン＝ラゲ式
+## 1       dhondt                       D’Hondt  1.13647  1.055589      1.10148
+## 2       monroe                        Monroe  0.05321  0.020396      0.02505
+## 3       maxdev    Maximum Absolute Deviation  0.03413  0.013865      0.01387
+## 4          rae                           Rae  0.16323  0.055416      0.07506
+## 5           lh             Loosemore & Hanby  0.08162  0.027708      0.03753
+## 6      grofman                       Grofman  0.03943  0.011857      0.01641
+## 7     lijphart                      Lijphart  0.03071  0.005143      0.00798
+## 8    gallagher                     Gallagher  0.04129  0.015827      0.01944
+## 9  g_gallagher         Generalized Gallagher  0.04129  0.015827      0.01944
+## 10       gatev                         Gatev  0.08744  0.034607      0.04227
+## 11    ryabtsev                      Ryabtsev  0.06195  0.024478      0.02990
+## 12      szalai                        Szalai  2.47839  2.294929      2.29695
+## 13    w_szalai               Weighted Szalai  0.15384  0.105784      0.10847
+## 14          ap          Aleskerov & Platonov  1.09773  1.029574      1.04611
+## 15        gini               Atkinson (Gini)  1.00000  1.000000      1.00000
+## 16     entropy           Generalized Entropy  0.02912  0.012455      0.01360
+## 17          sl                  Sainte-Laguë  0.05825  0.024911      0.02720
+## 18          cs                 Cox & Shugart  1.13266  1.035874      1.05312
+## 19      farina                        Farina  0.10153  0.047980      0.05482
+## 20      ortona                        Ortona  0.12490  0.042402      0.05743
+## 21   fragnelli                     Fragnelli  0.00000  0.000000      0.00000
+## 22          gb           Gambarelli & Biella  0.00000  0.000000      0.00000
+## 23          cd          Cosine Dissimilarity  0.00417  0.000932      0.00122
+## 24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008  0.052662      0.09213
+## 25         arr                  Lebeda’s ARR  0.87992  0.947338      0.90787
+## 26         srr                  Lebeda’s SRR  0.04488  0.023669      0.03500
+## 27        wdrr                 Lebeda’s WDRR  0.09444  0.036026      0.05573
+## 28          kl     Kullback-Leibler Surprise  0.04684  0.021767      0.02292
+## 29          lr    Likelihood Ratio Statistic -0.03720 -0.014052     -0.01174
+## 30       chisq                   Chi Squared  0.03308  0.026543      0.02888
+## 31   hellinger            Hellinger Distance  0.14218  0.098133      0.09959
+## 32          ad              alpha-Divergence  0.04582  0.020288      0.02143
+```
+
+```r
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  print(hide_id = TRUE)
+```
+
+```
+##                            Index ドント式    ヘア式 サン＝ラゲ式
+## 1                        D’Hondt  1.13647  1.055589      1.10148
+## 2                         Monroe  0.05321  0.020396      0.02505
+## 3     Maximum Absolute Deviation  0.03413  0.013865      0.01387
+## 4                            Rae  0.16323  0.055416      0.07506
+## 5              Loosemore & Hanby  0.08162  0.027708      0.03753
+## 6                        Grofman  0.03943  0.011857      0.01641
+## 7                       Lijphart  0.03071  0.005143      0.00798
+## 8                      Gallagher  0.04129  0.015827      0.01944
+## 9          Generalized Gallagher  0.04129  0.015827      0.01944
+## 10                         Gatev  0.08744  0.034607      0.04227
+## 11                      Ryabtsev  0.06195  0.024478      0.02990
+## 12                        Szalai  2.47839  2.294929      2.29695
+## 13               Weighted Szalai  0.15384  0.105784      0.10847
+## 14          Aleskerov & Platonov  1.09773  1.029574      1.04611
+## 15               Atkinson (Gini)  1.00000  1.000000      1.00000
+## 16           Generalized Entropy  0.02912  0.012455      0.01360
+## 17                  Sainte-Laguë  0.05825  0.024911      0.02720
+## 18                 Cox & Shugart  1.13266  1.035874      1.05312
+## 19                        Farina  0.10153  0.047980      0.05482
+## 20                        Ortona  0.12490  0.042402      0.05743
+## 21                     Fragnelli  0.00000  0.000000      0.00000
+## 22           Gambarelli & Biella  0.00000  0.000000      0.00000
+## 23          Cosine Dissimilarity  0.00417  0.000932      0.00122
+## 24 Lebeda’s RR (Mixture D’Hondt)  0.12008  0.052662      0.09213
+## 25                  Lebeda’s ARR  0.87992  0.947338      0.90787
+## 26                  Lebeda’s SRR  0.04488  0.023669      0.03500
+## 27                 Lebeda’s WDRR  0.09444  0.036026      0.05573
+## 28     Kullback-Leibler Surprise  0.04684  0.021767      0.02292
+## 29    Likelihood Ratio Statistic -0.03720 -0.014052     -0.01174
+## 30                   Chi Squared  0.03308  0.026543      0.02888
+## 31            Hellinger Distance  0.14218  0.098133      0.09959
+## 32              alpha-Divergence  0.04582  0.020288      0.02143
+```
+
+```r
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  print(subset  = c("dhondt", "gallagher", "lh", "ad"),
+        hide_id = TRUE,
+        use_gt  = TRUE)
+```
+
+```
+Index 	ドント式 	ヘア式 	サン＝ラゲ式
+D’Hondt 	1.136 	1.056 	1.101
+Loosemore & Hanby 	0.082 	0.028 	0.038
+Gallagher 	0.041 	0.016 	0.019
+alpha-Divergence 	0.046 	0.020 	0.021
+```
+
+```r
+compare(list("ドント式"     = index(obj2), 
+             "ヘア式"       = index(obj3), 
+             "サン＝ラゲ式"  = index(obj4))) |> 
+  plot() +
+  ggplot2::labs(x = "値", y = "指標", fill = "割当方式")
 ```
