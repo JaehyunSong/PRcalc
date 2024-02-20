@@ -16,14 +16,10 @@ vignette: >
 
 * `index()`の計算式は適当に入れたので、今度見直す
    * 多分、全体的に間違っているはず
-* {gt}対応
-   * `print.prcalc()`
-   * `print.prcalc_compare()`
-* `plot.prcalc_compare()`で一部の政党のみ出力
-* `decompose()`関数実装
 * `index()`における未対応指標
    * FragnelliとGambarelli & Biella
    * これら要る???
+* `decompose()`関数実装
 
 ```{r opts, include=FALSE}
 knitr::opts_chunk$set(dev        = "ragg_png",
@@ -77,6 +73,7 @@ obj3 <- prcalc(jp_lower_2021,
 
 print(obj3, show_total = FALSE) # Total列の除外
 print(obj3, prop = TRUE) # 割合で出力
+print(obj3, use_gt = TRUE) # {gt}パッケージ使用
 summary(obj3) # 要約
 summary(obj3, prop = TRUE) # 要約（割合）
 ```
@@ -176,6 +173,12 @@ obj4 <- prcalc(jp_lower_2021,
 compare(list(obj2, obj3))
 # モデルに名前を付ける
 compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) 
+# 一部の政党のみ出力
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  print(subset = c("自民", "公明", "立憲", "共産", "維新"))
+# {gt}パッケージ使用 & 割合出力
+compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
+  print(prop = TRUE, use_gt = TRUE)
 # 可視化
 compare(list("ドント式" = obj2, "ヘア式" = obj3, "サン＝ラゲ式" = obj4)) |> 
   plot()

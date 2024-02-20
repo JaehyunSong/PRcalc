@@ -4,7 +4,7 @@
 \alias{print.prcalc}
 \title{Printing a \code{prcalc} object.}
 \usage{
-\method{print}{prcalc}(x, prop = FALSE, show_total = TRUE, digits = 3, ...)
+\method{print}{prcalc}(x, prop = FALSE, show_total = TRUE, use_gt = FALSE, digits = 3, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
@@ -12,6 +12,8 @@
 \item{prop}{If \code{TRUE}, voteshare and seatshare are displayed. Default is \code{FALSE}.}
 
 \item{show_total}{If \code{TRUE}, total vote (share) and seat (share) are displayed on the last column. Default is \code{TRUE}.}
+
+\item{use_gt}{Use \code{gt} package? Default is \code{FALSE}.}
 
 \item{digits}{the number of decimal places. Default is 3.}
 

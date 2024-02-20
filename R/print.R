@@ -5,6 +5,7 @@
 #' @param x a `prcalc` object.
 #' @param prop If `TRUE`, voteshare and seatshare are displayed. Default is `FALSE`.
 #' @param show_total If `TRUE`, total vote (share) and seat (share) are displayed on the last column. Default is `TRUE`.
+#' @param use_gt Use `gt` package? Default is `FALSE`.
 #' @param digits the number of decimal places. Default is 3.
 #' @param ... ignored.
 #'
@@ -26,9 +27,11 @@
 print.prcalc <- function(x,
                          prop       = FALSE,
                          show_total = TRUE,
-                         #use_gt     = FALSE,
+                         use_gt     = FALSE,
                          digits     = 3,
                          ...) {
+
+  Type <- NULL
 
   result_raw  <- x$raw
   result_dist <- x$dist
@@ -46,49 +49,114 @@ print.prcalc <- function(x,
     result_dist <- result_dist |> mutate(across(-1, ~(.x / sum(.x))))
   }
 
-  # if (use_gt) {
-  #   if (prop) {
-  #     result[nrow(result) + 1, ] <- c("Total",
-  #                                     colSums(result[, -1]))
-  #
-  #     result <- result |>
-  #       mutate(across(-1, ~as.numeric(.x)))
-  #
-  #     gt(result) |>
-  #       tab_footnote(paste("Allocation method:", x$method)) |>
-  #       tab_footnote(paste("Extra parameter:", x$extra)) |>
-  #       tab_footnote(paste("Threshold:", x$threshold)) |>
-  #       fmt_number(columns = 2:ncol(result), decimals = digits)
-  #   } else{
-  #     result[nrow(result) + 1, ] <- c("Total",
-  #                                     colSums(result[, -1]))
-  #
-  #     result <- result |>
-  #       mutate(across(-1, ~as.numeric(.x)))
-  #
-  #     gt(result) |>
-  #       tab_footnote(paste("Allocation method:", x$method)) |>
-  #       tab_footnote(paste("Extra parameter:", x$extra)) |>
-  #       tab_footnote(paste("Threshold:", x$threshold))
-  #   }
-  # } else {
-  cat("Raw:\n")
-  print(result_raw, digits = {if (prop) {digits}})
-  cat("\n")
-  cat("Result:\n")
-  print(result_dist, digits = {if (prop) {digits}})
-  cat("\nParameters:\n")
-  cat("  Allocation method:", x$method, "\n")
-  cat("  Extra parameter:", x$extra, "\n")
-  cat("  Threshold:", x$threshold, "\n")
-  cat("\nMagnitude: ")
-  if (length(x$m) == 1) {
-    cat(x$m)
-  } else{
+  if (use_gt) {
+
+    result <- list("Raw"          = result_raw,
+                   "Distribution" = result_dist) |>
+      bind_rows(.id = "Type")
+
+    result_tbl <- result |>
+      group_by(Type) |>
+      gt() |>
+      tab_footnote(paste("Allocation method:", x$method)) |>
+      tab_footnote(paste("Extra parameter:", x$extra)) |>
+      tab_footnote(paste("Threshold:", x$threshold))
+
+    if (prop) {
+       result_tbl |>
+        fmt_number(columns = 2:ncol(result), decimals = digits)
+    } else{
+      result_tbl
+    }
+  } else {
+    cat("Raw:\n")
+    print(result_raw, digits = {if (prop) {digits}})
     cat("\n")
-    print(x$m)
+    cat("Result:\n")
+    print(result_dist, digits = {if (prop) {digits}})
+    cat("\nParameters:\n")
+    cat("  Allocation method:", x$method, "\n")
+    cat("  Extra parameter:", x$extra, "\n")
+    cat("  Threshold:", x$threshold, "\n")
+    cat("\nMagnitude: ")
+    if (length(x$m) == 1) {
+      cat(x$m)
+    } else{
+      cat("\n")
+      print(x$m)
+    }
   }
-  #}
+
+}
+
+#' Printing a `prcalc_compare` object.
+#'
+#' @method print prcalc_compare
+#'
+#' @param x a `prcalc_compare` object.
+#' @param subset a
+#' @param prop a
+#' @param use_gt Use `gt` packages? Default is `FALSE`.
+#' @param digits the number of decimal places. Default is 3.
+#' @param ... ignored.
+#'
+#' @import dplyr
+#' @import tibble
+#' @import gt
+#'
+#' @export
+#'
+#' @examples
+#' data(jp_upper_2019)
+#'
+#' pr_obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+#' pr_obj2 <- prcalc(jp_upper_2019, m = 50, method = "dt", threshold = 0.025)
+#' pr_obj3 <- prcalc(jp_upper_2019, m = 50, method = "dt", threshold = 0.05)
+#'
+#' compare(list("t = 0%" = pr_obj1, "t = 2.5%" = pr_obj2, "t = 5%" = pr_obj3))
+#'
+#' list("t = 0%"   = pr_obj1,
+#'      "t = 2.5%" = pr_obj2,
+#'      "t = 5%"   = pr_obj3) |>
+#'   compare() |>
+#'   print()
+#'
+#' list("t = 0%"   = pr_obj1,
+#'      "t = 2.5%" = pr_obj2,
+#'      "t = 5%"   = pr_obj3) |>
+#'   compare() |>
+#'   print(subset = c("自民", "公明", "立憲", "共産", "維新"))
+#'
+
+print.prcalc_compare <- function (x,
+                                  subset = NULL,
+                                  prop   = FALSE,
+                                  use_gt = FALSE,
+                                  digits = 3,
+                                  ...) {
+  result <- as_tibble(x)
+
+  if (prop) {
+    result <- result |> mutate(across(-1, ~(.x / sum(.x))))
+  }
+
+  if (!is.null(subset)) {
+    result <- result |>
+      filter(if_any(1, \(x) x %in% subset))
+  }
+
+  if (use_gt) {
+    if (prop) {
+      result |>
+        gt() |>
+        fmt_number(decimals = digits)
+    } else {
+      result |>
+        gt()
+    }
+  } else{
+    print(as.data.frame(result), digits = digits)
+  }
 
 }
 
@@ -133,7 +201,7 @@ print.prcalc_index <- function (x,
 
   if (!is.null(subset)) {
     result <- result |>
-      filter(ID %in% subset)
+      filter(if_any(1, \(x) x %in% subset))
   }
 
   if (hide_id) result <- select(result, -ID)
