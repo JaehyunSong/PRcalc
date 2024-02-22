@@ -810,21 +810,11 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PRcalc",
-    "section": "",
-    "text": "# If {remotes} is not installed, install {remotes} package.\nremotes::install_github(\"JaehyunSong/PRcacl\")",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
     "objectID": "index.html#installation",
     "href": "index.html#installation",
     "title": "PRcalc",
-    "section": "",
-    "text": "# If {remotes} is not installed, install {remotes} package.\nremotes::install_github(\"JaehyunSong/PRcacl\")",
+    "section": "Installation",
+    "text": "Installation\n# If {remotes} is not installed, install {remotes} package.\nremotes::install_github(\"JaehyunSong/PRcacl\")",
     "crumbs": [
       "Home"
     ]

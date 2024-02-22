@@ -4,6 +4,8 @@ project:
 website:
   title: "$ALTDOC_PACKAGE_NAME"
   navbar:
+    logo: figs/prcalc.png
+    logo-alt: "PRcalc logo"
     search: true
     right:
       - icon: github

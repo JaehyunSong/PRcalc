@@ -1,3 +1,5 @@
+![](figs/prcalc.png){fig-align="center" width=200px}
+
 ## Installation
 
 ```r
