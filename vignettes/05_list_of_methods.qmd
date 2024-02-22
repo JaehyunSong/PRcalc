@@ -14,16 +14,24 @@ knitr:
 |:---|:---|:---|:---|
 |D'hondt / Jefferson |`"d'hondt"`, `"dt"`, or `"jefferson"`|$r = k + 1$|1, 2, 3, 4, ...|
 |Adams / Cambridge|`"adams"` or `"cambridge"`|$r = k$|0, 1, 2, 3, ...|
-|$\alpha$-divergence|`"ad"`|See below|See below|
+|Sainte-Laguë / Webster|`"sl"`, `"sainte-lague"`, or `"webster"`|$r = k + 0.5$|0.5, 1.5, 2.5, 3.5, ...|
+|Modified Sainte-Laguë|`"msl"`|$r = k + 0.5, r_1 = 0.7$|0.7, 1.5, 2.5, 3.5, ...|
+|Danish|`"danish"`|$r = k + \frac{1}{3}$|0.33, 1.33, 2.33, 3.33, ...|
+|Imperiali|`"imperiali"`|$r = k + 2$|2, 3, 4, 5, ...|
+|Huntington-Hill|`"hh"` or `"huntington-hill"`|$r = \sqrt{k (k + 1)}$|0, 1.41, 2.45, 3.46, ...|
+|Dean|`"dean"`|$\frac{2}{\frac{1}{k} + \frac{1}{k + 1}}$||
+|$\alpha$-divergence|`"ad"`|See @nte-ad |See @nte-ad |
+|Custom|`"custom"`|See @nte-custom |See @nte-custom |
 
-### About $\alpha$-divergence
+:::{#nte-ad .callout-note collapse="true"}
+## About $\alpha$-divergence
 
-Divisor ($r$) is calculated as follows:
+Divisor ($r$) is calculated as follow:
 
 $$
 r = \begin{cases}
-\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}& \mbox{if}\quad\alpha = 1\\
-\frac{1}{\log{\frac{k + 1}{k}}} & \mbox{if}\quad\alpha = 0\\
+\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}& \mbox{if}\quad\alpha = 1,\\
+\frac{1}{\log{\frac{k + 1}{k}}} & \mbox{if}\quad\alpha = 0,\\
 \Bigl(\frac{(k + 1)^\alpha - k^\alpha}{\alpha}\Bigr)^{\frac{1}{\alpha - 1}} & \mbox{otherwise.}\\
 \end{cases}
 $$
@@ -31,23 +39,61 @@ $$
 |$\alpha$|Method|
 |---:|:---|
 |+$\infty$|D'hondt / Jefferson|
-|3||
+|3|$\frac{1}{3}$|
 |2|Sainte-Laguë / Webster|
-|1||
-|0||
+|1|Theil|
+|0|Theil and Schrage|
 |-1|$\simeq$Hill|
 |-4|Dean|
 |-$\infty$|Adams / Cambridge|
 
+Please note that extra parameter $\alpha$ is required (`extra`). 
+
+:::{.panel-tabset}
+## Example 1
+
 ```{r}
+#| message: false
 library(PRcalc)
 data(jp_upper_2019)
 # Jefferson vs alpha = 10
 list(prcalc(jp_upper_2019, m = 50, method = "dt"),
      prcalc(jp_upper_2019, m = 50, method = "ad", extra = 10)) |> 
-  compare()
+  compare() |> 
+  print(use_gt = TRUE)
+```
+
+## Example 2
+
+```{r}
+#| message: false
 # Dean vs alpha = -4
 list(prcalc(jp_upper_2019, m = 50, method = "dean"),
      prcalc(jp_upper_2019, m = 50, method = "ad", extra = -4)) |> 
-  compare()
+  compare() |> 
+  print(use_gt = TRUE)
 ```
+:::
+
+:::
+
+:::{#nte-custom .callout-note collapse="true"}
+## About `"custom"` method
+
+Please note that extra parameter $\alpha$ is required (`extra`). `extra` must be length of maximum value of `m`.
+
+```{r}
+#| message: false
+list(prcalc(jp_upper_2019, m = 50, method = "msl"),
+     prcalc(jp_upper_2019, m = 50, method = "custom", 
+            extra = c(1.4, seq(3, 100, by = 2)))) |> 
+  compare() |> 
+  print(use_gt = TRUE)
+```
+:::
+
+## Largest reminder method
+
+|Method|Argument|Quota|
+|:---|:---|:---|:---|
+|Hare-Niemeyer|`"hn"`, `"hare"`, or `"hare-niemeyer"`||
