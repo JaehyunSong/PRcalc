@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PRcalc - 議席割当</title>
+<title>PRcalc - Seat allocation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">議席割当</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Seat allocation</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -170,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../vignettes/vignette_01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">議席割当</span></a>
+ <span class="menu-text">Seat allocation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -417,9 +417,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">議席割当</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/vignette_01.html">Seat allocation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">議席割当</h1>
+<h1 class="title">Seat allocation</h1>
 </div>
 
 
@@ -448,10 +448,10 @@ Attaching package: 'PRcalc'</code></pre>
     decompose</code></pre>
 </div>
 </div>
-<section id="データセット" class="level2">
-<h2 class="anchored" data-anchor-id="データセット">データセット</h2>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2019年参院選</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Japanese upper house election in 2019</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_upper_2019"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>jp_upper_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -470,9 +470,7 @@ Attaching package: 'PRcalc'</code></pre>
 12 オリーブ   167897
 13   労働者    80055</code></pre>
 </div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2021年衆院選</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Japanese lower house election in 2019</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>jp_lower_2021</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -507,10 +505,8 @@ Attaching package: 'PRcalc'</code></pre>
 </div>
 </div>
 </section>
-<section id="prcalc議席配分" class="level2">
-<h2 class="anchored" data-anchor-id="prcalc議席配分"><code>prcalc()</code>：議席配分</h2>
-<section id="計算" class="level3">
-<h3 class="anchored" data-anchor-id="計算">計算</h3>
+<section id="calculation" class="level2">
+<h2 class="anchored" data-anchor-id="calculation">Calculation</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>obj1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -554,8 +550,6 @@ Parameters:
 
 Magnitude: 50</code></pre>
 </div>
-</div>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
@@ -634,14 +628,14 @@ Magnitude:
 </div>
 </div>
 </section>
-<section id="出力" class="level3">
-<h3 class="anchored" data-anchor-id="出力">出力</h3>
+<section id="printing" class="level2">
+<h2 class="anchored" data-anchor-id="printing">Printing</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"hare"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">show_total =</span> <span class="cn">FALSE</span>) <span class="co"># Total列の除外</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">show_total =</span> <span class="cn">FALSE</span>) <span class="co"># Hide `Total` column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
@@ -714,7 +708,7 @@ Magnitude:
       Tokai       Kinki     Chugoku     Shikoku      Kyushu 
          21          28          11           6          20 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># 割合で出力</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># Show proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido Tohoku Kitakanto Minamikanto   Tokyo Hokuriku  Tokai  Kinki
@@ -787,25 +781,25 @@ Magnitude:
       Tokai       Kinki     Chugoku     Shikoku      Kyushu 
          21          28          11           6          20 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">use_gt =</span> <span class="cn">TRUE</span>) <span class="co"># {gt}パッケージ使用</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj3, <span class="at">use_gt =</span> <span class="cn">TRUE</span>) <span class="co"># use {gt} package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="rfafsialcw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rfafsialcw table {
+<div id="cncnoqjhxk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cncnoqjhxk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rfafsialcw thead, #rfafsialcw tbody, #rfafsialcw tfoot, #rfafsialcw tr, #rfafsialcw td, #rfafsialcw th {
+#cncnoqjhxk thead, #cncnoqjhxk tbody, #cncnoqjhxk tfoot, #cncnoqjhxk tr, #cncnoqjhxk td, #cncnoqjhxk th {
   border-style: none;
 }
 
-#rfafsialcw p {
+#cncnoqjhxk p {
   margin: 0;
   padding: 0;
 }
 
-#rfafsialcw .gt_table {
+#cncnoqjhxk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -831,12 +825,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_caption {
+#cncnoqjhxk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rfafsialcw .gt_title {
+#cncnoqjhxk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -848,7 +842,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#rfafsialcw .gt_subtitle {
+#cncnoqjhxk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -860,7 +854,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#rfafsialcw .gt_heading {
+#cncnoqjhxk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -872,13 +866,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_bottom_border {
+#cncnoqjhxk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_col_headings {
+#cncnoqjhxk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -893,7 +887,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_col_heading {
+#cncnoqjhxk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -913,7 +907,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#rfafsialcw .gt_column_spanner_outer {
+#cncnoqjhxk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -925,15 +919,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#rfafsialcw .gt_column_spanner_outer:first-child {
+#cncnoqjhxk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rfafsialcw .gt_column_spanner_outer:last-child {
+#cncnoqjhxk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rfafsialcw .gt_column_spanner {
+#cncnoqjhxk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -945,11 +939,11 @@ Magnitude:
   width: 100%;
 }
 
-#rfafsialcw .gt_spanner_row {
+#cncnoqjhxk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rfafsialcw .gt_group_heading {
+#cncnoqjhxk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -975,7 +969,7 @@ Magnitude:
   text-align: left;
 }
 
-#rfafsialcw .gt_empty_group_heading {
+#cncnoqjhxk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -990,15 +984,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#rfafsialcw .gt_from_md > :first-child {
+#cncnoqjhxk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rfafsialcw .gt_from_md > :last-child {
+#cncnoqjhxk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rfafsialcw .gt_row {
+#cncnoqjhxk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1017,7 +1011,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#rfafsialcw .gt_stub {
+#cncnoqjhxk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1030,7 +1024,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#rfafsialcw .gt_stub_row_group {
+#cncnoqjhxk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1044,15 +1038,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#rfafsialcw .gt_row_group_first td {
+#cncnoqjhxk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rfafsialcw .gt_row_group_first th {
+#cncnoqjhxk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rfafsialcw .gt_summary_row {
+#cncnoqjhxk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1062,16 +1056,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#rfafsialcw .gt_first_summary_row {
+#cncnoqjhxk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_first_summary_row.thick {
+#cncnoqjhxk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rfafsialcw .gt_last_summary_row {
+#cncnoqjhxk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1081,7 +1075,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_grand_summary_row {
+#cncnoqjhxk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1091,7 +1085,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#rfafsialcw .gt_first_grand_summary_row {
+#cncnoqjhxk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1101,7 +1095,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_last_grand_summary_row_top {
+#cncnoqjhxk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1111,11 +1105,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_striped {
+#cncnoqjhxk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rfafsialcw .gt_table_body {
+#cncnoqjhxk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1124,7 +1118,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_footnotes {
+#cncnoqjhxk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1138,7 +1132,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_footnote {
+#cncnoqjhxk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1147,7 +1141,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#rfafsialcw .gt_sourcenotes {
+#cncnoqjhxk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1161,7 +1155,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#rfafsialcw .gt_sourcenote {
+#cncnoqjhxk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1169,63 +1163,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#rfafsialcw .gt_left {
+#cncnoqjhxk .gt_left {
   text-align: left;
 }
 
-#rfafsialcw .gt_center {
+#cncnoqjhxk .gt_center {
   text-align: center;
 }
 
-#rfafsialcw .gt_right {
+#cncnoqjhxk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rfafsialcw .gt_font_normal {
+#cncnoqjhxk .gt_font_normal {
   font-weight: normal;
 }
 
-#rfafsialcw .gt_font_bold {
+#cncnoqjhxk .gt_font_bold {
   font-weight: bold;
 }
 
-#rfafsialcw .gt_font_italic {
+#cncnoqjhxk .gt_font_italic {
   font-style: italic;
 }
 
-#rfafsialcw .gt_super {
+#cncnoqjhxk .gt_super {
   font-size: 65%;
 }
 
-#rfafsialcw .gt_footnote_marks {
+#cncnoqjhxk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rfafsialcw .gt_asterisk {
+#cncnoqjhxk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rfafsialcw .gt_indent_1 {
+#cncnoqjhxk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rfafsialcw .gt_indent_2 {
+#cncnoqjhxk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rfafsialcw .gt_indent_3 {
+#cncnoqjhxk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rfafsialcw .gt_indent_4 {
+#cncnoqjhxk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rfafsialcw .gt_indent_5 {
+#cncnoqjhxk .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1661,7 +1655,7 @@ Magnitude:
 
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj3) <span class="co"># 要約</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj3) <span class="co"># summarize</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw Dist
 1    自民 19914883   62
@@ -1678,7 +1672,7 @@ Magnitude:
 12 やまと    16970    0
 13 コロナ     6620    0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj3, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># 要約（割合）</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj3, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># summarize with proprotion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw    Dist
 1    自民 0.346551 0.35227
@@ -1697,14 +1691,14 @@ Magnitude:
 </div>
 </div>
 </section>
-<section id="可視化" class="level3">
-<h3 class="anchored" data-anchor-id="可視化">可視化</h3>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1712,32 +1706,32 @@ Magnitude:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 自民、公明、立憲、維新、共産、国民のみ</span></span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some parties</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 東京、近畿のみ</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some district</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 政党でfacet分け</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the facet by parties</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
@@ -1745,11 +1739,11 @@ Magnitude:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3列構成</span></span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3-column</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
@@ -1758,11 +1752,11 @@ Magnitude:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># facetごとに異なるy軸スケールを使用</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use different y-axis scales for each facet</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b  =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
@@ -1772,14 +1766,13 @@ Magnitude:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="vignette_01_files/figure-html/unnamed-chunk-2-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="vignette_01_files/figure-html/plot-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

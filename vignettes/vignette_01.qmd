@@ -1,5 +1,5 @@
 ---
-title: "議席割当"
+title: "Seat allocation"
 knitr: 
   opts_chunk: 
     dev: "ragg_png"
@@ -13,74 +13,72 @@ knitr:
 library(PRcalc)
 ```
 
-## データセット
+## Dataset
 
-```{r dataset1}
-# 2019年参院選
+```{r}
+#| label: dataset
+# Japanese upper house election in 2019
 data("jp_upper_2019")
 jp_upper_2019
-```
 
-```{r dataset2}
-# 2021年衆院選
+# Japanese lower house election in 2019
 data("jp_lower_2021")
 jp_lower_2021
 ```
 
-## `prcalc()`：議席配分
+## Calculation
 
-### 計算
-
-```{r prcalc1}
+```{r}
+#| label: calculation
 obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
 obj1
-```
 
-```{r prcalc2}
 obj2 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 obj2
 ```
 
-### 出力
+## Printing
 
-```{r print1}
+```{r}
+#| label: print
 obj3 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "hare")
 
-print(obj3, show_total = FALSE) # Total列の除外
-print(obj3, prop = TRUE) # 割合で出力
-print(obj3, use_gt = TRUE) # {gt}パッケージ使用
-summary(obj3) # 要約
-summary(obj3, prop = TRUE) # 要約（割合）
+print(obj3, show_total = FALSE) # Hide `Total` column
+print(obj3, prop = TRUE) # Show proportion
+print(obj3, use_gt = TRUE) # use {gt} package
+summary(obj3) # summarize
+summary(obj3, prop = TRUE) # summarize with proprotion
 ```
 
-### 可視化
+## Visualization
 
 ```{r}
+#| label: plot
 plot(obj1)
 plot(obj2)
-# 自民、公明、立憲、維新、共産、国民のみ
+# Output only some parties
 plot(obj2, 
      subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))
-# 東京、近畿のみ
+# Output only some district
 plot(obj2, 
      subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b = c("Tokyo", "Kinki")) 
-# 政党でfacet分け
+# Divide the facet by parties
 plot(obj2, 
      subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party")
-# 3列構成
+# 3-column
 plot(obj2, 
      subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party",
      facet_col = 3)
-# facetごとに異なるy軸スケールを使用
+# Use different y-axis scales for each facet
 plot(obj2, 
      subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b  = c("Tokyo", "Kinki"),
