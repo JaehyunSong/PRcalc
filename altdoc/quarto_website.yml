@@ -28,6 +28,8 @@ website:
         file: $ALTDOC_CODE_OF_CONDUCT
       - text: Citation
         file: $ALTDOC_CITATION
+      - text: Memo
+        file: memo.md
 
 format:
   html:
