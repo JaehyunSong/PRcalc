@@ -1,0 +1,84 @@
+---
+title: "各種指標の計算"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+```{r}
+#| label: setup
+library(PRcalc)
+```
+
+## データセット
+
+```{r}
+#| label: dataset
+data("jp_lower_2021") # 2021年衆院選
+jp_lower_2021
+```
+
+## 計算
+
+```{r}
+#| label: calculation
+obj1 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "dt")
+
+obj1
+```
+
+## `index()`：各種指標の計算
+
+* 指定可能なパラメーターは3種類。いずれも既定値は2
+   * `k`：Generalized Gallagher計算時に使用
+   * `eta`：Atkinson（Gini）計算時に使用
+   * `alpha`：Entropy、$\alpha$-divergence計算時に使用
+
+```{r}
+#| label: index
+index1 <- index(obj1)
+index1
+index2 <- index(obj1, alpha = 1) # alpha-divergenceのalphaを1に
+index2
+```
+
+### 出力
+
+```{r}
+#| label: print
+# 一部の指標のみ抽出
+print(index1, subset = c("dhondt", "gallagher", "lh", "ad"))
+
+# ID列を隠す
+print(index1, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE)
+
+# 表で出力
+print(index2, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE,
+      use_gt  = TRUE)
+```
+
+### 可視化
+
+```{r}
+#| label: index-plot-1
+#| fig-height: 6
+plot(index2)
+plot(index2, style = "lollipop") # ロリポップ
+```
+
+```{r}
+#| label: index-plot-2
+#| fig-height: 2
+# 一部の指標のみ出力
+plot(index2, 
+     index = c("dhondt", "gallagher", "lh", "ad"))
+```

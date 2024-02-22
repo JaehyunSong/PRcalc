@@ -5,3 +5,6 @@
 ^\.Rproj\.user$
 ^PRcalc\.Rproj$
 figures/
+^docs$
+^altdoc$
+^_quarto$

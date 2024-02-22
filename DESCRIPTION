@@ -9,6 +9,7 @@ Authors@R: c(
            email = "y.kamahara@gmail.com", 
            role  = "aut"))
 Description: A Proportional Representation Calculator.
+URL: https://github.com/JaehyunSong/PRcalc/
 License: MIT + file LICENSE
 Imports:
     dplyr,

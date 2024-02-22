@@ -1,0 +1,90 @@
+---
+title: "議席割当"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+```{r}
+#| label: setup
+library(PRcalc)
+```
+
+## データセット
+
+```{r dataset1}
+# 2019年参院選
+data("jp_upper_2019")
+jp_upper_2019
+```
+
+```{r dataset2}
+# 2021年衆院選
+data("jp_lower_2021")
+jp_lower_2021
+```
+
+## `prcalc()`：議席配分
+
+### 計算
+
+```{r prcalc1}
+obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+obj1
+```
+
+```{r prcalc2}
+obj2 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "dt")
+obj2
+```
+
+### 出力
+
+```{r print1}
+obj3 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "hare")
+
+print(obj3, show_total = FALSE) # Total列の除外
+print(obj3, prop = TRUE) # 割合で出力
+print(obj3, use_gt = TRUE) # {gt}パッケージ使用
+summary(obj3) # 要約
+summary(obj3, prop = TRUE) # 要約（割合）
+```
+
+### 可視化
+
+```{r}
+plot(obj1)
+plot(obj2)
+# 自民、公明、立憲、維新、共産、国民のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))
+# 東京、近畿のみ
+plot(obj2, 
+     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki")) 
+# 政党でfacet分け
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party")
+# 3列構成
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3)
+# facetごとに異なるy軸スケールを使用
+plot(obj2, 
+     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_b  = c("Tokyo", "Kinki"),
+     by        = "party",
+     facet_col = 3,
+     free_y    = TRUE)
+```
