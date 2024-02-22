@@ -15,7 +15,8 @@
 #'    * `"imperiali"`: Imperiali method
 #'    * `"hungtington-hill"` (`"hh"`): Huntington-Hill method
 #'    * `"dean"`: Dean method
-#'    * `"custom"`: Custom divisor. `extra` is madatory.
+#'    * `"ad"`: alpha-divergence. `extra` is mandatory.
+#'    * `"custom"`: Custom divisor. `extra` is mandatory.
 #' * Largest reminder method
 #'    * `"hare-niemeyer"` (`"hn"` or `"hare"`): Hare-Niemeyer quota
 #'    * `"droop"`: Droop quota
@@ -73,6 +74,7 @@ allocation <- function(x, m, method, extra = NULL) {
                       "imperiali",
                       "hh", "hungtington-hill",
                       "dean",
+                      "ad",
                       "custom",
                       "hn", "hare", "hare-niemeyer",
                       "droop",
@@ -97,6 +99,7 @@ allocation <- function(x, m, method, extra = NULL) {
                     "msl", "modified sainte-lague",
                     "hh", "hungtington-hill",
                     "dean",
+                    "ad",
                     "custom")) {
 
     m2 <- ceiling(m * max(x[, 2] / sum(x[, 2])))
@@ -132,6 +135,12 @@ allocation <- function(x, m, method, extra = NULL) {
            "huntington-hill" = divisor <- sqrt(k * (k + 1)),
            # Dean method
            "dean"        = divisor <- 1 / (((1 / k) + (1 / (k + 1))) / 2),
+           # alpha-divergence
+           "ad"          = {
+             divisor <- 1 / log((k + 1) / k) # alpha = 0
+             divisor <- (1 / exp(1)) * ((k + 1)^(k + 1) / k^k) # alpha = 1
+             divisor <- (((k + 1)^extra - k^extra) / extra)^(1 / (extra - 1)) # etc
+           },
            # Custom divisorinator
            "custom"      = {
              divisor <- extra

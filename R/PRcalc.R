@@ -94,6 +94,8 @@ prcalc <- function (x,
          "huntington-hill"    = method_return <- "Hill\'s (Huntington-Hill) method",
          # Dean method
          "dean"               = method_return <- "Dean method",
+         # alpha-divergence
+         "ad"                 = method_return <- "alpha-divergence",
          # Custom
          "custom"             = method_return <- "Custom",
          # Hare-Niemeyer quota

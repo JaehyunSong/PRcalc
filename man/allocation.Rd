@@ -34,7 +34,8 @@ Largest Remainder Method
 \item \code{"imperiali"}: Imperiali method
 \item \code{"hungtington-hill"} (\code{"hh"}): Huntington-Hill method
 \item \code{"dean"}: Dean method
-\item \code{"custom"}: Custom divisor. \code{extra} is madatory.
+\item \code{"ad"}: alpha-divergence. \code{extra} is mandatory.
+\item \code{"custom"}: Custom divisor. \code{extra} is mandatory.
 }
 \item Largest reminder method
 \itemize{

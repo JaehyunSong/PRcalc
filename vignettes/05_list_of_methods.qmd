@@ -14,3 +14,40 @@ knitr:
 |:---|:---|:---|:---|
 |D'hondt / Jefferson |`"d'hondt"`, `"dt"`, or `"jefferson"`|$r = k + 1$|1, 2, 3, 4, ...|
 |Adams / Cambridge|`"adams"` or `"cambridge"`|$r = k$|0, 1, 2, 3, ...|
+|$\alpha$-divergence|`"ad"`|See below|See below|
+
+### About $\alpha$-divergence
+
+Divisor ($r$) is calculated as follows:
+
+$$
+r = \begin{cases}
+\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}& \mbox{if}\quad\alpha = 1\\
+\frac{1}{\log{\frac{k + 1}{k}}} & \mbox{if}\quad\alpha = 0\\
+\Bigl(\frac{(k + 1)^\alpha - k^\alpha}{\alpha}\Bigr)^{\frac{1}{\alpha - 1}} & \mbox{otherwise.}\\
+\end{cases}
+$$
+
+|$\alpha$|Method|
+|---:|:---|
+|+$\infty$|D'hondt / Jefferson|
+|3||
+|2|Sainte-Laguë / Webster|
+|1||
+|0||
+|-1|$\simeq$Hill|
+|-4|Dean|
+|-$\infty$|Adams / Cambridge|
+
+```{r}
+library(PRcalc)
+data(jp_upper_2019)
+# Jefferson vs alpha = 10
+list(prcalc(jp_upper_2019, m = 50, method = "dt"),
+     prcalc(jp_upper_2019, m = 50, method = "ad", extra = 10)) |> 
+  compare()
+# Dean vs alpha = -4
+list(prcalc(jp_upper_2019, m = 50, method = "dean"),
+     prcalc(jp_upper_2019, m = 50, method = "ad", extra = -4)) |> 
+  compare()
+```

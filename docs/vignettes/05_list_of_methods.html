@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -473,10 +507,122 @@ window.Quarto = {
 <td style="text-align: left;"><span class="math inline">\(r = k\)</span></td>
 <td style="text-align: left;">0, 1, 2, 3, …</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\alpha\)</span>-divergence</td>
+<td style="text-align: left;"><code>"ad"</code></td>
+<td style="text-align: left;">See below</td>
+<td style="text-align: left;">See below</td>
+</tr>
 </tbody>
 </table>
+<section id="about-alpha-divergence" class="level3">
+<h3 class="anchored" data-anchor-id="about-alpha-divergence">About <span class="math inline">\(\alpha\)</span>-divergence</h3>
+<p>Divisor (<span class="math inline">\(r\)</span>) is calculated as follows:</p>
+<p><span class="math display">\[
+r = \begin{cases}
+\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}&amp; \mbox{if}\quad\alpha = 1\\
+\frac{1}{\log{\frac{k + 1}{k}}} &amp; \mbox{if}\quad\alpha = 0\\
+\Bigl(\frac{(k + 1)^\alpha - k^\alpha}{\alpha}\Bigr)^{\frac{1}{\alpha - 1}} &amp; \mbox{otherwise.}\\
+\end{cases}
+\]</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\alpha\)</span></th>
+<th style="text-align: left;">Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">+<span class="math inline">\(\infty\)</span></td>
+<td style="text-align: left;">D’hondt / Jefferson</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Sainte-Laguë / Webster</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-1</td>
+<td style="text-align: left;"><span class="math inline">\(\simeq\)</span>Hill</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-4</td>
+<td style="text-align: left;">Dean</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-<span class="math inline">\(\infty\)</span></td>
+<td style="text-align: left;">Adams / Cambridge</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'PRcalc'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    decompose</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_upper_2019)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Jefferson vs alpha = 10</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"ad"</span>, <span class="at">extra =</span> <span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Party Model1 Model2
+1      自民     18     18
+2      公明      7      7
+3      立憲      8      8
+4      維新      5      5
+5      共産      5      5
+6      国民      3      3
+7    れいわ      2      2
+8      社民      1      1
+9       N国      1      1
+10   安楽死      0      0
+11     幸福      0      0
+12 オリーブ      0      0
+13   労働者      0      0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dean vs alpha = -4</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dean"</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"ad"</span>, <span class="at">extra =</span> <span class="sc">-</span><span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Party Model1 Model2
+1      自民     17     17
+2      公明      6      6
+3      立憲      7      7
+4      維新      5      5
+5      共産      4      4
+6      国民      3      3
+7    れいわ      2      2
+8      社民      1      1
+9       N国      1      1
+10   安楽死      1      1
+11     幸福      1      1
+12 オリーブ      1      1
+13   労働者      1      1</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
