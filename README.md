@@ -1,6 +1,7 @@
 
 
-<img src="figs/prcalc.png" data-fig-align="center" width="200" />
+<img src="https://www.jaysong.net/PRcalc/figs/prcalc.png"
+data-fig-align="center" width="200" />
 
 ## Installation
 

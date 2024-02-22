@@ -844,9 +844,9 @@
   {
     "objectID": "NEWS.html",
     "href": "NEWS.html",
-    "title": "PRcalc",
+    "title": "PRcalc 0.8.0 (2024/02/22)",
     "section": "",
-    "text": "NEWS",
+    "text": "PRcalc 0.8.0 (2024/02/22)\n\nCode refactoring\n\n\n\nPRcalc 0.7.0 (2022/03/09)\n\n大幅なアップデート (というか、作り直しました)\n\n\n\nPRcalc 0.6.1 (2016/04/27)\n\nバグ修正\n\n\n\nPRcalc 0.6.0 (2015/05/07)\n\n新しいサンプルデータjapanese.sample2の追加\nブロック制比例代表が計算可能\n\n\n\nPRcalc 0.5.0 (2015/04/28)\n\nパッケージ化\nサンプルデータの追加\n\n\n\nPRcalc 0.4.0 (2015/04/27)\n\nvoteの実引数としてdata.frame型が使用可能\n\n\n\nPRcalc 0.3.0 (2015/04/26)\n\n阻止条項が指定可能\n\n\n\nPRcalc 0.2.0 (2016/04/25)\n\nnparty引数の削除\n仮引数voteshareの名称をvoteに変更\n非比例性指標 (Gallagher Index) の出力\n関数の効率化\n例を出力するPR.calc.ex()関数の追加\n\n\n\nPRcalc 0.1.0 (2016/04/24)\n\n初公開",
     "crumbs": [
       "News"
     ]
