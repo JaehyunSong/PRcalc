@@ -85,7 +85,7 @@ allocation <- function(x, m, method, extra = NULL) {
 
   if (method == "custom")  {
     if (length(extra) < m) {
-      stop('If method is "custom", a numeric type vector of length m must be specified in extra.')
+      stop('If method is "custom", extra must be specified. extra must be a numeric vector of length of max(m) or longer.')
     }
   }
 
