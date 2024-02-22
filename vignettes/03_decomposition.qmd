@@ -1,5 +1,5 @@
 ---
-title: "分解"
+title: "Decomposition"
 knitr: 
   opts_chunk: 
     dev: "ragg_png"

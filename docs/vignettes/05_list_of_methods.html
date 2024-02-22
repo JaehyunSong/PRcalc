@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PRcalc</title>
+<title>PRcalc - List of methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -101,6 +67,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -140,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../man/allocation.html">Reference</a></li><li class="breadcrumb-item"><a href="../man/print.prcalc_index.html">print.prcalc_index</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/01_calculation.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/05_list_of_methods.html">List of methods</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -160,13 +155,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Articles</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../vignettes/01_calculation.html" class="sidebar-item-text sidebar-link">
@@ -193,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vignettes/05_list_of_methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../vignettes/05_list_of_methods.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">List of methods</span></a>
   </div>
 </li>
@@ -207,13 +202,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Reference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../man/allocation.html" class="sidebar-item-text sidebar-link">
@@ -366,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/print.prcalc_index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../man/print.prcalc_index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">print.prcalc_index</span></a>
   </div>
 </li>
@@ -429,133 +424,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-
-<section id="printing-a-prcalc_index-object." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="printing-a-prcalc_index-object.">Printing a <code>prcalc_index</code> object.</h2>
-<section id="description" class="level3">
-<h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Printing a <code>prcalc_index</code> object.</p>
-</section>
-<section id="usage" class="level3">
-<h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">## S3 method for class 'prcalc_index'
-print(x, subset = NULL, hide_id = FALSE, use_gt = FALSE, digits = 3, ...)
-</code></pre>
-</section>
-<section id="arguments" class="level3">
-<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
-<table>
-<tbody><tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_x">x</code>
-</td>
-<td>
-a <code>prcalc_index</code> object.
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_subset">subset</code>
-</td>
-<td>
-a
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_hide_id">hide_id</code>
-</td>
-<td>
-a
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_use_gt">use_gt</code>
-</td>
-<td>
-a
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_digits">digits</code>
-</td>
-<td>
-the number of decimal places. Default is 3.
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="print.prcalc_index_:_...">…</code>
-</td>
-<td>
-ignored.
-</td>
-</tr>
-</tbody></table>
-</section>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_upper_2019)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pr_obj <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(pr_obj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index     Value
-1       dhondt                       D’Hondt  1.116833
-2       monroe                        Monroe  0.018918
-3       maxdev    Maximum Absolute Deviation  0.010461
-4          rae                           Rae  0.060631
-5           lh             Loosemore &amp; Hanby  0.030315
-6      grofman                       Grofman  0.012175
-7     lijphart                      Lijphart  0.004069
-8    gallagher                     Gallagher  0.014609
-9  g_gallagher         Generalized Gallagher  0.014609
-10       gatev                         Gatev  0.032939
-11    ryabtsev                      Ryabtsev  0.023298
-12      szalai                        Szalai  2.003646
-13    w_szalai               Weighted Szalai  0.090661
-14          ap          Aleskerov &amp; Platonov  1.042141
-15        gini               Atkinson (Gini)  1.000000
-16     entropy           Generalized Entropy  0.009233
-17          sl                  Sainte-Laguë  0.018466
-18          cs                 Cox &amp; Shugart  1.033646
-19      farina                        Farina  0.046282
-20      ortona                        Ortona  0.046909
-21   fragnelli                     Fragnelli  0.000000
-22          gb           Gambarelli &amp; Biella  0.000000
-23          cd          Cosine Dissimilarity  0.000867
-24          rr Lebeda’s RR (Mixture D’Hondt)  0.104611
-25         arr                  Lebeda’s ARR  0.895389
-26         srr                  Lebeda’s SRR  0.041482
-27        wdrr                 Lebeda’s WDRR  0.055081
-28          kl     Kullback-Leibler Surprise  0.016431
-29          lr    Likelihood Ratio Statistic -0.024556
-30       chisq                   Chi Squared  0.004225
-31   hellinger            Hellinger Distance  0.087758
-32          ad              alpha-Divergence  0.016415</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(pr_obj) <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"lh"</span>, <span class="st">"gallagher"</span>, <span class="st">"rae"</span>, <span class="st">"dhondt"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         ID             Index  Value
-1    dhondt           D’Hondt 1.1168
-2       rae               Rae 0.0606
-3        lh Loosemore &amp; Hanby 0.0303
-4 gallagher         Gallagher 0.0146
-5        ad  alpha-Divergence 0.0164</code></pre>
-</div>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/01_calculation.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/05_list_of_methods.html">List of methods</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">List of methods</h1>
 </div>
 
 
-</section>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="highest-averages-methods" class="level2">
+<h2 class="anchored" data-anchor-id="highest-averages-methods">Highest averages methods</h2>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Argument</th>
+<th style="text-align: left;">Rule</th>
+<th style="text-align: left;">Approx. first values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">D’hondt / Jefferson</td>
+<td style="text-align: left;"><code>"d'hondt"</code>, <code>"dt"</code>, or <code>"jefferson"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r = k + 1\)</span></td>
+<td style="text-align: left;">1, 2, 3, 4, …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adams / Cambridge</td>
+<td style="text-align: left;"><code>"adams"</code> or <code>"cambridge"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r = k\)</span></td>
+<td style="text-align: left;">0, 1, 2, 3, …</td>
+</tr>
+</tbody>
+</table>
+
+
 </section>
 
 </main> <!-- /main -->

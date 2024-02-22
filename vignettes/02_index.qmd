@@ -1,5 +1,5 @@
 ---
-title: "各種指標の計算"
+title: "Disproportionality"
 knitr: 
   opts_chunk: 
     dev: "ragg_png"

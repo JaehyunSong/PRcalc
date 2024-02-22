@@ -1,0 +1,16 @@
+---
+title: "List of methods"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+## Highest averages methods
+
+|Method|Argument|Rule|Approx. first values|
+|:---|:---|:---|:---|
+|D'hondt / Jefferson |`"d'hondt"`, `"dt"`, or `"jefferson"`|$r = k + 1$|1, 2, 3, 4, ...|
+|Adams / Cambridge|`"adams"` or `"cambridge"`|$r = k$|0, 1, 2, 3, ...|
