@@ -13,7 +13,7 @@ index <- function(x, ...) {
 #'
 #' @param x a `prcalc` object.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
-#' @param eta a parameter for Atkinson (Gini) index. Default is `2`.
+#' @param eta a parameter for Atkinson index. Default is `2`.
 #' @param alpha a parameter for Generalized Entropy and alpha-divergence. Default is `2`.
 #' @param ... ignored
 #'
@@ -36,7 +36,10 @@ index <- function(x, ...) {
 #'
 #' pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
 #'
-#' index(pr_obj)
+#' obj_index <- index(pr_obj)
+#' obj_index
+#'
+#' obj_index$values["gallagher"] # Extract Gallagher index
 
 index.prcalc <- function(x,
                          k     = 2,
@@ -86,8 +89,10 @@ index.prcalc <- function(x,
   w_szalai <- sqrt((1 / 2) * sum((s - v)^2 / (s + v)))
   # Aleskerov & Platonov
   ap <- sum(I((s / v) > 1) * (s / v)) / sum(I((s / v) > 1))
-  # Gini or Atkinson
-  gini <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
+  # Gini
+  gini <- 0
+  # Atkinson
+  atkinson <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
   # Generalized Entropy
   entropy <- (1 / (alpha^2 - alpha)) * (sum(v * (s / v)^alpha) - 1)
   # Sainte-Laguë index
@@ -145,6 +150,7 @@ index.prcalc <- function(x,
     "w_szalai"    = w_szalai,
     "ap"          = ap,
     "gini"        = gini,
+    "atkinson"    = atkinson,
     "entropy"     = entropy,
     "sl"          = sl,
     "cs"          = cs,
@@ -179,7 +185,8 @@ index.prcalc <- function(x,
                             "Szalai",
                             "Weighted Szalai",
                             "Aleskerov & Platonov",
-                            "Atkinson (Gini)",
+                            "Gini",
+                            "Atkinson",
                             "Generalized Entropy",
                             "Sainte-Lagu\u00eb",
                             "Cox & Shugart",

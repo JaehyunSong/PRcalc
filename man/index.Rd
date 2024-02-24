@@ -16,7 +16,7 @@ index(x, ...)
 
 \item{k}{a parameter for Generalized Gallagher index. Default is \code{2}.}
 
-\item{eta}{a parameter for Atkinson (Gini) index. Default is \code{2}.}
+\item{eta}{a parameter for Atkinson index. Default is \code{2}.}
 
 \item{alpha}{a parameter for Generalized Entropy and alpha-divergence. Default is \code{2}.}
 }
@@ -31,7 +31,10 @@ data(jp_upper_2019)
 
 pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
 
-index(pr_obj)
+obj_index <- index(pr_obj)
+obj_index
+
+obj_index$values["gallagher"] # Extract Gallagher index
 }
 \references{
 \itemize{

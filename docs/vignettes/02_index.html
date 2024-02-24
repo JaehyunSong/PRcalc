@@ -637,24 +637,25 @@ Magnitude:
 12      szalai                        Szalai  2.47839
 13    w_szalai               Weighted Szalai  0.15384
 14          ap          Aleskerov &amp; Platonov  1.09773
-15        gini               Atkinson (Gini)  1.00000
-16     entropy           Generalized Entropy  0.02912
-17          sl                  Sainte-Laguë  0.05825
-18          cs                 Cox &amp; Shugart  1.13266
-19      farina                        Farina  0.10153
-20      ortona                        Ortona  0.12490
-21   fragnelli                     Fragnelli  0.00000
-22          gb           Gambarelli &amp; Biella  0.00000
-23          cd          Cosine Dissimilarity  0.00417
-24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
-25         arr                  Lebeda’s ARR  0.87992
-26         srr                  Lebeda’s SRR  0.04488
-27        wdrr                 Lebeda’s WDRR  0.09444
-28          kl     Kullback-Leibler Surprise  0.04684
-29          lr    Likelihood Ratio Statistic -0.03720
-30       chisq                   Chi Squared  0.03308
-31   hellinger            Hellinger Distance  0.14218
-32          ad              alpha-Divergence  0.04582</code></pre>
+15        gini                          Gini  0.00000
+16    atkinson                      Atkinson  1.00000
+17     entropy           Generalized Entropy  0.02912
+18          sl                  Sainte-Laguë  0.05825
+19          cs                 Cox &amp; Shugart  1.13266
+20      farina                        Farina  0.10153
+21      ortona                        Ortona  0.12490
+22   fragnelli                     Fragnelli  0.00000
+23          gb           Gambarelli &amp; Biella  0.00000
+24          cd          Cosine Dissimilarity  0.00417
+25          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
+26         arr                  Lebeda’s ARR  0.87992
+27         srr                  Lebeda’s SRR  0.04488
+28        wdrr                 Lebeda’s WDRR  0.09444
+29          kl     Kullback-Leibler Surprise  0.04684
+30          lr    Likelihood Ratio Statistic -0.03720
+31       chisq                   Chi Squared  0.03308
+32   hellinger            Hellinger Distance  0.14218
+33          ad              alpha-Divergence  0.04582</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>) <span class="co"># alpha-divergenceのalphaを1に</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -674,24 +675,25 @@ Magnitude:
 12      szalai                        Szalai  2.47839
 13    w_szalai               Weighted Szalai  0.15384
 14          ap          Aleskerov &amp; Platonov  1.09773
-15        gini               Atkinson (Gini)  1.00000
-16     entropy           Generalized Entropy      NaN
-17          sl                  Sainte-Laguë  0.05825
-18          cs                 Cox &amp; Shugart  1.13266
-19      farina                        Farina  0.10153
-20      ortona                        Ortona  0.12490
-21   fragnelli                     Fragnelli  0.00000
-22          gb           Gambarelli &amp; Biella  0.00000
-23          cd          Cosine Dissimilarity  0.00417
-24          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
-25         arr                  Lebeda’s ARR  0.87992
-26         srr                  Lebeda’s SRR  0.04488
-27        wdrr                 Lebeda’s WDRR  0.09444
-28          kl     Kullback-Leibler Surprise  0.04684
-29          lr    Likelihood Ratio Statistic -0.03720
-30       chisq                   Chi Squared  0.03308
-31   hellinger            Hellinger Distance  0.14218
-32          ad              alpha-Divergence  0.04684</code></pre>
+15        gini                          Gini  0.00000
+16    atkinson                      Atkinson  1.00000
+17     entropy           Generalized Entropy      NaN
+18          sl                  Sainte-Laguë  0.05825
+19          cs                 Cox &amp; Shugart  1.13266
+20      farina                        Farina  0.10153
+21      ortona                        Ortona  0.12490
+22   fragnelli                     Fragnelli  0.00000
+23          gb           Gambarelli &amp; Biella  0.00000
+24          cd          Cosine Dissimilarity  0.00417
+25          rr Lebeda’s RR (Mixture D’Hondt)  0.12008
+26         arr                  Lebeda’s ARR  0.87992
+27         srr                  Lebeda’s SRR  0.04488
+28        wdrr                 Lebeda’s WDRR  0.09444
+29          kl     Kullback-Leibler Surprise  0.04684
+30          lr    Likelihood Ratio Statistic -0.03720
+31       chisq                   Chi Squared  0.03308
+32   hellinger            Hellinger Distance  0.14218
+33          ad              alpha-Divergence  0.04684</code></pre>
 </div>
 </div>
 <section id="出力" class="level3">
@@ -723,23 +725,23 @@ Magnitude:
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="nivudgtbbl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nivudgtbbl table {
+<div id="ktgcwhhcmi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ktgcwhhcmi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nivudgtbbl thead, #nivudgtbbl tbody, #nivudgtbbl tfoot, #nivudgtbbl tr, #nivudgtbbl td, #nivudgtbbl th {
+#ktgcwhhcmi thead, #ktgcwhhcmi tbody, #ktgcwhhcmi tfoot, #ktgcwhhcmi tr, #ktgcwhhcmi td, #ktgcwhhcmi th {
   border-style: none;
 }
 
-#nivudgtbbl p {
+#ktgcwhhcmi p {
   margin: 0;
   padding: 0;
 }
 
-#nivudgtbbl .gt_table {
+#ktgcwhhcmi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -765,12 +767,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_caption {
+#ktgcwhhcmi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nivudgtbbl .gt_title {
+#ktgcwhhcmi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -782,7 +784,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#nivudgtbbl .gt_subtitle {
+#ktgcwhhcmi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -794,7 +796,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#nivudgtbbl .gt_heading {
+#ktgcwhhcmi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -806,13 +808,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_bottom_border {
+#ktgcwhhcmi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_col_headings {
+#ktgcwhhcmi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -827,7 +829,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_col_heading {
+#ktgcwhhcmi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -847,7 +849,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#nivudgtbbl .gt_column_spanner_outer {
+#ktgcwhhcmi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,15 +861,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#nivudgtbbl .gt_column_spanner_outer:first-child {
+#ktgcwhhcmi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nivudgtbbl .gt_column_spanner_outer:last-child {
+#ktgcwhhcmi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nivudgtbbl .gt_column_spanner {
+#ktgcwhhcmi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -879,11 +881,11 @@ Magnitude:
   width: 100%;
 }
 
-#nivudgtbbl .gt_spanner_row {
+#ktgcwhhcmi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nivudgtbbl .gt_group_heading {
+#ktgcwhhcmi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -909,7 +911,7 @@ Magnitude:
   text-align: left;
 }
 
-#nivudgtbbl .gt_empty_group_heading {
+#ktgcwhhcmi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -924,15 +926,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#nivudgtbbl .gt_from_md > :first-child {
+#ktgcwhhcmi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nivudgtbbl .gt_from_md > :last-child {
+#ktgcwhhcmi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nivudgtbbl .gt_row {
+#ktgcwhhcmi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -951,7 +953,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#nivudgtbbl .gt_stub {
+#ktgcwhhcmi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -964,7 +966,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nivudgtbbl .gt_stub_row_group {
+#ktgcwhhcmi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -978,15 +980,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#nivudgtbbl .gt_row_group_first td {
+#ktgcwhhcmi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nivudgtbbl .gt_row_group_first th {
+#ktgcwhhcmi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nivudgtbbl .gt_summary_row {
+#ktgcwhhcmi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -996,16 +998,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nivudgtbbl .gt_first_summary_row {
+#ktgcwhhcmi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_first_summary_row.thick {
+#ktgcwhhcmi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nivudgtbbl .gt_last_summary_row {
+#ktgcwhhcmi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1015,7 +1017,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_grand_summary_row {
+#ktgcwhhcmi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1025,7 +1027,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nivudgtbbl .gt_first_grand_summary_row {
+#ktgcwhhcmi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1035,7 +1037,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_last_grand_summary_row_top {
+#ktgcwhhcmi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1045,11 +1047,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_striped {
+#ktgcwhhcmi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nivudgtbbl .gt_table_body {
+#ktgcwhhcmi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1058,7 +1060,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_footnotes {
+#ktgcwhhcmi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1072,7 +1074,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_footnote {
+#ktgcwhhcmi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1081,7 +1083,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nivudgtbbl .gt_sourcenotes {
+#ktgcwhhcmi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1095,7 +1097,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nivudgtbbl .gt_sourcenote {
+#ktgcwhhcmi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1103,63 +1105,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nivudgtbbl .gt_left {
+#ktgcwhhcmi .gt_left {
   text-align: left;
 }
 
-#nivudgtbbl .gt_center {
+#ktgcwhhcmi .gt_center {
   text-align: center;
 }
 
-#nivudgtbbl .gt_right {
+#ktgcwhhcmi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nivudgtbbl .gt_font_normal {
+#ktgcwhhcmi .gt_font_normal {
   font-weight: normal;
 }
 
-#nivudgtbbl .gt_font_bold {
+#ktgcwhhcmi .gt_font_bold {
   font-weight: bold;
 }
 
-#nivudgtbbl .gt_font_italic {
+#ktgcwhhcmi .gt_font_italic {
   font-style: italic;
 }
 
-#nivudgtbbl .gt_super {
+#ktgcwhhcmi .gt_super {
   font-size: 65%;
 }
 
-#nivudgtbbl .gt_footnote_marks {
+#ktgcwhhcmi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nivudgtbbl .gt_asterisk {
+#ktgcwhhcmi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nivudgtbbl .gt_indent_1 {
+#ktgcwhhcmi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nivudgtbbl .gt_indent_2 {
+#ktgcwhhcmi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nivudgtbbl .gt_indent_3 {
+#ktgcwhhcmi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nivudgtbbl .gt_indent_4 {
+#ktgcwhhcmi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nivudgtbbl .gt_indent_5 {
+#ktgcwhhcmi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
