@@ -11,6 +11,7 @@
 #' @param subset_p 一部の政党のみ出力
 #' @param free_y If `FALSE`, y-axes are fixed over all facets. Default is `TRUE`.
 #' @param font_size a font size.
+#' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
 #' @param facet_col a number of columns of facets.
 #' @param xlab a label of x-axis.
 #' @param ylab a label of y-axis.
@@ -38,6 +39,7 @@
 #' pr_obj2 <- prcalc(jp_lower_2021,
 #'                   m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
 #'                   method = "hare")
+#' plot(pr_obj2, angle = 90)
 #' plot(pr_obj2, subset_p = c("自民", "公明", "立憲", "維新", "国民"))
 #' plot(pr_obj2, subset_b = c("Tokyo", "Kinki"), facet_col = 1)
 #' plot(pr_obj2, by = "party",
@@ -54,6 +56,7 @@ plot.prcalc <- function (x,
                          subset_p   = NULL,
                          free_y     = FALSE,
                          font_size  = 12,
+                         angle      = 0,
                          facet_col  = 4,
                          legend_pos = "bottom",
                          xlab       = "Parties",
@@ -70,6 +73,10 @@ plot.prcalc <- function (x,
   if (show_total & ncol(raw_df) > 2) {
     raw_df  <- raw_df |> mutate(Total = rowSums(raw_df[, -1]))
     dist_df <- dist_df |> mutate(Total = rowSums(dist_df[, -1]))
+  }
+
+  if (!(angle >= 0 & angle <= 90)) {
+    stop("angle must be in 0 and 90.")
   }
 
   if (type == "both") {
@@ -159,6 +166,11 @@ plot.prcalc <- function (x,
       theme(legend.position = legend_pos)
   }
 
+  if (angle > 0) {
+    result <- result +
+      scale_x_discrete(guide = guide_axis(angle = angle))
+  }
+
   result
 
 }
@@ -172,6 +184,7 @@ plot.prcalc <- function (x,
 #' @param facet 政党ごとにfacet分割. Default is `FALSE`.
 #' @param free_y Default is `TRUE`.
 #' @param font_size a font size.
+#' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
 #' @param facet_col a number of columns of facets.
 #' @param title a title of plot.
 #' @param caption a caption of plot.
@@ -205,6 +218,7 @@ plot.prcalc_compare <- function (x,
                                  facet      = FALSE,
                                  free_y     = TRUE,
                                  font_size  = 12,
+                                 angle      = 0,
                                  facet_col  = 4,
                                  title      = NULL,
                                  caption    = NULL,
@@ -212,6 +226,10 @@ plot.prcalc_compare <- function (x,
                                  ...) {
 
   Party <- Model <- Value <- NULL
+
+  if (!(angle >= 0 & angle <= 90)) {
+    stop("angle must be in 0 and 90.")
+  }
 
   data <- as_tibble(x)
 
@@ -244,6 +262,11 @@ plot.prcalc_compare <- function (x,
          title = title, caption = caption) +
     theme_bw(base_size = font_size) +
     theme(legend.position = legend_pos)
+
+  if (angle > 0) {
+    result <- result +
+      scale_x_discrete(guide = guide_axis(angle = angle))
+  }
 
   return(result)
 }

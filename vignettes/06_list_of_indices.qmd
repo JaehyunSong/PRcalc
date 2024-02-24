@@ -35,8 +35,8 @@ knitr:
 |Cox & Shugart|`"cs"`|$\frac{\sum_i (s_i - \bar{s})(v_i - \bar{v})}{\sum_i(v_i - \bar{v})^2}$||
 |Farina (Kestelman 2005)|`"farina"`|$\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}$||
 |Ortona|`"ortona"`|$\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}$|$u_i = \mathbb{I}(s_i = \mbox{max}_i s_i)$|
-||`"fragnelli"`|$1$||
-||`"gb"`|$1$||
+|Fragnelli|`"fragnelli"`|$\frac{1}{2}\sum_i |\varphi_i(s) - \varphi_i(v)|$||
+|Gambarelli & Biella|`"gb"`|$\max_i\{|s_i - v_i|, |\varphi_i (s) - \varphi_i (v)|\}$||
 |Cosine Dissimilarity|`"cd"`|$1 - \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2}\sqrt{\sum_i v_i^2}}$||
 |Lebeda's RR (Mixture D'Hondt)|`"rr"`|$1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}}$||
 |Lebeda's ARR|`"arr"`|$\frac{1}{p}\Bigl( 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)$||

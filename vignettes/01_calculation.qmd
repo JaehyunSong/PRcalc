@@ -60,6 +60,7 @@ summary(obj3, prop = TRUE) # summarize with proprotion
 #| label: plot
 plot(obj1)
 plot(obj2)
+plot(obj2, angle = 90)
 # Output only some parties
 plot(obj2, 
      subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))

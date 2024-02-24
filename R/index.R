@@ -90,7 +90,9 @@ index.prcalc <- function(x,
   # Aleskerov & Platonov
   ap <- sum(I((s / v) > 1) * (s / v)) / sum(I((s / v) > 1))
   # Gini
-  gini <- 0
+  gini_mod <- c(0, cumsum(v[order(s/v)]))
+  gini_obs <- c(0, cumsum(s[order(s/v)]))
+  gini <- 2 * (sum(gini_mod) - sum(gini_obs)) / p
   # Atkinson
   atkinson <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
   # Generalized Entropy
