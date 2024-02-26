@@ -20,8 +20,6 @@ website:
       - section: $ALTDOC_MAN_BLOCK
       - text: News
         file: $ALTDOC_NEWS
-      - text: Changelog
-        file: $ALTDOC_CHANGELOG
       - text: License
         file: $ALTDOC_LICENSE
       - text: Licence

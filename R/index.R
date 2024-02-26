@@ -49,13 +49,14 @@ index.prcalc <- function(x,
 
   ID <- Value <- NULL
 
-  v <- rowSums(as_tibble(x$raw)[, -1])
-  v <- v / sum(v)
-  s <- rowSums(as_tibble(x$dist)[, -1])
-  s <- s / sum(s)
-  v <- v[order(s, decreasing = TRUE)]
-  s <- s[order(s, decreasing = TRUE)]
-  p <- length(raw)
+  v     <- rowSums(as_tibble(x$raw)[, -1])
+  v     <- v / sum(v)
+  s     <- rowSums(as_tibble(x$dist)[, -1])
+  s     <- s / sum(s)
+  ord_i <- order(v, decreasing = TRUE)
+  v     <- v[ord_i]
+  s     <- s[ord_i]
+  p     <- length(v)
 
   # v: voteshare (v[1] > v[2] > ...)
   # s: seatshare (s[1] > s[2] > ...)
@@ -72,7 +73,7 @@ index.prcalc <- function(x,
   # Loosemore–Hanby index
   lh <- (1 / 2) * sum(abs(s - v))
   # Grofman
-  grofman <- (1 / (1 / sum(s^2))) * sum(abs(s - v))
+  grofman <- (1 / (1 / sum(v^2))) * sum(abs(s - v))
   # Lijphart
   lijphart <- (abs(s[1] - v[1]) + abs(s[2] - v[2])) / 2
   # Gallagher index
