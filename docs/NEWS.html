@@ -90,6 +90,112 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="./vignettes/01_calculation.html">
+ <span class="dropdown-text">Seat allocation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/02_index.html">
+ <span class="dropdown-text">Disproportionality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/03_decomposition.html">
+ <span class="dropdown-text">Decomposition</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/04_comparison.html">
+ <span class="dropdown-text">Comparison</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-information" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Information</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
+        <li>
+    <a class="dropdown-item" href="./vignettes/05_list_of_methods.html">
+ <span class="dropdown-text">List of methods</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/06_list_of_indices.html">
+ <span class="dropdown-text">List of indices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/07_dataset.html">
+ <span class="dropdown-text">Sample Dataset</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-functions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Functions</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-functions">    
+        <li class="dropdown-header">Calculation</li>
+        <li>
+    <a class="dropdown-item" href="./man/prcalc.html">
+ <span class="dropdown-text">prcalc()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/index.html">
+ <span class="dropdown-text">index()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/decompose.html">
+ <span class="dropdown-text">decompose()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/compare.html">
+ <span class="dropdown-text">compare()</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Plotting</li>
+        <li>
+    <a class="dropdown-item" href="./man/plot.prcalc.html">
+ <span class="dropdown-text">plot.prcalc()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/plot.prcalc_compare.html">
+ <span class="dropdown-text">plot.prcalc_compare()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/plot.prcalc_index.html">
+ <span class="dropdown-text">plot.prcalc_index()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/plot.prcalc_index_compare.html">
+ <span class="dropdown-text">plot.prcalc_index_compare()</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Printing</li>
+        <li>
+    <a class="dropdown-item" href="./man/print.prcalc.html">
+ <span class="dropdown-text">print.prcalc()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/summary.prcalc.html">
+ <span class="dropdown-text">summary.prcalc()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/print.prcalc_compare.html">
+ <span class="dropdown-text">print.prcalc_compare()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/print.prcalc_index.html">
+ <span class="dropdown-text">print.prcalc_index()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./man/print.prcalc_index_compare.html">
+ <span class="dropdown-text">print.prcalc_index_compare()</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/JaehyunSong/PRcalc/"> <i class="bi bi-github" role="img" aria-label="PRcalc GitHub">
 </i> 
@@ -124,238 +230,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Articles</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/01_calculation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seat allocation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/02_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Disproportionality</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/03_decomposition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Decomposition</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/04_comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Comparison</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/05_list_of_methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">List of methods</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./vignettes/06_list_of_indices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">List of indices</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Reference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/allocation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">allocation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">compare</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/decompose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">decompose</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">index</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_census_1920.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_census_1920</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_census_1945.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_census_1945</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_census_1970.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_census_1970</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_census_2015.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_census_2015</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_lower_2009.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_lower_2009</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_lower_2012.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_lower_2012</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_lower_2014.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_lower_2014</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_lower_2017.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_lower_2017</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_lower_2021.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_lower_2021</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/jp_upper_2019.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jp_upper_2019</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/kr_lower_2004.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">kr_lower_2004</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/kr_lower_2008.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">kr_lower_2008</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/kr_lower_2012.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">kr_lower_2012</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/kr_lower_2016.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">kr_lower_2016</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/plot.prcalc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot.prcalc_compare</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/plot.prcalc_index_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot.prcalc_index_compare</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/plot.prcalc_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot.prcalc_index</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/plot.prcalc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot.prcalc</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/prcalc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">prcalc</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/print.prcalc_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">print.prcalc_compare</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/print.prcalc_index_compare.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">print.prcalc_index_compare</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/print.prcalc_index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">print.prcalc_index</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/print.prcalc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">print.prcalc</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/summary.prcalc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">summary.prcalc</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/us_census_2020.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">us_census_2020</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./NEWS.html" class="sidebar-item-text sidebar-link active">
