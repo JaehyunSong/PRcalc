@@ -14,6 +14,7 @@
   subset_p = NULL,
   free_y = FALSE,
   font_size = 12,
+  angle = 0,
   facet_col = 4,
   legend_pos = "bottom",
   xlab = "Parties",
@@ -41,6 +42,8 @@
 \item{free_y}{If \code{FALSE}, y-axes are fixed over all facets. Default is \code{TRUE}.}
 
 \item{font_size}{a font size.}
+
+\item{angle}{an angle of x-ticks label (0 to 90). Defualt is 0.}
 
 \item{facet_col}{a number of columns of facets.}
 
@@ -72,6 +75,7 @@ plot(pr_obj1)
 pr_obj2 <- prcalc(jp_lower_2021,
                   m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
                   method = "hare")
+plot(pr_obj2, angle = 90)
 plot(pr_obj2, subset_p = c("自民", "公明", "立憲", "維新", "国民"))
 plot(pr_obj2, subset_b = c("Tokyo", "Kinki"), facet_col = 1)
 plot(pr_obj2, by = "party",

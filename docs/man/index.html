@@ -300,18 +300,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="各種指標の計算" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="各種指標の計算">各種指標の計算</h2>
+<section id="calcualte-the-disproportionality-indices." class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="calcualte-the-disproportionality-indices.">Calcualte the disproportionality indices.</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>各種指標の計算</p>
+<p>Calcualte the disproportionality indices.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
 <pre><code class="language-R">index(x, ...)
 
 ## S3 method for class 'prcalc'
-index(x, k = 2, eta = 2, alpha = 2, ...)
+index(x, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -357,6 +357,14 @@ a parameter for Atkinson index. Default is <code>2</code>.
 a parameter for Generalized Entropy and alpha-divergence. Default is <code>2</code>.
 </td>
 </tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="index_:_omit_zero">omit_zero</code>
+</td>
+<td>
+If <code>TRUE</code>, parties with 0 votes and 0 seats are ignored. Default is <code>TRUE</code>.
+</td>
+</tr>
 </tbody></table>
 </section>
 <section id="value" class="level3">
@@ -381,9 +389,9 @@ a parameter for Generalized Entropy and alpha-divergence. Default is <code>2</co
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_upper_2019)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pr_obj <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>obj_index <span class="ot">&lt;-</span> <span class="fu">index</span>(pr_obj)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>obj_index <span class="ot">&lt;-</span> <span class="fu">index</span>(obj)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>obj_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index     Value

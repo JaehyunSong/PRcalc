@@ -9,12 +9,13 @@ index <- function(x, ...) {
   UseMethod("index")
 }
 
-#' 各種指標の計算
+#' Calcualte the disproportionality indices.
 #'
 #' @param x a `prcalc` object.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
 #' @param alpha a parameter for Generalized Entropy and alpha-divergence. Default is `2`.
+#' @param omit_zero If `TRUE`, parties with 0 votes and 0 seats are ignored. Default is `TRUE`.
 #' @param ... ignored
 #'
 #' @rdname index
@@ -42,9 +43,10 @@ index <- function(x, ...) {
 #' obj_index$values["gallagher"] # Extract Gallagher index
 
 index.prcalc <- function(x,
-                         k     = 2,
-                         eta   = 2,
-                         alpha = 2,
+                         k         = 2,
+                         eta       = 2,
+                         alpha     = 2,
+                         omit_zero = TRUE,
                          ...) {
 
   ID <- Value <- NULL
@@ -53,9 +55,19 @@ index.prcalc <- function(x,
   # s: seatshare (s[1] > s[2] > ...)
   # p: number of parties
   v     <- rowSums(as_tibble(x$raw)[, -1])
-  v     <- v / sum(v)
   s     <- rowSums(as_tibble(x$dist)[, -1])
-  s     <- s / sum(s)
+
+  if (omit_zero) {
+    v        <- v / sum(v)
+    s        <- s / sum(s)
+    zero_ind <- (v == 0) & (s == 0)
+    v        <- v[!zero_ind]
+    s        <- s[!zero_ind]
+  } else {
+    v     <- v / sum(v)
+    s     <- s / sum(s)
+  }
+
   ord_i <- order(v, decreasing = TRUE)
   v     <- v[ord_i]
   s     <- s[ord_i]
@@ -99,11 +111,11 @@ index.prcalc <- function(x,
   atkinson <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
   # Generalized Entropy (Wada 2012)
   if (alpha == 0) {
-    entropy <- sum(v[s > 0] * log((sum(s[s > 0]) / sum(v[s > 0])) / (s[s > 0] / v[s > 0])))
+    entropy <- sum(v * log((sum(s) / sum(v)) / (s / v)))
   } else if (alpha == 1) {
-    entropy <- sum(v[s > 0] * (s[s > 0] / v[s > 0]) * log(s[s > 0] / v[s > 0]))
+    entropy <- sum(v * (s / v) * log(s / v))
   } else {
-    entropy <- sum(v[s > 0] * (1 / (alpha^2 - alpha)) * ((s[s > 0] / v[s > 0])^alpha - 1))
+    entropy <- sum(v * (1 / (alpha^2 - alpha)) * ((s / v)^alpha - 1))
   }
   # Sainte-Laguë index
   sl <- sum((s - v)^2 / (v))
@@ -128,20 +140,20 @@ index.prcalc <- function(x,
   # Lebeda’s WDRR
   wdrr <- (1 / 3) * ((sum(abs(v - s))) + (1 - (1 / max(s / v))))
   # Kullback-Leibler Surprise
-  kl <- sum(s[s > 0] * log(s[s > 0] / v[s > 0]))
+  kl <- sum(s * log(s / v))
   # Likelihood Ratio Statistic
-  lr <- 2 * sum(v[s > 0] * log(v[s > 0] / s[s > 0]))
+  lr <- 2 * sum(v * log(v / s))
   # Chi Squared
   chisq <- sum((v[s > 0] - s[s > 0])^2 / s[s > 0])
   # Hellinger Distance
   hellinger <- (1 / sqrt(2)) * sqrt(sum((sqrt(s) - sqrt(v))^2))
   # alpha-divergence
   if (alpha == 0) {
-    ad <- sum(v[s > 0] * log(v[s > 0] / s[s > 0]))
+    ad <- sum(v * log(v / s))
   } else if (alpha == 1) {
-    ad <- sum(s[s > 0] * log(s[s > 0] / v[s > 0]))
+    ad <- sum(s * log(s / v))
   } else {
-    ad <- sum(v[s > 0] * (1 / (alpha * (alpha - 1))) * ((s[s > 0] / v[s > 0])^alpha - 1))
+    ad <- sum(v * (1 / (alpha * (alpha - 1))) * ((s / v)^alpha - 1))
   }
 
   index_vec <- c(

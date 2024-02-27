@@ -10,6 +10,7 @@
   facet = FALSE,
   free_y = TRUE,
   font_size = 12,
+  angle = 0,
   facet_col = 4,
   title = NULL,
   caption = NULL,
@@ -27,6 +28,8 @@
 \item{free_y}{Default is \code{TRUE}.}
 
 \item{font_size}{a font size.}
+
+\item{angle}{an angle of x-ticks label (0 to 90). Defualt is 0.}
 
 \item{facet_col}{a number of columns of facets.}
 

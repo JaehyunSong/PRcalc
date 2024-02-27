@@ -3,11 +3,11 @@
 \name{index}
 \alias{index}
 \alias{index.prcalc}
-\title{各種指標の計算}
+\title{Calcualte the disproportionality indices.}
 \usage{
 index(x, ...)
 
-\method{index}{prcalc}(x, k = 2, eta = 2, alpha = 2, ...)
+\method{index}{prcalc}(x, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
@@ -19,19 +19,21 @@ index(x, ...)
 \item{eta}{a parameter for Atkinson index. Default is \code{2}.}
 
 \item{alpha}{a parameter for Generalized Entropy and alpha-divergence. Default is \code{2}.}
+
+\item{omit_zero}{If \code{TRUE}, parties with 0 votes and 0 seats are ignored. Default is \code{TRUE}.}
 }
 \value{
 a \code{prcalc_index} object.
 }
 \description{
-各種指標の計算
+Calcualte the disproportionality indices.
 }
 \examples{
 data(jp_upper_2019)
 
-pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
+obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
 
-obj_index <- index(pr_obj)
+obj_index <- index(obj)
 obj_index
 
 obj_index$values["gallagher"] # Extract Gallagher index
