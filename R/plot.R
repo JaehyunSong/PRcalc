@@ -5,10 +5,10 @@
 #' @param x a `prcalc` object.
 #' @param type a plot of votes (`"raw"`), allocation (`"dist"`), or both (`"both"`). Default is `"both"`.
 #' @param prop 割合で表示。If `type` is `"both"`, it is ignored. Default is `TRUE`.
-#' @param show_total 合計を表示。Default is `TRUE`.
+#' @param show_total If `TRUE`, a facet names "Total" is diplayed. Default is `TRUE`.
 #' @param by Facet分割の単位（`"block"` or `"party"`）。Default is `"block"`
-#' @param subset_b 一部のブロックのみ出力
-#' @param subset_p 一部の政党のみ出力
+#' @param subset_b a character vector of block names.
+#' @param subset_p a character vector of party names.
 #' @param free_y If `FALSE`, y-axes are fixed over all facets. Default is `TRUE`.
 #' @param font_size a font size.
 #' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
@@ -317,8 +317,8 @@ plot.prcalc_index <- function (x,
 
   ID <- Index <- Value <- NULL
 
-  data <- enframe(x$values, name = "ID", value = "Value") |>
-    mutate(Index = x$names, .after = ID)
+  data <- enframe(x, name = "ID", value = "Value") |>
+    mutate(Index = attr(x, "labels"), .after = ID)
 
   if (!is.null(index)) {
     data <- data |> filter(ID %in% index)

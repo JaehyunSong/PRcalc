@@ -195,8 +195,8 @@ print.prcalc_index <- function (x,
 
   ID <- Value <- NULL
 
-  result <- enframe(x$values, name = "ID", value = "Value") |>
-    mutate(Index = x$names, .after = ID) |>
+  result <- enframe(x, name = "ID", value = "Value") |>
+    mutate(Index = attr(x, "labels"), .after = ID) |>
     data.frame()
 
   if (!is.null(subset)) {

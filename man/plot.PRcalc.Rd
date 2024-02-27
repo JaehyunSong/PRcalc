@@ -31,13 +31,13 @@
 
 \item{prop}{割合で表示。If \code{type} is \code{"both"}, it is ignored. Default is \code{TRUE}.}
 
-\item{show_total}{合計を表示。Default is \code{TRUE}.}
+\item{show_total}{If \code{TRUE}, a facet names "Total" is diplayed. Default is \code{TRUE}.}
 
 \item{by}{Facet分割の単位（\code{"block"} or \code{"party"}）。Default is \code{"block"}}
 
-\item{subset_b}{一部のブロックのみ出力}
+\item{subset_b}{a character vector of block names.}
 
-\item{subset_p}{一部の政党のみ出力}
+\item{subset_p}{a character vector of party names.}
 
 \item{free_y}{If \code{FALSE}, y-axes are fixed over all facets. Default is \code{TRUE}.}
 

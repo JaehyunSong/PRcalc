@@ -36,7 +36,7 @@ obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
 obj_index <- index(obj)
 obj_index
 
-obj_index$values["gallagher"] # Extract Gallagher index
+obj_index["gallagher"] # Extract Gallagher index
 }
 \references{
 \itemize{

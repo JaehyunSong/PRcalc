@@ -394,42 +394,42 @@ If <code>TRUE</code>, parties with 0 votes and 0 seats are ignored. Default is <
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>obj_index <span class="ot">&lt;-</span> <span class="fu">index</span>(obj)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>obj_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index     Value
-1       dhondt                       D’Hondt  1.116833
-2       monroe                        Monroe  0.018918
-3       maxdev    Maximum Absolute Deviation  0.010461
-4          rae                           Rae  0.004664
-5           lh             Loosemore &amp; Hanby  0.030315
-6      grofman                       Grofman  0.011677
-7     lijphart                      Lijphart  0.004069
-8    gallagher                     Gallagher  0.014609
-9  g_gallagher         Generalized Gallagher  0.014609
-10       gatev                         Gatev  0.032939
-11    ryabtsev                      Ryabtsev  0.023298
-12      szalai                        Szalai  0.555712
-13    w_szalai               Weighted Szalai  0.090661
-14          ap          Aleskerov &amp; Platonov  1.042141
-15        gini                          Gini  0.036069
-16    atkinson                      Atkinson  1.000000
-17     entropy           Generalized Entropy  0.016415
-18          sl                  Sainte-Laguë  0.018466
-19          cs                 Cox &amp; Shugart  1.033646
-20      farina                        Farina  0.046282
-21      ortona                        Ortona  0.046909
-22   fragnelli                     Fragnelli  0.000000
-23          gb           Gambarelli &amp; Biella  0.000000
-24          cd          Cosine Dissimilarity  0.000867
-25          rr Lebeda’s RR (Mixture D’Hondt)  0.104611
-26         arr                  Lebeda’s ARR  0.068876
-27         srr                  Lebeda’s SRR  0.041482
-28        wdrr                 Lebeda’s WDRR  0.055081
-29          kl     Kullback-Leibler Surprise  0.016431
-30          lr    Likelihood Ratio Statistic -0.024556
-31       chisq                   Chi Squared  0.004225
-32   hellinger            Hellinger Distance  0.087758
-33          ad              alpha-Divergence  0.016415</code></pre>
+<pre><code>            ID                         Index    Value
+1       dhondt                       D’Hondt 1.116833
+2       monroe                        Monroe 0.018918
+3       maxdev    Maximum Absolute Deviation 0.010461
+4          rae                           Rae 0.004664
+5           lh             Loosemore &amp; Hanby 0.030315
+6      grofman                       Grofman 0.011677
+7     lijphart                      Lijphart 0.004069
+8    gallagher                     Gallagher 0.014609
+9  g_gallagher         Generalized Gallagher 0.014609
+10       gatev                         Gatev 0.032939
+11    ryabtsev                      Ryabtsev 0.023298
+12      szalai                        Szalai 0.555712
+13    w_szalai               Weighted Szalai 0.090661
+14          ap          Aleskerov &amp; Platonov 1.042141
+15        gini                          Gini 0.036069
+16    atkinson                      Atkinson 1.000000
+17     entropy           Generalized Entropy 0.009233
+18          sl                  Sainte-Laguë 0.018466
+19          cs                 Cox &amp; Shugart 1.033646
+20      farina                        Farina 0.046282
+21      ortona                        Ortona 0.046909
+22   fragnelli                     Fragnelli 0.000000
+23          gb           Gambarelli &amp; Biella 0.000000
+24          cd          Cosine Dissimilarity 0.000867
+25          rr Lebeda’s RR (Mixture D’Hondt) 0.104611
+26         arr                  Lebeda’s ARR 0.068876
+27         srr                  Lebeda’s SRR 0.041482
+28        wdrr                 Lebeda’s WDRR 0.055081
+29          kl     Kullback-Leibler Surprise      NaN
+30          lr    Likelihood Ratio Statistic      Inf
+31       chisq                   Chi Squared 0.004225
+32   hellinger            Hellinger Distance 0.087758
+33          ad              alpha-Divergence 0.009233</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>obj_index<span class="sc">$</span>values[<span class="st">"gallagher"</span>] <span class="co"># Extract Gallagher index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>obj_index[<span class="st">"gallagher"</span>] <span class="co"># Extract Gallagher index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> gallagher 
 0.01460875 </code></pre>

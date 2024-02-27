@@ -40,7 +40,7 @@ index <- function(x, ...) {
 #' obj_index <- index(obj)
 #' obj_index
 #'
-#' obj_index$values["gallagher"] # Extract Gallagher index
+#' obj_index["gallagher"] # Extract Gallagher index
 
 index.prcalc <- function(x,
                          k         = 2,
@@ -192,40 +192,40 @@ index.prcalc <- function(x,
     "ad"          = ad
   )
 
-  result <- list(values = index_vec,
-                 names  = c("D\u2019Hondt",
-                            "Monroe",
-                            "Maximum Absolute Deviation",
-                            "Rae",
-                            "Loosemore & Hanby",
-                            "Grofman",
-                            "Lijphart",
-                            "Gallagher",
-                            "Generalized Gallagher",
-                            "Gatev",
-                            "Ryabtsev",
-                            "Szalai",
-                            "Weighted Szalai",
-                            "Aleskerov & Platonov",
-                            "Gini",
-                            "Atkinson",
-                            "Generalized Entropy",
-                            "Sainte-Lagu\u00eb",
-                            "Cox & Shugart",
-                            "Farina",
-                            "Ortona",
-                            "Fragnelli",
-                            "Gambarelli & Biella",
-                            "Cosine Dissimilarity",
-                            "Lebeda\u2019s RR (Mixture D\u2019Hondt)",
-                            "Lebeda\u2019s ARR",
-                            "Lebeda\u2019s SRR",
-                            "Lebeda\u2019s WDRR",
-                            "Kullback-Leibler Surprise",
-                            "Likelihood Ratio Statistic",
-                            "Chi Squared",
-                            "Hellinger Distance",
-                            "alpha-Divergence"))
+  result <- index_vec
+  attr(result, "labels") <- c("D\u2019Hondt",
+                              "Monroe",
+                              "Maximum Absolute Deviation",
+                              "Rae",
+                              "Loosemore & Hanby",
+                              "Grofman",
+                              "Lijphart",
+                              "Gallagher",
+                              "Generalized Gallagher",
+                              "Gatev",
+                              "Ryabtsev",
+                              "Szalai",
+                              "Weighted Szalai",
+                              "Aleskerov & Platonov",
+                              "Gini",
+                              "Atkinson",
+                              "Generalized Entropy",
+                              "Sainte-Lagu\u00eb",
+                              "Cox & Shugart",
+                              "Farina",
+                              "Ortona",
+                              "Fragnelli",
+                              "Gambarelli & Biella",
+                              "Cosine Dissimilarity",
+                              "Lebeda\u2019s RR (Mixture D\u2019Hondt)",
+                              "Lebeda\u2019s ARR",
+                              "Lebeda\u2019s SRR",
+                              "Lebeda\u2019s WDRR",
+                              "Kullback-Leibler Surprise",
+                              "Likelihood Ratio Statistic",
+                              "Chi Squared",
+                              "Hellinger Distance",
+                              "alpha-Divergence")
 
   structure(result, class = c("prcalc_index"))
 }

@@ -74,11 +74,11 @@ compare.list <- function (x,
              length (x) >= 2 &
              all(unlist(lapply(x, class)) == "prcalc_index")) {
 
-    result <- tibble(ID    = names(x[[1]]$values),
-                     Index = x[[1]]$names)
+    result <- tibble(ID    = names(x[[1]]),
+                     Index = attr(x[[1]], "labels"))
 
     for (i in 1:length(x)) {
-      result[, m_names[i]] <- x[[i]]$values
+      result[, m_names[i]] <- x[[i]]
     }
 
     structure(result, class = c("prcalc_index_compare", "data.frame"))
