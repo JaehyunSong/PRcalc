@@ -34,9 +34,9 @@ index <- function(x, ...) {
 #' @examples
 #' data(jp_upper_2019)
 #'
-#' pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
+#' obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
 #'
-#' obj_index <- index(pr_obj)
+#' obj_index <- index(obj)
 #' obj_index
 #'
 #' obj_index$values["gallagher"] # Extract Gallagher index
@@ -49,6 +49,9 @@ index.prcalc <- function(x,
 
   ID <- Value <- NULL
 
+  # v: voteshare (v[1] > v[2] > ...)
+  # s: seatshare (s[1] > s[2] > ...)
+  # p: number of parties
   v     <- rowSums(as_tibble(x$raw)[, -1])
   v     <- v / sum(v)
   s     <- rowSums(as_tibble(x$dist)[, -1])
@@ -57,10 +60,6 @@ index.prcalc <- function(x,
   v     <- v[ord_i]
   s     <- s[ord_i]
   p     <- length(v)
-
-  # v: voteshare (v[1] > v[2] > ...)
-  # s: seatshare (s[1] > s[2] > ...)
-  # p: number of parties
 
   # D'Hondt
   dhondt <- max(s / v)
@@ -91,13 +90,21 @@ index.prcalc <- function(x,
   # Aleskerov & Platonov
   ap <- sum(I((s / v) > 1) * (s / v)) / sum(I((s / v) > 1))
   # Gini
-  gini_mod <- c(0, cumsum(v[order(s/v)]))
-  gini_obs <- c(0, cumsum(s[order(s/v)]))
-  gini <- 2 * (sum(gini_mod) - sum(gini_obs)) / p
+  {
+    gini_mod <- c(0, cumsum(v[order(s/v)]))
+    gini_obs <- c(0, cumsum(s[order(s/v)]))
+    gini <- 2 * (sum(gini_mod) - sum(gini_obs)) / p
+  }
   # Atkinson
   atkinson <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
-  # Generalized Entropy
-  entropy <- (1 / (alpha^2 - alpha)) * (sum(v * (s / v)^alpha) - 1)
+  # Generalized Entropy (Wada 2012)
+  if (alpha == 0) {
+    entropy <- sum(v[s > 0] * log((sum(s[s > 0]) / sum(v[s > 0])) / (s[s > 0] / v[s > 0])))
+  } else if (alpha == 1) {
+    entropy <- sum(v[s > 0] * (s[s > 0] / v[s > 0]) * log(s[s > 0] / v[s > 0]))
+  } else {
+    entropy <- sum(v[s > 0] * (1 / (alpha^2 - alpha)) * ((s[s > 0] / v[s > 0])^alpha - 1))
+  }
   # Sainte-Laguë index
   sl <- sum((s - v)^2 / (v))
   # Cox & Shugart
