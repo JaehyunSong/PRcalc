@@ -277,3 +277,35 @@ print.prcalc_index_compare <- function (x,
   }
 
 }
+
+#' Printing a `prcalc_decomposition` object.
+#'
+#' @method print prcalc_decomposition
+#'
+#' @param x a `prcalc_decomposition` object.
+#' @param digits the number of decimal places. Default is 3.
+#' @param ... ignored.
+#'
+#' @import dplyr
+#'
+#' @export
+#'
+#' @examples
+#' data(jp_lower_2021)
+#'
+#' obj <- prcalc(jp_lower_2021[1:9, ],
+#'               m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
+#'               method = "hare")
+#'
+#' decompose(obj)
+
+print.prcalc_decomposition <- function (x,
+                                        digits  = 3,
+                                        ...) {
+
+  result <- as.numeric(x)
+  names(result) <- attr(x, "labels")
+
+  print(result)
+
+}

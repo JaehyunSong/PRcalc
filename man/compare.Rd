@@ -3,24 +3,24 @@
 \name{compare}
 \alias{compare}
 \alias{compare.list}
-\title{\code{prcalc} / \code{prcalc_index}オブジェクトの比較}
+\title{Comparison multiple \code{prcalc}, \code{prcalc_index}, or \code{prcalc_decomposition} objects.}
 \usage{
 compare(x, ...)
 
 \method{compare}{list}(x, prop = FALSE, ...)
 }
 \arguments{
-\item{x}{a list. All elements in the list must be \code{prcalc} or \code{prcalc_index} objects.}
+\item{x}{a list. All elements in the list must be \code{prcalc}, \code{prcalc_index}, or \code{prcalc_decomposition} objects.}
 
 \item{...}{Ignored}
 
 \item{prop}{Default is \code{FALSE}.}
 }
 \value{
-A \code{prcalc_compare} or \code{prcalc_index_compare} object
+A \code{prcalc_compare}, \code{prcalc_index_compare}, or \code{prcalc_decomposition_compare} object
 }
 \description{
-\code{prcalc} / \code{prcalc_index}オブジェクトの比較
+Comparison multiple \code{prcalc}, \code{prcalc_index}, or \code{prcalc_decomposition} objects.
 }
 \examples{
 data(jp_upper_2019)

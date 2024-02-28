@@ -23,11 +23,13 @@ a \code{list} object.
 Decompsition
 }
 \examples{
-data(jp_upper_2019)
+data(jp_lower_2021)
 
-pr_obj <- prcalc(jp_upper_2019, m = 50, method = "dt")
+obj <- prcalc(jp_lower_2021[1:9, ],
+              m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
+              method = "hare")
 
-index(pr_obj)
+decompose(obj)
 }
 \references{
 \itemize{

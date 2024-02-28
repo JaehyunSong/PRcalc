@@ -12,8 +12,6 @@
   font_size = 12,
   angle = 0,
   facet_col = 4,
-  title = NULL,
-  caption = NULL,
   legend_pos = "bottom",
   ...
 )
@@ -23,19 +21,15 @@
 
 \item{bar_width}{Default is \code{0.75}.}
 
-\item{facet}{政党ごとにfacet分割. Default is \code{FALSE}.}
+\item{facet}{Separate facets by parties? Default is \code{FALSE}.}
 
 \item{free_y}{Default is \code{TRUE}.}
 
-\item{font_size}{a font size.}
+\item{font_size}{a font size. Default is \code{12}.}
 
-\item{angle}{an angle of x-ticks label (0 to 90). Defualt is 0.}
+\item{angle}{an angle of x-ticks label (\code{0} to \code{90}). Defualt is \code{0}.}
 
-\item{facet_col}{a number of columns of facets.}
-
-\item{title}{a title of plot.}
-
-\item{caption}{a caption of plot.}
+\item{facet_col}{a number of columns of facets. Default is \code{4}.}
 
 \item{legend_pos}{a position of legend. Default is \code{"bottom"}}
 

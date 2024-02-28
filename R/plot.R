@@ -1,22 +1,18 @@
-#' Visualization of a \code{prcalc} object.
+#' Visualization of a `prcalc` object.
 #'
 #' @method plot prcalc
 #'
 #' @param x a `prcalc` object.
 #' @param type a plot of votes (`"raw"`), allocation (`"dist"`), or both (`"both"`). Default is `"both"`.
-#' @param prop 割合で表示。If `type` is `"both"`, it is ignored. Default is `TRUE`.
+#' @param prop Output at a percentage. If `type` is `"both"`, it is ignored. Default is `TRUE`.
 #' @param show_total If `TRUE`, a facet names "Total" is diplayed. Default is `TRUE`.
-#' @param by Facet分割の単位（`"block"` or `"party"`）。Default is `"block"`
+#' @param by Facets by blocks (`"block"`) or parties (`"party"`). Default is `"block"`.
 #' @param subset_b a character vector of block names.
 #' @param subset_p a character vector of party names.
 #' @param free_y If `FALSE`, y-axes are fixed over all facets. Default is `TRUE`.
 #' @param font_size a font size.
 #' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
 #' @param facet_col a number of columns of facets.
-#' @param xlab a label of x-axis.
-#' @param ylab a label of y-axis.
-#' @param title a title of plot.
-#' @param caption a caption of plot.
 #' @param legend_pos a position of legend. Default is `"bottom"`
 #' @param ... Ignored
 #'
@@ -26,7 +22,7 @@
 #' @import forcats
 #'
 #' @return
-#' A \code{ggplot} object.
+#' A `ggplot` object.
 #' @export
 #'
 #' @examples
@@ -59,10 +55,6 @@ plot.prcalc <- function (x,
                          angle      = 0,
                          facet_col  = 4,
                          legend_pos = "bottom",
-                         xlab       = "Parties",
-                         ylab       = "Distribution",
-                         title      = NULL,
-                         caption    = NULL,
                          ...) {
 
   block <- party <- values <- NULL
@@ -156,12 +148,12 @@ plot.prcalc <- function (x,
   if (type %in% c("raw", "dist")) {
     result <- result +
       geom_col() +
-      labs(x = xlab, y = ylab, title = title, caption = caption) +
+      labs(x = "Parties", y = "Distribution") +
       theme_bw(base_size = font_size)
   } else {
     result <- result +
       geom_col(aes(fill = type), position = position_dodge2()) +
-      labs(x = xlab, y = ylab, title = title, caption = caption, fill = "") +
+      labs(x = "Parties", y = "Distribution", fill = "") +
       theme_bw(base_size = font_size) +
       theme(legend.position = legend_pos)
   }
@@ -175,19 +167,17 @@ plot.prcalc <- function (x,
 
 }
 
-#' Visualization of a \code{prcalc_compare} object.
+#' Visualization of a `prcalc_compare` object.
 #'
 #' @method plot prcalc_compare
 #'
 #' @param x a `prcalc_compare` object.
 #' @param bar_width Default is `0.75`.
-#' @param facet 政党ごとにfacet分割. Default is `FALSE`.
+#' @param facet Separate facets by parties? Default is `FALSE`.
 #' @param free_y Default is `TRUE`.
-#' @param font_size a font size.
-#' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
-#' @param facet_col a number of columns of facets.
-#' @param title a title of plot.
-#' @param caption a caption of plot.
+#' @param font_size a font size. Default is `12`.
+#' @param angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
+#' @param facet_col a number of columns of facets. Default is `4`.
 #' @param legend_pos a position of legend. Default is `"bottom"`
 #' @param ... Ignored
 #'
@@ -220,8 +210,6 @@ plot.prcalc_compare <- function (x,
                                  font_size  = 12,
                                  angle      = 0,
                                  facet_col  = 4,
-                                 title      = NULL,
-                                 caption    = NULL,
                                  legend_pos = "bottom",
                                  ...) {
 
@@ -258,8 +246,7 @@ plot.prcalc_compare <- function (x,
   result <- result +
     geom_col(width = bar_width,
              position = position_dodge2()) +
-    labs(x = "Parties", y = "Distribution",
-         title = title, caption = caption) +
+    labs(x = "Parties", y = "Distribution") +
     theme_bw(base_size = font_size) +
     theme(legend.position = legend_pos)
 
@@ -271,18 +258,16 @@ plot.prcalc_compare <- function (x,
   return(result)
 }
 
-#' Visualization of a \code{prcalc_index} object.
+#' Visualization of a `prcalc_index` object.
 #'
 #' @method plot prcalc_index
 #'
 #' @param x a `prcalc_index` object.
-#' @param index a
+#' @param index a character vector. A subset of indices.
 #' @param style Plot style. Lollipop (`"lollipop`) or bar plot (`"bar"`). Default is `"bar"`.
 #' @param bar_width Default is `0.75`.
 #' @param point_size Default is `5`.
 #' @param font_size a font size. Default is `12`.
-#' @param title a title of plot.
-#' @param caption a caption of plot.
 #' @param ... Ignored
 #'
 #' @import dplyr
@@ -291,7 +276,7 @@ plot.prcalc_compare <- function (x,
 #' @import forcats
 #'
 #' @return
-#' A \code{ggplot} object.
+#' A `ggplot` object.
 #' @export
 #'
 #' @examples
@@ -311,8 +296,6 @@ plot.prcalc_index <- function (x,
                                bar_width  = 0.75,
                                point_size = 5,
                                font_size  = 12,
-                               title      = NULL,
-                               caption    = NULL,
                                ...) {
 
   ID <- Index <- Value <- NULL
@@ -344,14 +327,14 @@ plot.prcalc_index <- function (x,
   }
 
   result <- result +
-    labs(x = "Indices", y = "Values", title = title, caption = caption) +
+    labs(x = "Indices", y = "Values") +
     scale_y_discrete(limits = rev) +
     theme_bw(base_size = font_size)
 
   result
 }
 
-#' Visualization of a \code{prcalc_index_compare} object.
+#' Visualization of a `prcalc_index_compare` object.
 #'
 #' @method plot prcalc_index_compare
 #'
@@ -364,8 +347,6 @@ plot.prcalc_index <- function (x,
 #' @param free_x Default is `TRUE`.
 #' @param font_size a font size. Default is `12`.
 #' @param facet_col a number of columns of facets. Default is `4`.
-#' @param title a title of plot.
-#' @param caption a caption of plot.
 #' @param legend_pos a position of legend. Default is `"bottom"`
 #' @param ... Ignored
 #'
@@ -375,7 +356,7 @@ plot.prcalc_index <- function (x,
 #' @import forcats
 #'
 #' @return
-#' A \code{ggplot} object.
+#' A `ggplot` object.
 #' @export
 #'
 #' @examples
@@ -406,8 +387,6 @@ plot.prcalc_index_compare <- function (x,
                                        free_x     = TRUE,
                                        font_size  = 12,
                                        facet_col  = 4,
-                                       title      = NULL,
-                                       caption    = NULL,
                                        legend_pos = "bottom",
                                        ...) {
 
@@ -466,11 +445,134 @@ plot.prcalc_index_compare <- function (x,
 
   result <- result +
     labs(x = "Values",
-         y = if_else(facet, "Models", "Indices"),
-         title = title, caption = caption) +
+         y = if_else(facet, "Models", "Indices")) +
     theme_bw(base_size = font_size) +
     theme(legend.position = legend_pos)
 
   result
 }
 
+#' Visualization of a `prcalc_decomposition_compare` object.
+#'
+#' @method plot prcalc_decomposition_compare
+#'
+#' @param x a `prcalc_decomposition_compare` object.
+#' @param facet Default is `FALSE`.
+#' @param bar_width Default is `0.75`.
+#' @param value_type `"label"`, `"text"`, or `"none"`. Default is `"label"`.
+#' @param value_size Default is `3`.
+#' @param font_size a font size. Default is `12`.
+#' @param digits Default is `3`.
+#' @param ... Ignored
+#'
+#' @import dplyr
+#' @import tidyr
+#' @import ggplot2
+#'
+#' @return
+#' A `ggplot` object.
+#' @export
+#'
+#' @examples
+#' data(jp_lower_2019)
+#'
+#' obj1 <- prcalc(jp_lower_2021[1:9, ],
+#'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+#'                method = "dt")
+#'
+#' obj2 <- prcalc(jp_lower_2021[1:9, ],
+#'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+#'                method = "hare")
+#'
+#' obj3 <- prcalc(jp_lower_2021[1:9, ],
+#'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+#'                method = "msl")
+#'
+#' obj4 <- prcalc(jp_lower_2021[1:9, ],
+#'                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+#'                method = "dt")
+#'
+#' obj5 <- prcalc(jp_lower_2021[1:9, ],
+#'                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+#'                method = "msl")
+#'
+#' compare(list("D'Hondt"     = decompose(obj1),
+#'              "Hare"        = decompose(obj2),
+#'              "Modified-SL" = decompose(obj3))) |>
+#'   plot(digits = 5)
+#'
+#' compare(list("Model 1" = decompose(obj1),
+#'              "Model 2" = decompose(obj4),
+#'              "Model 3" = decompose(obj5))) |>
+#'   plot(facet = TRUE, value_type = "text")
+
+
+plot.prcalc_decomposition_compare <- function (x,
+                                               facet      = FALSE,
+                                               bar_width  = 0.75,
+                                               value_type = "label",
+                                               value_size = 3,
+                                               font_size  = 12,
+                                               digits     = 3,
+                                               ...) {
+
+  Type <- Model <- Value <- label_y <- NULL
+
+  d_s <- paste0("%.", digits, "f")
+
+  data <- x |>
+    pivot_longer(cols      = -Type,
+                 names_to  = "Model",
+                 values_to = "Value")
+
+  if (!facet) {
+
+    data <- data |>
+      filter(Type != "Alpha-divergence") |>
+      group_by(Model) |>
+      mutate(alpha   = sum(Value),
+             label_y = if_else(Type == "Redistricting",
+                               Value / 2, alpha),
+             Model   = paste0(Model, "\n(", sprintf(d_s, alpha), ")"))
+
+    result <- data |>
+      ggplot(aes(x = Model)) +
+      geom_col(aes(y = Value, fill = Type), width = bar_width)
+
+    if (value_type == "label") {
+      result <- result +
+        geom_label(aes(y = label_y, label = sprintf(d_s, Value)),
+                   size = value_size, vjust = -0.25) +
+        coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
+    } else if (value_type == "text") {
+      result <- result +
+        geom_text(aes(y = label_y, label = sprintf(d_s, Value)),
+                  size = value_size, vjust = -0.25) +
+        coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
+    }
+  } else if (facet) {
+
+    result <- data |>
+      ggplot(aes(x = Model)) +
+      geom_col(aes(y = Value), width = bar_width) +
+      facet_wrap(~Type, nrow = 1, scales = "free_y")
+
+    if (value_type == "label") {
+      result <- result +
+        geom_label(aes(y = Value, label = sprintf(d_s, Value)),
+                   size = value_size)
+    } else if (value_type == "text") {
+      result <- result +
+        geom_text(aes(y = 0, label = sprintf(d_s, Value)),
+                  size = value_size, vjust = -0.25, color = "white")
+    }
+  }
+
+
+  result <- result +
+    labs(x = "Model", y = "Values", fill = "") +
+    theme_bw(base_size = font_size) +
+    theme(legend.position = "bottom")
+
+  result
+}

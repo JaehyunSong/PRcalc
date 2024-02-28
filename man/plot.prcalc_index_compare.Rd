@@ -14,8 +14,6 @@
   free_x = TRUE,
   font_size = 12,
   facet_col = 4,
-  title = NULL,
-  caption = NULL,
   legend_pos = "bottom",
   ...
 )
@@ -38,10 +36,6 @@
 \item{font_size}{a font size. Default is \code{12}.}
 
 \item{facet_col}{a number of columns of facets. Default is \code{4}.}
-
-\item{title}{a title of plot.}
-
-\item{caption}{a caption of plot.}
 
 \item{legend_pos}{a position of legend. Default is \code{"bottom"}}
 

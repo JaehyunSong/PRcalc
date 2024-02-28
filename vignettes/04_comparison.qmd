@@ -35,9 +35,9 @@ obj3 <- prcalc(jp_lower_2021,
                method = "sl")
 ```
 
-## `compare()`：比較
+## Comparison
 
-### 配分結果の比較
+### Seat allocation
 
 ```{r}
 compare(list(obj1, obj2))
@@ -60,7 +60,7 @@ compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = o
   plot(facet = TRUE, facet_col = 3, free_y = FALSE)
 ```
 
-### 指標の比較
+### Disproportionality
 
 ```{r}
 compare(list(index(obj1), index(obj2), index(obj3)))
@@ -82,10 +82,40 @@ compare(list("ドント式"     = index(obj1),
         use_gt  = TRUE)
 ```
 
-```{r, fig.height=7, out.height=700}
+```{r}
 compare(list("ドント式"     = index(obj1), 
              "ヘア式"       = index(obj2), 
              "サン＝ラゲ式"  = index(obj3))) |> 
   plot() +
   ggplot2::labs(x = "値", y = "指標", fill = "割当方式")
+```
+
+### Decomposition
+
+```{r}
+obj4 <- prcalc(jp_lower_2021[1:9, ],
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+               method = "dt")
+
+obj5 <- prcalc(jp_lower_2021[1:9, ],
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "dt")
+
+obj6 <- prcalc(jp_lower_2021[1:9, ],
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "msl")
+
+compare(list("D'Hondt"                           = decompose(obj4),
+             "D'Hondt + Modified magnitudes"     = decompose(obj5),
+             "Modified-SL + Modified magnitudes" = decompose(obj6))) 
+
+compare(list("D'Hondt"                          = decompose(obj4),
+             "D'Hondt\nModified magnitudes"     = decompose(obj5),
+             "Modified-SL\nModified magnitudes" = decompose(obj6)))  |> 
+  plot(digits = 5)
+
+compare(list("D'Hondt"         = decompose(obj4),
+             "D'Hondt\nNew M." = decompose(obj5),
+             "MSL\nNew M."     = decompose(obj6)))  |>
+  plot(facet = TRUE, value_type = "text")
 ```

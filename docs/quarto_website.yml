@@ -31,16 +31,6 @@ website:
           - text: "compare()"
             href: man/compare.qmd
           - text: "---"
-          - text: "Plotting"
-          - text: "plot.prcalc()"
-            href: man/plot.prcalc.qmd
-          - text: "plot.prcalc_compare()"
-            href: man/plot.prcalc_compare.qmd
-          - text: "plot.prcalc_index()"
-            href: man/plot.prcalc_index.qmd
-          - text: "plot.prcalc_index_compare()"
-            href: man/plot.prcalc_index_compare.qmd
-          - text: "---"
           - text: "Printing"
           - text: "print.prcalc()"
             href: man/print.prcalc.qmd
@@ -52,6 +42,20 @@ website:
             href: man/print.prcalc_index.qmd
           - text: "print.prcalc_index_compare()"
             href: man/print.prcalc_index_compare.qmd
+          - text: "print.prcalc_decomposition()"
+            href: man/print.prcalc_decomposition.qmd
+          - text: "---"
+          - text: "Plotting"
+          - text: "plot.prcalc()"
+            href: man/plot.prcalc.qmd
+          - text: "plot.prcalc_compare()"
+            href: man/plot.prcalc_compare.qmd
+          - text: "plot.prcalc_index()"
+            href: man/plot.prcalc_index.qmd
+          - text: "plot.prcalc_index_compare()"
+            href: man/plot.prcalc_index_compare.qmd
+          - text: "plot.prcalc_decomposition_compare()"
+            href: man/plot.prcalc_decomposition_compare.qmd
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
         aria-label: $ALTDOC_PACKAGE_NAME GitHub

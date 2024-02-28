@@ -1,4 +1,15 @@
 ---
+title: PRcalc
+subtitle: Allocation! Measuring disproportionality! Decompsition! and Visualization!
+author: 
+  - name: Jaehyun Song
+    affiliations: Kansai University
+    email: song@kansai-u.ac.jp
+    url: https://www.jaysong.net/
+  - name: Yuta Kamahara
+    affiliations: Yokohama National University
+    email: y.kamahara@gmail.com
+    url: https://sites.google.com/site/yutakamaharapolisci/
 date-modified: today
 ---
 

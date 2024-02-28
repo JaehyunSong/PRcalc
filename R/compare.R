@@ -9,9 +9,9 @@ compare <- function(x, ...) {
   UseMethod("compare", x)
 }
 
-#' `prcalc` / `prcalc_index`オブジェクトの比較
+#' Comparison multiple `prcalc`, `prcalc_index`, or `prcalc_decomposition` objects.
 #'
-#' @param x a list. All elements in the list must be `prcalc` or `prcalc_index` objects.
+#' @param x a list. All elements in the list must be `prcalc`, `prcalc_index`, or `prcalc_decomposition` objects.
 #' @param prop Default is `FALSE`.
 #' @param ... Ignored
 #'
@@ -20,7 +20,7 @@ compare <- function(x, ...) {
 #' @import dplyr
 #'
 #' @return
-#' A `prcalc_compare` or `prcalc_index_compare` object
+#' A `prcalc_compare`, `prcalc_index_compare`, or `prcalc_decomposition_compare` object
 #' @export
 #'
 #' @examples
@@ -82,6 +82,20 @@ compare.list <- function (x,
     }
 
     structure(result, class = c("prcalc_index_compare", "data.frame"))
+
+  } else if (is.list(x) &
+             length (x) >= 2 &
+             all(unlist(lapply(x, class)) == "prcalc_decomposition")) {
+
+    result <- tibble(Type = c("Alpha-divergence",
+                              "Reapportionment",
+                              "Redistricting"))
+
+    for (i in 1:length(x)) {
+      result[, m_names[i]] <- as.numeric(x[[i]])
+    }
+
+    structure(result, class = c("prcalc_decomposition_compare", "data.frame"))
 
   } else {
     stop("Error")

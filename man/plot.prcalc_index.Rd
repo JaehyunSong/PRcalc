@@ -11,15 +11,13 @@
   bar_width = 0.75,
   point_size = 5,
   font_size = 12,
-  title = NULL,
-  caption = NULL,
   ...
 )
 }
 \arguments{
 \item{x}{a \code{prcalc_index} object.}
 
-\item{index}{a}
+\item{index}{a character vector. A subset of indices.}
 
 \item{style}{Plot style. Lollipop (\verb{"lollipop}) or bar plot (\code{"bar"}). Default is \code{"bar"}.}
 
@@ -28,10 +26,6 @@
 \item{point_size}{Default is \code{5}.}
 
 \item{font_size}{a font size. Default is \code{12}.}
-
-\item{title}{a title of plot.}
-
-\item{caption}{a caption of plot.}
 
 \item{...}{Ignored}
 }

@@ -17,10 +17,6 @@
   angle = 0,
   facet_col = 4,
   legend_pos = "bottom",
-  xlab = "Parties",
-  ylab = "Distribution",
-  title = NULL,
-  caption = NULL,
   ...
 )
 }
@@ -29,11 +25,11 @@
 
 \item{type}{a plot of votes (\code{"raw"}), allocation (\code{"dist"}), or both (\code{"both"}). Default is \code{"both"}.}
 
-\item{prop}{割合で表示。If \code{type} is \code{"both"}, it is ignored. Default is \code{TRUE}.}
+\item{prop}{Output at a percentage. If \code{type} is \code{"both"}, it is ignored. Default is \code{TRUE}.}
 
 \item{show_total}{If \code{TRUE}, a facet names "Total" is diplayed. Default is \code{TRUE}.}
 
-\item{by}{Facet分割の単位（\code{"block"} or \code{"party"}）。Default is \code{"block"}}
+\item{by}{Facets by blocks (\code{"block"}) or parties (\code{"party"}). Default is \code{"block"}.}
 
 \item{subset_b}{a character vector of block names.}
 
@@ -48,14 +44,6 @@
 \item{facet_col}{a number of columns of facets.}
 
 \item{legend_pos}{a position of legend. Default is \code{"bottom"}}
-
-\item{xlab}{a label of x-axis.}
-
-\item{ylab}{a label of y-axis.}
-
-\item{title}{a title of plot.}
-
-\item{caption}{a caption of plot.}
 
 \item{...}{Ignored}
 }

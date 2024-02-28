@@ -1,4 +1,5 @@
-
+# PRcalc
+Jaehyun Song, Yuta Kamahara
 
 <img src="https://www.jaysong.net/PRcalc/figs/prcalc.png"
 data-fig-align="center" width="200" />
