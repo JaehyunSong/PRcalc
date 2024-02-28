@@ -8,12 +8,12 @@ knitr:
     dpi: 150
 ---
 
+## Preparation
+
 ```{r}
 #| label: setup
 library(PRcalc)
-```
 
-```{r}
 data(jp_lower_2021)
 
 obj1 <- prcalc(jp_lower_2021[1:9, ],
@@ -28,6 +28,11 @@ obj3 <- prcalc(jp_lower_2021[1:9, ],
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 
+```
+
+## Decomposition
+
+```{r}
 decompose(obj1)
 decompose(obj2)
 decompose(obj3)
