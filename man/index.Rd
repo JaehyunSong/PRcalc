@@ -3,7 +3,7 @@
 \name{index}
 \alias{index}
 \alias{index.prcalc}
-\title{Calcualte the disproportionality indices.}
+\title{Calculate the disproportionality indices.}
 \usage{
 index(x, ...)
 
@@ -26,7 +26,7 @@ index(x, ...)
 a \code{prcalc_index} object.
 }
 \description{
-Calcualte the disproportionality indices.
+Calculate the disproportionality indices.
 }
 \examples{
 data(jp_upper_2019)

@@ -9,7 +9,7 @@ index <- function(x, ...) {
   UseMethod("index")
 }
 
-#' Calcualte the disproportionality indices.
+#' Calculate the disproportionality indices.
 #'
 #' @param x a `prcalc` object.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
@@ -23,7 +23,7 @@ index <- function(x, ...) {
 #' @import tibble
 #'
 #' @return
-#' a \code{prcalc_index} object.
+#' a `prcalc_index` object.
 #' @export
 #'
 #' @references

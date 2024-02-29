@@ -1,4 +1,4 @@
-#' @param x a \code{prcalc} object.
+#' @param x a `prcalc` object.
 #' @param ... ignored
 #'
 #' @rdname decompose
@@ -11,7 +11,7 @@ decompose <- function(x, ...) {
 
 #' Decompsition
 #'
-#' @param x a \code{prcalc} object.
+#' @param x a `prcalc` object.
 #' @param alpha Default is `2`.
 #' @param ... ignored
 #'
@@ -20,12 +20,12 @@ decompose <- function(x, ...) {
 #' @import dplyr
 #'
 #' @return
-#' a \code{list} object.
+#' a `prcalc_decomposition` object.
 #' @export
 #'
 #' @references
 #' \itemize{
-#' \item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.}
+#' \item{Yuta, Kamahara. "The Desired Political Entropy as the Measure of Unequal Representation: Disproportionality and Malapportionment". Working paper.}
 #' }
 #'
 #' @examples
@@ -76,7 +76,7 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
-      temp <- s_j[i-1] * sum(s_ij * log(s_ij / s_ij))
+      temp <- s_j[i-1] * sum(s_ij * log(s_ij / v_ij))
 
       rd[i - 1] <- temp
     }

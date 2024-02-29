@@ -17,7 +17,7 @@ decompose(x, ...)
 \item{alpha}{Default is \code{2}.}
 }
 \value{
-a \code{list} object.
+a \code{prcalc_decomposition} object.
 }
 \description{
 Decompsition
@@ -33,6 +33,6 @@ decompose(obj)
 }
 \references{
 \itemize{
-\item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.}
+\item{Yuta, Kamahara. "The Desired Political Entropy as the Measure of Unequal Representation: Disproportionality and Malapportionment". Working paper.}
 }
 }
