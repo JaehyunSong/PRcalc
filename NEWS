@@ -1,6 +1,11 @@
 ## News
 
-### PRcalc 0.8.2 (2024/02/07)
+### PRcalc 0.8.3 (2024/02/29)
+
+* `decompose()`、`plot.prcalc_decomposition_compare()`の追加
+* `compare()`関数が`prcalc.prcalc_decomposition`クラスにも対応
+
+### PRcalc 0.8.2 (2024/02/27)
 
 * `prcalc_index`クラス構造の変更
 

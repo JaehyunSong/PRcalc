@@ -625,7 +625,7 @@
     "href": "NEWS.html",
     "title": "PRcalc",
     "section": "",
-    "text": "prcalc_indexクラス構造の変更\n\n\n\n\n\nindex()関数のバグ修正\n\n\n\n\n\nCode refactoring\n\n\n\n\n\n大幅なアップデート (というか、作り直しました)\n\n\n\n\n\nバグ修正\n\n\n\n\n\n新しいサンプルデータjapanese.sample2の追加\nブロック制比例代表が計算可能\n\n\n\n\n\nパッケージ化\nサンプルデータの追加\n\n\n\n\n\nvoteの実引数としてdata.frame型が使用可能\n\n\n\n\n\n阻止条項が指定可能\n\n\n\n\n\nnparty引数の削除\n仮引数voteshareの名称をvoteに変更\n非比例性指標 (Gallagher Index) の出力\n関数の効率化\n例を出力するPR.calc.ex()関数の追加\n\n\n\n\n\n初公開",
+    "text": "decompose()、plot.prcalc_decomposition_compare()の追加\ncompare()関数がprcalc.prcalc_decompositionクラスにも対応\n\n\n\n\n\nprcalc_indexクラス構造の変更\n\n\n\n\n\nindex()関数のバグ修正\n\n\n\n\n\nCode refactoring\n\n\n\n\n\n大幅なアップデート (というか、作り直しました)\n\n\n\n\n\nバグ修正\n\n\n\n\n\n新しいサンプルデータjapanese.sample2の追加\nブロック制比例代表が計算可能\n\n\n\n\n\nパッケージ化\nサンプルデータの追加\n\n\n\n\n\nvoteの実引数としてdata.frame型が使用可能\n\n\n\n\n\n阻止条項が指定可能\n\n\n\n\n\nnparty引数の削除\n仮引数voteshareの名称をvoteに変更\n非比例性指標 (Gallagher Index) の出力\n関数の効率化\n例を出力するPR.calc.ex()関数の追加\n\n\n\n\n\n初公開",
     "crumbs": [
       "News"
     ]
@@ -635,7 +635,7 @@
     "href": "NEWS.html#news",
     "title": "PRcalc",
     "section": "",
-    "text": "prcalc_indexクラス構造の変更\n\n\n\n\n\nindex()関数のバグ修正\n\n\n\n\n\nCode refactoring\n\n\n\n\n\n大幅なアップデート (というか、作り直しました)\n\n\n\n\n\nバグ修正\n\n\n\n\n\n新しいサンプルデータjapanese.sample2の追加\nブロック制比例代表が計算可能\n\n\n\n\n\nパッケージ化\nサンプルデータの追加\n\n\n\n\n\nvoteの実引数としてdata.frame型が使用可能\n\n\n\n\n\n阻止条項が指定可能\n\n\n\n\n\nnparty引数の削除\n仮引数voteshareの名称をvoteに変更\n非比例性指標 (Gallagher Index) の出力\n関数の効率化\n例を出力するPR.calc.ex()関数の追加\n\n\n\n\n\n初公開",
+    "text": "decompose()、plot.prcalc_decomposition_compare()の追加\ncompare()関数がprcalc.prcalc_decompositionクラスにも対応\n\n\n\n\n\nprcalc_indexクラス構造の変更\n\n\n\n\n\nindex()関数のバグ修正\n\n\n\n\n\nCode refactoring\n\n\n\n\n\n大幅なアップデート (というか、作り直しました)\n\n\n\n\n\nバグ修正\n\n\n\n\n\n新しいサンプルデータjapanese.sample2の追加\nブロック制比例代表が計算可能\n\n\n\n\n\nパッケージ化\nサンプルデータの追加\n\n\n\n\n\nvoteの実引数としてdata.frame型が使用可能\n\n\n\n\n\n阻止条項が指定可能\n\n\n\n\n\nnparty引数の削除\n仮引数voteshareの名称をvoteに変更\n非比例性指標 (Gallagher Index) の出力\n関数の効率化\n例を出力するPR.calc.ex()関数の追加\n\n\n\n\n\n初公開",
     "crumbs": [
       "News"
     ]

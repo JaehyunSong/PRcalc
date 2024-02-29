@@ -187,7 +187,7 @@ plot.prcalc <- function (x,
 #' @import forcats
 #'
 #' @return
-#' A \code{ggplot} object.
+#' A `ggplot` object.
 #' @export
 #'
 #' @examples
