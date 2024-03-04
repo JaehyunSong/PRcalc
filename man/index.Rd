@@ -18,7 +18,7 @@ index(x, ...)
 
 \item{eta}{a parameter for Atkinson index. Default is \code{2}.}
 
-\item{alpha}{a parameter for Generalized Entropy and alpha-divergence. Default is \code{2}.}
+\item{alpha}{a parameter for alpha-divergence. Default is \code{2}.}
 
 \item{omit_zero}{If \code{TRUE}, parties with 0 votes and 0 seats are ignored. Default is \code{TRUE}.}
 }

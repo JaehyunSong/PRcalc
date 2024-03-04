@@ -14,7 +14,7 @@ index <- function(x, ...) {
 #' @param x a `prcalc` object.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
-#' @param alpha a parameter for Generalized Entropy and alpha-divergence. Default is `2`.
+#' @param alpha a parameter for alpha-divergence. Default is `2`.
 #' @param omit_zero If `TRUE`, parties with 0 votes and 0 seats are ignored. Default is `TRUE`.
 #' @param ... ignored
 #'
@@ -110,13 +110,13 @@ index.prcalc <- function(x,
   # Atkinson
   atkinson <- 1 - (sum(v * (s / v)^(1 - eta)))^(1 / (1 - eta))
   # Generalized Entropy (Wada 2012)
-  if (alpha == 0) {
-    entropy <- sum(v * log((sum(s) / sum(v)) / (s / v)))
-  } else if (alpha == 1) {
-    entropy <- sum(v * (s / v) * log(s / v))
-  } else {
-    entropy <- sum(v * (1 / (alpha^2 - alpha)) * ((s / v)^alpha - 1))
-  }
+  #if (alpha == 0) {
+  #  entropy <- sum(v * log((sum(s) / sum(v)) / (s / v)))
+  #} else if (alpha == 1) {
+  #  entropy <- sum(v * (s / v) * log(s / v))
+  #} else {
+  #  entropy <- sum(v * (1 / (alpha^2 - alpha)) * ((s / v)^alpha - 1))
+  #}
   # Sainte-Laguë index
   sl <- sum((s - v)^2 / (v))
   # Cox & Shugart
@@ -126,9 +126,9 @@ index.prcalc <- function(x,
   # Ortona
   ortona <- sum(abs(s - v)) / sum(abs(I(s == max(s)) - v))
   # Fragnelli
-  fragnelli <- 0
+  # fragnelli <- 0
   # Gambarelli & Biella
-  gb <- 0
+  # gb <- 0
   # Cosine Dissimilarity
   cd <- 1 - (sum(s * v) / (sqrt(sum(s^2)) * sqrt(sum(v^2))))
   # Lebeda’s RR / Mixture D’Hondt
@@ -149,11 +149,23 @@ index.prcalc <- function(x,
   hellinger <- (1 / sqrt(2)) * sqrt(sum((sqrt(s) - sqrt(v))^2))
   # alpha-divergence
   if (alpha == 0) {
-    ad <- sum(v * log(v / s))
+    # s = 0の場合、log(v / s)は Inf
+    # s = v = 0なら NaN
+    ad_vs <- log(v / s)
+    ad_vs[is.infinite(ad_vs) | is.nan(ad_vs)] <- 0
+    ad <- sum(v * ad_vs)
   } else if (alpha == 1) {
-    ad <- sum(s * log(s / v))
+    # s = 0の場合、log(s / v)は -Inf
+    # s = v = 0なら NaN
+    ad_sv <- log(s / v)
+    ad_sv[is.infinite(ad_sv) | is.nan(ad_sv)] <- 0
+    ad <- sum(s * ad_sv)
   } else {
-    ad <- sum(v * (1 / (alpha * (alpha - 1))) * ((s / v)^alpha - 1))
+    # alpha < 0、かつ s = 0の場合、Inf
+    # s = v = 0なら NaN
+    ad_sva <- (s / v)^alpha
+    ad_sva[is.infinite(ad_sva) | is.nan(ad_sva)] <- 0
+    ad <- sum(v * (1 / (alpha * (alpha - 1))) * (ad_sva - 1))
   }
 
   index_vec <- c(
@@ -173,13 +185,13 @@ index.prcalc <- function(x,
     "ap"          = ap,
     "gini"        = gini,
     "atkinson"    = atkinson,
-    "entropy"     = entropy,
+    #"entropy"     = entropy,
     "sl"          = sl,
     "cs"          = cs,
     "farina"      = farina,
     "ortona"      = ortona,
-    "fragnelli"   = fragnelli,
-    "gb"          = gb,
+    #"fragnelli"   = fragnelli,
+    #"gb"          = gb,
     "cd"          = cd,
     "rr"          = rr,
     "arr"         = arr,
@@ -209,13 +221,13 @@ index.prcalc <- function(x,
                               "Aleskerov & Platonov",
                               "Gini",
                               "Atkinson",
-                              "Generalized Entropy",
+                              #"Generalized Entropy",
                               "Sainte-Lagu\u00eb",
                               "Cox & Shugart",
                               "Farina",
                               "Ortona",
-                              "Fragnelli",
-                              "Gambarelli & Biella",
+                              #"Fragnelli",
+                              #"Gambarelli & Biella",
                               "Cosine Dissimilarity",
                               "Lebeda\u2019s RR (Mixture D\u2019Hondt)",
                               "Lebeda\u2019s ARR",

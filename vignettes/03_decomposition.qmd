@@ -16,15 +16,15 @@ library(PRcalc)
 
 data(jp_lower_2021)
 
-obj1 <- prcalc(jp_lower_2021[1:9, ],
+obj1 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "dt")
 
-obj2 <- prcalc(jp_lower_2021[1:9, ],
+obj2 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "dt")
 
-obj3 <- prcalc(jp_lower_2021[1:9, ],
+obj3 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 

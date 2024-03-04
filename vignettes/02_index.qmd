@@ -6,6 +6,7 @@ knitr:
     fig.width: 7
     fig.height: 5
     dpi: 150
+    error: true
 ---
 
 ```{r}
@@ -32,7 +33,7 @@ obj1
 * Some parameters are required for calculation of indices. Default is 2.
    * `k`：For Generalized Gallagher
    * `eta`：For Atkinson
-   * `alpha`：For Generalized entropy and $\alpha$-divergence
+   * `alpha`：For $\alpha$-divergence
 
 ```{r}
 #| label: index

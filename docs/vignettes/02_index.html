@@ -486,7 +486,7 @@ Magnitude:
 <ul>
 <li><code>k</code>：For Generalized Gallagher</li>
 <li><code>eta</code>：For Atkinson</li>
-<li><code>alpha</code>：For Generalized entropy and <span class="math inline">\(\alpha\)</span>-divergence</li>
+<li><code>alpha</code>：For <span class="math inline">\(\alpha\)</span>-divergence</li>
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
@@ -510,23 +510,20 @@ Magnitude:
 14          ap          Aleskerov &amp; Platonov 1.09773
 15        gini                          Gini 0.07989
 16    atkinson                      Atkinson 1.00000
-17     entropy           Generalized Entropy 0.02912
-18          sl                  Sainte-Laguë 0.05825
-19          cs                 Cox &amp; Shugart 1.13266
-20      farina                        Farina 0.10153
-21      ortona                        Ortona 0.12490
-22   fragnelli                     Fragnelli 0.00000
-23          gb           Gambarelli &amp; Biella 0.00000
-24          cd          Cosine Dissimilarity 0.00417
-25          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-26         arr                  Lebeda’s ARR 0.06769
-27         srr                  Lebeda’s SRR 0.04488
-28        wdrr                 Lebeda’s WDRR 0.09444
-29          kl     Kullback-Leibler Surprise     NaN
-30          lr    Likelihood Ratio Statistic     Inf
-31       chisq                   Chi Squared 0.03308
-32   hellinger            Hellinger Distance 0.14218
-33          ad              alpha-Divergence 0.02912</code></pre>
+17          sl                  Sainte-Laguë 0.05825
+18          cs                 Cox &amp; Shugart 1.13266
+19      farina                        Farina 0.10153
+20      ortona                        Ortona 0.12490
+21          cd          Cosine Dissimilarity 0.00417
+22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
+23         arr                  Lebeda’s ARR 0.06769
+24         srr                  Lebeda’s SRR 0.04488
+25        wdrr                 Lebeda’s WDRR 0.09444
+26          kl     Kullback-Leibler Surprise     NaN
+27          lr    Likelihood Ratio Statistic     Inf
+28       chisq                   Chi Squared 0.03308
+29   hellinger            Hellinger Distance 0.14218
+30          ad              alpha-Divergence 0.02912</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -548,23 +545,20 @@ Magnitude:
 14          ap          Aleskerov &amp; Platonov 1.09773
 15        gini                          Gini 0.07989
 16    atkinson                      Atkinson 1.00000
-17     entropy           Generalized Entropy     NaN
-18          sl                  Sainte-Laguë 0.05825
-19          cs                 Cox &amp; Shugart 1.13266
-20      farina                        Farina 0.10153
-21      ortona                        Ortona 0.12490
-22   fragnelli                     Fragnelli 0.00000
-23          gb           Gambarelli &amp; Biella 0.00000
-24          cd          Cosine Dissimilarity 0.00417
-25          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-26         arr                  Lebeda’s ARR 0.06769
-27         srr                  Lebeda’s SRR 0.04488
-28        wdrr                 Lebeda’s WDRR 0.09444
-29          kl     Kullback-Leibler Surprise     NaN
-30          lr    Likelihood Ratio Statistic     Inf
-31       chisq                   Chi Squared 0.03308
-32   hellinger            Hellinger Distance 0.14218
-33          ad              alpha-Divergence     NaN</code></pre>
+17          sl                  Sainte-Laguë 0.05825
+18          cs                 Cox &amp; Shugart 1.13266
+19      farina                        Farina 0.10153
+20      ortona                        Ortona 0.12490
+21          cd          Cosine Dissimilarity 0.00417
+22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
+23         arr                  Lebeda’s ARR 0.06769
+24         srr                  Lebeda’s SRR 0.04488
+25        wdrr                 Lebeda’s WDRR 0.09444
+26          kl     Kullback-Leibler Surprise     NaN
+27          lr    Likelihood Ratio Statistic     Inf
+28       chisq                   Chi Squared 0.03308
+29   hellinger            Hellinger Distance 0.14218
+30          ad              alpha-Divergence 0.04684</code></pre>
 </div>
 </div>
 <section id="printing" class="level3">
@@ -602,23 +596,23 @@ Magnitude:
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="nklwapxium" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nklwapxium table {
+<div id="urlxrvntjw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#urlxrvntjw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nklwapxium thead, #nklwapxium tbody, #nklwapxium tfoot, #nklwapxium tr, #nklwapxium td, #nklwapxium th {
+#urlxrvntjw thead, #urlxrvntjw tbody, #urlxrvntjw tfoot, #urlxrvntjw tr, #urlxrvntjw td, #urlxrvntjw th {
   border-style: none;
 }
 
-#nklwapxium p {
+#urlxrvntjw p {
   margin: 0;
   padding: 0;
 }
 
-#nklwapxium .gt_table {
+#urlxrvntjw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -644,12 +638,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#nklwapxium .gt_caption {
+#urlxrvntjw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nklwapxium .gt_title {
+#urlxrvntjw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -661,7 +655,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#nklwapxium .gt_subtitle {
+#urlxrvntjw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -673,7 +667,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#nklwapxium .gt_heading {
+#urlxrvntjw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -685,13 +679,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nklwapxium .gt_bottom_border {
+#urlxrvntjw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nklwapxium .gt_col_headings {
+#urlxrvntjw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -706,7 +700,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nklwapxium .gt_col_heading {
+#urlxrvntjw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -726,7 +720,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#nklwapxium .gt_column_spanner_outer {
+#urlxrvntjw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -738,15 +732,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#nklwapxium .gt_column_spanner_outer:first-child {
+#urlxrvntjw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nklwapxium .gt_column_spanner_outer:last-child {
+#urlxrvntjw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nklwapxium .gt_column_spanner {
+#urlxrvntjw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -758,11 +752,11 @@ Magnitude:
   width: 100%;
 }
 
-#nklwapxium .gt_spanner_row {
+#urlxrvntjw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nklwapxium .gt_group_heading {
+#urlxrvntjw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -788,7 +782,7 @@ Magnitude:
   text-align: left;
 }
 
-#nklwapxium .gt_empty_group_heading {
+#urlxrvntjw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -803,15 +797,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#nklwapxium .gt_from_md > :first-child {
+#urlxrvntjw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nklwapxium .gt_from_md > :last-child {
+#urlxrvntjw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nklwapxium .gt_row {
+#urlxrvntjw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -830,7 +824,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#nklwapxium .gt_stub {
+#urlxrvntjw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -843,7 +837,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nklwapxium .gt_stub_row_group {
+#urlxrvntjw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -857,15 +851,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#nklwapxium .gt_row_group_first td {
+#urlxrvntjw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nklwapxium .gt_row_group_first th {
+#urlxrvntjw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nklwapxium .gt_summary_row {
+#urlxrvntjw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -875,16 +869,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nklwapxium .gt_first_summary_row {
+#urlxrvntjw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nklwapxium .gt_first_summary_row.thick {
+#urlxrvntjw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nklwapxium .gt_last_summary_row {
+#urlxrvntjw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -894,7 +888,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nklwapxium .gt_grand_summary_row {
+#urlxrvntjw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -904,7 +898,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nklwapxium .gt_first_grand_summary_row {
+#urlxrvntjw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -914,7 +908,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#nklwapxium .gt_last_grand_summary_row_top {
+#urlxrvntjw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -924,11 +918,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nklwapxium .gt_striped {
+#urlxrvntjw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nklwapxium .gt_table_body {
+#urlxrvntjw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -937,7 +931,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#nklwapxium .gt_footnotes {
+#urlxrvntjw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -951,7 +945,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nklwapxium .gt_footnote {
+#urlxrvntjw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -960,7 +954,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nklwapxium .gt_sourcenotes {
+#urlxrvntjw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -974,7 +968,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#nklwapxium .gt_sourcenote {
+#urlxrvntjw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -982,63 +976,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#nklwapxium .gt_left {
+#urlxrvntjw .gt_left {
   text-align: left;
 }
 
-#nklwapxium .gt_center {
+#urlxrvntjw .gt_center {
   text-align: center;
 }
 
-#nklwapxium .gt_right {
+#urlxrvntjw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nklwapxium .gt_font_normal {
+#urlxrvntjw .gt_font_normal {
   font-weight: normal;
 }
 
-#nklwapxium .gt_font_bold {
+#urlxrvntjw .gt_font_bold {
   font-weight: bold;
 }
 
-#nklwapxium .gt_font_italic {
+#urlxrvntjw .gt_font_italic {
   font-style: italic;
 }
 
-#nklwapxium .gt_super {
+#urlxrvntjw .gt_super {
   font-size: 65%;
 }
 
-#nklwapxium .gt_footnote_marks {
+#urlxrvntjw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nklwapxium .gt_asterisk {
+#urlxrvntjw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nklwapxium .gt_indent_1 {
+#urlxrvntjw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nklwapxium .gt_indent_2 {
+#urlxrvntjw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nklwapxium .gt_indent_3 {
+#urlxrvntjw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nklwapxium .gt_indent_4 {
+#urlxrvntjw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nklwapxium .gt_indent_5 {
+#urlxrvntjw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1065,7 +1059,7 @@ Magnitude:
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Index">alpha-Divergence</td>
-<td class="gt_row gt_center" headers="Value">NaN</td>
+<td class="gt_row gt_center" headers="Value">0.047</td>
 </tr>
 </tbody>
 </table>
@@ -1083,7 +1077,7 @@ Magnitude:
 Defaulting to continuous.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing missing values (`position_stack()`).</code></pre>
+<pre><code>Warning: Removed 1 rows containing missing values (`position_stack()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1094,10 +1088,10 @@ Defaulting to continuous.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing missing values (`geom_segment()`).</code></pre>
+<pre><code>Warning: Removed 1 rows containing missing values (`geom_segment()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 1 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1112,9 +1106,6 @@ Defaulting to continuous.</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing missing values (`position_stack()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">

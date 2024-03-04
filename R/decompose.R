@@ -31,7 +31,7 @@ decompose <- function(x, ...) {
 #' @examples
 #' data(jp_lower_2021)
 #'
-#' obj <- prcalc(jp_lower_2021[1:9, ],
+#' obj <- prcalc(jp_lower_2021,
 #'               m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
 #'               method = "hare")
 #'
@@ -64,7 +64,12 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
-      temp <- v_j[i-1] * sum(v_ij * log(v_ij / s_ij))
+      v_s <- log(v_ij / s_ij)
+
+      v_s[is.nan(v_s) | is.infinite(v_s)] <- 0
+
+      #temp <- v_j[i-1] * sum(v_ij * log(v_ij / s_ij))
+      temp <- v_j[i-1] * sum(v_ij * v_s)
 
       rd[i - 1] <- temp
     }
@@ -76,7 +81,12 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
-      temp <- s_j[i-1] * sum(s_ij * log(s_ij / v_ij))
+      s_v <- log(s_ij / v_ij)
+
+      s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+
+      #temp <- s_j[i-1] * sum(s_ij * log(s_ij / v_ij))
+      temp <- s_j[i-1] * sum(s_ij * s_v)
 
       rd[i - 1] <- temp
     }
@@ -90,7 +100,14 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
-      temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * ((s_ij / v_ij)^alpha - 1))
+      s_v <- log(s_ij / v_ij)
+      s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+
+      s_v_a <- s_v^alpha
+      s_v_a[is.infinite(s_v_a)] <- 0
+
+      #temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * ((s_ij / v_ij)^alpha - 1))
+      temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * (s_v_a - 1))
 
       rd[i - 1] <- temp
     }

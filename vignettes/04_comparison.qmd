@@ -85,15 +85,15 @@ compare(list("D'Hondt"      = index(obj1),
 
 ```{r}
 #| label: comparison-decomposition
-obj4 <- prcalc(jp_lower_2021[1:9, ],
+obj4 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "dt")
 
-obj5 <- prcalc(jp_lower_2021[1:9, ],
+obj5 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "dt")
 
-obj6 <- prcalc(jp_lower_2021[1:9, ],
+obj6 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 
