@@ -14,7 +14,7 @@ index <- function(x, ...) {
 #' @param x a `prcalc` object.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
-#' @param alpha a parameter for alpha-divergence. Default is `2`.
+#' @param alpha a parameter for alpha-divergence. `alpha` must be larger than 0. Default is `2`.
 #' @param omit_zero If `TRUE`, parties with 0 votes and 0 seats are ignored. Default is `TRUE`.
 #' @param ... ignored
 #'
@@ -50,6 +50,8 @@ index.prcalc <- function(x,
                          ...) {
 
   ID <- Value <- NULL
+
+  if (alpha <= 0) stop("alpha must be larger than 0.")
 
   # v: voteshare (v[1] > v[2] > ...)
   # s: seatshare (s[1] > s[2] > ...)

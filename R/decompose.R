@@ -12,7 +12,7 @@ decompose <- function(x, ...) {
 #' Decompsition
 #'
 #' @param x a `prcalc` object.
-#' @param alpha Default is `2`.
+#' @param alpha Default is `2` and it must be larger than `0`.
 #' @param ... ignored
 #'
 #' @rdname decompose
@@ -43,6 +43,7 @@ decompose.prcalc <- function(x,
 
   if (!inherits(x, "prcalc")) stop("Error!")
   if (length(x$m) < 2) stop("Error!")
+  if (alpha <= 0) stop("alpha must be larger than 0.")
 
   ra <- rd <- NULL
 
