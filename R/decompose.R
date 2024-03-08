@@ -42,6 +42,7 @@ decompose.prcalc <- function(x,
                              ...) {
 
   if (!inherits(x, "prcalc")) stop("Error!")
+  if (length(x$m) < 2) stop("Error!")
 
   ra <- rd <- NULL
 
@@ -81,9 +82,15 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
+      zero_ind <- (v_ij == 0) & (s_ij == 0)
+
+      v_ij <- v_ij[!zero_ind]
+      s_ij <- s_ij[!zero_ind]
+
       s_v <- log(s_ij / v_ij)
 
-      s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+      #s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+      s_v[s_ij == 0] <- 0
 
       #temp <- s_j[i-1] * sum(s_ij * log(s_ij / v_ij))
       temp <- s_j[i-1] * sum(s_ij * s_v)
@@ -100,13 +107,16 @@ decompose.prcalc <- function(x,
       v_ij <- raw_prop[, i]
       s_ij <- dist_prop[, i]
 
-      s_v <- log(s_ij / v_ij)
-      s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+      zero_ind <- (v_ij == 0) & (s_ij == 0)
+
+      v_ij <- v_ij[!zero_ind]
+      s_ij <- s_ij[!zero_ind]
+
+      s_v <- s_ij / v_ij
 
       s_v_a <- s_v^alpha
-      s_v_a[is.infinite(s_v_a)] <- 0
+      #s_v_a[is.infinite(s_v_a)] <- 0
 
-      #temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * ((s_ij / v_ij)^alpha - 1))
       temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * (s_v_a - 1))
 
       rd[i - 1] <- temp
@@ -120,6 +130,7 @@ decompose.prcalc <- function(x,
   attr(result, "labels") <- c("alpha-divergence",
                               "Reapportionment",
                               "Redistricting")
+  attr(result, "alpha") <- alpha
 
   structure(result, class = c("prcalc_decomposition"))
 

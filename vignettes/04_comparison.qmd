@@ -74,6 +74,7 @@ compare(list("D'Hondt"      = index(obj1),
 ```
 
 ```{r}
+#| fig-height: 8
 compare(list("D'Hondt"      = index(obj1), 
              "Hare"         = index(obj2), 
              "Sainte-Laguë" = index(obj3))) |> 

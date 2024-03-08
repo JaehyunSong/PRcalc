@@ -1,5 +1,9 @@
 ## News
 
+### PRcalc 0.8.4
+
+* `decompose()`のバグ修正
+
 ### PRcalc 0.8.3 (2024/02/29)
 
 * `decompose()`、`plot.prcalc_decomposition_compare()`の追加

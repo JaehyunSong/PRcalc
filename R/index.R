@@ -152,13 +152,13 @@ index.prcalc <- function(x,
     # s = 0の場合、log(v / s)は Inf
     # s = v = 0なら NaN
     ad_vs <- log(v / s)
-    ad_vs[is.infinite(ad_vs) | is.nan(ad_vs)] <- 0
+    ad_vs[is.nan(ad_vs)] <- 0
     ad <- sum(v * ad_vs)
   } else if (alpha == 1) {
     # s = 0の場合、log(s / v)は -Inf
     # s = v = 0なら NaN
     ad_sv <- log(s / v)
-    ad_sv[is.infinite(ad_sv) | is.nan(ad_sv)] <- 0
+    ad_sv[s == 0] <- 0
     ad <- sum(s * ad_sv)
   } else {
     # alpha < 0、かつ s = 0の場合、Inf

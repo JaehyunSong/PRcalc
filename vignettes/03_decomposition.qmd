@@ -37,3 +37,13 @@ decompose(obj1)
 decompose(obj2)
 decompose(obj3)
 ```
+
+Different $\alpha$ also available. Default is 2.
+
+```{r}
+decompose(obj1, alpha = 0.5)
+decompose(obj1, alpha = 1)
+decompose(obj1, alpha = 1.5)
+decompose(obj1, alpha = 2)
+decompose(obj1, alpha = 3)
+```
