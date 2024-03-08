@@ -15,6 +15,12 @@ date-modified: today
 
 ![](https://www.jaysong.net/PRcalc/figs/prcalc.png){fig-align="center" width=200px}
 
+:::{.callout-important}
+## {PRcalc} is under development!!
+
+Please use {PRcalc} ONLY for testing purposes.
+:::
+
 ## Installation
 
 ```r
