@@ -172,6 +172,7 @@ plot.prcalc <- function (x,
 #' @method plot prcalc_compare
 #'
 #' @param x a `prcalc_compare` object.
+#' @param subset_p a character vector. A subset of parties.
 #' @param bar_width Default is `0.75`.
 #' @param facet Separate facets by parties? Default is `FALSE`.
 #' @param free_y Default is `TRUE`.
@@ -204,6 +205,7 @@ plot.prcalc <- function (x,
 #'   plot()
 
 plot.prcalc_compare <- function (x,
+                                 subset_p   = NULL,
                                  bar_width  = 0.75,
                                  facet      = FALSE,
                                  free_y     = TRUE,
@@ -225,6 +227,11 @@ plot.prcalc_compare <- function (x,
     pivot_longer(cols      = -1,
                  names_to  = "Model",
                  values_to = "Value")
+
+  if (!is.null(subset_p)) {
+    data <- data |>
+      filter(Party %in% subset_p)
+  }
 
   names(data)[1] <- "Party"
 

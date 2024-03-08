@@ -47,7 +47,9 @@ compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = o
 compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
   plot(facet = TRUE)
 compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  plot(facet = TRUE, facet_col = 3, free_y = FALSE)
+  plot(subset_p = c("自民", "公明", "立憲", "共産", "維新", 
+                    "国民", "社民", "れ新", "N党"),
+       facet = TRUE, facet_col = 3, free_y = FALSE)
 ```
 
 ### Disproportionality
@@ -105,10 +107,10 @@ compare(list("D'Hondt"                           = decompose(obj4),
 compare(list("D'Hondt"                          = decompose(obj4),
              "D'Hondt\nModified magnitudes"     = decompose(obj5),
              "Modified-SL\nModified magnitudes" = decompose(obj6)))  |> 
-  plot(digits = 5)
+  plot()
 
-compare(list("D'Hondt"         = decompose(obj4),
-             "D'Hondt\nNew M." = decompose(obj5),
-             "MSL\nNew M."     = decompose(obj6)))  |>
-  plot(facet = TRUE, value_type = "text")
+compare(list("D'Hondt"                           = decompose(obj4),
+             "D'Hondt + Modified magnitudes"     = decompose(obj5),
+             "Modified-SL + Modified magnitudes" = decompose(obj6))) |>
+  plot(facet = TRUE, value_type = "text", digits = 5)
 ```
