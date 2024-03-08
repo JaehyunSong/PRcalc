@@ -140,7 +140,11 @@ index.prcalc <- function(x,
   # Lebeda’s WDRR
   wdrr <- (1 / 3) * ((sum(abs(v - s))) + (1 - (1 / max(s / v))))
   # Kullback-Leibler Surprise
-  kl <- sum(s * log(s / v))
+  {
+    log_sv <- log(s / v)
+    log_sv[s == 0] <- 0
+    kl <- sum(s * log_sv)
+  }
   # Likelihood Ratio Statistic
   lr <- 2 * sum(v * log(v / s))
   # Chi Squared

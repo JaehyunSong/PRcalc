@@ -17,7 +17,7 @@
 \arguments{
 \item{x}{a \code{prcalc_index} object.}
 
-\item{index}{a character vector. A subset of indices.}
+\item{index}{a character vector. A subset of indices. If \code{NULL}, all indices are displayed. Default is \code{NULL}.}
 
 \item{style}{Plot style. Lollipop (\verb{"lollipop}) or bar plot (\code{"bar"}). Default is \code{"bar"}.}
 

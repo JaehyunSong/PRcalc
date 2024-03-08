@@ -263,7 +263,7 @@ plot.prcalc_compare <- function (x,
 #' @method plot prcalc_index
 #'
 #' @param x a `prcalc_index` object.
-#' @param index a character vector. A subset of indices.
+#' @param index a character vector. A subset of indices. If `NULL`, all indices are displayed. Default is `NULL`.
 #' @param style Plot style. Lollipop (`"lollipop`) or bar plot (`"bar"`). Default is `"bar"`.
 #' @param bar_width Default is `0.75`.
 #' @param point_size Default is `5`.
@@ -339,7 +339,7 @@ plot.prcalc_index <- function (x,
 #' @method plot prcalc_index_compare
 #'
 #' @param x a `prcalc_index_compare` object.
-#' @param index a
+#' @param index a character vector of disproportionality indices. If `NULL`, all indices are displayed.
 #' @param style Plot style. Lollipop (`"lollipop`) or bar plot (`"bar"`). Default is `"bar"`.
 #' @param bar_width Default is `0.75`.
 #' @param point_size Default is `5`.
@@ -474,37 +474,37 @@ plot.prcalc_index_compare <- function (x,
 #' @export
 #'
 #' @examples
-#' data(jp_lower_2019)
+#' data(jp_lower_2021)
 #'
-#' obj1 <- prcalc(jp_lower_2021[1:9, ],
+#' obj1 <- prcalc(jp_lower_2021,
 #'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
 #'                method = "dt")
 #'
-#' obj2 <- prcalc(jp_lower_2021[1:9, ],
+#' obj2 <- prcalc(jp_lower_2021,
 #'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
 #'                method = "hare")
 #'
-#' obj3 <- prcalc(jp_lower_2021[1:9, ],
+#' obj3 <- prcalc(jp_lower_2021,
 #'                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
 #'                method = "msl")
 #'
-#' obj4 <- prcalc(jp_lower_2021[1:9, ],
+#' obj4 <- prcalc(jp_lower_2021,
 #'                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
 #'                method = "dt")
 #'
-#' obj5 <- prcalc(jp_lower_2021[1:9, ],
+#' obj5 <- prcalc(jp_lower_2021,
 #'                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
 #'                method = "msl")
 #'
 #' compare(list("D'Hondt"     = decompose(obj1),
 #'              "Hare"        = decompose(obj2),
 #'              "Modified-SL" = decompose(obj3))) |>
-#'   plot(digits = 5)
+#'   plot()
 #'
 #' compare(list("Model 1" = decompose(obj1),
 #'              "Model 2" = decompose(obj4),
 #'              "Model 3" = decompose(obj5))) |>
-#'   plot(facet = TRUE, value_type = "text")
+#'   plot(facet = TRUE, value_type = "text", digits = 5)
 
 
 plot.prcalc_decomposition_compare <- function (x,
@@ -553,26 +553,34 @@ plot.prcalc_decomposition_compare <- function (x,
   } else if (facet) {
 
     result <- data |>
-      ggplot(aes(x = Model)) +
-      geom_col(aes(y = Value), width = bar_width) +
-      facet_wrap(~Type, nrow = 1, scales = "free_y")
+      ggplot(aes(y = Model)) +
+      geom_col(aes(x = Value), width = bar_width) +
+      facet_wrap(Type~., ncol = 1, scales = "free_x")
 
     if (value_type == "label") {
       result <- result +
-        geom_label(aes(y = Value, label = sprintf(d_s, Value)),
+        geom_label(aes(x = Value, label = sprintf(d_s, Value)),
                    size = value_size)
     } else if (value_type == "text") {
       result <- result +
-        geom_text(aes(y = 0, label = sprintf(d_s, Value)),
-                  size = value_size, vjust = -0.25, color = "white")
+        geom_text(aes(x = 0, label = sprintf(d_s, Value)),
+                  size = value_size, hjust = -0.1, color = "white")
     }
-  }
 
+  }
 
   result <- result +
     labs(x = "Model", y = "Values", fill = "") +
     theme_bw(base_size = font_size) +
     theme(legend.position = "bottom")
+
+  if (facet) {
+    result <- result +
+      theme(panel.grid.major.y = element_blank())
+  } else if (!facet) {
+    result <- result +
+      theme(legend.position = "bottom")
+  }
 
   result
 }

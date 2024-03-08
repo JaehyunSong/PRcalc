@@ -21,7 +21,7 @@
 \arguments{
 \item{x}{a \code{prcalc_index_compare} object.}
 
-\item{index}{a}
+\item{index}{a character vector of disproportionality indices. If \code{NULL}, all indices are displayed.}
 
 \item{style}{Plot style. Lollipop (\verb{"lollipop}) or bar plot (\code{"bar"}). Default is \code{"bar"}.}
 

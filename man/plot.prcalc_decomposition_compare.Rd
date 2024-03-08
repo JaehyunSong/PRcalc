@@ -39,35 +39,35 @@ A \code{ggplot} object.
 Visualization of a \code{prcalc_decomposition_compare} object.
 }
 \examples{
-data(jp_lower_2019)
+data(jp_lower_2021)
 
-obj1 <- prcalc(jp_lower_2021[1:9, ],
+obj1 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "dt")
 
-obj2 <- prcalc(jp_lower_2021[1:9, ],
+obj2 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "hare")
 
-obj3 <- prcalc(jp_lower_2021[1:9, ],
+obj3 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "msl")
 
-obj4 <- prcalc(jp_lower_2021[1:9, ],
+obj4 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "dt")
 
-obj5 <- prcalc(jp_lower_2021[1:9, ],
+obj5 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 
 compare(list("D'Hondt"     = decompose(obj1),
              "Hare"        = decompose(obj2),
              "Modified-SL" = decompose(obj3))) |>
-  plot(digits = 5)
+  plot()
 
 compare(list("Model 1" = decompose(obj1),
              "Model 2" = decompose(obj4),
              "Model 3" = decompose(obj5))) |>
-  plot(facet = TRUE, value_type = "text")
+  plot(facet = TRUE, value_type = "text", digits = 5)
 }
