@@ -13,7 +13,13 @@ knitr:
 ```{r}
 #| label: setup
 library(PRcalc)
+```
 
+## Decomposition
+
+### Using a `prcalc` object.
+
+```{r}
 data(jp_lower_2021)
 
 obj1 <- prcalc(jp_lower_2021,
@@ -28,13 +34,6 @@ obj3 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 
-```
-
-## Decomposition
-
-### Using a `prcalc` object.
-
-```{r}
 decompose(obj1)
 decompose(obj2)
 decompose(obj3)
@@ -66,6 +65,7 @@ seats <- data.frame(Party  = LETTERS[1:5],
                     Block4 = c(7, 2, 5, 2, 3))
 
 custom_list <- list(votes, seats)
+custom_list
 
 decompose(custom_list)
 decompose(custom_list, alpha = -1, as_disprop = FALSE)
