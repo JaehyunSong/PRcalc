@@ -7,18 +7,20 @@
 \usage{
 index(x, ...)
 
-\method{index}{prcalc}(x, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
+\method{index}{prcalc}(x, as_disprop = TRUE, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
 
 \item{...}{ignored}
 
+\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{TRUE}.}
+
 \item{k}{a parameter for Generalized Gallagher index. Default is \code{2}.}
 
 \item{eta}{a parameter for Atkinson index. Default is \code{2}.}
 
-\item{alpha}{a parameter for alpha-divergence. Default is \code{2}.}
+\item{alpha}{a parameter for alpha-divergence. \code{alpha} must be larger than 0. Default is \code{2}.}
 
 \item{omit_zero}{If \code{TRUE}, parties with 0 votes and 0 seats are ignored. Default is \code{TRUE}.}
 }

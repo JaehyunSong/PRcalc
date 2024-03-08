@@ -308,18 +308,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="decompsition" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="decompsition">Decompsition</h2>
+<section id="decomposition-using-a-prcalc-or-list-object." class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="decomposition-using-a-prcalc-or-list-object.">Decomposition using a <code>prcalc</code> or <code>list</code> object.</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Decompsition</p>
+<p>Decomposition using a <code>prcalc</code> or <code>list</code> object.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
 <pre><code class="language-R">decompose(x, ...)
 
 ## S3 method for class 'prcalc'
-decompose(x, alpha = 2, ...)
+decompose(x, as_disprop = TRUE, alpha = 2, ...)
+
+## S3 method for class 'list'
+decompose(x, as_disprop = TRUE, alpha = 2, ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -330,7 +333,7 @@ decompose(x, alpha = 2, ...)
 <code id="decompose_:_x">x</code>
 </td>
 <td>
-a <code>prcalc</code> object.
+a <code>prcalc</code> or <code>list</code> object.
 </td>
 </tr>
 <tr>
@@ -343,13 +346,25 @@ ignored
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose_:_as_disprop">as_disprop</code>
+</td>
+<td>
+If <code>TRUE</code>, <code>alpha</code> must be larger than <code>0</code>. Default is <code>TRUE</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
 <code id="decompose_:_alpha">alpha</code>
 </td>
 <td>
-Default is <code>2</code>.
+Default is <code>2</code> and it must be larger than <code>0</code>.
 </td>
 </tr>
 </tbody></table>
+</section>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
+<p>If using a <code>list</code> object, the first element must be <code>data.frame</code> (or <code>tibble</code>) of votes and the second element must be <code>data.frame</code> (or <code>tibble</code>) of seats. See example for details.</p>
 </section>
 <section id="value" class="level3">
 <h3 class="anchored" data-anchor-id="value">Value</h3>
@@ -368,16 +383,35 @@ Default is <code>2</code>.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_lower_2021)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">21</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"hare"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a prcalc object</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_lower_2021)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">21</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"hare"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha-divergence  Reapportionment    Redistricting 
       0.03952282       0.00324211       0.03628070 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a list object</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>votes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Party  =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block1 =</span> <span class="fu">c</span>(<span class="dv">8600</span>, <span class="dv">2940</span>, <span class="dv">6729</span>, <span class="dv">2072</span>, <span class="dv">2153</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block2 =</span> <span class="fu">c</span>(<span class="dv">16282</span>, <span class="dv">4663</span>, <span class="dv">9915</span>, <span class="dv">2928</span>, <span class="dv">2587</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block3 =</span> <span class="fu">c</span>(<span class="dv">2172</span>, <span class="dv">8239</span>, <span class="dv">13911</span>, <span class="dv">4441</span>, <span class="dv">6175</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block4 =</span> <span class="fu">c</span>(<span class="dv">25900</span>, <span class="dv">8600</span>, <span class="dv">16500</span>, <span class="dv">5300</span>, <span class="dv">8600</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>seats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Party  =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block1 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block2 =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block3 =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Block4 =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(<span class="fu">list</span>(votes, seats))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>alpha-divergence  Reapportionment    Redistricting 
+      0.43479833       0.02667761       0.40812072 </code></pre>
 </div>
 </div>
 

@@ -6,6 +6,7 @@
 \usage{
 \method{plot}{prcalc_compare}(
   x,
+  subset_p = NULL,
   bar_width = 0.75,
   facet = FALSE,
   free_y = TRUE,
@@ -18,6 +19,8 @@
 }
 \arguments{
 \item{x}{a \code{prcalc_compare} object.}
+
+\item{subset_p}{a character vector. A subset of parties.}
 
 \item{bar_width}{Default is \code{0.75}.}
 

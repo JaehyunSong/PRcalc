@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code class="language-R">index(x, ...)
 
 ## S3 method for class 'prcalc'
-index(x, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
+index(x, as_disprop = TRUE, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -343,6 +343,14 @@ ignored
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="index_:_as_disprop">as_disprop</code>
+</td>
+<td>
+If <code>TRUE</code>, <code>alpha</code> must be larger than <code>0</code>. Default is <code>TRUE</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
 <code id="index_:_k">k</code>
 </td>
 <td>
@@ -362,7 +370,7 @@ a parameter for Atkinson index. Default is <code>2</code>.
 <code id="index_:_alpha">alpha</code>
 </td>
 <td>
-a parameter for alpha-divergence. Default is <code>2</code>.
+a parameter for alpha-divergence. <code>alpha</code> must be larger than 0. Default is <code>2</code>.
 </td>
 </tr>
 <tr>

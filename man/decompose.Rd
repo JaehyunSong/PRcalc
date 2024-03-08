@@ -3,26 +3,35 @@
 \name{decompose}
 \alias{decompose}
 \alias{decompose.prcalc}
-\title{Decompsition}
+\alias{decompose.list}
+\title{Decomposition using a \code{prcalc} or \code{list} object.}
 \usage{
 decompose(x, ...)
 
-\method{decompose}{prcalc}(x, alpha = 2, ...)
+\method{decompose}{prcalc}(x, as_disprop = TRUE, alpha = 2, ...)
+
+\method{decompose}{list}(x, as_disprop = TRUE, alpha = 2, ...)
 }
 \arguments{
-\item{x}{a \code{prcalc} object.}
+\item{x}{a \code{prcalc} or \code{list} object.}
 
 \item{...}{ignored}
 
-\item{alpha}{Default is \code{2}.}
+\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{TRUE}.}
+
+\item{alpha}{Default is \code{2} and it must be larger than \code{0}.}
 }
 \value{
 a \code{prcalc_decomposition} object.
 }
 \description{
-Decompsition
+Decomposition using a \code{prcalc} or \code{list} object.
+}
+\details{
+If using a \code{list} object, the first element must be \code{data.frame} (or \code{tibble}) of votes and the second element must be \code{data.frame} (or \code{tibble}) of seats. See example for details.
 }
 \examples{
+# Using a prcalc object
 data(jp_lower_2021)
 
 obj <- prcalc(jp_lower_2021,
@@ -30,6 +39,21 @@ obj <- prcalc(jp_lower_2021,
               method = "hare")
 
 decompose(obj)
+# Using a list object
+votes <- data.frame(Party  = LETTERS[1:5],
+                    Block1 = c(8600, 2940, 6729, 2072, 2153),
+                    Block2 = c(16282, 4663, 9915, 2928, 2587),
+                    Block3 = c(2172, 8239, 13911, 4441, 6175),
+                    Block4 = c(25900, 8600, 16500, 5300, 8600))
+
+seats <- data.frame(Party  = LETTERS[1:5],
+                    Block1 = c(3, 1, 2, 1, 1),
+                    Block2 = c(6, 2, 3, 1, 1),
+                    Block3 = c(7, 3, 5, 1, 2),
+                    Block4 = c(7, 2, 5, 2, 3))
+
+decompose(list(votes, seats))
+
 }
 \references{
 \itemize{
