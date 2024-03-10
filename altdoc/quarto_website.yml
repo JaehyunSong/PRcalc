@@ -56,6 +56,10 @@ website:
             href: man/plot.prcalc_index_compare.qmd
           - text: "plot.prcalc_decomposition_compare()"
             href: man/plot.prcalc_decomposition_compare.qmd
+          - text: "---"
+          - text: "Utilities"
+          - text: "read_prcalc()"
+            href: man/read_prcalc.qmd
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
         aria-label: $ALTDOC_PACKAGE_NAME GitHub

@@ -1,11 +1,8 @@
-#' Decomposition using a `prcalc` or `list` object.
-#' @param x a `prcalc` or `list` object.
+#' Decomposition using a `prcalc` or `prcalc_df` object.
+#' @param x a `prcalc` or `prcalc_df` object.
 #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
 #' @param alpha Default is `2` and it must be larger than `0`.
 #' @param ... ignored
-#'
-#' @details
-#' If using a `list` object, the first element must be `data.frame` (or `tibble`) of votes and the second element must be `data.frame` (or `tibble`) of seats. See example for details.
 #'
 #' @return
 #' a `prcalc_decomposition` object.
@@ -148,28 +145,14 @@ decompose.prcalc <- function(x,
 #' @export
 #'
 #' @examples
-#' # Using a list object
-#' votes <- data.frame(Party  = LETTERS[1:5],
-#'                     Block1 = c(8600, 2940, 6729, 2072, 2153),
-#'                     Block2 = c(16282, 4663, 9915, 2928, 2587),
-#'                     Block3 = c(2172, 8239, 13911, 4441, 6175),
-#'                     Block4 = c(25900, 8600, 16500, 5300, 8600))
+#' # Using a prcalc_df object
 #'
-#' seats <- data.frame(Party  = LETTERS[1:5],
-#'                     Block1 = c(3, 1, 2, 1, 1),
-#'                     Block2 = c(6, 2, 3, 1, 1),
-#'                     Block3 = c(7, 3, 5, 1, 2),
-#'                     Block4 = c(7, 2, 5, 2, 3))
-#'
-#' decompose(list(votes, seats))
-#'
-decompose.list <- function(x,
-                           as_disprop = TRUE,
-                           alpha = 2,
-                           ...) {
+decompose.prcalc_df <- function(x,
+                                as_disprop = FALSE,
+                                alpha = 2,
+                                ...) {
 
-  if (!inherits(x, "list")) stop("Error!")
-  if (ncol(x[[1]]) < 2) stop("Error!")
+  if (ncol(x) < 2) stop("Error!")
 
   if (as_disprop) {
     if (alpha <= 0) stop("alpha must be larger than 0.")
@@ -177,26 +160,25 @@ decompose.list <- function(x,
 
   ra <- rd <- NULL
 
-  x[[1]] <- x[[1]] |>
+  v_df <- x |>
     mutate(across(-1, \(x) if_else(is.na(x), 0, x)))
 
-  x[[2]] <- x[[2]] |>
-    mutate(across(-1, \(x) if_else(is.na(x), 0, x)))
+  s_df <- v_df |>
+    mutate(across(-1, \(x) if_else(x == 0, 0, 1)))
 
-  v_j <- colSums(x[[1]][, -1])
-  s_j <- colSums(x[[2]][, -1])
+  v_j <- colSums(v_df[, -1])
+  s_j <- colSums(s_df[, -1])
 
   v_j <- v_j / sum(v_j)
   s_j <- s_j / sum(s_j)
 
-  raw_prop <- x[[1]] |>
+  raw_prop <- v_df |>
     mutate(across(-1, \(x) x / sum(x))) |>
     as.data.frame()
 
-  dist_prop <- x[[2]] |>
+  dist_prop <- s_df |>
     mutate(across(-1, \(x) x / sum(x))) |>
     as.data.frame()
-
 
 
   if (alpha == 0) {
