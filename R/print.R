@@ -306,6 +306,9 @@ print.prcalc_decomposition <- function (x,
   result <- as.numeric(x)
   names(result) <- attr(x, "labels")
 
+  cat("alpha =", attr(x, "alpha"), "\n")
   print(result)
+  cat("\n")
+  cat('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
 
 }

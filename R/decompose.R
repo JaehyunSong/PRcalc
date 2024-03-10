@@ -177,6 +177,12 @@ decompose.list <- function(x,
 
   ra <- rd <- NULL
 
+  x[[1]] <- x[[1]] |>
+    mutate(across(-1, \(x) if_else(is.na(x), 0, x)))
+
+  x[[2]] <- x[[2]] |>
+    mutate(across(-1, \(x) if_else(is.na(x), 0, x)))
+
   v_j <- colSums(x[[1]][, -1])
   s_j <- colSums(x[[2]][, -1])
 
@@ -190,6 +196,8 @@ decompose.list <- function(x,
   dist_prop <- x[[2]] |>
     mutate(across(-1, \(x) x / sum(x))) |>
     as.data.frame()
+
+
 
   if (alpha == 0) {
     ra <- sum(v_j * log(v_j / s_j))
