@@ -538,10 +538,13 @@ plot.prcalc_decomposition_compare <- function (x,
     data <- data |>
       filter(Type != "Alpha-divergence") |>
       group_by(Model) |>
-      mutate(alpha   = sum(Value),
-             label_y = if_else(Type == "Redistricting",
-                               Value / 2, alpha),
-             Model   = paste0(Model, "\n(", sprintf(d_s, alpha), ")"))
+      mutate(Type    = factor(Type, levels = c("Special", "Reapportionment", "Redistricting")),
+             alpha   = sum(Value),
+             Model   = paste0(Model, "\n(", sprintf(d_s, alpha), ")")) |>
+      arrange(Model, desc(Type)) |>
+      mutate(base = cumsum(Value),
+             label_y = base - Value,
+             label_y = label_y + (Value / 2))
 
     result <- data |>
       ggplot(aes(x = Model)) +
@@ -550,17 +553,20 @@ plot.prcalc_decomposition_compare <- function (x,
     if (value_type == "label") {
       result <- result +
         geom_label(aes(y = label_y, label = sprintf(d_s, Value)),
-                   size = value_size, vjust = -0.25) +
+                   size = value_size) +
         coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
     } else if (value_type == "text") {
       result <- result +
         geom_text(aes(y = label_y, label = sprintf(d_s, Value)),
-                  size = value_size, vjust = -0.25) +
+                  size = value_size) +
         coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
     }
   } else if (facet) {
 
     result <- data |>
+      mutate(Type = factor(Type,
+                           levels = c("Alpha-divergence", "Special",
+                                      "Reapportionment", "Redistricting"))) |>
       ggplot(aes(y = Model)) +
       geom_col(aes(x = Value), width = bar_width) +
       facet_wrap(Type~., ncol = 1, scales = "free_x")

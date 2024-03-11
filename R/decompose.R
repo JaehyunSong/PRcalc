@@ -1,5 +1,5 @@
 #' Decomposition using a `prcalc` object.
-#' @param x a `prcalc` or `prcalc_df` object.
+#' @param x a `prcalc` object.
 #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
 #' @param alpha Default is `2` and it must be larger than `0`.
 #' @param ... ignored
@@ -43,6 +43,8 @@ decompose.prcalc <- function(x,
 
   if (!inherits(x, "prcalc")) stop("Error!")
   if (length(x$m) < 2) stop("Error!")
+
+  print
 
   if (as_disprop) {
     if (alpha <= 0) stop("alpha must be larger than 0.")

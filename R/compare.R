@@ -87,9 +87,16 @@ compare.list <- function (x,
              length (x) >= 2 &
              all(unlist(lapply(x, class)) == "prcalc_decomposition")) {
 
-    result <- tibble(Type = c("Alpha-divergence",
-                              "Reapportionment",
-                              "Redistricting"))
+    if (length(x[[1]]) == 3) {
+      result <- tibble(Type = c("Alpha-divergence",
+                                "Reapportionment",
+                                "Redistricting"))
+    } else if (length(x[[1]]) == 4) {
+      result <- tibble(Type = c("Alpha-divergence",
+                                "Special",
+                                "Reapportionment",
+                                "Redistricting"))
+    }
 
     for (i in 1:length(x)) {
       result[, m_names[i]] <- as.numeric(x[[i]])

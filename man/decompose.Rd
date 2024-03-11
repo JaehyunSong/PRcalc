@@ -10,7 +10,7 @@ decompose(x, ...)
 \method{decompose}{prcalc}(x, as_disprop = TRUE, alpha = 2, ...)
 }
 \arguments{
-\item{x}{a \code{prcalc} or \code{prcalc_df} object.}
+\item{x}{a \code{prcalc} object.}
 
 \item{...}{ignored}
 

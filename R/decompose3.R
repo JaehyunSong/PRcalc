@@ -1,0 +1,139 @@
+#' Decomposition using a `prcalc` object with three-step.
+#' @param x a `prcalc` object.
+#' @param spcial a character. names of special district.
+#' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
+#' @param alpha Default is `0`.
+#' @param ... ignored
+#'
+#' @return
+#' a `prcalc_decomposition` object.
+#'
+#' @import dplyr
+#'
+#' @rdname decompose3
+#'
+#' @export
+#'
+#' @references
+#' \itemize{
+#' \item{Yuta, Kamahara, Junichiro Wada, and Yuko Kasuya. 2021. "Malapportionment in space and time: Decompose it!" \emph{Electoral Studies}. 71: 102301.}
+#' }
+#'
+decompose3 <- function(x, ...) {
+  UseMethod("decompose3")
+}
+
+#' @rdname decompose3
+#'
+#' @export
+#'
+#' @seealso
+#' \code{\link{decompose}}
+#'
+#' @examples
+#' print("Hello world!")
+
+decompose3.prcalc <- function(x,
+                              special    = NULL,
+                              as_disprop = FALSE,
+                              alpha      = 0,
+                              ...) {
+
+  if (!inherits(x, "prcalc")) stop("Error!")
+  if (length(x$m) < 2) stop("Error!")
+
+  v <- x$raw[, -1]
+  s <- x$dist[, -1]
+
+  names(v)[names(v) %in% special] <- paste0("s_", 1:length(special))
+  names(v)[!grepl("s", names(v))] <- paste0("g_", 1:(length(x$m) - length(special)))
+  names(s)[names(s) %in% special] <- paste0("s_", 1:length(special))
+  names(s)[!grepl("s", names(s))] <- paste0("g_", 1:(length(x$m) - length(special)))
+
+  v_prop <- colSums(v) / sum(colSums(v))
+  s_prop <- colSums(s) / sum(colSums(s))
+
+  ##################
+  ## Special term ##
+  ##################
+  total_v <- sum(colSums(v))
+  total_s <- sum(colSums(s))
+
+  special_v <- sum(colSums(v)[grepl("s", names(v))])
+  special_s <- sum(colSums(s)[grepl("s", names(s))])
+
+  general_v <- total_v - sum(special_v)
+  general_s <- total_s - sum(special_s)
+
+  special_vec1 <- c(special_v, general_v)
+  special_vec2 <- c(special_s, general_s)
+
+  special_v_prop <- special_vec1 / sum(special_vec1)
+  special_s_prop <- special_vec2 / sum(special_vec2)
+
+  special <- sum(special_v_prop * log(special_v_prop / special_s_prop))
+
+  ##########################
+  ## Reapportionment term ##
+  ##########################
+
+  temp_ra_vec <- c("s" = NA, "g" = NA)
+
+  for (i in c("s", "g")) {
+    temp_v <- v_prop[grepl(i, names(v_prop))]
+    temp_s <- s_prop[grepl(i, names(s_prop))]
+
+    v_hj <- temp_v / sum(temp_v)
+    s_hj <- temp_s / sum(temp_s)
+
+    temp_ra_vec[i] <- sum(v_hj * log(v_hj / s_hj))
+  }
+
+  ra <- sum(special_v_prop * temp_ra_vec)
+
+  ########################
+  ## Redistricting term ##
+  ########################
+
+  temp_rd_vec <- c("s" = NA, "g" = NA)
+
+  for (i in c("s", "g")) {
+    temp_v <- v_prop[grepl(i, names(v_prop))]
+    temp_s <- s_prop[grepl(i, names(s_prop))]
+
+    v_hj <- temp_v / sum(temp_v)
+
+    temp <- c()
+
+    for (j in 1:length(temp_v)) {
+      v_hji <- v[, names(temp_v)[j]]
+      s_hji <- s[, names(temp_v)[j]]
+
+      s_hji <- s_hji[v_hji > 0]
+      v_hji <- v_hji[v_hji > 0]
+
+      s_hji <- s_hji / sum(s_hji)
+      v_hji <- v_hji / sum(v_hji)
+
+      temp[j] <- sum(v_hji * log(v_hji / s_hji))
+    }
+
+    temp_rd_vec[i] <- sum(v_hj * temp)
+
+  }
+
+  rd <- sum(special_v_prop * temp_rd_vec)
+
+  result <- c("d"       = special + ra + rd,
+              "special" = special,
+              "ra"      = ra,
+              "rd"      = rd)
+  attr(result, "labels") <- c("alpha-divergence",
+                              "Special",
+                              "Reapportionment",
+                              "Redistricting")
+  attr(result, "alpha") <- alpha
+
+  structure(result, class = c("prcalc_decomposition"))
+
+}
