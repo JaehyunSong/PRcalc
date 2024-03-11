@@ -287,7 +287,6 @@
 #'
 #' @usage data(au_district_2010)
 #'
-#' @source U.S. Census Bureau
 "au_district_2010"
 
 #' Result in Japanese lowerhouse election (2011)
@@ -302,7 +301,6 @@
 #'   \item{ Seats }{ number of seats }
 #' }
 #'
-#' @usage data(au_district_2010)
+#' @usage data(jp_lower_2021_result)
 #'
-#' @source U.S. Census Bureau
-"au_district_2010"
+"jp_lower_2021_result"

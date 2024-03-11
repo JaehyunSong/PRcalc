@@ -40,8 +40,6 @@ Transformation from \code{.csv} to \code{prcalc}
 }
 \examples{
 \dontrun{
-library(PRcalc)
-
 obj <- read_prcalc("data/my_file.csv")
                    region     = "region",
                    district   = "district",

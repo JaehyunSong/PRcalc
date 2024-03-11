@@ -39,7 +39,6 @@ Transformation from \code{data.frame} to \code{prcalc}
 an object \code{x} must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
 }
 \examples{
-library(PRcalc)
 data(au_district_2010)
 
 obj <- as_prcalc(au_district_2010,
