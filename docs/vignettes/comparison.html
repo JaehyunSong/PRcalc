@@ -130,20 +130,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="../vignettes/01_calculation.html">
+    <a class="dropdown-item" href="../vignettes/calculation.html">
  <span class="dropdown-text">Seat allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/02_index.html">
+    <a class="dropdown-item" href="../vignettes/index.html">
  <span class="dropdown-text">Disproportionality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/03_decomposition.html">
+    <a class="dropdown-item" href="../vignettes/decomposition.html">
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/04_comparison.html">
+    <a class="dropdown-item" href="../vignettes/comparison.html">
  <span class="dropdown-text">Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../vignettes/import.html">
+ <span class="dropdown-text">Import Dataset</span></a>
   </li>  
     </ul>
   </li>
@@ -153,15 +157,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
         <li>
-    <a class="dropdown-item" href="../vignettes/05_list_of_methods.html">
+    <a class="dropdown-item" href="../vignettes/list_of_methods.html">
  <span class="dropdown-text">List of methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/06_list_of_indices.html">
+    <a class="dropdown-item" href="../vignettes/list_of_indices.html">
  <span class="dropdown-text">List of indices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/07_dataset.html">
+    <a class="dropdown-item" href="../vignettes/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
     </ul>
@@ -241,6 +245,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../man/read_prcalc.html">
  <span class="dropdown-text">read_prcalc()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../man/as_prcalc.html">
+ <span class="dropdown-text">as_prcalc()</span></a>
   </li>  
     </ul>
   </li>
@@ -441,23 +449,23 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="xncsgvfqqh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xncsgvfqqh table {
+<div id="fdqbaizxya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fdqbaizxya table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xncsgvfqqh thead, #xncsgvfqqh tbody, #xncsgvfqqh tfoot, #xncsgvfqqh tr, #xncsgvfqqh td, #xncsgvfqqh th {
+#fdqbaizxya thead, #fdqbaizxya tbody, #fdqbaizxya tfoot, #fdqbaizxya tr, #fdqbaizxya td, #fdqbaizxya th {
   border-style: none;
 }
 
-#xncsgvfqqh p {
+#fdqbaizxya p {
   margin: 0;
   padding: 0;
 }
 
-#xncsgvfqqh .gt_table {
+#fdqbaizxya .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -483,12 +491,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_caption {
+#fdqbaizxya .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xncsgvfqqh .gt_title {
+#fdqbaizxya .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -500,7 +508,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#xncsgvfqqh .gt_subtitle {
+#fdqbaizxya .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -512,7 +520,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#xncsgvfqqh .gt_heading {
+#fdqbaizxya .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -524,13 +532,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_bottom_border {
+#fdqbaizxya .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_col_headings {
+#fdqbaizxya .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -545,7 +553,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_col_heading {
+#fdqbaizxya .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -565,7 +573,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#xncsgvfqqh .gt_column_spanner_outer {
+#fdqbaizxya .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,15 +585,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#xncsgvfqqh .gt_column_spanner_outer:first-child {
+#fdqbaizxya .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xncsgvfqqh .gt_column_spanner_outer:last-child {
+#fdqbaizxya .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xncsgvfqqh .gt_column_spanner {
+#fdqbaizxya .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -597,11 +605,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#xncsgvfqqh .gt_spanner_row {
+#fdqbaizxya .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xncsgvfqqh .gt_group_heading {
+#fdqbaizxya .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -627,7 +635,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#xncsgvfqqh .gt_empty_group_heading {
+#fdqbaizxya .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -642,15 +650,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#xncsgvfqqh .gt_from_md > :first-child {
+#fdqbaizxya .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xncsgvfqqh .gt_from_md > :last-child {
+#fdqbaizxya .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xncsgvfqqh .gt_row {
+#fdqbaizxya .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -669,7 +677,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#xncsgvfqqh .gt_stub {
+#fdqbaizxya .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -682,7 +690,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#xncsgvfqqh .gt_stub_row_group {
+#fdqbaizxya .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -696,15 +704,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#xncsgvfqqh .gt_row_group_first td {
+#fdqbaizxya .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xncsgvfqqh .gt_row_group_first th {
+#fdqbaizxya .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xncsgvfqqh .gt_summary_row {
+#fdqbaizxya .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -714,16 +722,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#xncsgvfqqh .gt_first_summary_row {
+#fdqbaizxya .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_first_summary_row.thick {
+#fdqbaizxya .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xncsgvfqqh .gt_last_summary_row {
+#fdqbaizxya .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -733,7 +741,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_grand_summary_row {
+#fdqbaizxya .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -743,7 +751,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#xncsgvfqqh .gt_first_grand_summary_row {
+#fdqbaizxya .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -753,7 +761,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_last_grand_summary_row_top {
+#fdqbaizxya .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -763,11 +771,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_striped {
+#fdqbaizxya .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xncsgvfqqh .gt_table_body {
+#fdqbaizxya .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -776,7 +784,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_footnotes {
+#fdqbaizxya .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -790,7 +798,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_footnote {
+#fdqbaizxya .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -799,7 +807,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#xncsgvfqqh .gt_sourcenotes {
+#fdqbaizxya .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -813,7 +821,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xncsgvfqqh .gt_sourcenote {
+#fdqbaizxya .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -821,63 +829,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#xncsgvfqqh .gt_left {
+#fdqbaizxya .gt_left {
   text-align: left;
 }
 
-#xncsgvfqqh .gt_center {
+#fdqbaizxya .gt_center {
   text-align: center;
 }
 
-#xncsgvfqqh .gt_right {
+#fdqbaizxya .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xncsgvfqqh .gt_font_normal {
+#fdqbaizxya .gt_font_normal {
   font-weight: normal;
 }
 
-#xncsgvfqqh .gt_font_bold {
+#fdqbaizxya .gt_font_bold {
   font-weight: bold;
 }
 
-#xncsgvfqqh .gt_font_italic {
+#fdqbaizxya .gt_font_italic {
   font-style: italic;
 }
 
-#xncsgvfqqh .gt_super {
+#fdqbaizxya .gt_super {
   font-size: 65%;
 }
 
-#xncsgvfqqh .gt_footnote_marks {
+#fdqbaizxya .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xncsgvfqqh .gt_asterisk {
+#fdqbaizxya .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xncsgvfqqh .gt_indent_1 {
+#fdqbaizxya .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xncsgvfqqh .gt_indent_2 {
+#fdqbaizxya .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xncsgvfqqh .gt_indent_3 {
+#fdqbaizxya .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xncsgvfqqh .gt_indent_4 {
+#fdqbaizxya .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xncsgvfqqh .gt_indent_5 {
+#fdqbaizxya .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -981,7 +989,7 @@ Attaching package: 'PRcalc'</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/comparison-allocation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/comparison-allocation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -990,7 +998,7 @@ Attaching package: 'PRcalc'</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/comparison-allocation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/comparison-allocation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1001,7 +1009,7 @@ Attaching package: 'PRcalc'</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/comparison-allocation-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/comparison-allocation-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1125,23 +1133,23 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="nndijsuyaq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nndijsuyaq table {
+<div id="nqnkjrmbdn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nqnkjrmbdn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nndijsuyaq thead, #nndijsuyaq tbody, #nndijsuyaq tfoot, #nndijsuyaq tr, #nndijsuyaq td, #nndijsuyaq th {
+#nqnkjrmbdn thead, #nqnkjrmbdn tbody, #nqnkjrmbdn tfoot, #nqnkjrmbdn tr, #nqnkjrmbdn td, #nqnkjrmbdn th {
   border-style: none;
 }
 
-#nndijsuyaq p {
+#nqnkjrmbdn p {
   margin: 0;
   padding: 0;
 }
 
-#nndijsuyaq .gt_table {
+#nqnkjrmbdn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1167,12 +1175,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_caption {
+#nqnkjrmbdn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nndijsuyaq .gt_title {
+#nqnkjrmbdn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1184,7 +1192,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#nndijsuyaq .gt_subtitle {
+#nqnkjrmbdn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1196,7 +1204,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#nndijsuyaq .gt_heading {
+#nqnkjrmbdn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1208,13 +1216,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_bottom_border {
+#nqnkjrmbdn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_col_headings {
+#nqnkjrmbdn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1229,7 +1237,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_col_heading {
+#nqnkjrmbdn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1249,7 +1257,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#nndijsuyaq .gt_column_spanner_outer {
+#nqnkjrmbdn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1261,15 +1269,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#nndijsuyaq .gt_column_spanner_outer:first-child {
+#nqnkjrmbdn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nndijsuyaq .gt_column_spanner_outer:last-child {
+#nqnkjrmbdn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nndijsuyaq .gt_column_spanner {
+#nqnkjrmbdn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1281,11 +1289,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#nndijsuyaq .gt_spanner_row {
+#nqnkjrmbdn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nndijsuyaq .gt_group_heading {
+#nqnkjrmbdn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1311,7 +1319,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#nndijsuyaq .gt_empty_group_heading {
+#nqnkjrmbdn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1326,15 +1334,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#nndijsuyaq .gt_from_md > :first-child {
+#nqnkjrmbdn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nndijsuyaq .gt_from_md > :last-child {
+#nqnkjrmbdn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nndijsuyaq .gt_row {
+#nqnkjrmbdn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1353,7 +1361,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#nndijsuyaq .gt_stub {
+#nqnkjrmbdn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1366,7 +1374,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#nndijsuyaq .gt_stub_row_group {
+#nqnkjrmbdn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1380,15 +1388,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#nndijsuyaq .gt_row_group_first td {
+#nqnkjrmbdn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nndijsuyaq .gt_row_group_first th {
+#nqnkjrmbdn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nndijsuyaq .gt_summary_row {
+#nqnkjrmbdn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1398,16 +1406,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#nndijsuyaq .gt_first_summary_row {
+#nqnkjrmbdn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_first_summary_row.thick {
+#nqnkjrmbdn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nndijsuyaq .gt_last_summary_row {
+#nqnkjrmbdn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1417,7 +1425,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_grand_summary_row {
+#nqnkjrmbdn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1427,7 +1435,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#nndijsuyaq .gt_first_grand_summary_row {
+#nqnkjrmbdn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1437,7 +1445,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_last_grand_summary_row_top {
+#nqnkjrmbdn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1447,11 +1455,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_striped {
+#nqnkjrmbdn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nndijsuyaq .gt_table_body {
+#nqnkjrmbdn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1460,7 +1468,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_footnotes {
+#nqnkjrmbdn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1474,7 +1482,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_footnote {
+#nqnkjrmbdn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1483,7 +1491,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#nndijsuyaq .gt_sourcenotes {
+#nqnkjrmbdn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1497,7 +1505,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#nndijsuyaq .gt_sourcenote {
+#nqnkjrmbdn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1505,63 +1513,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#nndijsuyaq .gt_left {
+#nqnkjrmbdn .gt_left {
   text-align: left;
 }
 
-#nndijsuyaq .gt_center {
+#nqnkjrmbdn .gt_center {
   text-align: center;
 }
 
-#nndijsuyaq .gt_right {
+#nqnkjrmbdn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nndijsuyaq .gt_font_normal {
+#nqnkjrmbdn .gt_font_normal {
   font-weight: normal;
 }
 
-#nndijsuyaq .gt_font_bold {
+#nqnkjrmbdn .gt_font_bold {
   font-weight: bold;
 }
 
-#nndijsuyaq .gt_font_italic {
+#nqnkjrmbdn .gt_font_italic {
   font-style: italic;
 }
 
-#nndijsuyaq .gt_super {
+#nqnkjrmbdn .gt_super {
   font-size: 65%;
 }
 
-#nndijsuyaq .gt_footnote_marks {
+#nqnkjrmbdn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nndijsuyaq .gt_asterisk {
+#nqnkjrmbdn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nndijsuyaq .gt_indent_1 {
+#nqnkjrmbdn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nndijsuyaq .gt_indent_2 {
+#nqnkjrmbdn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nndijsuyaq .gt_indent_3 {
+#nqnkjrmbdn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nndijsuyaq .gt_indent_4 {
+#nqnkjrmbdn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nndijsuyaq .gt_indent_5 {
+#nqnkjrmbdn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1620,7 +1628,7 @@ Defaulting to continuous.</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1661,7 +1669,7 @@ Defaulting to continuous.</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/comparison-decomposition-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/comparison-decomposition-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1672,7 +1680,7 @@ Defaulting to continuous.</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparison_files/figure-html/comparison-decomposition-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/comparison-decomposition-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>

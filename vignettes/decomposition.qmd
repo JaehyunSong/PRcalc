@@ -1,0 +1,111 @@
+---
+title: "Decomposition"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+## Preparation
+
+```{r}
+#| label: setup
+library(PRcalc)
+```
+
+## Decomposition
+
+### Using a `prcalc` object.
+
+```{r}
+data(jp_lower_2021)
+
+obj1 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+               method = "dt")
+
+obj2 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "dt")
+
+obj3 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "msl")
+
+decompose(obj1)
+decompose(obj2)
+decompose(obj3)
+```
+
+Different $\alpha$ also available. Default is 2.
+
+```{r}
+decompose(obj1, alpha = 0.5)
+decompose(obj1, alpha = 1)
+decompose(obj1, alpha = 1.5)
+decompose(obj1, alpha = 2)
+decompose(obj1, alpha = 3)
+```
+
+### Import `prcalc` object and decomposition.
+
+#### From `.csv` format
+
+Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
+
+```{r}
+#| error: true
+obj4 <- read_prcalc("../data/sample_dataset.csv",
+                    region     = "region",
+                    district   = "district",
+                    population = "electorates",
+                    magnitude  = "magnitude")
+
+obj4
+
+decompose(obj4, alpha = 2)
+# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj4, alpha = 0, as_disprop = FALSE)
+```
+
+
+#### From `data.frame`
+
+```{r}
+data(au_district_2010)
+
+au_district_2010
+
+# If all mangnitudes are 1, "magnitude" can be omitted.
+obj5 <- as_prcalc(au_district_2010,
+                  region     = "region",
+                  district   = "district",
+                  population = "electorates")
+
+obj5
+
+decompose(obj5, alpha = 2)
+# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj5, alpha = 0, as_disprop = FALSE)
+```
+
+```{r}
+data(jp_lower_2021_result)
+
+jp_lower_2021_result
+
+obj6 <- as_prcalc(jp_lower_2021_result,
+                  region        = "Pref",
+                  district      = "Party",
+                  population    = "Votes",
+                  magnitude     = "Seats",
+                  distinct_name = TRUE)
+
+obj6
+
+decompose(obj6, alpha = 2)
+# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj6, alpha = 0, as_disprop = FALSE)
+```

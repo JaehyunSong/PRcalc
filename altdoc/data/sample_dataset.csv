@@ -1,0 +1,151 @@
+region,district,electorates,magnitude
+Australian Capital Territory,CANBERRA,124294,1
+Australian Capital Territory,FRASER,123647,1
+New South Wales,BANKS,98742,1
+New South Wales,BARTON,95231,1
+New South Wales,BENNELONG,98915,1
+New South Wales,BEROWRA,95124,1
+New South Wales,BLAXLAND,95362,1
+New South Wales,BRADFIELD,97255,1
+New South Wales,CALARE,98463,1
+New South Wales,CHARLTON,94474,1
+New South Wales,CHIFLEY,97605,1
+New South Wales,COOK,100733,1
+New South Wales,COWPER,94654,1
+New South Wales,CUNNINGHAM,100643,1
+New South Wales,DOBELL,93646,1
+New South Wales,EDEN-MONARO,96465,1
+New South Wales,FARRER,94026,1
+New South Wales,FOWLER,95564,1
+New South Wales,GILMORE,96340,1
+New South Wales,GRAYNDLER,98112,1
+New South Wales,GREENWAY,93837,1
+New South Wales,HUGHES,97998,1
+New South Wales,HUME,97719,1
+New South Wales,HUNTER,91523,1
+New South Wales,KINGSFORD SMITH,97730,1
+New South Wales,LINDSAY,95975,1
+New South Wales,LYNE,92535,1
+New South Wales,MACARTHUR,90040,1
+New South Wales,MACKELLAR,98520,1
+New South Wales,MACQUARIE,97536,1
+New South Wales,MCMAHON,96061,1
+New South Wales,MITCHELL,93573,1
+New South Wales,NEW ENGLAND,99616,1
+New South Wales,NEWCASTLE,92855,1
+New South Wales,NORTH SYDNEY,97578,1
+New South Wales,PAGE,94336,1
+New South Wales,PARKES,100170,1
+New South Wales,PARRAMATTA,93999,1
+New South Wales,PATERSON,92140,1
+New South Wales,REID,95878,1
+New South Wales,RICHMOND,92391,1
+New South Wales,RIVERINA,98584,1
+New South Wales,ROBERTSON,96588,1
+New South Wales,SHORTLAND,94224,1
+New South Wales,SYDNEY,95286,1
+New South Wales,THROSBY,95871,1
+New South Wales,WARRINGAH,96708,1
+New South Wales,WATSON,97761,1
+New South Wales,WENTWORTH,101446,1
+New South Wales,WERRIWA,90963,1
+Northern Territory,LINGIARI,61168,1
+Northern Territory,SOLOMON,59891,1
+Queensland,BLAIR,83045,1
+Queensland,BONNER,92661,1
+Queensland,BOWMAN,91856,1
+Queensland,BRISBANE,92197,1
+Queensland,CAPRICORNIA,91961,1
+Queensland,DAWSON,94533,1
+Queensland,DICKSON,90130,1
+Queensland,FADDEN,85225,1
+Queensland,FAIRFAX,89726,1
+Queensland,FISHER,83724,1
+Queensland,FLYNN,91349,1
+Queensland,FORDE,82535,1
+Queensland,GRIFFITH,92573,1
+Queensland,GROOM,93364,1
+Queensland,HERBERT,91044,1
+Queensland,HINKLER,91371,1
+Queensland,KENNEDY,94434,1
+Queensland,LEICHHARDT,93113,1
+Queensland,LILLEY,97407,1
+Queensland,LONGMAN,87046,1
+Queensland,MARANOA,97892,1
+Queensland,MCPHERSON,90139,1
+Queensland,MONCRIEFF,89150,1
+Queensland,MORETON,92730,1
+Queensland,OXLEY,82768,1
+Queensland,PETRIE,86651,1
+Queensland,RANKIN,94594,1
+Queensland,RYAN,98239,1
+Queensland,WIDE BAY,92607,1
+Queensland,WRIGHT,85296,1
+South Australia,ADELAIDE,98519,1
+South Australia,BARKER,104845,1
+South Australia,BOOTHBY,97860,1
+South Australia,GREY,99775,1
+South Australia,HINDMARSH,100216,1
+South Australia,KINGSTON,102281,1
+South Australia,MAKIN,96233,1
+South Australia,MAYO,101510,1
+South Australia,PORT ADELAIDE,104280,1
+South Australia,STURT,99023,1
+South Australia,WAKEFIELD,100156,1
+Tasmania,BASS,71686,1
+Tasmania,BRADDON,71576,1
+Tasmania,DENISON,71350,1
+Tasmania,FRANKLIN,71122,1
+Tasmania,LYONS,72875,1
+Victoria,ASTON,93447,1
+Victoria,BALLARAT,97756,1
+Victoria,BATMAN,89131,1
+Victoria,BENDIGO,100610,1
+Victoria,BRUCE,88124,1
+Victoria,CALWELL,101342,1
+Victoria,CASEY,92317,1
+Victoria,CHISHOLM,86220,1
+Victoria,CORANGAMITE,101512,1
+Victoria,CORIO,91924,1
+Victoria,DEAKIN,87710,1
+Victoria,DUNKLEY,95299,1
+Victoria,FLINDERS,100852,1
+Victoria,GELLIBRAND,95571,1
+Victoria,GIPPSLAND,97521,1
+Victoria,GOLDSTEIN,93918,1
+Victoria,GORTON,113675,1
+Victoria,HIGGINS,90409,1
+Victoria,HOLT,108891,1
+Victoria,HOTHAM,89529,1
+Victoria,INDI,92914,1
+Victoria,ISAACS,102769,1
+Victoria,JAGAJAGA,95146,1
+Victoria,KOOYONG,89626,1
+Victoria,LA TROBE,97956,1
+Victoria,LALOR,116976,1
+Victoria,MALLEE,89824,1
+Victoria,MARIBYRNONG,88413,1
+Victoria,MCEWEN,115811,1
+Victoria,MCMILLAN,93285,1
+Victoria,MELBOURNE,102881,1
+Victoria,MELBOURNE PORTS,97766,1
+Victoria,MENZIES,90931,1
+Victoria,MURRAY,90182,1
+Victoria,SCULLIN,90811,1
+Victoria,WANNON,92236,1
+Victoria,WILLS,98588,1
+Western Australia,BRAND,88186,1
+Western Australia,CANNING,90079,1
+Western Australia,COWAN,89536,1
+Western Australia,CURTIN,90430,1
+Western Australia,DURACK,85811,1
+Western Australia,FORREST,89649,1
+Western Australia,FREMANTLE,93378,1
+Western Australia,HASLUCK,93930,1
+Western Australia,MOORE,92340,1
+Western Australia,O'CONNOR,92902,1
+Western Australia,PEARCE,89562,1
+Western Australia,PERTH,91907,1
+Western Australia,STIRLING,91775,1
+Western Australia,SWAN,90817,1
+Western Australia,TANGNEY,92232,1

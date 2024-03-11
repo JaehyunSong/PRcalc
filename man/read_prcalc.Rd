@@ -2,12 +2,19 @@
 % Please edit documentation in R/read_prcalc.R
 \name{read_prcalc}
 \alias{read_prcalc}
-\title{Transformation from \code{.csv} or \code{data.frame} to \code{prcalc_df}}
+\title{Transformation from \code{.csv} to \code{prcalc_df}}
 \usage{
-read_prcalc(x, region = NULL, district = NULL, population = NULL, ...)
+read_prcalc(
+  x,
+  region = NULL,
+  district = NULL,
+  population = NULL,
+  magnitude = NULL,
+  ...
+)
 }
 \arguments{
-\item{x}{a data.frame or path of \code{.csv} file.}
+\item{x}{a character. a path of \code{.csv} file.}
 
 \item{region}{a character. A column name of region or state.}
 
@@ -15,16 +22,18 @@ read_prcalc(x, region = NULL, district = NULL, population = NULL, ...)
 
 \item{population}{a character. A column name of population.}
 
-\item{...}{ignored
+\item{magnitude}{a character. A column name of magnitude. If \code{NULL}, magnitudes of all districts are replaced by \code{1}.}
 
-#' @details
-\code{.csv} file must include three columns---region(state) name, district name, and population (number of electorates).}
+\item{...}{ignored}
 }
 \value{
-a \code{prcalc_df} object.
+a \code{prcalc} object.
 }
 \description{
-Transformation from \code{.csv} or \code{data.frame} to \code{prcalc_df}
+Transformation from \code{.csv} to \code{prcalc_df}
+}
+\details{
+\code{.csv} file must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
 }
 \examples{
 \dontrun{

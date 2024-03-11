@@ -36,3 +36,25 @@ knitr:
 |`jp_census_1970`|Japan|1970|
 |`jp_census_2015`|Japan|2015|
 |`us_census_2020`|US|2020|
+
+## Electoral districts
+
+* 1st column: the name of the state / prefecture
+* 2nd column: the name of the district
+* 3rd column: the electorates of the district
+* 4th column: the magnitudes of the district
+
+|Name|Country|Year|
+|:---|:---|---:|
+|`au_district_2010`|Australia|2010|
+
+## Electoral results
+
+* 1st column: the name of party
+* 2nd column: the name of the block (district)
+* 3rd column: the number of votes
+* 4th column: the number of seats
+
+|Name|Country|Year|Type|
+|:---|:---|---:|:---|
+|`jp_lower_2021_result`|Japan|2010|Lower house|

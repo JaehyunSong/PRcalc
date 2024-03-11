@@ -1,5 +1,11 @@
 ## News
 
+### PRcalc 0.8.5
+
+* `read_prcalc()`追加
+* `as_prcalc()`追加
+* データセット2種（`jp_lower_2021_result`, `au_district_2010`）追加
+
 ### PRcalc 0.8.4
 
 * `decompose()`のバグ修正

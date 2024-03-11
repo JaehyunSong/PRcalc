@@ -3,14 +3,11 @@
 \name{decompose}
 \alias{decompose}
 \alias{decompose.prcalc}
-\alias{decompose.prcalc_df}
-\title{Decomposition using a \code{prcalc} or \code{prcalc_df} object.}
+\title{Decomposition using a \code{prcalc} object.}
 \usage{
 decompose(x, ...)
 
 \method{decompose}{prcalc}(x, as_disprop = TRUE, alpha = 2, ...)
-
-\method{decompose}{prcalc_df}(x, as_disprop = FALSE, alpha = 2, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} or \code{prcalc_df} object.}
@@ -25,7 +22,7 @@ decompose(x, ...)
 a \code{prcalc_decomposition} object.
 }
 \description{
-Decomposition using a \code{prcalc} or \code{prcalc_df} object.
+Decomposition using a \code{prcalc} object.
 }
 \examples{
 # Using a prcalc object
@@ -36,8 +33,6 @@ obj <- prcalc(jp_lower_2021,
               method = "hare")
 
 decompose(obj)
-# Using a prcalc_df object
-
 }
 \references{
 \itemize{

@@ -130,20 +130,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="../vignettes/01_calculation.html">
+    <a class="dropdown-item" href="../vignettes/calculation.html">
  <span class="dropdown-text">Seat allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/02_index.html">
+    <a class="dropdown-item" href="../vignettes/index.html">
  <span class="dropdown-text">Disproportionality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/03_decomposition.html">
+    <a class="dropdown-item" href="../vignettes/decomposition.html">
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/04_comparison.html">
+    <a class="dropdown-item" href="../vignettes/comparison.html">
  <span class="dropdown-text">Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../vignettes/import.html">
+ <span class="dropdown-text">Import Dataset</span></a>
   </li>  
     </ul>
   </li>
@@ -153,15 +157,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
         <li>
-    <a class="dropdown-item" href="../vignettes/05_list_of_methods.html">
+    <a class="dropdown-item" href="../vignettes/list_of_methods.html">
  <span class="dropdown-text">List of methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/06_list_of_indices.html">
+    <a class="dropdown-item" href="../vignettes/list_of_indices.html">
  <span class="dropdown-text">List of indices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/07_dataset.html">
+    <a class="dropdown-item" href="../vignettes/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
     </ul>
@@ -242,6 +246,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../man/read_prcalc.html">
  <span class="dropdown-text">read_prcalc()</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../man/as_prcalc.html">
+ <span class="dropdown-text">as_prcalc()</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item compact">
@@ -314,15 +322,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="transformation-from-.csv-or-data.frame-to-prcalc_df" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="transformation-from-.csv-or-data.frame-to-prcalc_df">Transformation from <code>.csv</code> or <code>data.frame</code> to <code>prcalc_df</code></h2>
+<section id="transformation-from-.csv-to-prcalc_df" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="transformation-from-.csv-to-prcalc_df">Transformation from <code>.csv</code> to <code>prcalc_df</code></h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Transformation from <code>.csv</code> or <code>data.frame</code> to <code>prcalc_df</code></p>
+<p>Transformation from <code>.csv</code> to <code>prcalc_df</code></p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">read_prcalc(x, region = NULL, district = NULL, population = NULL, ...)
+<pre><code class="language-R">read_prcalc(
+  x,
+  region = NULL,
+  district = NULL,
+  population = NULL,
+  magnitude = NULL,
+  ...
+)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -333,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code id="read_prcalc_:_x">x</code>
 </td>
 <td>
-a data.frame or path of <code>.csv</code> file.
+a character. a path of <code>.csv</code> file.
 </td>
 </tr>
 <tr>
@@ -362,18 +377,29 @@ a character. A column name of population.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="read_prcalc_:_magnitude">magnitude</code>
+</td>
+<td>
+a character. A column name of magnitude. If <code>NULL</code>, magnitudes of all districts are replaced by <code>1</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
 <code id="read_prcalc_:_...">…</code>
 </td>
 <td>
-<p>ignored</p>
-#’ <span class="citation" data-cites="details">@details</span> <code>.csv</code> file must include three columns—region(state) name, district name, and population (number of electorates).
+ignored
 </td>
 </tr>
 </tbody></table>
 </section>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
+<p><code>.csv</code> file must include three columns—region(state) name, district name, and population (number of electorates). A column of magnitude is optional.</p>
+</section>
 <section id="value" class="level3">
 <h3 class="anchored" data-anchor-id="value">Value</h3>
-<p>a <code>prcalc_df</code> object.</p>
+<p>a <code>prcalc</code> object.</p>
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>

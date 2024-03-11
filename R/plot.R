@@ -122,6 +122,7 @@ plot.prcalc <- function (x,
   if (!is.null(subset_p)) temp_df <- filter(temp_df, party %in% subset_p)
 
   temp_df <- temp_df |>
+    mutate(across(type:block, \(x) as.character(x))) |>
     mutate(type  = fct_inorder(type),
            party = fct_inorder(party),
            block = fct_inorder(block))

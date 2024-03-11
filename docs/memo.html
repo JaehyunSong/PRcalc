@@ -96,20 +96,24 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="./vignettes/01_calculation.html">
+    <a class="dropdown-item" href="./vignettes/calculation.html">
  <span class="dropdown-text">Seat allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./vignettes/02_index.html">
+    <a class="dropdown-item" href="./vignettes/index.html">
  <span class="dropdown-text">Disproportionality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./vignettes/03_decomposition.html">
+    <a class="dropdown-item" href="./vignettes/decomposition.html">
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./vignettes/04_comparison.html">
+    <a class="dropdown-item" href="./vignettes/comparison.html">
  <span class="dropdown-text">Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./vignettes/import.html">
+ <span class="dropdown-text">Import Dataset</span></a>
   </li>  
     </ul>
   </li>
@@ -119,15 +123,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
         <li>
-    <a class="dropdown-item" href="./vignettes/05_list_of_methods.html">
+    <a class="dropdown-item" href="./vignettes/list_of_methods.html">
  <span class="dropdown-text">List of methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./vignettes/06_list_of_indices.html">
+    <a class="dropdown-item" href="./vignettes/list_of_indices.html">
  <span class="dropdown-text">List of indices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./vignettes/07_dataset.html">
+    <a class="dropdown-item" href="./vignettes/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
     </ul>
@@ -208,6 +212,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./man/read_prcalc.html">
  <span class="dropdown-text">read_prcalc()</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./man/as_prcalc.html">
+ <span class="dropdown-text">as_prcalc()</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item compact">
@@ -287,15 +295,12 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>多分、全体的に間違っているはず</li>
 </ul></li>
-<li><code>index()</code>における未対応指標
+<li><code>decompose()</code>関数の動作確認</li>
+<li>3段階分解の関数を追加
 <ul>
-<li>FragnelliとGambarelli &amp; Biella</li>
-<li>これら要る???</li>
+<li>または、既存の<code>decompose()</code>で対応</li>
+<li><code>plot.prcalc_decompose()</code>もこれに合わせて修正</li>
 </ul></li>
-<li><code>decompose()</code>関数実装</li>
-<li><code>plot()</code>メソッドにおけるX軸テキストの回転機能（<code>angle</code>引数）</li>
-<li><code>index()</code>、<code>decompose()</code>において分母に0が入ることもあるが、これはどうする？</li>
-<li><code>read_prcalc()</code>関数で<code>.csv</code>読み込み（定数不均衡など）</li>
 </ul>
 
 

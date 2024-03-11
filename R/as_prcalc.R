@@ -1,5 +1,5 @@
-#' Transformation from `.csv` to `prcalc`
-#' @param x a character. a path of `.csv` file.
+#' Transformation from `data.frame` to `prcalc`
+#' @param x a `data.frame` or `tibble` object.
 #' @param region a character (mandatory). A column name of region or state.
 #' @param district a character (mandatory). A column name of district.
 #' @param population a character (mandatory). A column name of population.
@@ -8,45 +8,44 @@
 #' @param ... ignored
 #'
 #' @details
-#' `.csv` file must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
+#' an object `x` must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
 #'
 #' @return
 #' a `prcalc` object.
 #'
-#' @import readr
+#' @import utils
 #' @import tibble
 #' @import dplyr
 #' @import tidyr
 #'
-#' @rdname read_prcalc
+#' @rdname as_prcalc
 #'
 #' @export
 #'
 #' @seealso
-#' \code{\link{as_prcalc}}
+#' \code{\link{read_prcalc}}
 #'
 #' @examples
-#' \dontrun{
 #' library(PRcalc)
+#' data(au_district_2010)
 #'
-#' obj <- read_prcalc("data/my_file.csv")
-#'                    region     = "region",
-#'                    district   = "district",
-#'                    population = "electorates",
-#'                    magnitude  = "magnitude")
+#' obj <- as_prcalc(au_district_2010,
+#'                  region     = "region",
+#'                  district   = "district",
+#'                  population = "electorates",
+#'                  magnitude  = "magnitude")
 #' obj
-#' }
-read_prcalc <- function(x,
-                        region        = NULL,
-                        district      = NULL,
-                        population    = NULL,
-                        magnitude     = NULL,
-                        distinct_name = FALSE,
-                        ...) {
+as_prcalc <- function(x,
+                      region        = NULL,
+                      district      = NULL,
+                      population    = NULL,
+                      magnitude     = NULL,
+                      distinct_name = FALSE,
+                      ...) {
 
   Population <- Region <- District <- Magnitude <- NULL
 
-  temp_df <- read.csv(x)
+  temp_df <- as.data.frame(x)
 
   if (is.null(magnitude)) {
     temp_df1 <- temp_df |>

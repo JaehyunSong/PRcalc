@@ -10,15 +10,16 @@ website:
     right:
       - text: "Tutorials"
         menu:
-          - vignettes/01_calculation.qmd
-          - vignettes/02_index.qmd
-          - vignettes/03_decomposition.qmd
-          - vignettes/04_comparison.qmd
+          - vignettes/calculation.qmd
+          - vignettes/index.qmd
+          - vignettes/decomposition.qmd
+          - vignettes/comparison.qmd
+          - vignettes/import.qmd
       - text: "Information"
         menu:
-          - vignettes/05_list_of_methods.qmd
-          - vignettes/06_list_of_indices.qmd
-          - vignettes/07_dataset.qmd
+          - vignettes/list_of_methods.qmd
+          - vignettes/list_of_indices.qmd
+          - vignettes/dataset.qmd
       - text: "Functions"
         menu:
           - text: "Calculation"
@@ -60,6 +61,8 @@ website:
           - text: "Utilities"
           - text: "read_prcalc()"
             href: man/read_prcalc.qmd
+          - text: "as_prcalc()"
+            href: man/as_prcalc.qmd
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
         aria-label: $ALTDOC_PACKAGE_NAME GitHub

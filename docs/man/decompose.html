@@ -130,20 +130,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="../vignettes/01_calculation.html">
+    <a class="dropdown-item" href="../vignettes/calculation.html">
  <span class="dropdown-text">Seat allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/02_index.html">
+    <a class="dropdown-item" href="../vignettes/index.html">
  <span class="dropdown-text">Disproportionality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/03_decomposition.html">
+    <a class="dropdown-item" href="../vignettes/decomposition.html">
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/04_comparison.html">
+    <a class="dropdown-item" href="../vignettes/comparison.html">
  <span class="dropdown-text">Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../vignettes/import.html">
+ <span class="dropdown-text">Import Dataset</span></a>
   </li>  
     </ul>
   </li>
@@ -153,15 +157,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
         <li>
-    <a class="dropdown-item" href="../vignettes/05_list_of_methods.html">
+    <a class="dropdown-item" href="../vignettes/list_of_methods.html">
  <span class="dropdown-text">List of methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/06_list_of_indices.html">
+    <a class="dropdown-item" href="../vignettes/list_of_indices.html">
  <span class="dropdown-text">List of indices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/07_dataset.html">
+    <a class="dropdown-item" href="../vignettes/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
     </ul>
@@ -242,6 +246,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../man/read_prcalc.html">
  <span class="dropdown-text">read_prcalc()</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../man/as_prcalc.html">
+ <span class="dropdown-text">as_prcalc()</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item compact">
@@ -314,11 +322,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="decomposition-using-a-prcalc-or-prcalc_df-object." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="decomposition-using-a-prcalc-or-prcalc_df-object.">Decomposition using a <code>prcalc</code> or <code>prcalc_df</code> object.</h2>
+<section id="decomposition-using-a-prcalc-object." class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="decomposition-using-a-prcalc-object.">Decomposition using a <code>prcalc</code> object.</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Decomposition using a <code>prcalc</code> or <code>prcalc_df</code> object.</p>
+<p>Decomposition using a <code>prcalc</code> object.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
@@ -326,9 +334,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 ## S3 method for class 'prcalc'
 decompose(x, as_disprop = TRUE, alpha = 2, ...)
-
-## S3 method for class 'prcalc_df'
-decompose(x, as_disprop = FALSE, alpha = 2, ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -400,7 +405,6 @@ alpha-divergence  Reapportionment    Redistricting
 
 Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a prcalc_df object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

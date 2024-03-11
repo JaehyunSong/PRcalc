@@ -272,3 +272,37 @@
 #'
 #' @source U.S. Census Bureau
 "us_census_2020"
+
+#' List of electoral district in Australia (2010)
+#'
+#' List of electoral district in Australia (2010)
+#'
+#' @format A data frame with 150 rows and 4 variables:
+#' \describe{
+#'   \item{ region }{ name of region }
+#'   \item{ district }{ name of district }
+#'   \item{ electorates }{ number of electorates }
+#'   \item{ magnitude }{ magnitude }
+#' }
+#'
+#' @usage data(au_district_2010)
+#'
+#' @source U.S. Census Bureau
+"au_district_2010"
+
+#' Result in Japanese lowerhouse election (2011)
+#'
+#' Result in Japanese lowerhouse election (2011)
+#'
+#' @format A data frame with 103 rows and 4 variables:
+#' \describe{
+#'   \item{ Party }{ name of party }
+#'   \item{ Pref }{ name of prefecture }
+#'   \item{ Votes }{ number of votes }
+#'   \item{ Seats }{ number of seats }
+#' }
+#'
+#' @usage data(au_district_2010)
+#'
+#' @source U.S. Census Bureau
+"au_district_2010"
