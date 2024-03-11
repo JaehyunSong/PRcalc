@@ -322,11 +322,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="transformation-from-.csv-to-prcalc_df" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="transformation-from-.csv-to-prcalc_df">Transformation from <code>.csv</code> to <code>prcalc_df</code></h2>
+<section id="transformation-from-.csv-to-prcalc" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="transformation-from-.csv-to-prcalc">Transformation from <code>.csv</code> to <code>prcalc</code></h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Transformation from <code>.csv</code> to <code>prcalc_df</code></p>
+<p>Transformation from <code>.csv</code> to <code>prcalc</code></p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
@@ -336,6 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   district = NULL,
   population = NULL,
   magnitude = NULL,
+  distinct_name = FALSE,
   ...
 )
 </code></pre>
@@ -356,7 +357,7 @@ a character. a path of <code>.csv</code> file.
 <code id="read_prcalc_:_region">region</code>
 </td>
 <td>
-a character. A column name of region or state.
+a character (mandatory). A column name of region or state.
 </td>
 </tr>
 <tr>
@@ -364,7 +365,7 @@ a character. A column name of region or state.
 <code id="read_prcalc_:_district">district</code>
 </td>
 <td>
-a character. A column name of district.
+a character (mandatory). A column name of district.
 </td>
 </tr>
 <tr>
@@ -372,7 +373,7 @@ a character. A column name of district.
 <code id="read_prcalc_:_population">population</code>
 </td>
 <td>
-a character. A column name of population.
+a character (mandatory). A column name of population.
 </td>
 </tr>
 <tr>
@@ -380,7 +381,15 @@ a character. A column name of population.
 <code id="read_prcalc_:_magnitude">magnitude</code>
 </td>
 <td>
-a character. A column name of magnitude. If <code>NULL</code>, magnitudes of all districts are replaced by <code>1</code>.
+a character (optional). A column name of magnitude. If <code>NULL</code>, magnitudes of all districts are replaced by <code>1</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="read_prcalc_:_distinct_name">distinct_name</code>
+</td>
+<td>
+If <code>TRUE</code>, all district names are distinct. Default is <code>FALSE</code>.
 </td>
 </tr>
 <tr>
@@ -401,6 +410,10 @@ ignored
 <h3 class="anchored" data-anchor-id="value">Value</h3>
 <p>a <code>prcalc</code> object.</p>
 </section>
+<section id="see-also" class="level3">
+<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
+<p><code>as_prcalc</code></p>
+</section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
 <div class="cell" data-layout-align="center">
@@ -408,8 +421,12 @@ ignored
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"data/my_file.csv"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"data/my_file.csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                   region     <span class="ot">=</span> <span class="st">"region"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                   district   <span class="ot">=</span> <span class="st">"district"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                   population <span class="ot">=</span> <span class="st">"electorates"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                   magnitude  <span class="ot">=</span> <span class="st">"magnitude"</span><span class="er">)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>obj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

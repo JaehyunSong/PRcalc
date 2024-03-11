@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_prcalc.R
 \name{read_prcalc}
 \alias{read_prcalc}
-\title{Transformation from \code{.csv} to \code{prcalc_df}}
+\title{Transformation from \code{.csv} to \code{prcalc}}
 \usage{
 read_prcalc(
   x,
@@ -10,19 +10,22 @@ read_prcalc(
   district = NULL,
   population = NULL,
   magnitude = NULL,
+  distinct_name = FALSE,
   ...
 )
 }
 \arguments{
 \item{x}{a character. a path of \code{.csv} file.}
 
-\item{region}{a character. A column name of region or state.}
+\item{region}{a character (mandatory). A column name of region or state.}
 
-\item{district}{a character. A column name of district.}
+\item{district}{a character (mandatory). A column name of district.}
 
-\item{population}{a character. A column name of population.}
+\item{population}{a character (mandatory). A column name of population.}
 
-\item{magnitude}{a character. A column name of magnitude. If \code{NULL}, magnitudes of all districts are replaced by \code{1}.}
+\item{magnitude}{a character (optional). A column name of magnitude. If \code{NULL}, magnitudes of all districts are replaced by \code{1}.}
+
+\item{distinct_name}{If \code{TRUE}, all district names are distinct. Default is \code{FALSE}.}
 
 \item{...}{ignored}
 }
@@ -30,7 +33,7 @@ read_prcalc(
 a \code{prcalc} object.
 }
 \description{
-Transformation from \code{.csv} to \code{prcalc_df}
+Transformation from \code{.csv} to \code{prcalc}
 }
 \details{
 \code{.csv} file must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
@@ -39,7 +42,14 @@ Transformation from \code{.csv} to \code{prcalc_df}
 \dontrun{
 library(PRcalc)
 
-my_df <- read_prcalc("data/my_file.csv")
-my_df
+obj <- read_prcalc("data/my_file.csv")
+                   region     = "region",
+                   district   = "district",
+                   population = "electorates",
+                   magnitude  = "magnitude")
+obj
 }
+}
+\seealso{
+\code{\link{as_prcalc}}
 }

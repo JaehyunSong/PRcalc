@@ -3,7 +3,7 @@
 \docType{data}
 \name{au_district_2010}
 \alias{au_district_2010}
-\title{List of electoral district in Australia (2011)}
+\title{List of electoral district in Australia (2010)}
 \format{
 A data frame with 150 rows and 4 variables:
 \describe{
@@ -12,14 +12,28 @@ A data frame with 150 rows and 4 variables:
 \item{ electorates }{ number of electorates }
 \item{ magnitude }{ magnitude }
 }
+
+A data frame with 103 rows and 4 variables:
+\describe{
+\item{ Party }{ name of party }
+\item{ Pref }{ name of prefecture }
+\item{ Votes }{ number of votes }
+\item{ Seats }{ number of seats }
+}
 }
 \source{
+U.S. Census Bureau
+
 U.S. Census Bureau
 }
 \usage{
 data(au_district_2010)
+
+data(au_district_2010)
 }
 \description{
-List of electoral district in Australia (2011)
+List of electoral district in Australia (2010)
+
+Result in Japanese lowerhouse election (2011)
 }
 \keyword{datasets}

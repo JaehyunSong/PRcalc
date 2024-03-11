@@ -26,7 +26,6 @@
 #' \code{\link{read_prcalc}}
 #'
 #' @examples
-#' library(PRcalc)
 #' data(au_district_2010)
 #'
 #' obj <- as_prcalc(au_district_2010,

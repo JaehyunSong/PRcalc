@@ -31,7 +31,7 @@ prcalc(jp_upper_2019, m = 50, method = "dt")
 japan_2021 <- prcalc(jp_lower_2021,
                      m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
                      method = "hare")
-
+japan_2021
 }
 \seealso{
 \code{\link{print.prcalc}}, \code{\link{summary.prcalc}}, \code{\link{plot.prcalc}}
