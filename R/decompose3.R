@@ -1,6 +1,6 @@
 #' Decomposition using a `prcalc` object with three-step.
 #' @param x a `prcalc` object.
-#' @param spcial a character. names of special district.
+#' @param special a character. names of special district.
 #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
 #' @param alpha Default is `0`.
 #' @param ... ignored
@@ -31,7 +31,16 @@ decompose3 <- function(x, ...) {
 #' \code{\link{decompose}}
 #'
 #' @examples
-#' print("Hello world!")
+#' data(nz_district)
+#'
+#' nz_1949 <- nz_district |>
+#'   dplyr::filter(year == 1949) |>
+#'   as_prcalc(region     = "region",
+#'             district   = "district",
+#'             population = "electorates",
+#'             magnitude  = "magnitude")
+#'
+#' decompose_1949 <- decompose3(nz_1949, special = "Maori")
 
 decompose3.prcalc <- function(x,
                               special    = NULL,
@@ -44,6 +53,8 @@ decompose3.prcalc <- function(x,
 
   v <- x$raw[, -1]
   s <- x$dist[, -1]
+
+  temp_a <- 1 / (alpha * (alpha - 1))
 
   names(v)[names(v) %in% special] <- paste0("s_", 1:length(special))
   names(v)[!grepl("s", names(v))] <- paste0("g_", 1:(length(x$m) - length(special)))
@@ -71,7 +82,14 @@ decompose3.prcalc <- function(x,
   special_v_prop <- special_vec1 / sum(special_vec1)
   special_s_prop <- special_vec2 / sum(special_vec2)
 
-  special <- sum(special_v_prop * log(special_v_prop / special_s_prop))
+  if (alpha == 0) {
+    special <- sum(special_v_prop * log(special_v_prop / special_s_prop))
+  } else if (alpha == 1) {
+    special <- sum(special_s_prop * log(special_s_prop / special_v_prop))
+  } else {
+    special <- 0
+  }
+
 
   ##########################
   ## Reapportionment term ##
@@ -86,7 +104,15 @@ decompose3.prcalc <- function(x,
     v_hj <- temp_v / sum(temp_v)
     s_hj <- temp_s / sum(temp_s)
 
-    temp_ra_vec[i] <- sum(v_hj * log(v_hj / s_hj))
+    if (alpha == 0) {
+      temp_ra_vec[i] <- sum(v_hj * log(v_hj / s_hj))
+    } else if (alpha == 1) {
+      temp_ra_vec[i] <- sum(s_hj * log(s_hj / v_hj))
+    } else {
+      temp_ra_vec[i] <- 0
+    }
+
+
   }
 
   ra <- sum(special_v_prop * temp_ra_vec)
@@ -115,7 +141,13 @@ decompose3.prcalc <- function(x,
       s_hji <- s_hji / sum(s_hji)
       v_hji <- v_hji / sum(v_hji)
 
-      temp[j] <- sum(v_hji * log(v_hji / s_hji))
+      if (alpha == 0) {
+        temp[j] <- sum(v_hji * log(v_hji / s_hji))
+      } else if (alpha == 1) {
+        temp[j] <- sum(s_hji * log(s_hji / v_hji))
+      } else {
+        temp[j] <- 0
+      }
     }
 
     temp_rd_vec[i] <- sum(v_hj * temp)

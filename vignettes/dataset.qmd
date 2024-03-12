@@ -39,14 +39,16 @@ knitr:
 
 ## Electoral districts
 
-* 1st column: the name of the state / prefecture
-* 2nd column: the name of the district
-* 3rd column: the electorates of the district
-* 4th column: the magnitudes of the district
+* `year`: election year
+* `region`: the name of the state / prefecture
+* `district`: the name of the district
+* `electorates`: the electorates of the district
+* `magnitude`: the magnitudes of the district
 
-|Name|Country|Year|
-|:---|:---|---:|
-|`au_district_2010`|Australia|2010|
+|Name|Country|Year|Special district|
+|:---|:---|---:|:---|
+|`au_district_2010`|Australia|2010|none|
+|`nz_district`|New Zealand|1949-2011|`"Maori"`|
 
 ## Electoral results
 

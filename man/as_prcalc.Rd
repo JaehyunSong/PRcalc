@@ -6,10 +6,10 @@
 \usage{
 as_prcalc(
   x,
-  region = NULL,
-  district = NULL,
-  population = NULL,
-  magnitude = NULL,
+  region = "region",
+  district = "district",
+  population = "electorates",
+  magnitude = "magnitude",
   distinct_name = FALSE,
   ...
 )

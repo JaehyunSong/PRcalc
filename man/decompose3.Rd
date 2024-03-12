@@ -14,11 +14,11 @@ decompose3(x, ...)
 
 \item{...}{ignored}
 
+\item{special}{a character. names of special district.}
+
 \item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{FALSE}.}
 
 \item{alpha}{Default is \code{0}.}
-
-\item{spcial}{a character. names of special district.}
 }
 \value{
 a \code{prcalc_decomposition} object.
@@ -27,7 +27,16 @@ a \code{prcalc_decomposition} object.
 Decomposition using a \code{prcalc} object with three-step.
 }
 \examples{
-print("Hello world!")
+data(nz_district)
+
+nz_1949 <- nz_district |>
+  dplyr::filter(year == 1949) |>
+  as_prcalc(region     = "region",
+            district   = "district",
+            population = "electorates",
+            magnitude  = "magnitude")
+
+decompose_1949 <- decompose3(nz_1949, special = "Maori")
 }
 \references{
 \itemize{

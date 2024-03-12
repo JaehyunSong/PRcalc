@@ -304,3 +304,20 @@
 #' @usage data(jp_lower_2021_result)
 #'
 "jp_lower_2021_result"
+
+#' List of electoral district in New Zealand
+#'
+#' List of electoral district in New Zealand
+#'
+#' @format A data frame with 1800 rows and 5 variables:
+#' \describe{
+#'   \item{ year }{ election year }
+#'   \item{ region }{ names of region. \emph{Maori} is a special region. }
+#'   \item{ district }{ names of districts }
+#'   \item{ electorates }{ number of electorates }
+#'   \item{ magnitude }{ electoral magnitude }
+#' }
+#'
+#' @usage data(nz_district)
+#'
+"nz_district"

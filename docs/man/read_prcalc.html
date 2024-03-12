@@ -189,6 +189,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">decompose()</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../man/decompose3.html">
+ <span class="dropdown-text">decompose3()</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../man/compare.html">
  <span class="dropdown-text">compare()</span></a>
   </li>  
@@ -332,10 +336,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
 <pre><code class="language-R">read_prcalc(
   x,
-  region = NULL,
-  district = NULL,
-  population = NULL,
-  magnitude = NULL,
+  region = "region",
+  district = "district",
+  population = "electorates",
+  magnitude = "magnitude",
   distinct_name = FALSE,
   ...
 )

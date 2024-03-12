@@ -8,3 +8,4 @@ figures/
 ^docs$
 ^altdoc$
 ^_quarto$
+test/

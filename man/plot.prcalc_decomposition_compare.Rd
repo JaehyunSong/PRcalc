@@ -8,8 +8,10 @@
   x,
   facet = FALSE,
   bar_width = 0.75,
-  value_type = "label",
+  value_type = "all",
+  value_angle = 0,
   value_size = 3,
+  x_angle = 0,
   font_size = 12,
   digits = 3,
   ...
@@ -22,9 +24,13 @@
 
 \item{bar_width}{Default is \code{0.75}.}
 
-\item{value_type}{\code{"label"}, \code{"text"}, or \code{"none"}. Default is \code{"label"}.}
+\item{value_type}{\code{"all"}, \code{"total"}, or \code{"none"}. If \code{"total"}, only alpha-divergences are displayed. Default is \code{"all"}.}
 
-\item{value_size}{Default is \code{3}.}
+\item{value_angle}{Algle of values. Default is \code{0}.}
+
+\item{value_size}{Default is \code{3}. If \code{value_type == "none"}, it is ignored.}
+
+\item{x_angle}{an angle of x-ticks label (\code{0} to \code{90}). Defualt is \code{0}.}
 
 \item{font_size}{a font size. Default is \code{12}.}
 
@@ -69,5 +75,5 @@ compare(list("D'Hondt"     = decompose(obj1),
 compare(list("Model 1" = decompose(obj1),
              "Model 2" = decompose(obj4),
              "Model 3" = decompose(obj5))) |>
-  plot(facet = TRUE, value_type = "text", digits = 5)
+  plot(facet = TRUE, value_type = "total", digits = 5)
 }

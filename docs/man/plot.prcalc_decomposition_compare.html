@@ -189,6 +189,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">decompose()</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../man/decompose3.html">
+ <span class="dropdown-text">decompose3()</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../man/compare.html">
  <span class="dropdown-text">compare()</span></a>
   </li>  
@@ -335,8 +339,10 @@ plot(
   x,
   facet = FALSE,
   bar_width = 0.75,
-  value_type = "label",
+  value_type = "all",
+  value_angle = 0,
   value_size = 3,
+  x_angle = 0,
   font_size = 12,
   digits = 3,
   ...
@@ -375,7 +381,15 @@ Default is <code>0.75</code>.
 <code id="plot.prcalc_decomposition_compare_:_value_type">value_type</code>
 </td>
 <td>
-<code>“label”</code>, <code>“text”</code>, or <code>“none”</code>. Default is <code>“label”</code>.
+<code>“all”</code>, <code>“total”</code>, or <code>“none”</code>. If <code>“total”</code>, only alpha-divergences are displayed. Default is <code>“all”</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="plot.prcalc_decomposition_compare_:_value_angle">value_angle</code>
+</td>
+<td>
+Algle of values. Default is <code>0</code>.
 </td>
 </tr>
 <tr>
@@ -383,7 +397,15 @@ Default is <code>0.75</code>.
 <code id="plot.prcalc_decomposition_compare_:_value_size">value_size</code>
 </td>
 <td>
-Default is <code>3</code>.
+Default is <code>3</code>. If <code>value_type == “none”</code>, it is ignored.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="plot.prcalc_decomposition_compare_:_x_angle">x_angle</code>
+</td>
+<td>
+an angle of x-ticks label (<code>0</code> to <code>90</code>). Defualt is <code>0</code>.
 </td>
 </tr>
 <tr>
@@ -457,7 +479,7 @@ Ignored
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"Model 1"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj1),</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Model 2"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Model 3"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj5))) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">value_type =</span> <span class="st">"text"</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">value_type =</span> <span class="st">"total"</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

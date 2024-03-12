@@ -39,7 +39,7 @@
 
 \item{font_size}{a font size.}
 
-\item{angle}{an angle of x-ticks label (0 to 90). Defualt is 0.}
+\item{angle}{an angle of x-ticks label (\code{0} to \code{90}). Defualt is \code{0}.}
 
 \item{facet_col}{a number of columns of facets.}
 

@@ -11,7 +11,7 @@
 #' @param subset_p a character vector of party names.
 #' @param free_y If `FALSE`, y-axes are fixed over all facets. Default is `TRUE`.
 #' @param font_size a font size.
-#' @param angle an angle of x-ticks label (0 to 90). Defualt is 0.
+#' @param angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
 #' @param facet_col a number of columns of facets.
 #' @param legend_pos a position of legend. Default is `"bottom"`
 #' @param ... Ignored
@@ -467,8 +467,10 @@ plot.prcalc_index_compare <- function (x,
 #' @param x a `prcalc_decomposition_compare` object.
 #' @param facet Default is `FALSE`.
 #' @param bar_width Default is `0.75`.
-#' @param value_type `"label"`, `"text"`, or `"none"`. Default is `"label"`.
-#' @param value_size Default is `3`.
+#' @param value_type `"all"`, `"total"`, or `"none"`. If `"total"`, only alpha-divergences are displayed. Default is `"all"`.
+#' @param value_angle Algle of values. Default is `0`.
+#' @param value_size Default is `3`. If `value_type == "none"`, it is ignored.
+#' @param x_angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
 #' @param font_size a font size. Default is `12`.
 #' @param digits Default is `3`.
 #' @param ... Ignored
@@ -512,19 +514,23 @@ plot.prcalc_index_compare <- function (x,
 #' compare(list("Model 1" = decompose(obj1),
 #'              "Model 2" = decompose(obj4),
 #'              "Model 3" = decompose(obj5))) |>
-#'   plot(facet = TRUE, value_type = "text", digits = 5)
+#'   plot(facet = TRUE, value_type = "total", digits = 5)
 
 
 plot.prcalc_decomposition_compare <- function (x,
-                                               facet      = FALSE,
-                                               bar_width  = 0.75,
-                                               value_type = "label",
-                                               value_size = 3,
-                                               font_size  = 12,
-                                               digits     = 3,
+                                               facet       = FALSE,
+                                               bar_width   = 0.75,
+                                               value_type  = "all",
+                                               value_angle = 0,
+                                               value_size  = 3,
+                                               x_angle     = 0,
+                                               font_size   = 12,
+                                               digits      = 3,
                                                ...) {
 
-  Type <- Model <- Value <- label_y <- NULL
+  if (!(x_angle >= 0 & x_angle <= 90)) stop("x_angle must be in 0 and 90.")
+
+  Type <- Model <- Value <- label_y <- base <- NULL
 
   d_s <- paste0("%.", digits, "f")
 
@@ -535,12 +541,17 @@ plot.prcalc_decomposition_compare <- function (x,
 
   if (!facet) {
 
+    if (value_type == "all") {
+      data <- data |>
+        mutate(alpha   = sum(Value),
+               Model = paste0(Model, "\n(", sprintf(d_s, alpha), ")"))
+    }
+
     data <- data |>
       filter(Type != "Alpha-divergence") |>
       group_by(Model) |>
       mutate(Type    = factor(Type, levels = c("Special", "Reapportionment", "Redistricting")),
-             alpha   = sum(Value),
-             Model   = paste0(Model, "\n(", sprintf(d_s, alpha), ")")) |>
+             alpha   = sum(Value)) |>
       arrange(Model, desc(Type)) |>
       mutate(base = cumsum(Value),
              label_y = base - Value,
@@ -550,16 +561,14 @@ plot.prcalc_decomposition_compare <- function (x,
       ggplot(aes(x = Model)) +
       geom_col(aes(y = Value, fill = Type), width = bar_width)
 
-    if (value_type == "label") {
+    if (value_type == "all") {
       result <- result +
         geom_label(aes(y = label_y, label = sprintf(d_s, Value)),
-                   size = value_size) +
-        coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
-    } else if (value_type == "text") {
+                   size = value_size, angle = value_angle)
+    } else if (value_type == "total") {
       result <- result +
-        geom_text(aes(y = label_y, label = sprintf(d_s, Value)),
-                  size = value_size) +
-        coord_cartesian(ylim = c(0, max(data$alpha) * 1.1))
+        geom_label(aes(y = alpha, label = sprintf(d_s, alpha)),
+                   size = value_size, angle = value_angle)
     }
   } else if (facet) {
 
@@ -571,14 +580,10 @@ plot.prcalc_decomposition_compare <- function (x,
       geom_col(aes(x = Value), width = bar_width) +
       facet_wrap(Type~., ncol = 1, scales = "free_x")
 
-    if (value_type == "label") {
+    if (value_type != "none") {
       result <- result +
-        geom_label(aes(x = Value, label = sprintf(d_s, Value)),
-                   size = value_size)
-    } else if (value_type == "text") {
-      result <- result +
-        geom_text(aes(x = 0, label = sprintf(d_s, Value)),
-                  size = value_size, hjust = -0.1, color = "white")
+        geom_label(aes(x = 0, label = sprintf(d_s, Value)),
+                   size = value_size, angle = value_angle, hjust = 0)
     }
 
   }
@@ -594,6 +599,11 @@ plot.prcalc_decomposition_compare <- function (x,
   } else if (!facet) {
     result <- result +
       theme(legend.position = "bottom")
+  }
+
+  if (x_angle > 0) {
+    result <- result +
+      scale_x_discrete(guide = guide_axis(angle = x_angle))
   }
 
   result

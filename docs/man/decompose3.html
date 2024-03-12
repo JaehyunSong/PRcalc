@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -292,38 +326,97 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="都道府県別人口-2015年" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="都道府県別人口-2015年">都道府県別人口 (2015年)</h2>
+<section id="decomposition-using-a-prcalc-object-with-three-step." class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="decomposition-using-a-prcalc-object-with-three-step.">Decomposition using a <code>prcalc</code> object with three-step.</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>47都道府県の人口 (2015年)</p>
+<p>Decomposition using a <code>prcalc</code> object with three-step.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">data(jp_census_2015)
+<pre><code class="language-R">decompose3(x, ...)
+
+## S3 method for class 'prcalc'
+decompose3(x, special = NULL, as_disprop = FALSE, alpha = 0, ...)
 </code></pre>
 </section>
-<section id="format" class="level3">
-<h3 class="anchored" data-anchor-id="format">Format</h3>
-<p>A data frame with 47 rows and 2 variables:</p>
-<dl>
-<dt>
-Pref
-</dt>
-<dd>
-都道府県名; character
-</dd>
-<dt>
-Pop
-</dt>
-<dd>
-人口; numeric
-</dd>
-</dl>
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<table>
+<tbody><tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose3_:_x">x</code>
+</td>
+<td>
+a <code>prcalc</code> object.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose3_:_...">…</code>
+</td>
+<td>
+ignored
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose3_:_special">special</code>
+</td>
+<td>
+a character. names of special district.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose3_:_as_disprop">as_disprop</code>
+</td>
+<td>
+If <code>TRUE</code>, <code>alpha</code> must be larger than <code>0</code>. Default is <code>FALSE</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="decompose3_:_alpha">alpha</code>
+</td>
+<td>
+Default is <code>0</code>.
+</td>
+</tr>
+</tbody></table>
 </section>
-<section id="source" class="level3">
-<h3 class="anchored" data-anchor-id="source">Source</h3>
-<p>国勢調査</p>
+<section id="value" class="level3">
+<h3 class="anchored" data-anchor-id="value">Value</h3>
+<p>a <code>prcalc_decomposition</code> object.</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li>
+<p>Yuta, Kamahara, Junichiro Wada, and Yuko Kasuya. 2021. "Malapportionment in space and time: Decompose it!" <em>Electoral Studies</em>. 71: 102301.</p>
+</li>
+</ul>
+</section>
+<section id="see-also" class="level3">
+<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
+<p><code>decompose</code></p>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(nz_district)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>nz_1949 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1949</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">region     =</span> <span class="st">"region"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">district   =</span> <span class="st">"district"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">population =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">magnitude  =</span> <span class="st">"magnitude"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>decompose_1949 <span class="ot">&lt;-</span> <span class="fu">decompose3</span>(nz_1949, <span class="at">special =</span> <span class="st">"Maori"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

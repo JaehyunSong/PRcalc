@@ -317,3 +317,57 @@ print.prcalc_decomposition <- function (x,
 
 
 }
+
+#' Printing a `prcalc_decomposition_compare` object.
+#'
+#' @method print prcalc_decomposition_compare
+#'
+#' @param x a `prcalc_decomposition_compare` object.
+#' @param use_gt Use {gt} package? Default is `FALSE`.
+#' @param digits the number of decimal places. Default is 3.
+#' @param ... ignored.
+#'
+#' @import dplyr
+#' @import gt
+#'
+#' @export
+#'
+#' @examples
+#' data(jp_lower_2021)
+#'
+#' obj <- prcalc(jp_lower_2021[1:9, ],
+#'               m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
+#'               method = "hare")
+#'
+#' decompose(obj)
+
+print.prcalc_decomposition_compare <- function (x,
+                                                use_gt = FALSE,
+                                                digits = 3,
+                                                ...) {
+
+  if (!use_gt) {
+    print(x, digits = digits)
+
+    if (nrow(x) == 3) {
+      cat('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
+    } else if (nrow(x) == 4) {
+      cat('Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
+    }
+  } else if (use_gt) {
+    result <- x |>
+      gt() |>
+      fmt_number(columns = -1, decimals = digits)
+
+    if (nrow(x) == 3) {
+      result <- result +
+        tab_footnote('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
+    } else if (nrow(x) == 4) {
+      result <- result +
+        tab_footnote('Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
+    }
+
+    result
+  }
+
+}

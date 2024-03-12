@@ -1,6 +1,6 @@
 Package: PRcalc
 Title: A Proportional Representation Calculator
-Version: 0.8.5
+Version: 0.8.6
 Authors@R: c(
     person("Jaehyun", "Song", 
            email = "song@kansai-u.ac.jp", 

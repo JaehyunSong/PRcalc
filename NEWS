@@ -1,10 +1,14 @@
 ## News
 
+### PRcalc 0.8.6
+
+* 新しい関数`decompose3()`、`print.prcalc_decomposition_compare()`を追加
+* データセット（`nz_district`）を追加
+
 ### PRcalc 0.8.5
 
-* `read_prcalc()`追加
-* `as_prcalc()`追加
-* データセット2種（`jp_lower_2021_result`, `au_district_2010`）追加
+* `read_prcalc()`、`as_prcalc()`追加
+* データセット2種（`jp_lower_2021_result`と`au_district_2010`）追加
 
 ### PRcalc 0.8.4
 

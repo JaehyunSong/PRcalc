@@ -6,16 +6,19 @@ knitr:
     fig.width: 7
     fig.height: 5
     dpi: 150
+toc: true
 ---
 
 ## Preparation
 
 ```{r}
 #| label: setup
+#| message: false
 library(PRcalc)
+library(tidyverse)
 ```
 
-## Decomposition
+## Decomposition (two-step)
 
 ### Using a `prcalc` object.
 
@@ -108,4 +111,80 @@ obj6
 decompose(obj6, alpha = 2)
 # By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
 decompose(obj6, alpha = 0, as_disprop = FALSE)
+```
+
+## Decomposition (three-step)
+
+```{r}
+data(nz_district)
+
+nz_1949 <- nz_district |>
+  dplyr::filter(year == 1949) |>
+  as_prcalc(region     = "region",
+            district   = "district",
+            population = "electorates",
+            magnitude  = "magnitude")
+
+nz_1972 <- nz_district |>
+  dplyr::filter(year == 1972) |>
+  as_prcalc()
+
+nz_1990 <- nz_district |>
+  dplyr::filter(year == 1990) |>
+  as_prcalc()
+
+nz_2011 <- nz_district |>
+  dplyr::filter(year == 2011) |>
+  as_prcalc()
+
+(decompose_1949 <- decompose3(nz_1949, special = "Maori"))
+(decompose_1972 <- decompose3(nz_1972, special = "Maori"))
+(decompose_1990 <- decompose3(nz_1990, special = "Maori"))
+(decompose_2011 <- decompose3(nz_2011, special = "Maori"))
+
+list("1949" = decompose_1949,
+     "1972" = decompose_1972,
+     "1990" = decompose_1990,
+     "2011" = decompose_2011) |> 
+  compare()
+
+list("1949" = decompose_1949,
+     "1972" = decompose_1972,
+     "1990" = decompose_1990,
+     "2011" = decompose_2011) |> 
+  compare() |> 
+  plot()
+```
+
+```{r}
+# 1949-2011
+nz_decompose_all <- nz_district |> 
+  group_by(year) |> 
+  nest() |> 
+  mutate(data      = map(data, \(x) as_prcalc(x)),
+         decompose = map(data, \(x) decompose3(x, special = "Maori"))) |> 
+  pull(decompose)
+
+names(nz_decompose_all) <- unique(nz_district$year)
+
+nz_decompose_all |> 
+  compare() 
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+nz_decompose_all |> 
+  compare() |> 
+  plot(value_type = "total", value_angle = 90, 
+       x_angle = 45, digits = 6) +
+  coord_cartesian(ylim = c(0, 0.02))
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 18
+nz_decompose_all |> 
+  compare() |> 
+  plot(facet = TRUE, value_size = 2, digits = 5)
 ```
