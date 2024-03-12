@@ -14,6 +14,9 @@
 #'
 #' @export
 #'
+#' @seealso
+#' \code{\link{decompose}}, \code{\link{decompose2}}
+#'
 #' @references
 #' \itemize{
 #' \item{Yuta, Kamahara, Junichiro Wada, and Yuko Kasuya. 2021. "Malapportionment in space and time: Decompose it!" \emph{Electoral Studies}. 71: 102301.}

@@ -347,12 +347,12 @@ print.prcalc_decomposition_compare <- function (x,
                                                 ...) {
 
   if (!use_gt) {
-    print(x, digits = digits)
+    as.data.frame(x) |> print(digits = digits)
 
     if (nrow(x) == 3) {
-      cat('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
+      cat('Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
     } else if (nrow(x) == 4) {
-      cat('Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
+      cat('Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
     }
   } else if (use_gt) {
     result <- x |>
@@ -360,11 +360,11 @@ print.prcalc_decomposition_compare <- function (x,
       fmt_number(columns = -1, decimals = digits)
 
     if (nrow(x) == 3) {
-      result <- result +
-        tab_footnote('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
+      result <- result |>
+        tab_footnote('Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
     } else if (nrow(x) == 4) {
-      result <- result +
-        tab_footnote('Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
+      result <- result |>
+        tab_footnote('Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
     }
 
     result

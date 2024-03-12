@@ -478,6 +478,7 @@ plot.prcalc_index_compare <- function (x,
 #' @import dplyr
 #' @import tidyr
 #' @import ggplot2
+#' @import forcats
 #'
 #' @return
 #' A `ggplot` object.
@@ -575,7 +576,8 @@ plot.prcalc_decomposition_compare <- function (x,
     result <- data |>
       mutate(Type = factor(Type,
                            levels = c("Alpha-divergence", "Special",
-                                      "Reapportionment", "Redistricting"))) |>
+                                      "Reapportionment", "Redistricting")),
+             Model = fct_rev(fct_inorder(Model))) |>
       ggplot(aes(y = Model)) +
       geom_col(aes(x = Value), width = bar_width) +
       facet_wrap(Type~., ncol = 1, scales = "free_x")
@@ -589,15 +591,16 @@ plot.prcalc_decomposition_compare <- function (x,
   }
 
   result <- result +
-    labs(x = "Model", y = "Values", fill = "") +
     theme_bw(base_size = font_size) +
     theme(legend.position = "bottom")
 
   if (facet) {
     result <- result +
+      labs(y = "Model", x = "Values", fill = "") +
       theme(panel.grid.major.y = element_blank())
   } else if (!facet) {
     result <- result +
+      labs(x = "Model", y = "Values", fill = "") +
       theme(legend.position = "bottom")
   }
 

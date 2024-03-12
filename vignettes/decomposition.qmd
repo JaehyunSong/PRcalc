@@ -18,7 +18,7 @@ library(PRcalc)
 library(tidyverse)
 ```
 
-## Decomposition (two-step)
+## Two-step decomposition
 
 ### Using a `prcalc` object.
 
@@ -109,11 +109,13 @@ obj6 <- as_prcalc(jp_lower_2021_result,
 obj6
 
 decompose(obj6, alpha = 2)
-# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
 decompose(obj6, alpha = 0, as_disprop = FALSE)
 ```
 
-## Decomposition (three-step)
+## Three-step Decomposition
+
+If `special` is defined, three-step decomposition is conducted.
 
 ```{r}
 data(nz_district)
@@ -137,23 +139,25 @@ nz_2011 <- nz_district |>
   dplyr::filter(year == 2011) |>
   as_prcalc()
 
-(decompose_1949 <- decompose3(nz_1949, special = "Maori"))
-(decompose_1972 <- decompose3(nz_1972, special = "Maori"))
-(decompose_1990 <- decompose3(nz_1990, special = "Maori"))
-(decompose_2011 <- decompose3(nz_2011, special = "Maori"))
+(decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori"))
+(decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori"))
+(decompose_1990 <- decompose(nz_1990, alpha = 1, special = "Maori"))
+(decompose_2011 <- decompose(nz_2011, alpha = 1, special = "Maori"))
 
 list("1949" = decompose_1949,
      "1972" = decompose_1972,
      "1990" = decompose_1990,
      "2011" = decompose_2011) |> 
-  compare()
+  compare() 
 
 list("1949" = decompose_1949,
      "1972" = decompose_1972,
      "1990" = decompose_1990,
      "2011" = decompose_2011) |> 
   compare() |> 
-  plot()
+  plot() +
+  labs(title = "Electoral districts in New Zealand",
+       caption = expression(paste("Three-step decomposition with ", alpha, " = 1")))
 ```
 
 ```{r}
@@ -162,13 +166,17 @@ nz_decompose_all <- nz_district |>
   group_by(year) |> 
   nest() |> 
   mutate(data      = map(data, \(x) as_prcalc(x)),
-         decompose = map(data, \(x) decompose3(x, special = "Maori"))) |> 
+         decompose = map(data, \(x) decompose(x, 
+                                              alpha      = 0,
+                                              as_disprop = FALSE,
+                                              special    = "Maori"))) |> 
   pull(decompose)
 
 names(nz_decompose_all) <- unique(nz_district$year)
 
 nz_decompose_all |> 
-  compare() 
+  compare() |> 
+  print(use_gt = TRUE, digits = 5)
 ```
 
 ```{r}

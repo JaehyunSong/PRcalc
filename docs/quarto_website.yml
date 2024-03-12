@@ -29,6 +29,8 @@ website:
             href: man/index.qmd
           - text: "decompose()"
             href: man/decompose.qmd
+          - text: "decompose2()"
+            href: man/decompose2.qmd
           - text: "decompose3()"
             href: man/decompose3.qmd
           - text: "compare()"

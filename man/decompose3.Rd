@@ -44,5 +44,7 @@ decompose_1949 <- decompose3(nz_1949, special = "Maori")
 }
 }
 \seealso{
+\code{\link{decompose}}, \code{\link{decompose2}}
+
 \code{\link{decompose}}
 }
