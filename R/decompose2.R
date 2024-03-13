@@ -137,6 +137,7 @@ decompose2 <- function(x,
   attr(result, "labels") <- c("alpha-divergence",
                               "Reapportionment",
                               "Redistricting")
+  attr(result, "special") <- NULL
   attr(result, "alpha") <- alpha
 
   structure(result, class = c("prcalc_decomposition"))

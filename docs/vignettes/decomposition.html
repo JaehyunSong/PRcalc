@@ -721,7 +721,7 @@ alpha-divergence  Reapportionment    Redistricting
 
 Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj4, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 0 
@@ -1122,7 +1122,7 @@ alpha-divergence  Reapportionment    Redistricting
 
 Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj5, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 0 
@@ -1358,23 +1358,23 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
 <span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="ynqpgslyin" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ynqpgslyin table {
+<div id="ajnefxxvfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ajnefxxvfi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ynqpgslyin thead, #ynqpgslyin tbody, #ynqpgslyin tfoot, #ynqpgslyin tr, #ynqpgslyin td, #ynqpgslyin th {
+#ajnefxxvfi thead, #ajnefxxvfi tbody, #ajnefxxvfi tfoot, #ajnefxxvfi tr, #ajnefxxvfi td, #ajnefxxvfi th {
   border-style: none;
 }
 
-#ynqpgslyin p {
+#ajnefxxvfi p {
   margin: 0;
   padding: 0;
 }
 
-#ynqpgslyin .gt_table {
+#ajnefxxvfi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1400,12 +1400,12 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-left-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_caption {
+#ajnefxxvfi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ynqpgslyin .gt_title {
+#ajnefxxvfi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1417,7 +1417,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-width: 0;
 }
 
-#ynqpgslyin .gt_subtitle {
+#ajnefxxvfi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1429,7 +1429,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-width: 0;
 }
 
-#ynqpgslyin .gt_heading {
+#ajnefxxvfi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1441,13 +1441,13 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_bottom_border {
+#ajnefxxvfi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_col_headings {
+#ajnefxxvfi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1462,7 +1462,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_col_heading {
+#ajnefxxvfi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1482,7 +1482,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#ynqpgslyin .gt_column_spanner_outer {
+#ajnefxxvfi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1494,15 +1494,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 4px;
 }
 
-#ynqpgslyin .gt_column_spanner_outer:first-child {
+#ajnefxxvfi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ynqpgslyin .gt_column_spanner_outer:last-child {
+#ajnefxxvfi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ynqpgslyin .gt_column_spanner {
+#ajnefxxvfi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1514,11 +1514,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   width: 100%;
 }
 
-#ynqpgslyin .gt_spanner_row {
+#ajnefxxvfi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ynqpgslyin .gt_group_heading {
+#ajnefxxvfi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1544,7 +1544,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   text-align: left;
 }
 
-#ynqpgslyin .gt_empty_group_heading {
+#ajnefxxvfi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1559,15 +1559,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: middle;
 }
 
-#ynqpgslyin .gt_from_md > :first-child {
+#ajnefxxvfi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ynqpgslyin .gt_from_md > :last-child {
+#ajnefxxvfi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ynqpgslyin .gt_row {
+#ajnefxxvfi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1586,7 +1586,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#ynqpgslyin .gt_stub {
+#ajnefxxvfi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1599,7 +1599,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#ynqpgslyin .gt_stub_row_group {
+#ajnefxxvfi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1613,15 +1613,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: top;
 }
 
-#ynqpgslyin .gt_row_group_first td {
+#ajnefxxvfi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ynqpgslyin .gt_row_group_first th {
+#ajnefxxvfi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ynqpgslyin .gt_summary_row {
+#ajnefxxvfi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1631,16 +1631,16 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#ynqpgslyin .gt_first_summary_row {
+#ajnefxxvfi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_first_summary_row.thick {
+#ajnefxxvfi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ynqpgslyin .gt_last_summary_row {
+#ajnefxxvfi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1650,7 +1650,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_grand_summary_row {
+#ajnefxxvfi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1660,7 +1660,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#ynqpgslyin .gt_first_grand_summary_row {
+#ajnefxxvfi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1670,7 +1670,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_last_grand_summary_row_top {
+#ajnefxxvfi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1680,11 +1680,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_striped {
+#ajnefxxvfi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ynqpgslyin .gt_table_body {
+#ajnefxxvfi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1693,7 +1693,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_footnotes {
+#ajnefxxvfi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1707,7 +1707,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_footnote {
+#ajnefxxvfi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1716,7 +1716,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#ynqpgslyin .gt_sourcenotes {
+#ajnefxxvfi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1730,7 +1730,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#ynqpgslyin .gt_sourcenote {
+#ajnefxxvfi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1738,63 +1738,63 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#ynqpgslyin .gt_left {
+#ajnefxxvfi .gt_left {
   text-align: left;
 }
 
-#ynqpgslyin .gt_center {
+#ajnefxxvfi .gt_center {
   text-align: center;
 }
 
-#ynqpgslyin .gt_right {
+#ajnefxxvfi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ynqpgslyin .gt_font_normal {
+#ajnefxxvfi .gt_font_normal {
   font-weight: normal;
 }
 
-#ynqpgslyin .gt_font_bold {
+#ajnefxxvfi .gt_font_bold {
   font-weight: bold;
 }
 
-#ynqpgslyin .gt_font_italic {
+#ajnefxxvfi .gt_font_italic {
   font-style: italic;
 }
 
-#ynqpgslyin .gt_super {
+#ajnefxxvfi .gt_super {
   font-size: 65%;
 }
 
-#ynqpgslyin .gt_footnote_marks {
+#ajnefxxvfi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ynqpgslyin .gt_asterisk {
+#ajnefxxvfi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ynqpgslyin .gt_indent_1 {
+#ajnefxxvfi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ynqpgslyin .gt_indent_2 {
+#ajnefxxvfi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ynqpgslyin .gt_indent_3 {
+#ajnefxxvfi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ynqpgslyin .gt_indent_4 {
+#ajnefxxvfi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ynqpgslyin .gt_indent_5 {
+#ajnefxxvfi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

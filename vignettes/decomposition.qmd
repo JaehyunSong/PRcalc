@@ -69,7 +69,7 @@ obj4 <- read_prcalc("../data/sample_dataset.csv",
 obj4
 
 decompose(obj4, alpha = 2)
-# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
 decompose(obj4, alpha = 0, as_disprop = FALSE)
 ```
 
@@ -90,7 +90,7 @@ obj5 <- as_prcalc(au_district_2010,
 obj5
 
 decompose(obj5, alpha = 2)
-# By default, alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
 decompose(obj5, alpha = 0, as_disprop = FALSE)
 ```
 

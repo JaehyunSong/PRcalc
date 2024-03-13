@@ -36,7 +36,7 @@ nz_1949 <- nz_district |>
             population = "electorates",
             magnitude  = "magnitude")
 
-decompose_1949 <- decompose3(nz_1949, special = "Maori")
+decompose3(nz_1949, special = "Maori")
 }
 \references{
 \itemize{

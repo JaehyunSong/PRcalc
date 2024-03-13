@@ -43,7 +43,7 @@ decompose3 <- function(x, ...) {
 #'             population = "electorates",
 #'             magnitude  = "magnitude")
 #'
-#' decompose_1949 <- decompose3(nz_1949, special = "Maori")
+#' decompose3(nz_1949, special = "Maori")
 
 decompose3.prcalc <- function(x,
                               special    = NULL,
@@ -53,6 +53,8 @@ decompose3.prcalc <- function(x,
 
   if (!inherits(x, "prcalc")) stop("Error!")
   if (length(x$m) < 2) stop("Error!")
+
+  special_names <- special
 
   v <- x$raw[, -1]
   s <- x$dist[, -1]
@@ -167,6 +169,7 @@ decompose3.prcalc <- function(x,
                               "Special",
                               "Reapportionment",
                               "Redistricting")
+  attr(result, "special") <- special_names
   attr(result, "alpha") <- alpha
 
   structure(result, class = c("prcalc_decomposition"))

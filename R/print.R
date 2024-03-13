@@ -309,9 +309,9 @@ print.prcalc_decomposition <- function (x,
   cat("alpha =", attr(x, "alpha"), "\n")
   print(result)
   cat("\n")
-  if (length(x) == 3) {
+  if (is.null(attr(x, "special"))) {
     cat('Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.')
-  } else if (length(x) == 4) {
+  } else {
     cat('Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.')
   }
 
