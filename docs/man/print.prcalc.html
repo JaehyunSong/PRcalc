@@ -339,7 +339,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
 <pre><code class="language-R">## S3 method for class 'prcalc'
-print(x, prop = FALSE, show_total = TRUE, use_gt = FALSE, digits = 3, ...)
+print(
+  x,
+  prop = FALSE,
+  show_total = TRUE,
+  use_gt = FALSE,
+  digits = 3,
+  head = Inf,
+  ...
+)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -383,6 +391,14 @@ Use <code>gt</code> package? Default is <code>FALSE</code>.
 </td>
 <td>
 the number of decimal places. Default is 3.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="print.prcalc_:_head">head</code>
+</td>
+<td>
+For example, if <code>head = 6</code>, only six rows are displayed. Default is <code>Inf</code> (entire rows).
 </td>
 </tr>
 <tr>

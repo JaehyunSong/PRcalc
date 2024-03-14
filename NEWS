@@ -1,16 +1,21 @@
 ## News
 
-### PRcalc 0.8.6
+### PRcalc 0.8.7 (2024/03/14)
+
+* 既存の`decompose()`を`decompse2()`に名称変更し、`decompose()`を`decompose2()`と`decompose3()`のラッパー関数へ変更
+* `prcalc`オブジェクトの`print()`メソッドに`head`引数を追加。たとえば、`head = 10`にすると最初の10行のみ出力される（既定値は`head = Inf`）。
+
+### PRcalc 0.8.6 (2024/03/12)
 
 * 新しい関数`decompose3()`、`print.prcalc_decomposition_compare()`を追加
 * データセット（`nz_district`）を追加
 
-### PRcalc 0.8.5
+### PRcalc 0.8.5 (2024/03/10)
 
 * `read_prcalc()`、`as_prcalc()`追加
 * データセット2種（`jp_lower_2021_result`と`au_district_2010`）追加
 
-### PRcalc 0.8.4
+### PRcalc 0.8.4 (2024/03/07)
 
 * `decompose()`のバグ修正
 

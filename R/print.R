@@ -7,6 +7,7 @@
 #' @param show_total If `TRUE`, total vote (share) and seat (share) are displayed on the last column. Default is `TRUE`.
 #' @param use_gt Use `gt` package? Default is `FALSE`.
 #' @param digits the number of decimal places. Default is 3.
+#' @param head For example, if `head = 6`, only six rows are displayed. Default is `Inf` (entire rows).
 #' @param ... ignored.
 #'
 #' @import dplyr
@@ -29,6 +30,7 @@ print.prcalc <- function(x,
                          show_total = TRUE,
                          use_gt     = FALSE,
                          digits     = 3,
+                         head       = Inf,
                          ...) {
 
   Type <- NULL
@@ -70,10 +72,10 @@ print.prcalc <- function(x,
     }
   } else {
     cat("Raw:\n")
-    print(result_raw, digits = {if (prop) {digits}})
+    print(head(result_raw, digits = {if (prop) {digits}}, n = head))
     cat("\n")
     cat("Result:\n")
-    print(result_dist, digits = {if (prop) {digits}})
+    print(head(result_dist, digits = {if (prop) {digits}}, n = head))
     cat("\nParameters:\n")
     cat("  Allocation method:", x$method, "\n")
     cat("  Extra parameter:", x$extra, "\n")
