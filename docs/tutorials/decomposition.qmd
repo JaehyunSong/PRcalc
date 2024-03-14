@@ -180,7 +180,7 @@ nz_decompose_all |>
 ```
 
 ```{r}
-#| fig-width: 6
+#| fig-width: 8
 #| fig-height: 6
 nz_decompose_all |> 
   compare() |> 
