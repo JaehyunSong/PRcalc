@@ -32,26 +32,6 @@ obj3 <- prcalc(jp_lower_2021,
 
 ## Comparison
 
-### Seat allocation
-
-```{r}
-#| label: comparison-allocation
-compare(list(obj1, obj2))
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) 
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  print(subset = c("自民", "公明", "立憲", "共産", "維新"))
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  print(prop = TRUE, use_gt = TRUE)
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  plot()
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  plot(facet = TRUE)
-compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
-  plot(subset_p = c("自民", "公明", "立憲", "共産", "維新", 
-                    "国民", "社民", "れ新", "N党"),
-       facet = TRUE, facet_col = 3, free_y = FALSE)
-```
-
 ### Disproportionality
 
 ```{r}

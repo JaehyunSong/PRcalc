@@ -406,627 +406,10 @@ Attaching package: 'PRcalc'</code></pre>
 </section>
 <section id="comparison" class="level2">
 <h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
-<section id="seat-allocation" class="level3">
-<h3 class="anchored" data-anchor-id="seat-allocation">Seat allocation</h3>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(obj1, obj2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Party Model1 Model2
-1    自民     67     62
-2    公明     24     23
-3    立憲     40     36
-4    共産     10     13
-5    維新     26     26
-6    国民      5      8
-7    社民      0      1
-8    れ新      4      7
-9     N党      0      0
-10 支なし      0      0
-11   第一      0      0
-12 やまと      0      0
-13 コロナ      0      0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Party ドント式 ヘア式 サン＝ラゲ式
-1    自民       67     62           63
-2    公明       24     23           24
-3    立憲       40     36           36
-4    共産       10     13           13
-5    維新       26     26           26
-6    国民        5      8            7
-7    社民        0      1            1
-8    れ新        4      7            6
-9     N党        0      0            0
-10 支なし        0      0            0
-11   第一        0      0            0
-12 やまと        0      0            0
-13 コロナ        0      0            0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Party ドント式 ヘア式 サン＝ラゲ式
-1  自民       67     62           63
-2  公明       24     23           24
-3  立憲       40     36           36
-4  共産       10     13           13
-5  維新       26     26           26</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<div id="kiolzeqsqg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kiolzeqsqg table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#kiolzeqsqg thead, #kiolzeqsqg tbody, #kiolzeqsqg tfoot, #kiolzeqsqg tr, #kiolzeqsqg td, #kiolzeqsqg th {
-  border-style: none;
-}
-
-#kiolzeqsqg p {
-  margin: 0;
-  padding: 0;
-}
-
-#kiolzeqsqg .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#kiolzeqsqg .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#kiolzeqsqg .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#kiolzeqsqg .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#kiolzeqsqg .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#kiolzeqsqg .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#kiolzeqsqg .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#kiolzeqsqg .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#kiolzeqsqg .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#kiolzeqsqg .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#kiolzeqsqg .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#kiolzeqsqg .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#kiolzeqsqg .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#kiolzeqsqg .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#kiolzeqsqg .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kiolzeqsqg .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#kiolzeqsqg .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#kiolzeqsqg .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#kiolzeqsqg .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kiolzeqsqg .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#kiolzeqsqg .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kiolzeqsqg .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#kiolzeqsqg .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kiolzeqsqg .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kiolzeqsqg .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kiolzeqsqg .gt_left {
-  text-align: left;
-}
-
-#kiolzeqsqg .gt_center {
-  text-align: center;
-}
-
-#kiolzeqsqg .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#kiolzeqsqg .gt_font_normal {
-  font-weight: normal;
-}
-
-#kiolzeqsqg .gt_font_bold {
-  font-weight: bold;
-}
-
-#kiolzeqsqg .gt_font_italic {
-  font-style: italic;
-}
-
-#kiolzeqsqg .gt_super {
-  font-size: 65%;
-}
-
-#kiolzeqsqg .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#kiolzeqsqg .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#kiolzeqsqg .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#kiolzeqsqg .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#kiolzeqsqg .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#kiolzeqsqg .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#kiolzeqsqg .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
-<th id="ドント式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ドント式</th>
-<th id="ヘア式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ヘア式</th>
-<th id="サン＝ラゲ式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">サン＝ラゲ式</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">自民</td>
-<td class="gt_row gt_right" headers="ドント式">0.381</td>
-<td class="gt_row gt_right" headers="ヘア式">0.352</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.358</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">公明</td>
-<td class="gt_row gt_right" headers="ドント式">0.136</td>
-<td class="gt_row gt_right" headers="ヘア式">0.131</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.136</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">立憲</td>
-<td class="gt_row gt_right" headers="ドント式">0.227</td>
-<td class="gt_row gt_right" headers="ヘア式">0.205</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.205</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">共産</td>
-<td class="gt_row gt_right" headers="ドント式">0.057</td>
-<td class="gt_row gt_right" headers="ヘア式">0.074</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.074</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">維新</td>
-<td class="gt_row gt_right" headers="ドント式">0.148</td>
-<td class="gt_row gt_right" headers="ヘア式">0.148</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.148</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">国民</td>
-<td class="gt_row gt_right" headers="ドント式">0.028</td>
-<td class="gt_row gt_right" headers="ヘア式">0.045</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.040</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">社民</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.006</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.006</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">れ新</td>
-<td class="gt_row gt_right" headers="ドント式">0.023</td>
-<td class="gt_row gt_right" headers="ヘア式">0.040</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.034</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">N党</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">支なし</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">第一</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">やまと</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Party">コロナ</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"国民"</span>, <span class="st">"社民"</span>, <span class="st">"れ新"</span>, <span class="st">"N党"</span>),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">facet_col =</span> <span class="dv">3</span>, <span class="at">free_y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="disproportionality" class="level3">
 <h3 class="anchored" data-anchor-id="disproportionality">Disproportionality</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index  Model1   Model2  Model3
 1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
@@ -1060,9 +443,9 @@ Attaching package: 'PRcalc'</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
 30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
 1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
@@ -1096,10 +479,10 @@ Attaching package: 'PRcalc'</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
 30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                           Index D'Hondt     Hare Sainte-Laguë
 1                        D’Hondt 1.13647 1.055589      1.10148
@@ -1133,31 +516,31 @@ Attaching package: 'PRcalc'</code></pre>
 29            Hellinger Distance 0.14218 0.098133      0.09959
 30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="mpqqxbfddf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mpqqxbfddf table {
+<div id="aqyqljshvh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aqyqljshvh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mpqqxbfddf thead, #mpqqxbfddf tbody, #mpqqxbfddf tfoot, #mpqqxbfddf tr, #mpqqxbfddf td, #mpqqxbfddf th {
+#aqyqljshvh thead, #aqyqljshvh tbody, #aqyqljshvh tfoot, #aqyqljshvh tr, #aqyqljshvh td, #aqyqljshvh th {
   border-style: none;
 }
 
-#mpqqxbfddf p {
+#aqyqljshvh p {
   margin: 0;
   padding: 0;
 }
 
-#mpqqxbfddf .gt_table {
+#aqyqljshvh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1183,12 +566,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_caption {
+#aqyqljshvh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mpqqxbfddf .gt_title {
+#aqyqljshvh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1200,7 +583,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#mpqqxbfddf .gt_subtitle {
+#aqyqljshvh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1212,7 +595,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#mpqqxbfddf .gt_heading {
+#aqyqljshvh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1224,13 +607,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_bottom_border {
+#aqyqljshvh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_col_headings {
+#aqyqljshvh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1245,7 +628,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_col_heading {
+#aqyqljshvh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1265,7 +648,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#mpqqxbfddf .gt_column_spanner_outer {
+#aqyqljshvh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1277,15 +660,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#mpqqxbfddf .gt_column_spanner_outer:first-child {
+#aqyqljshvh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mpqqxbfddf .gt_column_spanner_outer:last-child {
+#aqyqljshvh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mpqqxbfddf .gt_column_spanner {
+#aqyqljshvh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1297,11 +680,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#mpqqxbfddf .gt_spanner_row {
+#aqyqljshvh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mpqqxbfddf .gt_group_heading {
+#aqyqljshvh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1327,7 +710,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#mpqqxbfddf .gt_empty_group_heading {
+#aqyqljshvh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1342,15 +725,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#mpqqxbfddf .gt_from_md > :first-child {
+#aqyqljshvh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mpqqxbfddf .gt_from_md > :last-child {
+#aqyqljshvh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mpqqxbfddf .gt_row {
+#aqyqljshvh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1369,7 +752,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#mpqqxbfddf .gt_stub {
+#aqyqljshvh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1382,7 +765,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpqqxbfddf .gt_stub_row_group {
+#aqyqljshvh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1396,15 +779,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#mpqqxbfddf .gt_row_group_first td {
+#aqyqljshvh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mpqqxbfddf .gt_row_group_first th {
+#aqyqljshvh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mpqqxbfddf .gt_summary_row {
+#aqyqljshvh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1414,16 +797,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpqqxbfddf .gt_first_summary_row {
+#aqyqljshvh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_first_summary_row.thick {
+#aqyqljshvh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mpqqxbfddf .gt_last_summary_row {
+#aqyqljshvh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1433,7 +816,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_grand_summary_row {
+#aqyqljshvh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1443,7 +826,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpqqxbfddf .gt_first_grand_summary_row {
+#aqyqljshvh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +836,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_last_grand_summary_row_top {
+#aqyqljshvh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1463,11 +846,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_striped {
+#aqyqljshvh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mpqqxbfddf .gt_table_body {
+#aqyqljshvh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1476,7 +859,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_footnotes {
+#aqyqljshvh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1490,7 +873,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_footnote {
+#aqyqljshvh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1499,7 +882,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpqqxbfddf .gt_sourcenotes {
+#aqyqljshvh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1513,7 +896,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpqqxbfddf .gt_sourcenote {
+#aqyqljshvh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1521,63 +904,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpqqxbfddf .gt_left {
+#aqyqljshvh .gt_left {
   text-align: left;
 }
 
-#mpqqxbfddf .gt_center {
+#aqyqljshvh .gt_center {
   text-align: center;
 }
 
-#mpqqxbfddf .gt_right {
+#aqyqljshvh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mpqqxbfddf .gt_font_normal {
+#aqyqljshvh .gt_font_normal {
   font-weight: normal;
 }
 
-#mpqqxbfddf .gt_font_bold {
+#aqyqljshvh .gt_font_bold {
   font-weight: bold;
 }
 
-#mpqqxbfddf .gt_font_italic {
+#aqyqljshvh .gt_font_italic {
   font-style: italic;
 }
 
-#mpqqxbfddf .gt_super {
+#aqyqljshvh .gt_super {
   font-size: 65%;
 }
 
-#mpqqxbfddf .gt_footnote_marks {
+#aqyqljshvh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mpqqxbfddf .gt_asterisk {
+#aqyqljshvh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mpqqxbfddf .gt_indent_1 {
+#aqyqljshvh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mpqqxbfddf .gt_indent_2 {
+#aqyqljshvh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mpqqxbfddf .gt_indent_3 {
+#aqyqljshvh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mpqqxbfddf .gt_indent_4 {
+#aqyqljshvh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mpqqxbfddf .gt_indent_5 {
+#aqyqljshvh .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1624,11 +1007,11 @@ Attaching package: 'PRcalc'</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1636,7 +1019,7 @@ Defaulting to continuous.</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="comparison_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="comparison_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
@@ -1645,21 +1028,21 @@ Defaulting to continuous.</code></pre>
 <section id="decomposition" class="level3">
 <h3 class="anchored" data-anchor-id="decomposition">Decomposition</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>),</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>obj6 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"msl"</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>obj6 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"msl"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Type D'Hondt D'Hondt + Modified magnitudes
 1 Alpha-divergence 0.05494                      0.047920
@@ -1671,10 +1054,10 @@ Defaulting to continuous.</code></pre>
 3                          0.039418
 Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                          <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6)))  <span class="sc">|&gt;</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                          <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6)))  <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1682,10 +1065,10 @@ Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">value_type =</span> <span class="st">"text"</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">value_type =</span> <span class="st">"text"</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

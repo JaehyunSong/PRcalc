@@ -6,14 +6,17 @@ knitr:
     fig.width: 7
     fig.height: 5
     dpi: 150
+toc: true
 ---
 
 ```{r}
 #| label: setup
+#| message: false
 library(PRcalc)
+library(tidyverse)
 ```
 
-## Dataset
+## Import sample dataset
 
 ```{r}
 #| label: dataset
@@ -30,31 +33,41 @@ jp_lower_2021
 
 ```{r}
 #| label: calculation
+# Example of national block (D'Hondt/Jefferson method)
 obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
 obj1
 
+# Example of regional block (D'Hondt/Jefferson method; 11 blocks)
 obj2 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 obj2
-```
 
-## Printing
-
-```{r}
-#| label: print
+# Example of regional block (Hare-Niemeyer method; 11 blocks)
 obj3 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "hare")
+obj3
 
-print(obj3, show_total = FALSE) # Hide `Total` column
-print(obj3, prop = TRUE) # Show proportion
-print(obj3, use_gt = TRUE) # use {gt} package
-summary(obj3) # summarize
-summary(obj3, prop = TRUE) # summarize with proprotion
+# Example of regional block (Sainte-Laguë/Webster method; 11 blocks)
+obj4 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "sl")
+obj4
 ```
 
-## Visualization
+### Printing
+
+```{r}
+#| label: print
+print(obj2, show_total = FALSE) # Hide `Total` column
+print(obj2, prop = TRUE) # Show proportion
+print(obj2, use_gt = TRUE) # use {gt} package
+summary(obj2) # summarize
+summary(obj2, prop = TRUE) # summarize with proportion
+```
+
+### Visualization
 
 ```{r}
 #| label: plot
@@ -73,7 +86,7 @@ plot(obj2,
      subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party")
-# 3-column
+# Three columns
 plot(obj2, 
      subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
      subset_b = c("Tokyo", "Kinki"),
@@ -86,4 +99,82 @@ plot(obj2,
      by        = "party",
      facet_col = 3,
      free_y    = TRUE)
+```
+
+## Comparison
+
+You can compare multiple `prcalc` ojbects using `compare()` function. `prcalc` objects must be grouped in a list structure using `list()` function.
+
+```{r}
+#| label: compare-1
+compare(list(obj2, obj3, obj4))
+```
+
+A named list structure is also available.
+
+```{r}
+#| label: compare-2
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() 
+```
+
+By using `print()` function with `subset` parameter, you can extract subset of the parties.
+
+```{r}
+#| label: compare-3
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() |> 
+  print(subset = c("自民", "公明", "立憲", "共産", "維新"))
+```
+
+If `prop = TRUE`, the proportion is displayed. It is also available to output tables in HTML format using `use_gt = TRUE`.
+
+```{r}
+#| label: compare-4
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() |> 
+  print(prop = TRUE, use_gt = TRUE)
+```
+
+### Visualization
+
+`plot()` function is a method of `prcalc_compare` class. Its return value is ggplot object.
+
+```{r}
+#| label: compare-visual-1
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() |> 
+  plot()
+```
+
+If `facet = TRUE`, the plot is separated by parties.
+
+```{r}
+#| label: compare-visual-2
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() |> 
+  plot(facet = TRUE)
+```
+
+If `facet = TRUE`, you can adjust number of columns and y-axis scale using `facet_col` and `free_y` parameters, respectively.
+
+```{r}
+#| label: compare-visual-3
+list("Jefferson"     = obj2, 
+     "Hare-Niemeyer" = obj3, 
+     "Webster"       = obj4) |> 
+  compare() |> 
+  plot(subset_p = c("自民", "公明", "立憲", "共産", "維新", 
+                    "国民", "社民", "れ新", "N党"),
+       facet = TRUE, facet_col = 3, free_y = FALSE)
 ```
