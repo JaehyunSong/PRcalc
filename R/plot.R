@@ -472,6 +472,8 @@ plot.prcalc_index_compare <- function (x,
 #' @param value_size Default is `3`. If `value_type == "none"`, it is ignored.
 #' @param x_angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
 #' @param font_size a font size. Default is `12`.
+#' @param border_width width of border. Default is `0` (no border).
+#' @param border_color color of border. Default is `"black"`.
 #' @param digits Default is `3`.
 #' @param ... Ignored
 #'
@@ -519,14 +521,16 @@ plot.prcalc_index_compare <- function (x,
 
 
 plot.prcalc_decomposition_compare <- function (x,
-                                               facet       = FALSE,
-                                               bar_width   = 0.75,
-                                               value_type  = "all",
-                                               value_angle = 0,
-                                               value_size  = 3,
-                                               x_angle     = 0,
-                                               font_size   = 12,
-                                               digits      = 3,
+                                               facet        = FALSE,
+                                               bar_width    = 0.75,
+                                               value_type   = "all",
+                                               value_angle  = 0,
+                                               value_size   = 3,
+                                               x_angle      = 0,
+                                               font_size    = 12,
+                                               border_width = 0,
+                                               border_color = "black",
+                                               digits       = 3,
                                                ...) {
 
   if (!(x_angle >= 0 & x_angle <= 90)) stop("x_angle must be in 0 and 90.")
@@ -560,7 +564,10 @@ plot.prcalc_decomposition_compare <- function (x,
 
     result <- data |>
       ggplot(aes(x = Model)) +
-      geom_col(aes(y = Value, fill = Type), width = bar_width)
+      geom_col(aes(y = Value, fill = Type),
+               width     = bar_width,
+               linewidth = border_width,
+               color     = border_color)
 
     if (value_type == "all") {
       result <- result +

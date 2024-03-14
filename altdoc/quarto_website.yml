@@ -13,7 +13,6 @@ website:
           - tutorials/calculation.qmd
           - tutorials/index.qmd
           - tutorials/decomposition.qmd
-          - tutorials/comparison.qmd
           - tutorials/import.qmd
       - text: "Supplement"
         menu:

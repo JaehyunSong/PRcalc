@@ -171,10 +171,6 @@ window.Quarto = {
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../tutorials/comparison.html">
- <span class="dropdown-text">Comparison</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../tutorials/import.html">
  <span class="dropdown-text">Import Dataset</span></a>
   </li>  
@@ -426,79 +422,13 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>obj1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Raw:
-    Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
-     Kinki Chugoku Shikoku  Kyushu    Total
-1  2407699 1352723  664805 2250966 19914883
-2  1155683  436220  233407 1040756  7114282
-3  1090666  573324  291871 1266801 11492095
-4   736156  173117  108021  365658  4166076
-5  3180219  286302  173826  540338  8050830
-6   303480  113899  122082  279509  2593397
-7   100980   52638   30249  221221  1018588
-8   292483   94446   52941  243284  2215648
-9   111539   36758   21285   98506   796788
-10       0       0       0       0    46142
-11       0       0       0       0    33661
-12       0       0       0       0    16970
-13       0       0       0       0     6620
-
-Result:
-    Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      6         7           8     6        5     8     8
-2    公明        1      1         3           3     2        1     3     3
-3    立憲        3      4         5           5     4        3     5     3
-4    共産        0      1         1           1     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      0         1           1     0        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      0         0           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
-11   第一        0      0         0           0     0        0     0     0
-12 やまと        0      0         0           0     0        0     0     0
-13 コロナ        0      0         0           0     0        0     0     0
-   Chugoku Shikoku Kyushu Total
-1        5       3      8    67
-2        2       1      4    24
-3        3       1      4    40
-4        0       0      1    10
-5        1       1      2    26
-6        0       0      1     5
-7        0       0      0     0
-8        0       0      0     4
-9        0       0      0     0
-10       0       0      0     0
-11       0       0      0     0
-12       0       0      0     0
-13       0       0      0     0
-
-Parameters:
-  Allocation method: D'Hondt (Jefferson) method 
-  Extra parameter: 
-  Threshold: 0 
-
-Magnitude: 
-   Hokkaido      Tohoku   Kitakanto Minamikanto       Tokyo    Hokuriku 
-          8          13          19          22          17          11 
-      Tokai       Kinki     Chugoku     Shikoku      Kyushu 
-         21          28          11           6          20 </code></pre>
-</div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"hare"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"sl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="calculation-of-disproportionality-indices." class="level2">
@@ -512,8 +442,8 @@ Magnitude:
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -547,8 +477,8 @@ Magnitude:
 29   hellinger            Hellinger Distance 0.14218
 30          ad              alpha-Divergence 0.02912</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -586,14 +516,14 @@ Magnitude:
 <section id="printing" class="level3">
 <h3 class="anchored" data-anchor-id="printing">Printing</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> gallagher 
 0.04128719 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ID             Index  Value
 1    dhondt           D’Hondt 1.1365
@@ -601,10 +531,10 @@ Magnitude:
 3 gallagher         Gallagher 0.0413
 4        ad  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Index  Value
 1           D’Hondt 1.1365
@@ -612,30 +542,30 @@ Magnitude:
 3         Gallagher 0.0413
 4  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="bxgzoijyfr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bxgzoijyfr table {
+<div id="xfnaumzuqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xfnaumzuqt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bxgzoijyfr thead, #bxgzoijyfr tbody, #bxgzoijyfr tfoot, #bxgzoijyfr tr, #bxgzoijyfr td, #bxgzoijyfr th {
+#xfnaumzuqt thead, #xfnaumzuqt tbody, #xfnaumzuqt tfoot, #xfnaumzuqt tr, #xfnaumzuqt td, #xfnaumzuqt th {
   border-style: none;
 }
 
-#bxgzoijyfr p {
+#xfnaumzuqt p {
   margin: 0;
   padding: 0;
 }
 
-#bxgzoijyfr .gt_table {
+#xfnaumzuqt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -661,12 +591,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_caption {
+#xfnaumzuqt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bxgzoijyfr .gt_title {
+#xfnaumzuqt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -678,7 +608,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#bxgzoijyfr .gt_subtitle {
+#xfnaumzuqt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -690,7 +620,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#bxgzoijyfr .gt_heading {
+#xfnaumzuqt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -702,13 +632,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_bottom_border {
+#xfnaumzuqt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_col_headings {
+#xfnaumzuqt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -723,7 +653,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_col_heading {
+#xfnaumzuqt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -743,7 +673,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#bxgzoijyfr .gt_column_spanner_outer {
+#xfnaumzuqt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -755,15 +685,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#bxgzoijyfr .gt_column_spanner_outer:first-child {
+#xfnaumzuqt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bxgzoijyfr .gt_column_spanner_outer:last-child {
+#xfnaumzuqt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bxgzoijyfr .gt_column_spanner {
+#xfnaumzuqt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -775,11 +705,11 @@ Magnitude:
   width: 100%;
 }
 
-#bxgzoijyfr .gt_spanner_row {
+#xfnaumzuqt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bxgzoijyfr .gt_group_heading {
+#xfnaumzuqt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +735,7 @@ Magnitude:
   text-align: left;
 }
 
-#bxgzoijyfr .gt_empty_group_heading {
+#xfnaumzuqt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -820,15 +750,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#bxgzoijyfr .gt_from_md > :first-child {
+#xfnaumzuqt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bxgzoijyfr .gt_from_md > :last-child {
+#xfnaumzuqt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bxgzoijyfr .gt_row {
+#xfnaumzuqt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -847,7 +777,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#bxgzoijyfr .gt_stub {
+#xfnaumzuqt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -860,7 +790,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#bxgzoijyfr .gt_stub_row_group {
+#xfnaumzuqt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -874,15 +804,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#bxgzoijyfr .gt_row_group_first td {
+#xfnaumzuqt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bxgzoijyfr .gt_row_group_first th {
+#xfnaumzuqt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bxgzoijyfr .gt_summary_row {
+#xfnaumzuqt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -892,16 +822,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#bxgzoijyfr .gt_first_summary_row {
+#xfnaumzuqt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_first_summary_row.thick {
+#xfnaumzuqt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bxgzoijyfr .gt_last_summary_row {
+#xfnaumzuqt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,7 +841,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_grand_summary_row {
+#xfnaumzuqt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -921,7 +851,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#bxgzoijyfr .gt_first_grand_summary_row {
+#xfnaumzuqt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -931,7 +861,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_last_grand_summary_row_top {
+#xfnaumzuqt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,11 +871,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_striped {
+#xfnaumzuqt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bxgzoijyfr .gt_table_body {
+#xfnaumzuqt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -954,7 +884,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_footnotes {
+#xfnaumzuqt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,7 +898,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_footnote {
+#xfnaumzuqt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -977,7 +907,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#bxgzoijyfr .gt_sourcenotes {
+#xfnaumzuqt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -991,7 +921,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#bxgzoijyfr .gt_sourcenote {
+#xfnaumzuqt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -999,63 +929,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#bxgzoijyfr .gt_left {
+#xfnaumzuqt .gt_left {
   text-align: left;
 }
 
-#bxgzoijyfr .gt_center {
+#xfnaumzuqt .gt_center {
   text-align: center;
 }
 
-#bxgzoijyfr .gt_right {
+#xfnaumzuqt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bxgzoijyfr .gt_font_normal {
+#xfnaumzuqt .gt_font_normal {
   font-weight: normal;
 }
 
-#bxgzoijyfr .gt_font_bold {
+#xfnaumzuqt .gt_font_bold {
   font-weight: bold;
 }
 
-#bxgzoijyfr .gt_font_italic {
+#xfnaumzuqt .gt_font_italic {
   font-style: italic;
 }
 
-#bxgzoijyfr .gt_super {
+#xfnaumzuqt .gt_super {
   font-size: 65%;
 }
 
-#bxgzoijyfr .gt_footnote_marks {
+#xfnaumzuqt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bxgzoijyfr .gt_asterisk {
+#xfnaumzuqt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bxgzoijyfr .gt_indent_1 {
+#xfnaumzuqt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bxgzoijyfr .gt_indent_2 {
+#xfnaumzuqt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bxgzoijyfr .gt_indent_3 {
+#xfnaumzuqt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bxgzoijyfr .gt_indent_4 {
+#xfnaumzuqt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bxgzoijyfr .gt_indent_5 {
+#xfnaumzuqt .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1095,7 +1025,7 @@ Magnitude:
 <section id="visulaization" class="level3">
 <h3 class="anchored" data-anchor-id="visulaization">Visulaization</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1107,7 +1037,7 @@ Defaulting to continuous.</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1121,7 +1051,7 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1134,9 +1064,628 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="comparison" class="level2">
+<h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            ID                         Index  Model1   Model2  Model3
+1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
+2       monroe                        Monroe 0.05321 0.020396 0.02505
+3       maxdev    Maximum Absolute Deviation 0.03413 0.013865 0.01387
+4          rae                           Rae 0.01256 0.004263 0.00577
+5           lh             Loosemore &amp; Hanby 0.08162 0.027708 0.03753
+6      grofman                       Grofman 0.03335 0.011323 0.01534
+7     lijphart                      Lijphart 0.03071 0.005143 0.00798
+8    gallagher                     Gallagher 0.04129 0.015827 0.01944
+9  g_gallagher         Generalized Gallagher 0.04129 0.015827 0.01944
+10       gatev                         Gatev 0.08744 0.034607 0.04227
+11    ryabtsev                      Ryabtsev 0.06195 0.024478 0.02990
+12      szalai                        Szalai 0.68738 0.636499 0.63706
+13    w_szalai               Weighted Szalai 0.15384 0.105784 0.10847
+14          ap          Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
+15        gini                          Gini 0.07989 0.032180 0.04213
+16    atkinson                      Atkinson 1.00000 1.000000 1.00000
+17          sl                  Sainte-Laguë 0.05825 0.024911 0.02720
+18          cs                 Cox &amp; Shugart 1.13266 1.035874 1.05312
+19      farina                        Farina 0.10153 0.047980 0.05482
+20      ortona                        Ortona 0.12490 0.042402 0.05743
+21          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
+22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
+23         arr                  Lebeda’s ARR 0.06769 0.072872 0.06984
+24         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
+25        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
+26          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
+27          lr    Likelihood Ratio Statistic     Inf      Inf     Inf
+28       chisq                   Chi Squared 0.03308 0.026543 0.02888
+29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
+30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
+1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
+2       monroe                        Monroe 0.05321 0.020396      0.02505
+3       maxdev    Maximum Absolute Deviation 0.03413 0.013865      0.01387
+4          rae                           Rae 0.01256 0.004263      0.00577
+5           lh             Loosemore &amp; Hanby 0.08162 0.027708      0.03753
+6      grofman                       Grofman 0.03335 0.011323      0.01534
+7     lijphart                      Lijphart 0.03071 0.005143      0.00798
+8    gallagher                     Gallagher 0.04129 0.015827      0.01944
+9  g_gallagher         Generalized Gallagher 0.04129 0.015827      0.01944
+10       gatev                         Gatev 0.08744 0.034607      0.04227
+11    ryabtsev                      Ryabtsev 0.06195 0.024478      0.02990
+12      szalai                        Szalai 0.68738 0.636499      0.63706
+13    w_szalai               Weighted Szalai 0.15384 0.105784      0.10847
+14          ap          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
+15        gini                          Gini 0.07989 0.032180      0.04213
+16    atkinson                      Atkinson 1.00000 1.000000      1.00000
+17          sl                  Sainte-Laguë 0.05825 0.024911      0.02720
+18          cs                 Cox &amp; Shugart 1.13266 1.035874      1.05312
+19      farina                        Farina 0.10153 0.047980      0.05482
+20      ortona                        Ortona 0.12490 0.042402      0.05743
+21          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
+22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
+23         arr                  Lebeda’s ARR 0.06769 0.072872      0.06984
+24         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
+25        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
+26          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
+27          lr    Likelihood Ratio Statistic     Inf      Inf          Inf
+28       chisq                   Chi Squared 0.03308 0.026543      0.02888
+29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
+30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                           Index D'Hondt     Hare Sainte-Laguë
+1                        D’Hondt 1.13647 1.055589      1.10148
+2                         Monroe 0.05321 0.020396      0.02505
+3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
+4                            Rae 0.01256 0.004263      0.00577
+5              Loosemore &amp; Hanby 0.08162 0.027708      0.03753
+6                        Grofman 0.03335 0.011323      0.01534
+7                       Lijphart 0.03071 0.005143      0.00798
+8                      Gallagher 0.04129 0.015827      0.01944
+9          Generalized Gallagher 0.04129 0.015827      0.01944
+10                         Gatev 0.08744 0.034607      0.04227
+11                      Ryabtsev 0.06195 0.024478      0.02990
+12                        Szalai 0.68738 0.636499      0.63706
+13               Weighted Szalai 0.15384 0.105784      0.10847
+14          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
+15                          Gini 0.07989 0.032180      0.04213
+16                      Atkinson 1.00000 1.000000      1.00000
+17                  Sainte-Laguë 0.05825 0.024911      0.02720
+18                 Cox &amp; Shugart 1.13266 1.035874      1.05312
+19                        Farina 0.10153 0.047980      0.05482
+20                        Ortona 0.12490 0.042402      0.05743
+21          Cosine Dissimilarity 0.00417 0.000932      0.00122
+22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
+23                  Lebeda’s ARR 0.06769 0.072872      0.06984
+24                  Lebeda’s SRR 0.04488 0.023669      0.03500
+25                 Lebeda’s WDRR 0.09444 0.036026      0.05573
+26     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
+27    Likelihood Ratio Statistic     Inf      Inf          Inf
+28                   Chi Squared 0.03308 0.026543      0.02888
+29            Hellinger Distance 0.14218 0.098133      0.09959
+30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="wbfgtaevtn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wbfgtaevtn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wbfgtaevtn thead, #wbfgtaevtn tbody, #wbfgtaevtn tfoot, #wbfgtaevtn tr, #wbfgtaevtn td, #wbfgtaevtn th {
+  border-style: none;
+}
+
+#wbfgtaevtn p {
+  margin: 0;
+  padding: 0;
+}
+
+#wbfgtaevtn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wbfgtaevtn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wbfgtaevtn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wbfgtaevtn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wbfgtaevtn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wbfgtaevtn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wbfgtaevtn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wbfgtaevtn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wbfgtaevtn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wbfgtaevtn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wbfgtaevtn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wbfgtaevtn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wbfgtaevtn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wbfgtaevtn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wbfgtaevtn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wbfgtaevtn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wbfgtaevtn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wbfgtaevtn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wbfgtaevtn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wbfgtaevtn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wbfgtaevtn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wbfgtaevtn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wbfgtaevtn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wbfgtaevtn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wbfgtaevtn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wbfgtaevtn .gt_left {
+  text-align: left;
+}
+
+#wbfgtaevtn .gt_center {
+  text-align: center;
+}
+
+#wbfgtaevtn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wbfgtaevtn .gt_font_normal {
+  font-weight: normal;
+}
+
+#wbfgtaevtn .gt_font_bold {
+  font-weight: bold;
+}
+
+#wbfgtaevtn .gt_font_italic {
+  font-style: italic;
+}
+
+#wbfgtaevtn .gt_super {
+  font-size: 65%;
+}
+
+#wbfgtaevtn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wbfgtaevtn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wbfgtaevtn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wbfgtaevtn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wbfgtaevtn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wbfgtaevtn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wbfgtaevtn .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Index</th>
+<th id="D'Hondt" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">D'Hondt</th>
+<th id="Hare" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Hare</th>
+<th id="Sainte-Laguë" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Sainte-Laguë</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">D’Hondt</td>
+<td class="gt_row gt_center" headers="D'Hondt">1.136</td>
+<td class="gt_row gt_center" headers="Hare">1.056</td>
+<td class="gt_row gt_center" headers="Sainte-Laguë">1.101</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Loosemore &amp; Hanby</td>
+<td class="gt_row gt_center" headers="D'Hondt">0.082</td>
+<td class="gt_row gt_center" headers="Hare">0.028</td>
+<td class="gt_row gt_center" headers="Sainte-Laguë">0.038</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Gallagher</td>
+<td class="gt_row gt_center" headers="D'Hondt">0.041</td>
+<td class="gt_row gt_center" headers="Hare">0.016</td>
+<td class="gt_row gt_center" headers="Sainte-Laguë">0.019</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">alpha-Divergence</td>
+<td class="gt_row gt_center" headers="D'Hondt">0.029</td>
+<td class="gt_row gt_center" headers="Hare">0.012</td>
+<td class="gt_row gt_center" headers="Sainte-Laguë">0.014</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
+Defaulting to continuous.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/comparison-visual-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->

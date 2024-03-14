@@ -13,6 +13,8 @@
   value_size = 3,
   x_angle = 0,
   font_size = 12,
+  border_width = 0,
+  border_color = "black",
   digits = 3,
   ...
 )
@@ -33,6 +35,10 @@
 \item{x_angle}{an angle of x-ticks label (\code{0} to \code{90}). Defualt is \code{0}.}
 
 \item{font_size}{a font size. Default is \code{12}.}
+
+\item{border_width}{width of border. Default is \code{0} (no border).}
+
+\item{border_color}{color of border. Default is \code{"black"}.}
 
 \item{digits}{Default is \code{3}.}
 

@@ -185,8 +185,10 @@ nz_decompose_all |>
 nz_decompose_all |> 
   compare() |> 
   plot(value_type = "total", value_angle = 90, 
-       x_angle = 45, digits = 6) +
-  coord_cartesian(ylim = c(0, 0.02))
+       x_angle = 45, border_width = 0.5, digits = 6, border_color = "white") +
+  coord_cartesian(ylim = c(0, 0.025)) +
+  labs(title = "Electoral districts in New Zealand (1949-2011)",
+       caption = expression(paste("Note: Three-step decomposition with ", alpha, " = 2")))
 ```
 
 ```{r}
@@ -195,4 +197,23 @@ nz_decompose_all |>
 nz_decompose_all |> 
   compare() |> 
   plot(facet = TRUE, value_size = 2, digits = 5)
+```
+
+## Comparison
+
+```{r}
+#| label: comparison-decomposition
+compare(list("D'Hondt"                           = decompose(obj1),
+             "D'Hondt + Modified magnitudes"     = decompose(obj2),
+             "Modified-SL + Modified magnitudes" = decompose(obj3))) 
+
+compare(list("D'Hondt"                          = decompose(obj1),
+             "D'Hondt\nModified magnitudes"     = decompose(obj2),
+             "Modified-SL\nModified magnitudes" = decompose(obj3)))  |> 
+  plot()
+
+compare(list("D'Hondt"                           = decompose(obj1),
+             "D'Hondt + Modified magnitudes"     = decompose(obj2),
+             "Modified-SL + Modified magnitudes" = decompose(obj3))) |>
+  plot(facet = TRUE, value_type = "text", digits = 5)
 ```

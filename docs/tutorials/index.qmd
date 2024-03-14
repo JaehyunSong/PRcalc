@@ -25,7 +25,13 @@ obj1 <- prcalc(jp_lower_2021,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 
-obj1
+obj2 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "hare")
+
+obj3 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "sl")
 ```
 
 ## Calculation of disproportionality indices.
@@ -78,4 +84,37 @@ plot(index2, style = "lollipop") # lollipop chart
 #| label: index-plot-2
 #| fig-height: 2
 plot(index2, index = c("dhondt", "gallagher", "lh", "ad"))
+```
+
+## Comparison
+
+```{r}
+#| label: comparison-1
+compare(list(index(obj1), index(obj2), index(obj3)))
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3)))
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3)))|> 
+  print(hide_id = TRUE)
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3))) |> 
+  print(subset  = c("dhondt", "gallagher", "lh", "ad"),
+        hide_id = TRUE,
+        use_gt  = TRUE)
+```
+
+```{r}
+#| label: comparison-visual-1
+#| fig-height: 8
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3))) |> 
+  plot() +
+  ggplot2::labs(x = "Values", y = "Indices", fill = "Method")
 ```
