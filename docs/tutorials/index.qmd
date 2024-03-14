@@ -1,0 +1,81 @@
+---
+title: "Disproportionality"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+    error: true
+---
+
+```{r}
+#| label: setup
+library(PRcalc)
+```
+
+## Preparation
+
+```{r}
+#| label: dataset
+data("jp_lower_2021")
+jp_lower_2021
+
+obj1 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "dt")
+
+obj1
+```
+
+## Calculation of disproportionality indices.
+
+* Some parameters are required for calculation of indices. Default is 2.
+   * `k`：For Generalized Gallagher
+   * `eta`：For Atkinson
+   * `alpha`：For $\alpha$-divergence
+
+```{r}
+#| label: index
+index1 <- index(obj1)
+index1
+index2 <- index(obj1, alpha = 1)
+index2
+```
+
+### Printing
+
+```{r}
+#| label: print
+# Extract a index.
+index1["gallagher"]
+
+# Extract a subset of indices.
+print(index1, subset = c("dhondt", "gallagher", "lh", "ad"))
+
+# Hide ID column.
+print(index1, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE)
+
+# Use {gt} package
+print(index2, 
+      subset  = c("dhondt", "gallagher", "lh", "ad"),
+      hide_id = TRUE,
+      use_gt  = TRUE)
+```
+
+### Visulaization
+
+```{r}
+#| label: index-plot-1
+#| fig-height: 6
+plot(index2)
+plot(index2, style = "lollipop") # lollipop chart
+```
+
+```{r}
+#| label: index-plot-2
+#| fig-height: 2
+plot(index2, index = c("dhondt", "gallagher", "lh", "ad"))
+```

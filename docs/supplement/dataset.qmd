@@ -1,0 +1,62 @@
+---
+title: "Sample Dataset"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+## Electoral result
+
+1st column is the name of the political party, 2nd and subsequent columns are the number of votes received in each block.
+
+|Name|Country|Year|Type|Blocks|
+|:---|:---|---:|:---|---:|
+|`jp_lower_2009`|Japan|2009|Lower house|11|
+|`jp_lower_2012`|Japan|2012|Lower house|11|
+|`jp_lower_2014`|Japan|2014|Lower house|11|
+|`jp_lower_2017`|Japan|2017|Lower house|11|
+|`jp_lower_2021`|Japan|2021|Lower house|11|
+|`jp_upper_2019`|Japan|2019|Upper house|1|
+|`kr_lower_2004`|Korea|2004|Lower house|1|
+|`kr_lower_2008`|Korea|2008|Lower house|1|
+|`kr_lower_2012`|Korea|2012|Lower house|1|
+|`kr_lower_2016`|Korea|2016|Lower house|1|
+
+## Census
+
+1st column is the name of the state / prefecture, 2nd column is the population.
+
+|Name|Country|Year|
+|:---|:---|---:|
+|`jp_census_1920`|Japan|1920|
+|`jp_census_1945`|Japan|1945|
+|`jp_census_1970`|Japan|1970|
+|`jp_census_2015`|Japan|2015|
+|`us_census_2020`|US|2020|
+
+## Electoral districts
+
+* `year`: election year
+* `region`: the name of the state / prefecture
+* `district`: the name of the district
+* `electorates`: the electorates of the district
+* `magnitude`: the magnitudes of the district
+
+|Name|Country|Year|Special district|
+|:---|:---|---:|:---|
+|`au_district_2010`|Australia|2010|none|
+|`nz_district`|New Zealand|1949-2011|`"Maori"`|
+
+## Electoral results
+
+* 1st column: the name of party
+* 2nd column: the name of the block (district)
+* 3rd column: the number of votes
+* 4th column: the number of seats
+
+|Name|Country|Year|Type|
+|:---|:---|---:|:---|
+|`jp_lower_2021_result`|Japan|2010|Lower house|

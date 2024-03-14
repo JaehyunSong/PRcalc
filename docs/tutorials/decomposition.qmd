@@ -1,0 +1,198 @@
+---
+title: "Decomposition"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+toc: true
+---
+
+## Preparation
+
+```{r}
+#| label: setup
+#| message: false
+library(PRcalc)
+library(tidyverse)
+```
+
+## Two-step decomposition
+
+### Using a `prcalc` object.
+
+```{r}
+data(jp_lower_2021)
+
+obj1 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+               method = "dt")
+
+obj2 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "dt")
+
+obj3 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "msl")
+
+decompose(obj1)
+decompose(obj2)
+decompose(obj3)
+```
+
+Different $\alpha$ also available. Default is 2.
+
+```{r}
+decompose(obj1, alpha = 0.5)
+decompose(obj1, alpha = 1)
+decompose(obj1, alpha = 1.5)
+decompose(obj1, alpha = 2)
+decompose(obj1, alpha = 3)
+```
+
+### Import `prcalc` object and decomposition.
+
+#### From `.csv` format
+
+Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
+
+```{r}
+#| error: true
+obj4 <- read_prcalc("../data/sample_dataset.csv",
+                    region     = "region",
+                    district   = "district",
+                    population = "electorates",
+                    magnitude  = "magnitude")
+
+obj4
+
+decompose(obj4, alpha = 2)
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj4, alpha = 0, as_disprop = FALSE)
+```
+
+
+#### From `data.frame`
+
+```{r}
+data(au_district_2010)
+
+au_district_2010
+
+# If all mangnitudes are 1, "magnitude" can be omitted.
+obj5 <- as_prcalc(au_district_2010,
+                  region     = "region",
+                  district   = "district",
+                  population = "electorates")
+
+obj5
+
+decompose(obj5, alpha = 2)
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj5, alpha = 0, as_disprop = FALSE)
+```
+
+```{r}
+data(jp_lower_2021_result)
+
+jp_lower_2021_result
+
+obj6 <- as_prcalc(jp_lower_2021_result,
+                  region        = "Pref",
+                  district      = "Party",
+                  population    = "Votes",
+                  magnitude     = "Seats",
+                  distinct_name = TRUE)
+
+obj6
+
+decompose(obj6, alpha = 2)
+# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
+decompose(obj6, alpha = 0, as_disprop = FALSE)
+```
+
+## Three-step Decomposition
+
+If `special` is defined, three-step decomposition is conducted.
+
+```{r}
+data(nz_district)
+
+nz_1949 <- nz_district |>
+  dplyr::filter(year == 1949) |>
+  as_prcalc(region     = "region",
+            district   = "district",
+            population = "electorates",
+            magnitude  = "magnitude")
+
+nz_1972 <- nz_district |>
+  dplyr::filter(year == 1972) |>
+  as_prcalc()
+
+nz_1990 <- nz_district |>
+  dplyr::filter(year == 1990) |>
+  as_prcalc()
+
+nz_2011 <- nz_district |>
+  dplyr::filter(year == 2011) |>
+  as_prcalc()
+
+(decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori"))
+(decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori"))
+(decompose_1990 <- decompose(nz_1990, alpha = 1, special = "Maori"))
+(decompose_2011 <- decompose(nz_2011, alpha = 1, special = "Maori"))
+
+list("1949" = decompose_1949,
+     "1972" = decompose_1972,
+     "1990" = decompose_1990,
+     "2011" = decompose_2011) |> 
+  compare() 
+
+list("1949" = decompose_1949,
+     "1972" = decompose_1972,
+     "1990" = decompose_1990,
+     "2011" = decompose_2011) |> 
+  compare() |> 
+  plot() +
+  labs(title = "Electoral districts in New Zealand",
+       caption = expression(paste("Three-step decomposition with ", alpha, " = 1")))
+```
+
+```{r}
+# 1949-2011
+nz_decompose_all <- nz_district |> 
+  group_by(year) |> 
+  nest() |> 
+  mutate(data      = map(data, \(x) as_prcalc(x)),
+         decompose = map(data, \(x) decompose(x, 
+                                              alpha      = 0,
+                                              as_disprop = FALSE,
+                                              special    = "Maori"))) |> 
+  pull(decompose)
+
+names(nz_decompose_all) <- unique(nz_district$year)
+
+nz_decompose_all |> 
+  compare() |> 
+  print(use_gt = TRUE, digits = 5)
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+nz_decompose_all |> 
+  compare() |> 
+  plot(value_type = "total", value_angle = 90, 
+       x_angle = 45, digits = 6) +
+  coord_cartesian(ylim = c(0, 0.02))
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 18
+nz_decompose_all |> 
+  compare() |> 
+  plot(facet = TRUE, value_size = 2, digits = 5)
+```

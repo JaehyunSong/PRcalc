@@ -1,0 +1,13 @@
+bibentry(bibtype = "Manual",
+  title = "{PRcalc}: A Proportional Representation Calculator",
+  author = c(
+    person("Jaehyun", "Song",
+           email = "song@kansai-u.ac.jp",
+           role = c("aut", "cre")),
+    person("Yuta", "Kamahara",
+           email = "y.kamahara@gmail.com",
+           role  = "aut")),
+  year = "2024",
+  note = "R package version 0.8.6",
+  url  = "https://github.com/JaehyunSong/PRcalc/"
+)

@@ -1,0 +1,116 @@
+---
+title: "Comparison"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+---
+
+## Preparation
+
+```{r}
+#| label: preparation
+library(PRcalc)
+
+data("jp_lower_2021")
+jp_lower_2021
+
+obj1 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "dt")
+
+obj2 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "hare")
+
+obj3 <- prcalc(jp_lower_2021, 
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+               method = "sl")
+```
+
+## Comparison
+
+### Seat allocation
+
+```{r}
+#| label: comparison-allocation
+compare(list(obj1, obj2))
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) 
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
+  print(subset = c("自民", "公明", "立憲", "共産", "維新"))
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
+  print(prop = TRUE, use_gt = TRUE)
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
+  plot()
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
+  plot(facet = TRUE)
+compare(list("ドント式" = obj1, "ヘア式" = obj2, "サン＝ラゲ式" = obj3)) |> 
+  plot(subset_p = c("自民", "公明", "立憲", "共産", "維新", 
+                    "国民", "社民", "れ新", "N党"),
+       facet = TRUE, facet_col = 3, free_y = FALSE)
+```
+
+### Disproportionality
+
+```{r}
+#| label: comparison-index
+compare(list(index(obj1), index(obj2), index(obj3)))
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3)))
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3)))|> 
+  print(hide_id = TRUE)
+
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3))) |> 
+  print(subset  = c("dhondt", "gallagher", "lh", "ad"),
+        hide_id = TRUE,
+        use_gt  = TRUE)
+```
+
+```{r}
+#| fig-height: 8
+compare(list("D'Hondt"      = index(obj1), 
+             "Hare"         = index(obj2), 
+             "Sainte-Laguë" = index(obj3))) |> 
+  plot() +
+  ggplot2::labs(x = "Values", y = "Indices", fill = "Method")
+```
+
+### Decomposition
+
+```{r}
+#| label: comparison-decomposition
+obj4 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
+               method = "dt")
+
+obj5 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "dt")
+
+obj6 <- prcalc(jp_lower_2021,
+               m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
+               method = "msl")
+
+compare(list("D'Hondt"                           = decompose(obj4),
+             "D'Hondt + Modified magnitudes"     = decompose(obj5),
+             "Modified-SL + Modified magnitudes" = decompose(obj6))) 
+
+compare(list("D'Hondt"                          = decompose(obj4),
+             "D'Hondt\nModified magnitudes"     = decompose(obj5),
+             "Modified-SL\nModified magnitudes" = decompose(obj6)))  |> 
+  plot()
+
+compare(list("D'Hondt"                           = decompose(obj4),
+             "D'Hondt + Modified magnitudes"     = decompose(obj5),
+             "Modified-SL + Modified magnitudes" = decompose(obj6))) |>
+  plot(facet = TRUE, value_type = "text", digits = 5)
+```

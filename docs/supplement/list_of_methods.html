@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PRcalc - Comparison</title>
+<title>PRcalc - List of methods</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -130,42 +159,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="../vignettes/calculation.html">
+    <a class="dropdown-item" href="../tutorials/calculation.html">
  <span class="dropdown-text">Seat allocation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/index.html">
+    <a class="dropdown-item" href="../tutorials/index.html">
  <span class="dropdown-text">Disproportionality</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/decomposition.html">
+    <a class="dropdown-item" href="../tutorials/decomposition.html">
  <span class="dropdown-text">Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/comparison.html">
+    <a class="dropdown-item" href="../tutorials/comparison.html">
  <span class="dropdown-text">Comparison</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/import.html">
+    <a class="dropdown-item" href="../tutorials/import.html">
  <span class="dropdown-text">Import Dataset</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-information" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Information</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-supplement" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Supplement</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-information">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-supplement">    
         <li>
-    <a class="dropdown-item" href="../vignettes/list_of_methods.html">
+    <a class="dropdown-item" href="../supplement/list_of_methods.html">
  <span class="dropdown-text">List of methods</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/list_of_indices.html">
+    <a class="dropdown-item" href="../supplement/list_of_indices.html">
  <span class="dropdown-text">List of indices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../vignettes/dataset.html">
+    <a class="dropdown-item" href="../supplement/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
     </ul>
@@ -276,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Comparison</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">List of methods</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -329,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Comparison</h1>
+<h1 class="title">List of methods</h1>
 </div>
 
 
@@ -346,134 +375,233 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preparation" class="level2">
-<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'PRcalc'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    decompose</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>jp_lower_2021</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
-     Kinki Chugoku Shikoku  Kyushu
-1  2407699 1352723  664805 2250966
-2  1155683  436220  233407 1040756
-3  1090666  573324  291871 1266801
-4   736156  173117  108021  365658
-5  3180219  286302  173826  540338
-6   303480  113899  122082  279509
-7   100980   52638   30249  221221
-8   292483   94446   52941  243284
-9   111539   36758   21285   98506
-10       0       0       0       0
-11       0       0       0       0
-12       0       0       0       0
-13       0       0       0       0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"hare"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"sl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="highest-averages-methods" class="level2">
+<h2 class="anchored" data-anchor-id="highest-averages-methods">Highest averages methods</h2>
+<ul>
+<li><span class="math inline">\(r(k)\)</span>: <span class="math inline">\(k+1\)</span>th divisor</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Argument</th>
+<th style="text-align: left;">Rule</th>
+<th style="text-align: left;">Approx. first values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">D’hondt / Jefferson</td>
+<td style="text-align: left;"><code>"d'hondt"</code>, <code>"dt"</code>, or <code>"jefferson"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k + 1\)</span></td>
+<td style="text-align: left;">1, 2, 3, 4, …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adams / Cambridge</td>
+<td style="text-align: left;"><code>"adams"</code> or <code>"cambridge"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k\)</span></td>
+<td style="text-align: left;">0, 1, 2, 3, …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sainte-Laguë / Webster</td>
+<td style="text-align: left;"><code>"sl"</code>, <code>"sainte-lague"</code>, or <code>"webster"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k + 0.5\)</span></td>
+<td style="text-align: left;">0.5, 1.5, 2.5, 3.5, …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modified Sainte-Laguë</td>
+<td style="text-align: left;"><code>"msl"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k + 0.5, r_1 = 0.7\)</span></td>
+<td style="text-align: left;">0.7, 1.5, 2.5, 3.5, …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Danish</td>
+<td style="text-align: left;"><code>"danish"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k + \frac{1}{3}\)</span></td>
+<td style="text-align: left;">0.33, 1.33, 2.33, 3.33, …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Imperiali</td>
+<td style="text-align: left;"><code>"imperiali"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = k + 2\)</span></td>
+<td style="text-align: left;">2, 3, 4, 5, …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Huntington-Hill</td>
+<td style="text-align: left;"><code>"hh"</code> or <code>"huntington-hill"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = \sqrt{k (k + 1)}\)</span></td>
+<td style="text-align: left;">0, 1.41, 2.45, 3.46, …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dean</td>
+<td style="text-align: left;"><code>"dean"</code></td>
+<td style="text-align: left;"><span class="math inline">\(r(k) = \frac{2}{\frac{1}{k} + \frac{1}{k + 1}}\)</span></td>
+<td style="text-align: left;">0, 1.33, 2.40, 3.43, …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\alpha\)</span>-divergence</td>
+<td style="text-align: left;"><code>"ad"</code></td>
+<td style="text-align: left;">See <a href="#nte-ad" class="quarto-xref">Note&nbsp;1</a></td>
+<td style="text-align: left;">See <a href="#nte-ad" class="quarto-xref">Note&nbsp;1</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Custom</td>
+<td style="text-align: left;"><code>"custom"</code></td>
+<td style="text-align: left;">See <a href="#nte-custom" class="quarto-xref">Note&nbsp;2</a></td>
+<td style="text-align: left;">See <a href="#nte-custom" class="quarto-xref">Note&nbsp;2</a></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="comparison" class="level2">
-<h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
-<section id="seat-allocation" class="level3">
-<h3 class="anchored" data-anchor-id="seat-allocation">Seat allocation</h3>
+<section id="largest-reminder-method" class="level2">
+<h2 class="anchored" data-anchor-id="largest-reminder-method">Largest reminder method</h2>
+<ul>
+<li><span class="math inline">\(Q\)</span>: Quota</li>
+<li><span class="math inline">\(v\)</span>: Total votes</li>
+<li><span class="math inline">\(m\)</span>: Magnitude (total seats)</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Argument</th>
+<th style="text-align: left;">Quota</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hare-Niemeyer quota</td>
+<td style="text-align: left;"><code>"hn"</code>, <code>"hare"</code>, or <code>"hare-niemeyer"</code></td>
+<td style="text-align: left;"><span class="math inline">\(Q = \frac{v}{m}\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Droop quota</td>
+<td style="text-align: left;"><code>"droop"</code></td>
+<td style="text-align: left;"><span class="math inline">\(Q = 1 + \frac{v}{1 + m}\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hagenbach-Bischoff quota</td>
+<td style="text-align: left;"><code>"hb"</code> or <code>"hagenbach-bischoff"</code></td>
+<td style="text-align: left;"><span class="math inline">\(Q = \frac{v}{1 + m}\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Imperiali quota</td>
+<td style="text-align: left;"><code>"iq"</code> or <code>"imperiali quota"</code></td>
+<td style="text-align: left;"><span class="math inline">\(Q = \frac{v}{2 + m}\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<div id="nte-ad" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;1: About <span class="math inline">\(\alpha\)</span>-divergence
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Divisor (<span class="math inline">\(r(k)\)</span>) is calculated as follow:</p>
+<p><span class="math display">\[
+r(k) = \begin{cases}
+\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}&amp; \mbox{if}\quad\alpha = 1,\\
+\frac{1}{\log{\frac{k + 1}{k}}} &amp; \mbox{if}\quad\alpha = 0,\\
+\Bigl(\frac{(k + 1)^\alpha - k^\alpha}{\alpha}\Bigr)^{\frac{1}{\alpha - 1}} &amp; \mbox{otherwise.}\\
+\end{cases}
+\]</span></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\alpha\)</span></th>
+<th style="text-align: left;">Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">+<span class="math inline">\(\infty\)</span></td>
+<td style="text-align: left;">D’hondt / Jefferson</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{1}{3}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Sainte-Laguë / Webster</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Theil</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Theil and Schrage</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-1</td>
+<td style="text-align: left;">Hill</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-4</td>
+<td style="text-align: left;"><span class="math inline">\(\simeq\)</span>Dean</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-<span class="math inline">\(\infty\)</span></td>
+<td style="text-align: left;">Adams / Cambridge</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that extra parameter <span class="math inline">\(\alpha\)</span> is required (<code>extra</code>).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Example 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Example 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(obj1, obj2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Party Model1 Model2
-1    自民     67     62
-2    公明     24     23
-3    立憲     40     36
-4    共産     10     13
-5    維新     26     26
-6    国民      5      8
-7    社民      0      1
-8    れ新      4      7
-9     N党      0      0
-10 支なし      0      0
-11   第一      0      0
-12 やまと      0      0
-13 コロナ      0      0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Party ドント式 ヘア式 サン＝ラゲ式
-1    自民       67     62           63
-2    公明       24     23           24
-3    立憲       40     36           36
-4    共産       10     13           13
-5    維新       26     26           26
-6    国民        5      8            7
-7    社民        0      1            1
-8    れ新        4      7            6
-9     N党        0      0            0
-10 支なし        0      0            0
-11   第一        0      0            0
-12 やまと        0      0            0
-13 コロナ        0      0            0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Party ドント式 ヘア式 サン＝ラゲ式
-1  自民       67     62           63
-2  公明       24     23           24
-3  立憲       40     36           36
-4  共産       10     13           13
-5  維新       26     26           26</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_upper_2019)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Jefferson vs alpha = 10</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"ad"</span>, <span class="at">extra =</span> <span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="yzrszmewpb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yzrszmewpb table {
+<div id="wdveezcsva" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wdveezcsva table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yzrszmewpb thead, #yzrszmewpb tbody, #yzrszmewpb tfoot, #yzrszmewpb tr, #yzrszmewpb td, #yzrszmewpb th {
+#wdveezcsva thead, #wdveezcsva tbody, #wdveezcsva tfoot, #wdveezcsva tr, #wdveezcsva td, #wdveezcsva th {
   border-style: none;
 }
 
-#yzrszmewpb p {
+#wdveezcsva p {
   margin: 0;
   padding: 0;
 }
 
-#yzrszmewpb .gt_table {
+#wdveezcsva .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -499,12 +627,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_caption {
+#wdveezcsva .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yzrszmewpb .gt_title {
+#wdveezcsva .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -516,7 +644,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#yzrszmewpb .gt_subtitle {
+#wdveezcsva .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -528,7 +656,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#yzrszmewpb .gt_heading {
+#wdveezcsva .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -540,13 +668,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_bottom_border {
+#wdveezcsva .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_col_headings {
+#wdveezcsva .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -561,7 +689,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_col_heading {
+#wdveezcsva .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -581,7 +709,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#yzrszmewpb .gt_column_spanner_outer {
+#wdveezcsva .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -593,15 +721,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#yzrszmewpb .gt_column_spanner_outer:first-child {
+#wdveezcsva .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yzrszmewpb .gt_column_spanner_outer:last-child {
+#wdveezcsva .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yzrszmewpb .gt_column_spanner {
+#wdveezcsva .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -613,11 +741,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#yzrszmewpb .gt_spanner_row {
+#wdveezcsva .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yzrszmewpb .gt_group_heading {
+#wdveezcsva .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -643,7 +771,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#yzrszmewpb .gt_empty_group_heading {
+#wdveezcsva .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -658,15 +786,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#yzrszmewpb .gt_from_md > :first-child {
+#wdveezcsva .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yzrszmewpb .gt_from_md > :last-child {
+#wdveezcsva .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yzrszmewpb .gt_row {
+#wdveezcsva .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -685,7 +813,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#yzrszmewpb .gt_stub {
+#wdveezcsva .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -698,7 +826,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#yzrszmewpb .gt_stub_row_group {
+#wdveezcsva .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -712,15 +840,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#yzrszmewpb .gt_row_group_first td {
+#wdveezcsva .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yzrszmewpb .gt_row_group_first th {
+#wdveezcsva .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yzrszmewpb .gt_summary_row {
+#wdveezcsva .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -730,16 +858,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#yzrszmewpb .gt_first_summary_row {
+#wdveezcsva .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_first_summary_row.thick {
+#wdveezcsva .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yzrszmewpb .gt_last_summary_row {
+#wdveezcsva .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -749,7 +877,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_grand_summary_row {
+#wdveezcsva .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -759,7 +887,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#yzrszmewpb .gt_first_grand_summary_row {
+#wdveezcsva .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +897,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_last_grand_summary_row_top {
+#wdveezcsva .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -779,11 +907,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_striped {
+#wdveezcsva .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yzrszmewpb .gt_table_body {
+#wdveezcsva .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -792,7 +920,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_footnotes {
+#wdveezcsva .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -806,7 +934,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_footnote {
+#wdveezcsva .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -815,7 +943,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#yzrszmewpb .gt_sourcenotes {
+#wdveezcsva .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -829,7 +957,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#yzrszmewpb .gt_sourcenote {
+#wdveezcsva .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -837,63 +965,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#yzrszmewpb .gt_left {
+#wdveezcsva .gt_left {
   text-align: left;
 }
 
-#yzrszmewpb .gt_center {
+#wdveezcsva .gt_center {
   text-align: center;
 }
 
-#yzrszmewpb .gt_right {
+#wdveezcsva .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yzrszmewpb .gt_font_normal {
+#wdveezcsva .gt_font_normal {
   font-weight: normal;
 }
 
-#yzrszmewpb .gt_font_bold {
+#wdveezcsva .gt_font_bold {
   font-weight: bold;
 }
 
-#yzrszmewpb .gt_font_italic {
+#wdveezcsva .gt_font_italic {
   font-style: italic;
 }
 
-#yzrszmewpb .gt_super {
+#wdveezcsva .gt_super {
   font-size: 65%;
 }
 
-#yzrszmewpb .gt_footnote_marks {
+#wdveezcsva .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yzrszmewpb .gt_asterisk {
+#wdveezcsva .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yzrszmewpb .gt_indent_1 {
+#wdveezcsva .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yzrszmewpb .gt_indent_2 {
+#wdveezcsva .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yzrszmewpb .gt_indent_3 {
+#wdveezcsva .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yzrszmewpb .gt_indent_4 {
+#wdveezcsva .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yzrszmewpb .gt_indent_5 {
+#wdveezcsva .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -902,89 +1030,75 @@ Attaching package: 'PRcalc'</code></pre>
 <thead>
 <tr class="header gt_col_headings">
 <th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
-<th id="ドント式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ドント式</th>
-<th id="ヘア式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ヘア式</th>
-<th id="サン＝ラゲ式" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">サン＝ラゲ式</th>
+<th id="Model1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model1</th>
+<th id="Model2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model2</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="Party">自民</td>
-<td class="gt_row gt_right" headers="ドント式">0.381</td>
-<td class="gt_row gt_right" headers="ヘア式">0.352</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.358</td>
+<td class="gt_row gt_right" headers="Model1">18</td>
+<td class="gt_row gt_right" headers="Model2">18</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Party">公明</td>
-<td class="gt_row gt_right" headers="ドント式">0.136</td>
-<td class="gt_row gt_right" headers="ヘア式">0.131</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.136</td>
+<td class="gt_row gt_right" headers="Model1">7</td>
+<td class="gt_row gt_right" headers="Model2">7</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Party">立憲</td>
-<td class="gt_row gt_right" headers="ドント式">0.227</td>
-<td class="gt_row gt_right" headers="ヘア式">0.205</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.205</td>
+<td class="gt_row gt_right" headers="Model1">8</td>
+<td class="gt_row gt_right" headers="Model2">8</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">共産</td>
-<td class="gt_row gt_right" headers="ドント式">0.057</td>
-<td class="gt_row gt_right" headers="ヘア式">0.074</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.074</td>
+<td class="gt_row gt_left" headers="Party">維新</td>
+<td class="gt_row gt_right" headers="Model1">5</td>
+<td class="gt_row gt_right" headers="Model2">5</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">維新</td>
-<td class="gt_row gt_right" headers="ドント式">0.148</td>
-<td class="gt_row gt_right" headers="ヘア式">0.148</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.148</td>
+<td class="gt_row gt_left" headers="Party">共産</td>
+<td class="gt_row gt_right" headers="Model1">5</td>
+<td class="gt_row gt_right" headers="Model2">5</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Party">国民</td>
-<td class="gt_row gt_right" headers="ドント式">0.028</td>
-<td class="gt_row gt_right" headers="ヘア式">0.045</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.040</td>
+<td class="gt_row gt_right" headers="Model1">3</td>
+<td class="gt_row gt_right" headers="Model2">3</td>
 </tr>
 <tr class="odd">
+<td class="gt_row gt_left" headers="Party">れいわ</td>
+<td class="gt_row gt_right" headers="Model1">2</td>
+<td class="gt_row gt_right" headers="Model2">2</td>
+</tr>
+<tr class="even">
 <td class="gt_row gt_left" headers="Party">社民</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.006</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.006</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Party">れ新</td>
-<td class="gt_row gt_right" headers="ドント式">0.023</td>
-<td class="gt_row gt_right" headers="ヘア式">0.040</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.034</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">N党</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
+<td class="gt_row gt_left" headers="Party">N国</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">支なし</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
+<td class="gt_row gt_left" headers="Party">安楽死</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">第一</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
+<td class="gt_row gt_left" headers="Party">幸福</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">やまと</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
+<td class="gt_row gt_left" headers="Party">オリーブ</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">コロナ</td>
-<td class="gt_row gt_right" headers="ドント式">0.000</td>
-<td class="gt_row gt_right" headers="ヘア式">0.000</td>
-<td class="gt_row gt_right" headers="サン＝ラゲ式">0.000</td>
+<td class="gt_row gt_left" headers="Party">労働者</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
 </tr>
 </tbody>
 </table>
@@ -992,172 +1106,34 @@ Attaching package: 'PRcalc'</code></pre>
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"ドント式"</span> <span class="ot">=</span> obj1, <span class="st">"ヘア式"</span> <span class="ot">=</span> obj2, <span class="st">"サン＝ラゲ式"</span> <span class="ot">=</span> obj3)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"国民"</span>, <span class="st">"社民"</span>, <span class="st">"れ新"</span>, <span class="st">"N党"</span>),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">facet_col =</span> <span class="dv">3</span>, <span class="at">free_y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-allocation-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="disproportionality" class="level3">
-<h3 class="anchored" data-anchor-id="disproportionality">Disproportionality</h3>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index  Model1   Model2  Model3
-1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
-2       monroe                        Monroe 0.05321 0.020396 0.02505
-3       maxdev    Maximum Absolute Deviation 0.03413 0.013865 0.01387
-4          rae                           Rae 0.01256 0.004263 0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708 0.03753
-6      grofman                       Grofman 0.03335 0.011323 0.01534
-7     lijphart                      Lijphart 0.03071 0.005143 0.00798
-8    gallagher                     Gallagher 0.04129 0.015827 0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827 0.01944
-10       gatev                         Gatev 0.08744 0.034607 0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478 0.02990
-12      szalai                        Szalai 0.68738 0.636499 0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784 0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
-15        gini                          Gini 0.07989 0.032180 0.04213
-16    atkinson                      Atkinson 1.00000 1.000000 1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911 0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874 1.05312
-19      farina                        Farina 0.10153 0.047980 0.05482
-20      ortona                        Ortona 0.12490 0.042402 0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872 0.06984
-24         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf     Inf
-28       chisq                   Chi Squared 0.03308 0.026543 0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
-30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
-1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
-2       monroe                        Monroe 0.05321 0.020396      0.02505
-3       maxdev    Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4          rae                           Rae 0.01256 0.004263      0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6      grofman                       Grofman 0.03335 0.011323      0.01534
-7     lijphart                      Lijphart 0.03071 0.005143      0.00798
-8    gallagher                     Gallagher 0.04129 0.015827      0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827      0.01944
-10       gatev                         Gatev 0.08744 0.034607      0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478      0.02990
-12      szalai                        Szalai 0.68738 0.636499      0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784      0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15        gini                          Gini 0.07989 0.032180      0.04213
-16    atkinson                      Atkinson 1.00000 1.000000      1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911      0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19      farina                        Farina 0.10153 0.047980      0.05482
-20      ortona                        Ortona 0.12490 0.042402      0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872      0.06984
-24         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf          Inf
-28       chisq                   Chi Squared 0.03308 0.026543      0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
-30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                           Index D'Hondt     Hare Sainte-Laguë
-1                        D’Hondt 1.13647 1.055589      1.10148
-2                         Monroe 0.05321 0.020396      0.02505
-3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4                            Rae 0.01256 0.004263      0.00577
-5              Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6                        Grofman 0.03335 0.011323      0.01534
-7                       Lijphart 0.03071 0.005143      0.00798
-8                      Gallagher 0.04129 0.015827      0.01944
-9          Generalized Gallagher 0.04129 0.015827      0.01944
-10                         Gatev 0.08744 0.034607      0.04227
-11                      Ryabtsev 0.06195 0.024478      0.02990
-12                        Szalai 0.68738 0.636499      0.63706
-13               Weighted Szalai 0.15384 0.105784      0.10847
-14          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15                          Gini 0.07989 0.032180      0.04213
-16                      Atkinson 1.00000 1.000000      1.00000
-17                  Sainte-Laguë 0.05825 0.024911      0.02720
-18                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19                        Farina 0.10153 0.047980      0.05482
-20                        Ortona 0.12490 0.042402      0.05743
-21          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23                  Lebeda’s ARR 0.06769 0.072872      0.06984
-24                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27    Likelihood Ratio Statistic     Inf      Inf          Inf
-28                   Chi Squared 0.03308 0.026543      0.02888
-29            Hellinger Distance 0.14218 0.098133      0.09959
-30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dean vs alpha = -4</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dean"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"ad"</span>, <span class="at">extra =</span> <span class="sc">-</span><span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="jljzbtljkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jljzbtljkr table {
+<div id="pwuamxvcju" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pwuamxvcju table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jljzbtljkr thead, #jljzbtljkr tbody, #jljzbtljkr tfoot, #jljzbtljkr tr, #jljzbtljkr td, #jljzbtljkr th {
+#pwuamxvcju thead, #pwuamxvcju tbody, #pwuamxvcju tfoot, #pwuamxvcju tr, #pwuamxvcju td, #pwuamxvcju th {
   border-style: none;
 }
 
-#jljzbtljkr p {
+#pwuamxvcju p {
   margin: 0;
   padding: 0;
 }
 
-#jljzbtljkr .gt_table {
+#pwuamxvcju .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1183,12 +1159,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_caption {
+#pwuamxvcju .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jljzbtljkr .gt_title {
+#pwuamxvcju .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1200,7 +1176,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#jljzbtljkr .gt_subtitle {
+#pwuamxvcju .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1212,7 +1188,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#jljzbtljkr .gt_heading {
+#pwuamxvcju .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1224,13 +1200,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_bottom_border {
+#pwuamxvcju .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_col_headings {
+#pwuamxvcju .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1245,7 +1221,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_col_heading {
+#pwuamxvcju .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1265,7 +1241,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#jljzbtljkr .gt_column_spanner_outer {
+#pwuamxvcju .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1277,15 +1253,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#jljzbtljkr .gt_column_spanner_outer:first-child {
+#pwuamxvcju .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jljzbtljkr .gt_column_spanner_outer:last-child {
+#pwuamxvcju .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jljzbtljkr .gt_column_spanner {
+#pwuamxvcju .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1297,11 +1273,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#jljzbtljkr .gt_spanner_row {
+#pwuamxvcju .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jljzbtljkr .gt_group_heading {
+#pwuamxvcju .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1327,7 +1303,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#jljzbtljkr .gt_empty_group_heading {
+#pwuamxvcju .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1342,15 +1318,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#jljzbtljkr .gt_from_md > :first-child {
+#pwuamxvcju .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jljzbtljkr .gt_from_md > :last-child {
+#pwuamxvcju .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jljzbtljkr .gt_row {
+#pwuamxvcju .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1369,7 +1345,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#jljzbtljkr .gt_stub {
+#pwuamxvcju .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1382,7 +1358,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#jljzbtljkr .gt_stub_row_group {
+#pwuamxvcju .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1396,15 +1372,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#jljzbtljkr .gt_row_group_first td {
+#pwuamxvcju .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jljzbtljkr .gt_row_group_first th {
+#pwuamxvcju .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jljzbtljkr .gt_summary_row {
+#pwuamxvcju .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1414,16 +1390,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#jljzbtljkr .gt_first_summary_row {
+#pwuamxvcju .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_first_summary_row.thick {
+#pwuamxvcju .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jljzbtljkr .gt_last_summary_row {
+#pwuamxvcju .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1433,7 +1409,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_grand_summary_row {
+#pwuamxvcju .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1443,7 +1419,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#jljzbtljkr .gt_first_grand_summary_row {
+#pwuamxvcju .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +1429,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_last_grand_summary_row_top {
+#pwuamxvcju .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1463,11 +1439,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_striped {
+#pwuamxvcju .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jljzbtljkr .gt_table_body {
+#pwuamxvcju .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1476,7 +1452,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_footnotes {
+#pwuamxvcju .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1490,7 +1466,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_footnote {
+#pwuamxvcju .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1499,7 +1475,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#jljzbtljkr .gt_sourcenotes {
+#pwuamxvcju .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1513,7 +1489,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#jljzbtljkr .gt_sourcenote {
+#pwuamxvcju .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1521,63 +1497,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#jljzbtljkr .gt_left {
+#pwuamxvcju .gt_left {
   text-align: left;
 }
 
-#jljzbtljkr .gt_center {
+#pwuamxvcju .gt_center {
   text-align: center;
 }
 
-#jljzbtljkr .gt_right {
+#pwuamxvcju .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jljzbtljkr .gt_font_normal {
+#pwuamxvcju .gt_font_normal {
   font-weight: normal;
 }
 
-#jljzbtljkr .gt_font_bold {
+#pwuamxvcju .gt_font_bold {
   font-weight: bold;
 }
 
-#jljzbtljkr .gt_font_italic {
+#pwuamxvcju .gt_font_italic {
   font-style: italic;
 }
 
-#jljzbtljkr .gt_super {
+#pwuamxvcju .gt_super {
   font-size: 65%;
 }
 
-#jljzbtljkr .gt_footnote_marks {
+#pwuamxvcju .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jljzbtljkr .gt_asterisk {
+#pwuamxvcju .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jljzbtljkr .gt_indent_1 {
+#pwuamxvcju .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jljzbtljkr .gt_indent_2 {
+#pwuamxvcju .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jljzbtljkr .gt_indent_3 {
+#pwuamxvcju .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jljzbtljkr .gt_indent_4 {
+#pwuamxvcju .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jljzbtljkr .gt_indent_5 {
+#pwuamxvcju .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1585,36 +1561,76 @@ Attaching package: 'PRcalc'</code></pre>
 <table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings">
-<th id="Index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Index</th>
-<th id="D'Hondt" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">D'Hondt</th>
-<th id="Hare" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Hare</th>
-<th id="Sainte-Laguë" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Sainte-Laguë</th>
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Model1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model1</th>
+<th id="Model2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model2</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Index">D’Hondt</td>
-<td class="gt_row gt_center" headers="D'Hondt">1.136</td>
-<td class="gt_row gt_center" headers="Hare">1.056</td>
-<td class="gt_row gt_center" headers="Sainte-Laguë">1.101</td>
+<td class="gt_row gt_left" headers="Party">自民</td>
+<td class="gt_row gt_right" headers="Model1">17</td>
+<td class="gt_row gt_right" headers="Model2">17</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Index">Loosemore &amp; Hanby</td>
-<td class="gt_row gt_center" headers="D'Hondt">0.082</td>
-<td class="gt_row gt_center" headers="Hare">0.028</td>
-<td class="gt_row gt_center" headers="Sainte-Laguë">0.038</td>
+<td class="gt_row gt_left" headers="Party">公明</td>
+<td class="gt_row gt_right" headers="Model1">6</td>
+<td class="gt_row gt_right" headers="Model2">6</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Index">Gallagher</td>
-<td class="gt_row gt_center" headers="D'Hondt">0.041</td>
-<td class="gt_row gt_center" headers="Hare">0.016</td>
-<td class="gt_row gt_center" headers="Sainte-Laguë">0.019</td>
+<td class="gt_row gt_left" headers="Party">立憲</td>
+<td class="gt_row gt_right" headers="Model1">7</td>
+<td class="gt_row gt_right" headers="Model2">7</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Index">alpha-Divergence</td>
-<td class="gt_row gt_center" headers="D'Hondt">0.029</td>
-<td class="gt_row gt_center" headers="Hare">0.012</td>
-<td class="gt_row gt_center" headers="Sainte-Laguë">0.014</td>
+<td class="gt_row gt_left" headers="Party">維新</td>
+<td class="gt_row gt_right" headers="Model1">5</td>
+<td class="gt_row gt_right" headers="Model2">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">共産</td>
+<td class="gt_row gt_right" headers="Model1">4</td>
+<td class="gt_row gt_right" headers="Model2">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">国民</td>
+<td class="gt_row gt_right" headers="Model1">3</td>
+<td class="gt_row gt_right" headers="Model2">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">れいわ</td>
+<td class="gt_row gt_right" headers="Model1">2</td>
+<td class="gt_row gt_right" headers="Model2">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">社民</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">N国</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">安楽死</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">幸福</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">オリーブ</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">労働者</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
 </tr>
 </tbody>
 </table>
@@ -1623,80 +1639,560 @@ Attaching package: 'PRcalc'</code></pre>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="nte-custom" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;2: About <code>"custom"</code> method
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Please note that extra parameter (<code>extra</code>). <code>extra</code> must be length of maximum value of <code>m</code> or longer.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
-Defaulting to continuous.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"msl"</span>),</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"custom"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">extra =</span> <span class="fu">c</span>(<span class="fl">1.4</span>, <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">2</span>)))) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
+<div>
+<div id="gbjwqnwqpr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gbjwqnwqpr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gbjwqnwqpr thead, #gbjwqnwqpr tbody, #gbjwqnwqpr tfoot, #gbjwqnwqpr tr, #gbjwqnwqpr td, #gbjwqnwqpr th {
+  border-style: none;
+}
+
+#gbjwqnwqpr p {
+  margin: 0;
+  padding: 0;
+}
+
+#gbjwqnwqpr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gbjwqnwqpr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gbjwqnwqpr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gbjwqnwqpr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gbjwqnwqpr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gbjwqnwqpr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gbjwqnwqpr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gbjwqnwqpr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gbjwqnwqpr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gbjwqnwqpr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gbjwqnwqpr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gbjwqnwqpr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gbjwqnwqpr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gbjwqnwqpr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gbjwqnwqpr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gbjwqnwqpr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gbjwqnwqpr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gbjwqnwqpr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gbjwqnwqpr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gbjwqnwqpr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gbjwqnwqpr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gbjwqnwqpr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gbjwqnwqpr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gbjwqnwqpr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gbjwqnwqpr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gbjwqnwqpr .gt_left {
+  text-align: left;
+}
+
+#gbjwqnwqpr .gt_center {
+  text-align: center;
+}
+
+#gbjwqnwqpr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gbjwqnwqpr .gt_font_normal {
+  font-weight: normal;
+}
+
+#gbjwqnwqpr .gt_font_bold {
+  font-weight: bold;
+}
+
+#gbjwqnwqpr .gt_font_italic {
+  font-style: italic;
+}
+
+#gbjwqnwqpr .gt_super {
+  font-size: 65%;
+}
+
+#gbjwqnwqpr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gbjwqnwqpr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gbjwqnwqpr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gbjwqnwqpr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gbjwqnwqpr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gbjwqnwqpr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gbjwqnwqpr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Model1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model1</th>
+<th id="Model2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Model2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">自民</td>
+<td class="gt_row gt_right" headers="Model1">18</td>
+<td class="gt_row gt_right" headers="Model2">18</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">公明</td>
+<td class="gt_row gt_right" headers="Model1">7</td>
+<td class="gt_row gt_right" headers="Model2">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">立憲</td>
+<td class="gt_row gt_right" headers="Model1">8</td>
+<td class="gt_row gt_right" headers="Model2">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">維新</td>
+<td class="gt_row gt_right" headers="Model1">5</td>
+<td class="gt_row gt_right" headers="Model2">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">共産</td>
+<td class="gt_row gt_right" headers="Model1">5</td>
+<td class="gt_row gt_right" headers="Model2">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">国民</td>
+<td class="gt_row gt_right" headers="Model1">3</td>
+<td class="gt_row gt_right" headers="Model2">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">れいわ</td>
+<td class="gt_row gt_right" headers="Model1">2</td>
+<td class="gt_row gt_right" headers="Model2">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">社民</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">N国</td>
+<td class="gt_row gt_right" headers="Model1">1</td>
+<td class="gt_row gt_right" headers="Model2">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">安楽死</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">幸福</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">オリーブ</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">労働者</td>
+<td class="gt_row gt_right" headers="Model1">0</td>
+<td class="gt_row gt_right" headers="Model2">0</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
-</section>
-<section id="decomposition" class="level3">
-<h3 class="anchored" data-anchor-id="decomposition">Decomposition</h3>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>),</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>obj6 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"msl"</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              Type D'Hondt D'Hondt + Modified magnitudes
-1 Alpha-divergence 0.05494                      0.047920
-2  Reapportionment 0.00231                      0.000301
-3    Redistricting 0.05262                      0.047618
-  Modified-SL + Modified magnitudes
-1                          0.039719
-2                          0.000301
-3                          0.039418
-Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                          <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL</span><span class="sc">\n</span><span class="st">Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6)))  <span class="sc">|&gt;</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-decomposition-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>                           <span class="ot">=</span> <span class="fu">decompose</span>(obj4),</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"D'Hondt + Modified magnitudes"</span>     <span class="ot">=</span> <span class="fu">decompose</span>(obj5),</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Modified-SL + Modified magnitudes"</span> <span class="ot">=</span> <span class="fu">decompose</span>(obj6))) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">value_type =</span> <span class="st">"text"</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="comparison_files/figure-html/comparison-decomposition-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

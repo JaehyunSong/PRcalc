@@ -9,3 +9,4 @@ figures/
 ^altdoc$
 ^_quarto$
 test/
+^README.qmd
