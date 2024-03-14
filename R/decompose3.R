@@ -92,7 +92,7 @@ decompose3.prcalc <- function(x,
   } else if (alpha == 1) {
     special <- sum(special_s_prop * log(special_s_prop / special_v_prop))
   } else {
-    special <- 0
+    special <- sum(special_v_prop * temp_a * ((special_s_prop / special_v_prop)^alpha - 1))
   }
 
 
@@ -114,7 +114,10 @@ decompose3.prcalc <- function(x,
     } else if (alpha == 1) {
       temp_ra_vec[i] <- sum(s_hj * log(s_hj / v_hj))
     } else {
-      temp_ra_vec[i] <- 0
+      v_h <- special_vec1 / sum(special_vec1)
+      s_h <- special_vec2 / sum(special_vec2)
+      temp_ra_vec[i] <- sum(s_h^alpha * v_h^(1 - alpha) *
+                              sum(v_hj * temp_a * ((s_hj / v_hj)^alpha - 1)))
     }
 
 
@@ -133,6 +136,7 @@ decompose3.prcalc <- function(x,
     temp_s <- s_prop[grepl(i, names(s_prop))]
 
     v_hj <- temp_v / sum(temp_v)
+    s_hj <- temp_s / sum(temp_s)
 
     temp <- c()
 
@@ -151,7 +155,11 @@ decompose3.prcalc <- function(x,
       } else if (alpha == 1) {
         temp[j] <- sum(s_hji * log(s_hji / v_hji))
       } else {
-        temp[j] <- 0
+        v_h <- special_vec1 / sum(special_vec1)
+        s_h <- special_vec2 / sum(special_vec2)
+        temp_3_1 <- sum(v_hji * temp_a * ((s_hji / v_hji)^alpha - 1))
+        temp_3_2 <- sum(s_hj^alpha * v_hj^(1 - alpha) * temp_3_1)
+        temp[j]  <- sum(s_h^alpha * v_h^(1 - alpha) * temp_3_2)
       }
     }
 
