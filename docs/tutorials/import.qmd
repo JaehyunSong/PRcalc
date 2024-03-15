@@ -21,14 +21,14 @@ data(jp_lower_2021_result)
 
 jp_lower_2021_result
 
-obj6 <- as_prcalc(jp_lower_2021_result,
+obj1 <- as_prcalc(jp_lower_2021_result,
                   region     = "Pref",
                   district   = "Party",
                   population = "Votes",
                   magnitude  = "Seats",
                   distinct_name = TRUE)
 
-plot(obj6, 
+plot(obj1, 
      subset_p  = c("Jimin", "Komei", "Rikken", 
                    "Kyosan", "Ishin", "Kokumin"),
      facet_col = 3,
@@ -42,15 +42,15 @@ data(au_district_2010)
 
 au_district_2010
 
-obj5 <- as_prcalc(au_district_2010,
+obj2 <- as_prcalc(au_district_2010,
                   region     = "region",
                   district   = "district",
                   population = "electorates",
                   magnitude  = "magnitude")
 
-obj5
+obj2
 
-decompose(obj5, alpha = 0, as_disprop = FALSE)
+decompose(obj2, alpha = 0, as_disprop = FALSE)
 ```
 
 ## Example 3: Electoral district allocation (from `.csv` file)

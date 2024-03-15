@@ -18,43 +18,61 @@ library(tidyverse)
 
 ## Import sample dataset
 
+The first column contains the names of political parties, and the subsequent columns contain the respective number of votes for each party.
+
 ```{r}
 #| label: dataset
 # Japanese upper house election in 2019
+# Number of blocks = 1 (national block)
 data("jp_upper_2019")
 jp_upper_2019
 
 # Japanese lower house election in 2019
+# Number of blocks = 11 (regional blocks)
 data("jp_lower_2021")
 jp_lower_2021
 ```
 
 ## Calculation
 
+To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 50 (`m = 50`) seats using the D'Hondt method (`method = "dt"`) with the `jp_upper_2019` dataset. In this case, the length of `m` is 1 because number of blocks is 1.
+
 ```{r}
-#| label: calculation
+#| label: calculation-1
 # Example of national block (D'Hondt/Jefferson method)
 obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
 obj1
+```
 
+In a block system, you need to specify `m` for each block separately. Since `jp_lower_2021` has 11 blocks, the length of `m` also needs to be 11.
+
+```{r}
+#| label: calculation-2
 # Example of regional block (D'Hondt/Jefferson method; 11 blocks)
 obj2 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 obj2
+```
 
-# Example of regional block (Hare-Niemeyer method; 11 blocks)
+{PRcalc} offers various allocation methods. Below is an example similar to the previous one, but with the allocation methods changed to the Hare-Niemeyer (`"hn"`) method and the Sainte-Laguë method (`"sl"`).
+
+```{r}
+#| label: calculation-3
+# Hare-Niemeyer method
 obj3 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
-               method = "hare")
+               method = "hn")
 obj3
 
-# Example of regional block (Sainte-Laguë/Webster method; 11 blocks)
+# Sainte-Laguë/Webster method
 obj4 <- prcalc(jp_lower_2021, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "sl")
 obj4
 ```
+
+To check the list of various allocation methods provided by {PRcalc}, please [click here](../supplement/list_of_methods.qmd).
 
 ### Printing
 
