@@ -21,6 +21,11 @@ A tibble object with two columns.
 \description{
 Largest Remainder Method
 }
+\details{
+Custom methods (\code{"custom divisor"} and \code{"custom quota"}) require \code{extra} parameter. In the case of \code{"custom divisor"} (\code{"cd"}), a numeric vector of the same length as the magnitude (\code{m}) must be specified. If the magnitude (\code{m}) is a vector of length 2 or longer, the \code{extra} must have a length equal to \code{max(m)}. For example, if \code{m = c(5, 7, 4)}, then the length of the extra must be 7.
+
+In the case of \code{"custom quota"}, \code{extra} must be a vector of the same length as \code{m}. For example, if \code{m = c(5, 7, 4)}, \code{extra} must also be a numeric vector of length 3. If length of \code{extra} is 1, the same quota is applied to all blocks.
+}
 \section{Allocation methods}{
 
 \itemize{
@@ -35,7 +40,7 @@ Largest Remainder Method
 \item \code{"hungtington-hill"} (\code{"hh"}): Huntington-Hill method
 \item \code{"dean"}: Dean method
 \item \code{"ad"}: alpha-divergence. \code{extra} is mandatory.
-\item \code{"custom"}: Custom divisor. \code{extra} is mandatory.
+\item \code{"custom divisor"} (\code{"cd"}): Custom divisor. \code{extra} is mandatory.
 }
 \item Largest reminder method
 \itemize{
@@ -43,6 +48,7 @@ Largest Remainder Method
 \item \code{"droop"}: Droop quota
 \item \code{"hagenbach-bischoff"} (\code{"hb"}): Hagenbach-Bischoff quota
 \item \code{"imperiali quota"} (\code{"iq"}): Imperiali quota
+\item \code{"custom quota"} (\code{"cq"}): Custom quota. \code{extra} is mandatory.
 }
 }
 }

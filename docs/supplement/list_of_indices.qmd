@@ -8,45 +8,45 @@ knitr:
     dpi: 150
 ---
 
+In the case of a block system, disproportionality is not measured within individual blocks, but rather based on the total number of votes and seats received.
+
 * $p$: Number of parties
 * $v_i$: voteshare of party $i$
 * $s_i$: seatshare of party $i$
 
-|Index|ID in {PRcalc}|Rule|Note|
-|:---|:---|:---|:---|
-|D'Hondt (Gallagher 1991)|`"dhondt"`|$\mbox{max}_i \frac{s_i}{v_i}$||
-|Monroe (1994) |`"monroe"`|$\sqrt{\frac{\sum_i (s_i - v_i)^2}{1 + \sum_i v_i^2}}$||
-|Maximum absolute deviation|`"maxdev"`|$\mbox{max}_i\{|s_i - v_i|\}$||
-|Rae (1967) |`"rae"`|$\frac{1}{p}\sum_i |s_i - v_i|$||
-|Loosemore & Hanby (1971)|`"lh"`|$\frac{1}{2}\sum_i |s_i - v_i|$||
-|Grofman|`"grofman"`|$\frac{1}{e}\sum_i |s_i - v_i|$|$e = \frac{1}{\sum_i v_i^2}$|
-|Lijphart|`"lijphart"`|$\frac{|s_a - v_a| + |s_b - v_b|}{2}$|$v_a > v_b > ...$|
-|Gallagher (1991)|`"gallagher"`|$\sqrt{\frac{1}{2}\sum_i (s_i - v_i)^2}$||
-|Generalized Gallagher|`"g_gallagher"`|$\sqrt[k]{\frac{1}{k}\sum_i (s_i - v_i)^k}$||
-|Gatev|`"gatev"`|$\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i^2 + v_i^2)}}$||
-|Ryabtsev|`"ryabtsev"`|$\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i + v_i)^2}}$||
-|Szalai (Stewart 2006)|`"szalai"`|$\sqrt{\frac{1}{p}\sum_i \bigl(\frac{s_i - v_i}{s_i + v_i}\bigr)^2}$||
-|Weighted Szalai (Stewart 2006)|`"w_szalai"`|$\sqrt{\frac{1}{2}\sum_i \frac{(s_i - v_i)^2}{s_i + v_i}}$||
-|Aleskerov & Platonov |`"ap"`|$\frac{\sum_i k_i \frac{s_i}{v_i}}{\sum_i k_i}$|$k_i = \mathbb{I}\bigl(\frac{s_i}{v_i} > 1\bigr)$|
-|Gini coefficient|`"gini"`|$1$||
-|Atkinson|`"atkinson"`|$1 - \Bigl[\sum_i v_i \bigl(\frac{s_i}{v_i}\bigr)^{(1 - \eta)} \Bigr]^{\frac{1}{1-\eta}}$||
-|Generalized Entropy|`"entropy"`|$\frac{1}{\alpha^2 - \alpha}\Bigl[ \sum_i v_i \bigl( \frac{s_i}{v_i} \bigr)^\alpha - 1 \Bigr]$||
-|Sainte-Laguë (1910)|`"sl"`|$\sum_i \frac{(s_i - v_i)^2}{v_i}$||
-|Cox & Shugart|`"cs"`|$\frac{\sum_i (s_i - \bar{s})(v_i - \bar{v})}{\sum_i(v_i - \bar{v})^2}$||
-|Farina (Kestelman 2005)|`"farina"`|$\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}$||
-|Ortona|`"ortona"`|$\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}$|$u_i = \mathbb{I}(s_i = \mbox{max}_i s_i)$|
-|Fragnelli|`"fragnelli"`|$\frac{1}{2}\sum_i |\varphi_i(s) - \varphi_i(v)|$||
-|Gambarelli & Biella|`"gb"`|$\max_i\{|s_i - v_i|, |\varphi_i (s) - \varphi_i (v)|\}$||
-|Cosine Dissimilarity|`"cd"`|$1 - \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2}\sqrt{\sum_i v_i^2}}$||
-|Lebeda's RR (Mixture D'Hondt)|`"rr"`|$1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}}$||
-|Lebeda's ARR|`"arr"`|$\frac{1}{p}\Bigl( 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)$||
-|Lebeda's SRR|`"srr"`|$\sqrt{\sum_i\Bigl(v_i - \frac{s_i}{\mbox{max}_i \frac{s_i}{v_i}}\Bigr)^2}$||
-|Lebeda's WDRR|`"wdrr"`|$\frac{1}{3}\Bigl(\Bigl(\sum_i |v_i - s_i|\Bigr) + \Bigl(\sum_i 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)\Bigr)$||
-|Kullback-Leibler Surprise|`"kl"`|$\sum_{s_i > 0}s_i \mbox{ln} \frac{s_i}{v_i}$||
-|Likelihood Ratio Statistic|`"lr"`|$2\sum_i v_i \mbox{ln} \frac{v_i}{s_i}$||
-|$\chi^2$|`"chisq"`|$\sum_{s_i > 0}\frac{(v_i - s_i)^2}{s_i}$||
-|Hellinger Distance|`"hellinger"`|$\frac{1}{\sqrt{2}}\sqrt{\sum_i(\sqrt{s_i} - \sqrt{v_i})^2}$||
-|$\alpha$-divergence|`"ad"`|See @nte-ad||
+|Index|ID in {PRcalc}|Rule|
+|:---|:---|:---|
+|D'Hondt (Gallagher 1991)|`"dhondt"`|$\mbox{max}_i \frac{s_i}{v_i}$|
+|Monroe (1994) |`"monroe"`|$\sqrt{\frac{\sum_i (s_i - v_i)^2}{1 + \sum_i v_i^2}}$|
+|Maximum absolute deviation|`"maxdev"`|$\mbox{max}_i\{|s_i - v_i|\}$|
+|Rae (1967) |`"rae"`|$\frac{1}{p}\sum_i |s_i - v_i|$|
+|Loosemore & Hanby (1971)|`"lh"`|$\frac{1}{2}\sum_i |s_i - v_i|$|
+|Grofman|`"grofman"`|$\frac{1}{e}\sum_i |s_i - v_i|; e = \frac{1}{\sum_i v_i^2}$||
+|Lijphart|`"lijphart"`|$\frac{|s_a - v_a| + |s_b - v_b|}{2}; v_a > v_b > ...$|
+|Gallagher (1991)|`"gallagher"`|$\sqrt{\frac{1}{2}\sum_i (s_i - v_i)^2}$|
+|Generalized Gallagher|`"g_gallagher"`|$\sqrt[k]{\frac{1}{k}\sum_i (s_i - v_i)^k}$|
+|Gatev|`"gatev"`|$\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i^2 + v_i^2)}}$|
+|Ryabtsev|`"ryabtsev"`|$\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i + v_i)^2}}$|/
+|Szalai (Stewart 2006)|`"szalai"`|$\sqrt{\frac{1}{p}\sum_i \bigl(\frac{s_i - v_i}{s_i + v_i}\bigr)^2}$|
+|Weighted Szalai (Stewart 2006)|`"w_szalai"`|$\sqrt{\frac{1}{2}\sum_i \frac{(s_i - v_i)^2}{s_i + v_i}}$|
+|Aleskerov & Platonov |`"ap"`|$\frac{\sum_i k_i \frac{s_i}{v_i}}{\sum_i k_i}; k_i = \mathbb{I}\bigl(\frac{s_i}{v_i} > 1\bigr)$|
+|Gini coefficient|`"gini"`|$1$|
+|Atkinson|`"atkinson"`|$1 - \Bigl[\sum_i v_i \bigl(\frac{s_i}{v_i}\bigr)^{(1 - \eta)} \Bigr]^{\frac{1}{1-\eta}}$|
+|Generalized Entropy|`"entropy"`|$\frac{1}{\alpha^2 - \alpha}\Bigl[ \sum_i v_i \bigl( \frac{s_i}{v_i} \bigr)^\alpha - 1 \Bigr]$|
+|Sainte-Laguë (1910)|`"sl"`|$\sum_i \frac{(s_i - v_i)^2}{v_i}$|
+|Cox & Shugart|`"cs"`|$\frac{\sum_i (s_i - \bar{s})(v_i - \bar{v})}{\sum_i(v_i - \bar{v})^2}$|
+|Fragnelli|`"fragnelli"`|$\frac{1}{2}\sum_i |\varphi_i(s) - \varphi_i(v)|$|
+|Gambarelli & Biella|`"gb"`|$\max_i\{|s_i - v_i|, |\varphi_i (s) - \varphi_i (v)|\}$|
+|Cosine Dissimilarity|`"cd"`|$1 - \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2}\sqrt{\sum_i v_i^2}}$|
+|Lebeda's RR (Mixture D'Hondt)|`"rr"`|$1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}}$|
+|Lebeda's ARR|`"arr"`|$\frac{1}{p}\Bigl( 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)$|
+|Lebeda's SRR|`"srr"`|$\sqrt{\sum_i\Bigl(v_i - \frac{s_i}{\mbox{max}_i \frac{s_i}{v_i}}\Bigr)^2}$|
+|Lebeda's WDRR|`"wdrr"`|$\frac{1}{3}\Bigl(\Bigl(\sum_i |v_i - s_i|\Bigr) + \Bigl(\sum_i 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)\Bigr)$|
+|Kullback-Leibler Surprise|`"kl"`|$\sum_{s_i > 0}s_i \mbox{ln} \frac{s_i}{v_i}$|
+|Likelihood Ratio Statistic|`"lr"`|$2\sum_i v_i \mbox{ln} \frac{v_i}{s_i}$|
+|$\chi^2$|`"chisq"`|$\sum_{s_i > 0}\frac{(v_i - s_i)^2}{s_i}$|
+|Hellinger Distance|`"hellinger"`|$\frac{1}{\sqrt{2}}\sqrt{\sum_i(\sqrt{s_i} - \sqrt{v_i})^2}$|
+|$\alpha$-divergence|`"ad"`|See @nte-ad|
 
 :::{#nte-ad .callout-note collapse="true"}
 ## About $\alpha$-divergence\
@@ -60,3 +60,8 @@ D(\alpha) = \begin{cases}
 $$
 
 :::
+
+<!--
+|Farina (Kestelman 2005)|`"farina"`|$\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}$||
+|Ortona|`"ortona"`|$\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}$|$u_i = \mathbb{I}(s_i = \mbox{max}_i s_i)$|
+-->

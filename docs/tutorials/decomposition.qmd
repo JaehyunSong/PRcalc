@@ -66,7 +66,7 @@ obj4 <- read_prcalc("../data/sample_dataset.csv",
                     population = "electorates",
                     magnitude  = "magnitude")
 
-obj4
+print(obj4, head = 10)
 
 decompose(obj4, alpha = 2)
 # By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
@@ -79,7 +79,7 @@ decompose(obj4, alpha = 0, as_disprop = FALSE)
 ```{r}
 data(au_district_2010)
 
-au_district_2010
+head(au_district_2010)
 
 # If all mangnitudes are 1, "magnitude" can be omitted.
 obj5 <- as_prcalc(au_district_2010,
@@ -87,7 +87,7 @@ obj5 <- as_prcalc(au_district_2010,
                   district   = "district",
                   population = "electorates")
 
-obj5
+print(obj5, head = 10)
 
 decompose(obj5, alpha = 2)
 # By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
@@ -97,7 +97,7 @@ decompose(obj5, alpha = 0, as_disprop = FALSE)
 ```{r}
 data(jp_lower_2021_result)
 
-jp_lower_2021_result
+head(jp_lower_2021_result)
 
 obj6 <- as_prcalc(jp_lower_2021_result,
                   region        = "Pref",
@@ -106,7 +106,7 @@ obj6 <- as_prcalc(jp_lower_2021_result,
                   magnitude     = "Seats",
                   distinct_name = TRUE)
 
-obj6
+print(obj6, head = 10)
 
 decompose(obj6, alpha = 2)
 # By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.

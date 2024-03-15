@@ -16,12 +16,18 @@
 #'    * `"hungtington-hill"` (`"hh"`): Huntington-Hill method
 #'    * `"dean"`: Dean method
 #'    * `"ad"`: alpha-divergence. `extra` is mandatory.
-#'    * `"custom"`: Custom divisor. `extra` is mandatory.
+#'    * `"custom divisor"` (`"cd"`): Custom divisor. `extra` is mandatory.
 #' * Largest reminder method
 #'    * `"hare-niemeyer"` (`"hn"` or `"hare"`): Hare-Niemeyer quota
 #'    * `"droop"`: Droop quota
 #'    * `"hagenbach-bischoff"` (`"hb"`): Hagenbach-Bischoff quota
 #'    * `"imperiali quota"` (`"iq"`): Imperiali quota
+#'    * `"custom quota"` (`"cq"`): Custom quota. `extra` is mandatory.
+#'
+#' @details
+#' Custom methods (`"custom divisor"` and `"custom quota"`) require `extra` parameter. In the case of `"custom divisor"` (`"cd"`), a numeric vector of the same length as the magnitude (`m`) must be specified. If the magnitude (`m`) is a vector of length 2 or longer, the `extra` must have a length equal to `max(m)`. For example, if `m = c(5, 7, 4)`, then the length of the extra must be 7.
+#'
+#' In the case of `"custom quota"`, `extra` must be a vector of the same length as `m`. For example, if `m = c(5, 7, 4)`, `extra` must also be a numeric vector of length 3. If length of `extra` is 1, the same quota is applied to all blocks.
 #'
 #' @import dplyr
 #' @import tidyr
