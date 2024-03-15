@@ -79,6 +79,9 @@ index.prcalc <- function(x,
   s     <- s[ord_i]
   p     <- length(v)
 
+  print(v)
+  print(s)
+
   # D'Hondt
   dhondt <- max(s / v)
   # Monroe
@@ -140,7 +143,7 @@ index.prcalc <- function(x,
   # Lebeda’s RR / Mixture D’Hondt
   rr <- 1 - (1 / (max(s / v)))
   # Lebeda’s ARR
-  arr <- (1 / p) * (1 / (max(s / v)))
+  arr <- (1 / p) * (1 - (1 / (max(s / v))))
   # Lebeda’s SRR
   srr <- sqrt(sum((v - (s / max(s / v)))^2))
   # Lebeda’s WDRR

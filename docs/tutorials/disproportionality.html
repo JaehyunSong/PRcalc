@@ -456,8 +456,16 @@ Attaching package: 'PRcalc'</code></pre>
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -482,7 +490,7 @@ Attaching package: 'PRcalc'</code></pre>
 20      ortona                        Ortona 0.12490
 21          cd          Cosine Dissimilarity 0.00417
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.06769
+23         arr                  Lebeda’s ARR 0.00924
 24         srr                  Lebeda’s SRR 0.04488
 25        wdrr                 Lebeda’s WDRR 0.09444
 26          kl     Kullback-Leibler Surprise 0.04684
@@ -491,8 +499,16 @@ Attaching package: 'PRcalc'</code></pre>
 29   hellinger            Hellinger Distance 0.14218
 30          ad              alpha-Divergence 0.02912</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -517,7 +533,7 @@ Attaching package: 'PRcalc'</code></pre>
 20      ortona                        Ortona 0.12490
 21          cd          Cosine Dissimilarity 0.00417
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.06769
+23         arr                  Lebeda’s ARR 0.00924
 24         srr                  Lebeda’s SRR 0.04488
 25        wdrr                 Lebeda’s WDRR 0.09444
 26          kl     Kullback-Leibler Surprise 0.04684
@@ -530,14 +546,14 @@ Attaching package: 'PRcalc'</code></pre>
 <section id="printing" class="level3">
 <h3 class="anchored" data-anchor-id="printing">Printing</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> gallagher 
 0.04128719 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ID             Index  Value
 1    dhondt           D’Hondt 1.1365
@@ -545,10 +561,10 @@ Attaching package: 'PRcalc'</code></pre>
 3 gallagher         Gallagher 0.0413
 4        ad  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Index  Value
 1           D’Hondt 1.1365
@@ -556,30 +572,30 @@ Attaching package: 'PRcalc'</code></pre>
 3         Gallagher 0.0413
 4  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="mpbofslneo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mpbofslneo table {
+<div id="lodznyhqot" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lodznyhqot table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mpbofslneo thead, #mpbofslneo tbody, #mpbofslneo tfoot, #mpbofslneo tr, #mpbofslneo td, #mpbofslneo th {
+#lodznyhqot thead, #lodznyhqot tbody, #lodznyhqot tfoot, #lodznyhqot tr, #lodznyhqot td, #lodznyhqot th {
   border-style: none;
 }
 
-#mpbofslneo p {
+#lodznyhqot p {
   margin: 0;
   padding: 0;
 }
 
-#mpbofslneo .gt_table {
+#lodznyhqot .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -605,12 +621,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_caption {
+#lodznyhqot .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mpbofslneo .gt_title {
+#lodznyhqot .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -622,7 +638,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#mpbofslneo .gt_subtitle {
+#lodznyhqot .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -634,7 +650,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#mpbofslneo .gt_heading {
+#lodznyhqot .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -646,13 +662,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_bottom_border {
+#lodznyhqot .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_col_headings {
+#lodznyhqot .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -667,7 +683,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_col_heading {
+#lodznyhqot .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -687,7 +703,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#mpbofslneo .gt_column_spanner_outer {
+#lodznyhqot .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -699,15 +715,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#mpbofslneo .gt_column_spanner_outer:first-child {
+#lodznyhqot .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mpbofslneo .gt_column_spanner_outer:last-child {
+#lodznyhqot .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mpbofslneo .gt_column_spanner {
+#lodznyhqot .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -719,11 +735,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#mpbofslneo .gt_spanner_row {
+#lodznyhqot .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mpbofslneo .gt_group_heading {
+#lodznyhqot .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -749,7 +765,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#mpbofslneo .gt_empty_group_heading {
+#lodznyhqot .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -764,15 +780,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#mpbofslneo .gt_from_md > :first-child {
+#lodznyhqot .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mpbofslneo .gt_from_md > :last-child {
+#lodznyhqot .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mpbofslneo .gt_row {
+#lodznyhqot .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -791,7 +807,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#mpbofslneo .gt_stub {
+#lodznyhqot .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -804,7 +820,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpbofslneo .gt_stub_row_group {
+#lodznyhqot .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -818,15 +834,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#mpbofslneo .gt_row_group_first td {
+#lodznyhqot .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mpbofslneo .gt_row_group_first th {
+#lodznyhqot .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mpbofslneo .gt_summary_row {
+#lodznyhqot .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -836,16 +852,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpbofslneo .gt_first_summary_row {
+#lodznyhqot .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_first_summary_row.thick {
+#lodznyhqot .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mpbofslneo .gt_last_summary_row {
+#lodznyhqot .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -855,7 +871,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_grand_summary_row {
+#lodznyhqot .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -865,7 +881,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpbofslneo .gt_first_grand_summary_row {
+#lodznyhqot .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,7 +891,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_last_grand_summary_row_top {
+#lodznyhqot .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -885,11 +901,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_striped {
+#lodznyhqot .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mpbofslneo .gt_table_body {
+#lodznyhqot .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -898,7 +914,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_footnotes {
+#lodznyhqot .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -912,7 +928,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_footnote {
+#lodznyhqot .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -921,7 +937,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpbofslneo .gt_sourcenotes {
+#lodznyhqot .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -935,7 +951,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#mpbofslneo .gt_sourcenote {
+#lodznyhqot .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -943,63 +959,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#mpbofslneo .gt_left {
+#lodznyhqot .gt_left {
   text-align: left;
 }
 
-#mpbofslneo .gt_center {
+#lodznyhqot .gt_center {
   text-align: center;
 }
 
-#mpbofslneo .gt_right {
+#lodznyhqot .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mpbofslneo .gt_font_normal {
+#lodznyhqot .gt_font_normal {
   font-weight: normal;
 }
 
-#mpbofslneo .gt_font_bold {
+#lodznyhqot .gt_font_bold {
   font-weight: bold;
 }
 
-#mpbofslneo .gt_font_italic {
+#lodznyhqot .gt_font_italic {
   font-style: italic;
 }
 
-#mpbofslneo .gt_super {
+#lodznyhqot .gt_super {
   font-size: 65%;
 }
 
-#mpbofslneo .gt_footnote_marks {
+#lodznyhqot .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mpbofslneo .gt_asterisk {
+#lodznyhqot .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mpbofslneo .gt_indent_1 {
+#lodznyhqot .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mpbofslneo .gt_indent_2 {
+#lodznyhqot .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mpbofslneo .gt_indent_3 {
+#lodznyhqot .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mpbofslneo .gt_indent_4 {
+#lodznyhqot .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mpbofslneo .gt_indent_5 {
+#lodznyhqot .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1039,7 +1055,7 @@ Attaching package: 'PRcalc'</code></pre>
 <section id="visulaization" class="level3">
 <h3 class="anchored" data-anchor-id="visulaization">Visulaization</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1051,7 +1067,7 @@ Defaulting to continuous.</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1065,7 +1081,7 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1083,7 +1099,27 @@ Defaulting to continuous.</code></pre>
 <section id="comparison" class="level2">
 <h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
+ [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
+ [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index  Model1   Model2  Model3
 1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
@@ -1108,7 +1144,7 @@ Defaulting to continuous.</code></pre>
 20      ortona                        Ortona 0.12490 0.042402 0.05743
 21          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872 0.06984
+23         arr                  Lebeda’s ARR 0.00924 0.004051 0.00709
 24         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
 25        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
 26          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
@@ -1117,9 +1153,29 @@ Defaulting to continuous.</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
 30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
+ [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
+ [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
 1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
@@ -1144,7 +1200,7 @@ Defaulting to continuous.</code></pre>
 20      ortona                        Ortona 0.12490 0.042402      0.05743
 21          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872      0.06984
+23         arr                  Lebeda’s ARR 0.00924 0.004051      0.00709
 24         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
 25        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
 26          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
@@ -1153,12 +1209,30 @@ Defaulting to continuous.</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
 30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                           Index D'Hondt     Hare Sainte-Laguë
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
+ [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
+ [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+                           Index D'Hondt     Hare Sainte-Laguë
 1                        D’Hondt 1.13647 1.055589      1.10148
 2                         Monroe 0.05321 0.020396      0.02505
 3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
@@ -1181,7 +1255,7 @@ Defaulting to continuous.</code></pre>
 20                        Ortona 0.12490 0.042402      0.05743
 21          Cosine Dissimilarity 0.00417 0.000932      0.00122
 22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23                  Lebeda’s ARR 0.06769 0.072872      0.06984
+23                  Lebeda’s ARR 0.00924 0.004051      0.00709
 24                  Lebeda’s SRR 0.04488 0.023669      0.03500
 25                 Lebeda’s WDRR 0.09444 0.036026      0.05573
 26     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
@@ -1190,31 +1264,51 @@ Defaulting to continuous.</code></pre>
 29            Hellinger Distance 0.14218 0.098133      0.09959
 30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
+ [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
+ [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
-<div id="xqghiktxcn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xqghiktxcn table {
+<div id="srttrfnpxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#srttrfnpxb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xqghiktxcn thead, #xqghiktxcn tbody, #xqghiktxcn tfoot, #xqghiktxcn tr, #xqghiktxcn td, #xqghiktxcn th {
+#srttrfnpxb thead, #srttrfnpxb tbody, #srttrfnpxb tfoot, #srttrfnpxb tr, #srttrfnpxb td, #srttrfnpxb th {
   border-style: none;
 }
 
-#xqghiktxcn p {
+#srttrfnpxb p {
   margin: 0;
   padding: 0;
 }
 
-#xqghiktxcn .gt_table {
+#srttrfnpxb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1240,12 +1334,12 @@ Defaulting to continuous.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_caption {
+#srttrfnpxb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xqghiktxcn .gt_title {
+#srttrfnpxb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1257,7 +1351,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-width: 0;
 }
 
-#xqghiktxcn .gt_subtitle {
+#srttrfnpxb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1269,7 +1363,7 @@ Defaulting to continuous.</code></pre>
   border-top-width: 0;
 }
 
-#xqghiktxcn .gt_heading {
+#srttrfnpxb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1281,13 +1375,13 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_bottom_border {
+#srttrfnpxb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_col_headings {
+#srttrfnpxb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1302,7 +1396,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_col_heading {
+#srttrfnpxb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1322,7 +1416,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#xqghiktxcn .gt_column_spanner_outer {
+#srttrfnpxb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1334,15 +1428,15 @@ Defaulting to continuous.</code></pre>
   padding-right: 4px;
 }
 
-#xqghiktxcn .gt_column_spanner_outer:first-child {
+#srttrfnpxb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xqghiktxcn .gt_column_spanner_outer:last-child {
+#srttrfnpxb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xqghiktxcn .gt_column_spanner {
+#srttrfnpxb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1354,11 +1448,11 @@ Defaulting to continuous.</code></pre>
   width: 100%;
 }
 
-#xqghiktxcn .gt_spanner_row {
+#srttrfnpxb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xqghiktxcn .gt_group_heading {
+#srttrfnpxb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1384,7 +1478,7 @@ Defaulting to continuous.</code></pre>
   text-align: left;
 }
 
-#xqghiktxcn .gt_empty_group_heading {
+#srttrfnpxb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1399,15 +1493,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: middle;
 }
 
-#xqghiktxcn .gt_from_md > :first-child {
+#srttrfnpxb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xqghiktxcn .gt_from_md > :last-child {
+#srttrfnpxb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xqghiktxcn .gt_row {
+#srttrfnpxb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1426,7 +1520,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#xqghiktxcn .gt_stub {
+#srttrfnpxb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1439,7 +1533,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#xqghiktxcn .gt_stub_row_group {
+#srttrfnpxb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1453,15 +1547,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: top;
 }
 
-#xqghiktxcn .gt_row_group_first td {
+#srttrfnpxb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xqghiktxcn .gt_row_group_first th {
+#srttrfnpxb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xqghiktxcn .gt_summary_row {
+#srttrfnpxb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1471,16 +1565,16 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#xqghiktxcn .gt_first_summary_row {
+#srttrfnpxb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_first_summary_row.thick {
+#srttrfnpxb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xqghiktxcn .gt_last_summary_row {
+#srttrfnpxb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1490,7 +1584,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_grand_summary_row {
+#srttrfnpxb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1500,7 +1594,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#xqghiktxcn .gt_first_grand_summary_row {
+#srttrfnpxb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1510,7 +1604,7 @@ Defaulting to continuous.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_last_grand_summary_row_top {
+#srttrfnpxb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1520,11 +1614,11 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_striped {
+#srttrfnpxb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xqghiktxcn .gt_table_body {
+#srttrfnpxb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1533,7 +1627,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_footnotes {
+#srttrfnpxb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1547,7 +1641,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_footnote {
+#srttrfnpxb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1556,7 +1650,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#xqghiktxcn .gt_sourcenotes {
+#srttrfnpxb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1570,7 +1664,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xqghiktxcn .gt_sourcenote {
+#srttrfnpxb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1578,63 +1672,63 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#xqghiktxcn .gt_left {
+#srttrfnpxb .gt_left {
   text-align: left;
 }
 
-#xqghiktxcn .gt_center {
+#srttrfnpxb .gt_center {
   text-align: center;
 }
 
-#xqghiktxcn .gt_right {
+#srttrfnpxb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xqghiktxcn .gt_font_normal {
+#srttrfnpxb .gt_font_normal {
   font-weight: normal;
 }
 
-#xqghiktxcn .gt_font_bold {
+#srttrfnpxb .gt_font_bold {
   font-weight: bold;
 }
 
-#xqghiktxcn .gt_font_italic {
+#srttrfnpxb .gt_font_italic {
   font-style: italic;
 }
 
-#xqghiktxcn .gt_super {
+#srttrfnpxb .gt_super {
   font-size: 65%;
 }
 
-#xqghiktxcn .gt_footnote_marks {
+#srttrfnpxb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xqghiktxcn .gt_asterisk {
+#srttrfnpxb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xqghiktxcn .gt_indent_1 {
+#srttrfnpxb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xqghiktxcn .gt_indent_2 {
+#srttrfnpxb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xqghiktxcn .gt_indent_3 {
+#srttrfnpxb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xqghiktxcn .gt_indent_4 {
+#srttrfnpxb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xqghiktxcn .gt_indent_5 {
+#srttrfnpxb .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1681,11 +1775,31 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
+ [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+[13] 0.00000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
+ [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000
+ [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
+ [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
+[11] 0.0005857553 0.0002953052 0.0001151986
+ [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
+ [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
+[13] 0.000000000</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
