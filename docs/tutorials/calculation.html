@@ -711,6 +711,7 @@ Magnitude:
 <p>To check the list of various allocation methods provided by {PRcalc} and these abbreviations, please <a href="../supplement/list_of_methods.html">click here</a>.</p>
 <section id="printing" class="level3">
 <h3 class="anchored" data-anchor-id="printing">Printing</h3>
+<p><code>print()</code> and <code>summary()</code> functions are a method of <code>prcalc</code> object. You can hide a column of “Total” with <code>show_total = FALSE</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">show_total =</span> <span class="cn">FALSE</span>) <span class="co"># Hide `Total` column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -785,67 +786,58 @@ Magnitude:
       Tokai       Kinki     Chugoku     Shikoku      Kyushu 
          21          28          11           6          20 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># Show proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In some cases, result is too long. You can adjust length of result using <code>head</code> argument. If <code>head = 10</code>, only ten rows are displayed. Default is <code>head = Inf</code>. (entire rows)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">head =</span> <span class="dv">10</span>) <span class="co"># Show only ten rows.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-    Party   Hokkaido     Tohoku  Kitakanto Minamikanto       Tokyo   Hokuriku
-1    自民 0.33602815 0.39513793 0.35191652  0.34943072 0.310239746 0.41826883
-2    公明 0.11458003 0.11073126 0.13349259  0.11473316 0.110975852 0.09187427
-3    立憲 0.26581489 0.24061742 0.22539303  0.22275336 0.200605159 0.22021111
-4    共産 0.08064559 0.07106369 0.07195522  0.07208940 0.103978689 0.06424832
-5    維新 0.08381981 0.06277863 0.10005196  0.11651755 0.133176762 0.10296663
-6    国民 0.02865600 0.04750538 0.04829083  0.05185676 0.047492608 0.03805603
-7    社民 0.01605524 0.02461784 0.01587190  0.01678471 0.014424767 0.02027709
-8    れ新 0.03973563 0.03476740 0.03881854  0.04082310 0.055900838 0.03169845
-9     N党 0.01670449 0.01278045 0.01420942  0.01501125 0.014325184 0.01239926
-10 支なし 0.01796017 0.00000000 0.00000000  0.00000000 0.000000000 0.00000000
-11   第一 0.00000000 0.00000000 0.00000000  0.00000000 0.005221271 0.00000000
-12 やまと 0.00000000 0.00000000 0.00000000  0.00000000 0.002632274 0.00000000
-13 コロナ 0.00000000 0.00000000 0.00000000  0.00000000 0.001026850 0.00000000
-        Tokai      Kinki    Chugoku    Shikoku     Kyushu        Total
-1  0.37391371 0.25671430 0.43364470 0.39141012 0.35689743 0.3465508289
-2  0.11666607 0.12322153 0.13983978 0.13742054 0.16501499 0.1237998900
-3  0.22084701 0.11628927 0.18379145 0.17184176 0.20085511 0.1999808408
-4  0.06072855 0.07849061 0.05549641 0.06359837 0.05797618 0.0724963883
-5  0.10323851 0.33908212 0.09178032 0.10234167 0.08567221 0.1400973237
-6  0.05688336 0.03235772 0.03651280 0.07187691 0.04431699 0.0451292573
-7  0.01251709 0.01076672 0.01687425 0.01780938 0.03507525 0.0177250610
-8  0.04060520 0.03118520 0.03027671 0.03116951 0.03857341 0.0385558203
-9  0.01460050 0.01189254 0.01178357 0.01253174 0.01561842 0.0138653861
-10 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.0008029446
-11 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.0005857553
-12 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.0002953052
-13 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.0001151986
+    Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
+1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2    公明   294371  456287    823930      850667  715450   322535  784976
+3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
+4    共産   207189  292830    444115      534493  670340   225551  408606
+5    維新   215344  258690    617531      863897  858577   361476  694630
+6    国民    73621  195754    298056      384482  306180   133600  382734
+7    社民    41248  101442     97963      124447   92995    71185   84220
+8    れ新   102086  143265    239592      302675  360387   111281  273208
+9     N党    42916   52664     87702      111298   92353    43529   98238
+10 支なし    46142       0         0           0       0        0       0
+     Kinki Chugoku Shikoku  Kyushu    Total
+1  2407699 1352723  664805 2250966 19914883
+2  1155683  436220  233407 1040756  7114282
+3  1090666  573324  291871 1266801 11492095
+4   736156  173117  108021  365658  4166076
+5  3180219  286302  173826  540338  8050830
+6   303480  113899  122082  279509  2593397
+7   100980   52638   30249  221221  1018588
+8   292483   94446   52941  243284  2215648
+9   111539   36758   21285   98506   796788
+10       0       0       0       0    46142
 
 Result:
-    Party Hokkaido     Tohoku  Kitakanto Minamikanto      Tokyo   Hokuriku
-1    自民    0.375 0.46153846 0.36842105  0.36363636 0.35294118 0.45454545
-2    公明    0.125 0.07692308 0.15789474  0.13636364 0.11764706 0.09090909
-3    立憲    0.375 0.30769231 0.26315789  0.22727273 0.23529412 0.27272727
-4    共産    0.000 0.07692308 0.05263158  0.04545455 0.11764706 0.09090909
-5    維新    0.125 0.07692308 0.10526316  0.13636364 0.11764706 0.09090909
-6    国民    0.000 0.00000000 0.05263158  0.04545455 0.00000000 0.00000000
-7    社民    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-8    れ新    0.000 0.00000000 0.00000000  0.04545455 0.05882353 0.00000000
-9     N党    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-10 支なし    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-11   第一    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-12 やまと    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-13 コロナ    0.000 0.00000000 0.00000000  0.00000000 0.00000000 0.00000000
-        Tokai      Kinki    Chugoku   Shikoku Kyushu      Total
-1  0.38095238 0.28571429 0.45454545 0.5000000   0.40 0.38068182
-2  0.14285714 0.10714286 0.18181818 0.1666667   0.20 0.13636364
-3  0.23809524 0.10714286 0.27272727 0.1666667   0.20 0.22727273
-4  0.04761905 0.07142857 0.00000000 0.0000000   0.05 0.05681818
-5  0.09523810 0.35714286 0.09090909 0.1666667   0.10 0.14772727
-6  0.04761905 0.03571429 0.00000000 0.0000000   0.05 0.02840909
-7  0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
-8  0.04761905 0.03571429 0.00000000 0.0000000   0.00 0.02272727
-9  0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
-10 0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
-11 0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
-12 0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
-13 0.00000000 0.00000000 0.00000000 0.0000000   0.00 0.00000000
+    Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
+1    自民        3      6         7           8     6        5     8     8
+2    公明        1      1         3           3     2        1     3     3
+3    立憲        3      4         5           5     4        3     5     3
+4    共産        0      1         1           1     2        1     1     2
+5    維新        1      1         2           3     2        1     2    10
+6    国民        0      0         1           1     0        0     1     1
+7    社民        0      0         0           0     0        0     0     0
+8    れ新        0      0         0           1     1        0     1     1
+9     N党        0      0         0           0     0        0     0     0
+10 支なし        0      0         0           0     0        0     0     0
+   Chugoku Shikoku Kyushu Total
+1        5       3      8    67
+2        2       1      4    24
+3        3       1      4    40
+4        0       0      1    10
+5        1       1      2    26
+6        0       0      1     5
+7        0       0      0     0
+8        0       0      0     4
+9        0       0      0     0
+10       0       0      0     0
 
 Parameters:
   Allocation method: D'Hondt (Jefferson) method 
@@ -858,26 +850,73 @@ Magnitude:
       Tokai       Kinki     Chugoku     Shikoku      Kyushu 
          21          28          11           6          20 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">use_gt =</span> <span class="cn">TRUE</span>) <span class="co"># use {gt} package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In default, numbers of votes and seats are displayed. If you switch to proportion using <code>prop = TRUE</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">head =</span> <span class="dv">5</span>, <span class="at">prop =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Raw:
+  Party   Hokkaido     Tohoku  Kitakanto Minamikanto     Tokyo   Hokuriku
+1  自民 0.33602815 0.39513793 0.35191652   0.3494307 0.3102397 0.41826883
+2  公明 0.11458003 0.11073126 0.13349259   0.1147332 0.1109759 0.09187427
+3  立憲 0.26581489 0.24061742 0.22539303   0.2227534 0.2006052 0.22021111
+4  共産 0.08064559 0.07106369 0.07195522   0.0720894 0.1039787 0.06424832
+5  維新 0.08381981 0.06277863 0.10005196   0.1165175 0.1331768 0.10296663
+       Tokai      Kinki    Chugoku    Shikoku     Kyushu      Total
+1 0.37391371 0.25671430 0.43364470 0.39141012 0.35689743 0.34655083
+2 0.11666607 0.12322153 0.13983978 0.13742054 0.16501499 0.12379989
+3 0.22084701 0.11628927 0.18379145 0.17184176 0.20085511 0.19998084
+4 0.06072855 0.07849061 0.05549641 0.06359837 0.05797618 0.07249639
+5 0.10323851 0.33908212 0.09178032 0.10234167 0.08567221 0.14009732
+
+Result:
+  Party Hokkaido     Tohoku  Kitakanto Minamikanto     Tokyo   Hokuriku
+1  自民    0.375 0.46153846 0.36842105  0.36363636 0.3529412 0.45454545
+2  公明    0.125 0.07692308 0.15789474  0.13636364 0.1176471 0.09090909
+3  立憲    0.375 0.30769231 0.26315789  0.22727273 0.2352941 0.27272727
+4  共産    0.000 0.07692308 0.05263158  0.04545455 0.1176471 0.09090909
+5  維新    0.125 0.07692308 0.10526316  0.13636364 0.1176471 0.09090909
+       Tokai      Kinki    Chugoku   Shikoku Kyushu      Total
+1 0.38095238 0.28571429 0.45454545 0.5000000   0.40 0.38068182
+2 0.14285714 0.10714286 0.18181818 0.1666667   0.20 0.13636364
+3 0.23809524 0.10714286 0.27272727 0.1666667   0.20 0.22727273
+4 0.04761905 0.07142857 0.00000000 0.0000000   0.05 0.05681818
+5 0.09523810 0.35714286 0.09090909 0.1666667   0.10 0.14772727
+
+Parameters:
+  Allocation method: D'Hondt (Jefferson) method 
+  Extra parameter: 
+  Threshold: 0 
+
+Magnitude: 
+   Hokkaido      Tohoku   Kitakanto Minamikanto       Tokyo    Hokuriku 
+          8          13          19          22          17          11 
+      Tokai       Kinki     Chugoku     Shikoku      Kyushu 
+         21          28          11           6          20 </code></pre>
+</div>
+</div>
+<p>If <code>use_gt = TRUE</code>, a result rendered using {<a href="https://gt.rstudio.com/">gt</a>} package. Furthermore, the <code>digits</code> argument allows specifying the number of decimal places for the output. Default is <code>digits = 3</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="csajqupxnn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#csajqupxnn table {
+<div id="dinbywbssx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dinbywbssx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#csajqupxnn thead, #csajqupxnn tbody, #csajqupxnn tfoot, #csajqupxnn tr, #csajqupxnn td, #csajqupxnn th {
+#dinbywbssx thead, #dinbywbssx tbody, #dinbywbssx tfoot, #dinbywbssx tr, #dinbywbssx td, #dinbywbssx th {
   border-style: none;
 }
 
-#csajqupxnn p {
+#dinbywbssx p {
   margin: 0;
   padding: 0;
 }
 
-#csajqupxnn .gt_table {
+#dinbywbssx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -903,12 +942,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_caption {
+#dinbywbssx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#csajqupxnn .gt_title {
+#dinbywbssx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -920,7 +959,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#csajqupxnn .gt_subtitle {
+#dinbywbssx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -932,7 +971,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#csajqupxnn .gt_heading {
+#dinbywbssx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -944,13 +983,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_bottom_border {
+#dinbywbssx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_col_headings {
+#dinbywbssx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -965,7 +1004,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_col_heading {
+#dinbywbssx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -985,7 +1024,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#csajqupxnn .gt_column_spanner_outer {
+#dinbywbssx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -997,15 +1036,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#csajqupxnn .gt_column_spanner_outer:first-child {
+#dinbywbssx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#csajqupxnn .gt_column_spanner_outer:last-child {
+#dinbywbssx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#csajqupxnn .gt_column_spanner {
+#dinbywbssx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1017,11 +1056,11 @@ Magnitude:
   width: 100%;
 }
 
-#csajqupxnn .gt_spanner_row {
+#dinbywbssx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#csajqupxnn .gt_group_heading {
+#dinbywbssx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1047,7 +1086,7 @@ Magnitude:
   text-align: left;
 }
 
-#csajqupxnn .gt_empty_group_heading {
+#dinbywbssx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1062,15 +1101,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#csajqupxnn .gt_from_md > :first-child {
+#dinbywbssx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#csajqupxnn .gt_from_md > :last-child {
+#dinbywbssx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#csajqupxnn .gt_row {
+#dinbywbssx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1089,7 +1128,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#csajqupxnn .gt_stub {
+#dinbywbssx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1102,7 +1141,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#csajqupxnn .gt_stub_row_group {
+#dinbywbssx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1116,15 +1155,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#csajqupxnn .gt_row_group_first td {
+#dinbywbssx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#csajqupxnn .gt_row_group_first th {
+#dinbywbssx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#csajqupxnn .gt_summary_row {
+#dinbywbssx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1134,16 +1173,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#csajqupxnn .gt_first_summary_row {
+#dinbywbssx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_first_summary_row.thick {
+#dinbywbssx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#csajqupxnn .gt_last_summary_row {
+#dinbywbssx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1153,7 +1192,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_grand_summary_row {
+#dinbywbssx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1163,7 +1202,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#csajqupxnn .gt_first_grand_summary_row {
+#dinbywbssx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1173,7 +1212,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_last_grand_summary_row_top {
+#dinbywbssx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1183,11 +1222,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_striped {
+#dinbywbssx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#csajqupxnn .gt_table_body {
+#dinbywbssx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1196,7 +1235,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_footnotes {
+#dinbywbssx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1210,7 +1249,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_footnote {
+#dinbywbssx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1219,7 +1258,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#csajqupxnn .gt_sourcenotes {
+#dinbywbssx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1233,7 +1272,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#csajqupxnn .gt_sourcenote {
+#dinbywbssx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1241,63 +1280,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#csajqupxnn .gt_left {
+#dinbywbssx .gt_left {
   text-align: left;
 }
 
-#csajqupxnn .gt_center {
+#dinbywbssx .gt_center {
   text-align: center;
 }
 
-#csajqupxnn .gt_right {
+#dinbywbssx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#csajqupxnn .gt_font_normal {
+#dinbywbssx .gt_font_normal {
   font-weight: normal;
 }
 
-#csajqupxnn .gt_font_bold {
+#dinbywbssx .gt_font_bold {
   font-weight: bold;
 }
 
-#csajqupxnn .gt_font_italic {
+#dinbywbssx .gt_font_italic {
   font-style: italic;
 }
 
-#csajqupxnn .gt_super {
+#dinbywbssx .gt_super {
   font-size: 65%;
 }
 
-#csajqupxnn .gt_footnote_marks {
+#dinbywbssx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#csajqupxnn .gt_asterisk {
+#dinbywbssx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#csajqupxnn .gt_indent_1 {
+#dinbywbssx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#csajqupxnn .gt_indent_2 {
+#dinbywbssx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#csajqupxnn .gt_indent_3 {
+#dinbywbssx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#csajqupxnn .gt_indent_4 {
+#dinbywbssx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#csajqupxnn .gt_indent_5 {
+#dinbywbssx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1326,396 +1365,396 @@ Magnitude:
 </tr>
 <tr class="even gt_row_group_first">
 <td class="gt_row gt_left" headers="Raw  Party">自民</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">863300</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">1628233</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">2172065</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">2590787</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">2000084</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">1468380</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">2515841</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">2407699</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">1352723</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">664805</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">2250966</td>
-<td class="gt_row gt_right" headers="Raw  Total">19914883</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.336</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.395</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.352</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.349</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.310</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.418</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.374</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.257</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.434</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.391</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.357</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.347</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">公明</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">294371</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">456287</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">823930</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">850667</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">715450</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">322535</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">784976</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">1155683</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">436220</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">233407</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">1040756</td>
-<td class="gt_row gt_right" headers="Raw  Total">7114282</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.115</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.111</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.133</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.115</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.111</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.092</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.117</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.123</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.140</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.137</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.165</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.124</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">立憲</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">682913</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">991505</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">1391149</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">1651562</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">1293281</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">773076</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">1485947</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">1090666</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">573324</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">291871</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">1266801</td>
-<td class="gt_row gt_right" headers="Raw  Total">11492095</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.266</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.241</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.225</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.223</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.201</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.220</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.221</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.116</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.184</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.172</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.201</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.200</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">共産</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">207189</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">292830</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">444115</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">534493</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">670340</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">225551</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">408606</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">736156</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">173117</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">108021</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">365658</td>
-<td class="gt_row gt_right" headers="Raw  Total">4166076</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.081</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.071</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.072</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.072</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.104</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.064</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.061</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.078</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.055</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.064</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.058</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.072</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">維新</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">215344</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">258690</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">617531</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">863897</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">858577</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">361476</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">694630</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">3180219</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">286302</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">173826</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">540338</td>
-<td class="gt_row gt_right" headers="Raw  Total">8050830</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.084</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.063</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.100</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.117</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.133</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.103</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.103</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.339</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.092</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.102</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.086</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.140</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">国民</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">73621</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">195754</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">298056</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">384482</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">306180</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">133600</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">382734</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">303480</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">113899</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">122082</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">279509</td>
-<td class="gt_row gt_right" headers="Raw  Total">2593397</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.029</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.048</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.048</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.052</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.047</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.038</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.057</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.032</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.037</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.072</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.044</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.045</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">社民</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">41248</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">101442</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">97963</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">124447</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">92995</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">71185</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">84220</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">100980</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">52638</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">30249</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">221221</td>
-<td class="gt_row gt_right" headers="Raw  Total">1018588</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.016</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.025</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.016</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.017</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.014</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.020</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.013</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.011</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.017</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.018</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.035</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.018</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">れ新</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">102086</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">143265</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">239592</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">302675</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">360387</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">111281</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">273208</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">292483</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">94446</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">52941</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">243284</td>
-<td class="gt_row gt_right" headers="Raw  Total">2215648</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.040</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.035</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.039</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.041</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.056</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.032</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.041</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.031</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.030</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.031</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.039</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.039</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">N党</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">42916</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">52664</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">87702</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">111298</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">92353</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">43529</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">98238</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">111539</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">36758</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">21285</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">98506</td>
-<td class="gt_row gt_right" headers="Raw  Total">796788</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.017</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.013</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.014</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.015</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.014</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.012</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.015</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.012</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.012</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.013</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.016</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.014</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">支なし</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">46142</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">0</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">0</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Raw  Total">46142</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.018</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.001</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">第一</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">33661</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">0</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">0</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Raw  Total">33661</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.005</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.001</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Raw  Party">やまと</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">16970</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">0</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">0</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Raw  Total">16970</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.003</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.000</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Raw  Party">コロナ</td>
-<td class="gt_row gt_right" headers="Raw  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Raw  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokyo">6620</td>
-<td class="gt_row gt_right" headers="Raw  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Raw  Tokai">0</td>
-<td class="gt_row gt_right" headers="Raw  Kinki">0</td>
-<td class="gt_row gt_right" headers="Raw  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Raw  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Raw  Total">6620</td>
+<td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokyo">0.001</td>
+<td class="gt_row gt_right" headers="Raw  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Raw  Total">0.000</td>
 </tr>
 <tr class="odd gt_group_heading_row">
 <td colspan="13" id="Distribution" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Distribution</td>
 </tr>
 <tr class="even gt_row_group_first">
 <td class="gt_row gt_left" headers="Distribution  Party">自民</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">3</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">6</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">7</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">8</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">6</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">5</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">8</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">8</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">5</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">3</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">8</td>
-<td class="gt_row gt_right" headers="Distribution  Total">67</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.375</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.462</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.368</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.364</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.353</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.455</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.381</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.286</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.455</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.500</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.400</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.381</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">公明</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">3</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">3</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">2</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">3</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">3</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">2</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">4</td>
-<td class="gt_row gt_right" headers="Distribution  Total">24</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.125</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.158</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.136</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.118</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.091</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.143</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.107</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.182</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.167</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.200</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.136</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">立憲</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">3</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">4</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">5</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">5</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">4</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">3</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">5</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">3</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">3</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">4</td>
-<td class="gt_row gt_right" headers="Distribution  Total">40</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.375</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.308</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.263</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.227</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.235</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.273</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.238</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.107</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.273</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.167</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.200</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.227</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">共産</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">1</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">2</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">2</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">1</td>
-<td class="gt_row gt_right" headers="Distribution  Total">10</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.053</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.045</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.118</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.091</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.048</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.071</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.050</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.057</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">維新</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">2</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">3</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">2</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">2</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">10</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">2</td>
-<td class="gt_row gt_right" headers="Distribution  Total">26</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.125</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.105</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.136</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.118</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.091</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.095</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.357</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.091</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.167</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.100</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.148</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">国民</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">1</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">1</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">1</td>
-<td class="gt_row gt_right" headers="Distribution  Total">5</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.053</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.045</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.048</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.036</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.050</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.028</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">社民</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">れ新</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">1</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">1</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">1</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">1</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">4</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.045</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.059</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.048</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.036</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.023</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">N党</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">支なし</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">第一</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Distribution  Party">やまと</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Distribution  Party">コロナ</td>
-<td class="gt_row gt_right" headers="Distribution  Hokkaido">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tohoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kitakanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Minamikanto">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokyo">0</td>
-<td class="gt_row gt_right" headers="Distribution  Hokuriku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Tokai">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kinki">0</td>
-<td class="gt_row gt_right" headers="Distribution  Chugoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Shikoku">0</td>
-<td class="gt_row gt_right" headers="Distribution  Kyushu">0</td>
-<td class="gt_row gt_right" headers="Distribution  Total">0</td>
+<td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Minamikanto">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokyo">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Hokuriku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Tokai">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kinki">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Chugoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Shikoku">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Kyushu">0.000</td>
+<td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
@@ -1734,7 +1773,10 @@ Magnitude:
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2) <span class="co"># summarize</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>summary()</code> function is a useful when number of blocks is large. <code>summary()</code> function displays only the total column.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2) <span class="co"># summarize</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw Dist
 1    自民 19914883   67
@@ -1751,7 +1793,10 @@ Magnitude:
 12 やまと    16970    0
 13 コロナ     6620    0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># summarize with proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>prop</code> argument is also allowed in <code>summary()</code> function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># summarize with proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw   Dist
 1    自民 0.346551 0.3807
@@ -1773,7 +1818,7 @@ Magnitude:
 <section id="visualization" class="level3">
 <h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1781,7 +1826,7 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1789,7 +1834,7 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, <span class="at">angle =</span> <span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, <span class="at">angle =</span> <span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1797,9 +1842,9 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some parties</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some parties</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1807,10 +1852,10 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some district</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some district</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1818,11 +1863,11 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the facet by parties</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the facet by parties</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1830,12 +1875,12 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three columns</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three columns</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1843,13 +1888,13 @@ Magnitude:
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use different y-axis scales for each facet</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b  =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>,</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">free_y    =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use different y-axis scales for each facet</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b  =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">free_y    =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1864,7 +1909,7 @@ Magnitude:
 <h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
 <p>You can compare multiple <code>prcalc</code> ojbects using <code>compare()</code> function. <code>prcalc</code> objects must be grouped in a list structure using <code>list()</code> function.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(obj2, obj3, obj4))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(obj2, obj3, obj4))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party Model1 Model2 Model3
 1    自民     67     62     63
@@ -1884,10 +1929,10 @@ Magnitude:
 </div>
 <p>A named list structure is also available.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party Jefferson Hare-Niemeyer Webster
 1    自民        67            62      63
@@ -1907,11 +1952,11 @@ Magnitude:
 </div>
 <p>By using <code>print()</code> function with <code>subset</code> parameter, you can extract subset of the parties.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Party Jefferson Hare-Niemeyer Webster
 1  自民        67            62      63
@@ -1923,30 +1968,30 @@ Magnitude:
 </div>
 <p>If <code>prop = TRUE</code>, the proportion is displayed. It is also available to output tables in HTML format using <code>use_gt = TRUE</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="fgjubmzpsb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fgjubmzpsb table {
+<div id="dvraywjswe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dvraywjswe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fgjubmzpsb thead, #fgjubmzpsb tbody, #fgjubmzpsb tfoot, #fgjubmzpsb tr, #fgjubmzpsb td, #fgjubmzpsb th {
+#dvraywjswe thead, #dvraywjswe tbody, #dvraywjswe tfoot, #dvraywjswe tr, #dvraywjswe td, #dvraywjswe th {
   border-style: none;
 }
 
-#fgjubmzpsb p {
+#dvraywjswe p {
   margin: 0;
   padding: 0;
 }
 
-#fgjubmzpsb .gt_table {
+#dvraywjswe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1972,12 +2017,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_caption {
+#dvraywjswe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fgjubmzpsb .gt_title {
+#dvraywjswe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1989,7 +2034,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#fgjubmzpsb .gt_subtitle {
+#dvraywjswe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2001,7 +2046,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#fgjubmzpsb .gt_heading {
+#dvraywjswe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2013,13 +2058,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_bottom_border {
+#dvraywjswe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_col_headings {
+#dvraywjswe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2034,7 +2079,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_col_heading {
+#dvraywjswe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2054,7 +2099,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#fgjubmzpsb .gt_column_spanner_outer {
+#dvraywjswe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2066,15 +2111,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#fgjubmzpsb .gt_column_spanner_outer:first-child {
+#dvraywjswe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fgjubmzpsb .gt_column_spanner_outer:last-child {
+#dvraywjswe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fgjubmzpsb .gt_column_spanner {
+#dvraywjswe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2086,11 +2131,11 @@ Magnitude:
   width: 100%;
 }
 
-#fgjubmzpsb .gt_spanner_row {
+#dvraywjswe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fgjubmzpsb .gt_group_heading {
+#dvraywjswe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2116,7 +2161,7 @@ Magnitude:
   text-align: left;
 }
 
-#fgjubmzpsb .gt_empty_group_heading {
+#dvraywjswe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2131,15 +2176,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#fgjubmzpsb .gt_from_md > :first-child {
+#dvraywjswe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fgjubmzpsb .gt_from_md > :last-child {
+#dvraywjswe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fgjubmzpsb .gt_row {
+#dvraywjswe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2158,7 +2203,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#fgjubmzpsb .gt_stub {
+#dvraywjswe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2171,7 +2216,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#fgjubmzpsb .gt_stub_row_group {
+#dvraywjswe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2185,15 +2230,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#fgjubmzpsb .gt_row_group_first td {
+#dvraywjswe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fgjubmzpsb .gt_row_group_first th {
+#dvraywjswe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fgjubmzpsb .gt_summary_row {
+#dvraywjswe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2203,16 +2248,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#fgjubmzpsb .gt_first_summary_row {
+#dvraywjswe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_first_summary_row.thick {
+#dvraywjswe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fgjubmzpsb .gt_last_summary_row {
+#dvraywjswe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2222,7 +2267,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_grand_summary_row {
+#dvraywjswe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2232,7 +2277,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#fgjubmzpsb .gt_first_grand_summary_row {
+#dvraywjswe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2242,7 +2287,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_last_grand_summary_row_top {
+#dvraywjswe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2252,11 +2297,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_striped {
+#dvraywjswe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fgjubmzpsb .gt_table_body {
+#dvraywjswe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2265,7 +2310,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_footnotes {
+#dvraywjswe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2279,7 +2324,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_footnote {
+#dvraywjswe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2288,7 +2333,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#fgjubmzpsb .gt_sourcenotes {
+#dvraywjswe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2302,7 +2347,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#fgjubmzpsb .gt_sourcenote {
+#dvraywjswe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2310,63 +2355,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#fgjubmzpsb .gt_left {
+#dvraywjswe .gt_left {
   text-align: left;
 }
 
-#fgjubmzpsb .gt_center {
+#dvraywjswe .gt_center {
   text-align: center;
 }
 
-#fgjubmzpsb .gt_right {
+#dvraywjswe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fgjubmzpsb .gt_font_normal {
+#dvraywjswe .gt_font_normal {
   font-weight: normal;
 }
 
-#fgjubmzpsb .gt_font_bold {
+#dvraywjswe .gt_font_bold {
   font-weight: bold;
 }
 
-#fgjubmzpsb .gt_font_italic {
+#dvraywjswe .gt_font_italic {
   font-style: italic;
 }
 
-#fgjubmzpsb .gt_super {
+#dvraywjswe .gt_super {
   font-size: 65%;
 }
 
-#fgjubmzpsb .gt_footnote_marks {
+#dvraywjswe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fgjubmzpsb .gt_asterisk {
+#dvraywjswe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fgjubmzpsb .gt_indent_1 {
+#dvraywjswe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fgjubmzpsb .gt_indent_2 {
+#dvraywjswe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fgjubmzpsb .gt_indent_3 {
+#dvraywjswe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fgjubmzpsb .gt_indent_4 {
+#dvraywjswe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fgjubmzpsb .gt_indent_5 {
+#dvraywjswe .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2470,11 +2515,11 @@ Magnitude:
 <h3 class="anchored" data-anchor-id="visualization-1">Visualization</h3>
 <p><code>plot()</code> function is a method of <code>prcalc_compare</code> class. Its return value is ggplot object.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2485,11 +2530,11 @@ Magnitude:
 </div>
 <p>If <code>facet = TRUE</code>, the plot is separated by parties.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">facet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2500,13 +2545,13 @@ Magnitude:
 </div>
 <p>If <code>facet = TRUE</code>, you can adjust number of columns and y-axis scale using <code>facet_col</code> and <code>free_y</code> parameters, respectively.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>, </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"国民"</span>, <span class="st">"社民"</span>, <span class="st">"れ新"</span>, <span class="st">"N党"</span>),</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">facet_col =</span> <span class="dv">3</span>, <span class="at">free_y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="st">"Jefferson"</span>     <span class="ot">=</span> obj2, </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>, </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"国民"</span>, <span class="st">"社民"</span>, <span class="st">"れ新"</span>, <span class="st">"N党"</span>),</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">facet_col =</span> <span class="dv">3</span>, <span class="at">free_y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

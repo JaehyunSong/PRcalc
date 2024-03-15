@@ -76,12 +76,45 @@ To check the list of various allocation methods provided by {PRcalc} and these a
 
 ### Printing
 
+`print()` and `summary()` functions are a method of `prcalc` object. You can hide a column of "Total" with `show_total = FALSE`.
+
 ```{r}
-#| label: print
+#| label: print-1
 print(obj2, show_total = FALSE) # Hide `Total` column
-print(obj2, prop = TRUE) # Show proportion
-print(obj2, use_gt = TRUE) # use {gt} package
+```
+
+In some cases, result is too long. You can adjust length of result using `head` argument. If `head = 10`, only ten rows are displayed. Default is `head = Inf`. (entire rows)
+
+```{r}
+#| label: print-2
+print(obj2, head = 10) # Show only ten rows.
+```
+
+In default, numbers of votes and seats are displayed. If you switch to proportion using `prop = TRUE`.
+
+```{r}
+#| label: print-3
+print(obj2, head = 5, prop = TRUE)
+```
+
+If `use_gt = TRUE`, a result rendered using {[gt](https://gt.rstudio.com/)} package. Furthermore, the `digits` argument allows specifying the number of decimal places for the output. Default is `digits = 3`.
+
+```{r}
+#| label: print-4
+print(obj2, prop = TRUE, use_gt = TRUE, digits = 3)
+```
+
+`summary()` function is a useful when number of blocks is large. `summary()` function displays only the total column.
+
+```{r}
+#| label: print-5
 summary(obj2) # summarize
+```
+
+`prop` argument is also allowed in `summary()` function.
+
+```{r}
+#| label: print-6
 summary(obj2, prop = TRUE) # summarize with proportion
 ```
 
