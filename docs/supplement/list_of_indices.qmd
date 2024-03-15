@@ -35,8 +35,8 @@ In the case of a block system, disproportionality is not measured within individ
 |Generalized Entropy|`"entropy"`|$\frac{1}{\alpha^2 - \alpha}\Bigl[ \sum_i v_i \bigl( \frac{s_i}{v_i} \bigr)^\alpha - 1 \Bigr]$|
 |Sainte-Laguë (1910)|`"sl"`|$\sum_i \frac{(s_i - v_i)^2}{v_i}$|
 |Cox & Shugart|`"cs"`|$\frac{\sum_i (s_i - \bar{s})(v_i - \bar{v})}{\sum_i(v_i - \bar{v})^2}$|
-|Fragnelli|`"fragnelli"`|$\frac{1}{2}\sum_i |\varphi_i(s) - \varphi_i(v)|$|
-|Gambarelli & Biella|`"gb"`|$\max_i\{|s_i - v_i|, |\varphi_i (s) - \varphi_i (v)|\}$|
+|Farina (Kestelman 2005)|`"farina"`|$\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}$||
+|Ortona|`"ortona"`|$\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}$|$u_i = \mathbb{I}(s_i = \mbox{max}_i s_i)$|
 |Cosine Dissimilarity|`"cd"`|$1 - \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2}\sqrt{\sum_i v_i^2}}$|
 |Lebeda's RR (Mixture D'Hondt)|`"rr"`|$1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}}$|
 |Lebeda's ARR|`"arr"`|$\frac{1}{p}\Bigl( 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)$|
@@ -62,6 +62,6 @@ $$
 :::
 
 <!--
-|Farina (Kestelman 2005)|`"farina"`|$\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}$||
-|Ortona|`"ortona"`|$\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}$|$u_i = \mathbb{I}(s_i = \mbox{max}_i s_i)$|
+|Fragnelli|`"fragnelli"`|$\frac{1}{2}\sum_i |\varphi_i(s) - \varphi_i(v)|$|
+|Gambarelli & Biella|`"gb"`|$\max_i\{|s_i - v_i|, |\varphi_i (s) - \varphi_i (v)|\}$|
 -->

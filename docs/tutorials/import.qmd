@@ -59,11 +59,11 @@ Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 
 ```{r}
 #| error: true
-obj4 <- read_prcalc("../data/sample_dataset.csv",
+obj3 <- read_prcalc("../data/sample_dataset.csv",
                     region     = "region",
                     district   = "district",
                     population = "electorates",
                     magnitude  = "magnitude")
 
-index(obj4)
+index(obj3)
 ```
