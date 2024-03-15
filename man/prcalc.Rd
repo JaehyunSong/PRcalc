@@ -9,11 +9,11 @@ prcalc(x, m, method, extra = NULL, threshold = 0)
 \arguments{
 \item{x}{a \code{data.frame} or \code{tibble} object.}
 
-\item{m}{a \code{numeric} vector of magnitude.}
+\item{m}{a numeric vector of district magnitude.}
 
 \item{method}{a character string giving a method for computing seat allocation. See "Allocation methods" section.}
 
-\item{extra}{a numeric vector of length \code{m}. If \code{method} is \code{"custom"}, this parameter is mandatory. Otherwise, it is ignored.}
+\item{extra}{a numeric vector of length \code{m}. If \code{method} is \code{"custom divisor"} (\code{"cd"}) or \code{"custom quota"} (\code{"cq"}), this parameter is mandatory. See "About custom methods" section.}
 
 \item{threshold}{a threshold. It must be equal or larger than 0 (0\%) and smaller than 0.1 (10\%). a default is 0.}
 }
@@ -23,6 +23,18 @@ a \code{prcalc} object
 \description{
 Proportional Representation Calculator
 }
+\section{Allocation methods}{
+
+aaa
+}
+
+\section{About custom methods}{
+
+Custom methods (\code{"custom divisor"} and \code{"custom quota"}) require \code{extra} parameter. In the case of \code{"custom divisor"} (\code{"cd"}), a numeric vector of the same length as the magnitude (\code{m}) must be specified. If the magnitude (\code{m}) is a vector of length 2 or longer, the \code{extra} must have a length equal to \code{max(m)}. For example, if \code{m = c(5, 7, 4)}, then the length of the extra must be 7.
+
+In the case of \code{"custom quota"}, \code{extra} must be a vector of the same length as \code{m}. For example, if \code{m = c(5, 7, 4)}, \code{extra} must also be a numeric vector of length 3. If length of \code{extra} is 1, the same quota is applied to all blocks.
+}
+
 \examples{
 data(jp_upper_2019)
 data(jp_lower_2021)

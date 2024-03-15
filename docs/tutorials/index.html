@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -389,10 +389,10 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: 'PRcalc'</code></pre>
+ 次のパッケージを付け加えます: 'PRcalc' </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
+<pre><code> 以下のオブジェクトは 'package:stats' からマスクされています:
 
     decompose</code></pre>
 </div>
@@ -459,72 +459,72 @@ Attaching package: 'PRcalc'</code></pre>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index   Value
-1       dhondt                       D’Hondt 1.13647
-2       monroe                        Monroe 0.05321
-3       maxdev    Maximum Absolute Deviation 0.03413
-4          rae                           Rae 0.01256
-5           lh             Loosemore &amp; Hanby 0.08162
-6      grofman                       Grofman 0.03335
-7     lijphart                      Lijphart 0.03071
-8    gallagher                     Gallagher 0.04129
-9  g_gallagher         Generalized Gallagher 0.04129
-10       gatev                         Gatev 0.08744
-11    ryabtsev                      Ryabtsev 0.06195
-12      szalai                        Szalai 0.68738
-13    w_szalai               Weighted Szalai 0.15384
-14          ap          Aleskerov &amp; Platonov 1.09773
-15        gini                          Gini 0.07989
-16    atkinson                      Atkinson 1.00000
-17          sl                  Sainte-Laguë 0.05825
-18          cs                 Cox &amp; Shugart 1.13266
-19      farina                        Farina 0.10153
-20      ortona                        Ortona 0.12490
-21          cd          Cosine Dissimilarity 0.00417
+<pre><code>            ID                           Index   Value
+1       dhondt                        D’Hondt 1.13647
+2       monroe                          Monroe 0.05321
+3       maxdev      Maximum Absolute Deviation 0.03413
+4          rae                             Rae 0.01256
+5           lh               Loosemore &amp; Hanby 0.08162
+6      grofman                         Grofman 0.03335
+7     lijphart                        Lijphart 0.03071
+8    gallagher                       Gallagher 0.04129
+9  g_gallagher           Generalized Gallagher 0.04129
+10       gatev                           Gatev 0.08744
+11    ryabtsev                        Ryabtsev 0.06195
+12      szalai                          Szalai 0.68738
+13    w_szalai                 Weighted Szalai 0.15384
+14          ap            Aleskerov &amp; Platonov 1.09773
+15        gini                            Gini 0.07989
+16    atkinson                        Atkinson 1.00000
+17          sl                   Sainte-Laguë 0.05825
+18          cs                   Cox &amp; Shugart 1.13266
+19      farina                          Farina 0.10153
+20      ortona                          Ortona 0.12490
+21          cd            Cosine Dissimilarity 0.00417
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.06769
-24         srr                  Lebeda’s SRR 0.04488
-25        wdrr                 Lebeda’s WDRR 0.09444
-26          kl     Kullback-Leibler Surprise 0.04684
-27          lr    Likelihood Ratio Statistic     Inf
-28       chisq                   Chi Squared 0.03308
-29   hellinger            Hellinger Distance 0.14218
-30          ad              alpha-Divergence 0.02912</code></pre>
+23         arr                   Lebeda’s ARR 0.06769
+24         srr                   Lebeda’s SRR 0.04488
+25        wdrr                  Lebeda’s WDRR 0.09444
+26          kl       Kullback-Leibler Surprise 0.04684
+27          lr      Likelihood Ratio Statistic     Inf
+28       chisq                     Chi Squared 0.03308
+29   hellinger              Hellinger Distance 0.14218
+30          ad                alpha-Divergence 0.02912</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index   Value
-1       dhondt                       D’Hondt 1.13647
-2       monroe                        Monroe 0.05321
-3       maxdev    Maximum Absolute Deviation 0.03413
-4          rae                           Rae 0.01256
-5           lh             Loosemore &amp; Hanby 0.08162
-6      grofman                       Grofman 0.03335
-7     lijphart                      Lijphart 0.03071
-8    gallagher                     Gallagher 0.04129
-9  g_gallagher         Generalized Gallagher 0.04129
-10       gatev                         Gatev 0.08744
-11    ryabtsev                      Ryabtsev 0.06195
-12      szalai                        Szalai 0.68738
-13    w_szalai               Weighted Szalai 0.15384
-14          ap          Aleskerov &amp; Platonov 1.09773
-15        gini                          Gini 0.07989
-16    atkinson                      Atkinson 1.00000
-17          sl                  Sainte-Laguë 0.05825
-18          cs                 Cox &amp; Shugart 1.13266
-19      farina                        Farina 0.10153
-20      ortona                        Ortona 0.12490
-21          cd          Cosine Dissimilarity 0.00417
+<pre><code>            ID                           Index   Value
+1       dhondt                        D’Hondt 1.13647
+2       monroe                          Monroe 0.05321
+3       maxdev      Maximum Absolute Deviation 0.03413
+4          rae                             Rae 0.01256
+5           lh               Loosemore &amp; Hanby 0.08162
+6      grofman                         Grofman 0.03335
+7     lijphart                        Lijphart 0.03071
+8    gallagher                       Gallagher 0.04129
+9  g_gallagher           Generalized Gallagher 0.04129
+10       gatev                           Gatev 0.08744
+11    ryabtsev                        Ryabtsev 0.06195
+12      szalai                          Szalai 0.68738
+13    w_szalai                 Weighted Szalai 0.15384
+14          ap            Aleskerov &amp; Platonov 1.09773
+15        gini                            Gini 0.07989
+16    atkinson                        Atkinson 1.00000
+17          sl                   Sainte-Laguë 0.05825
+18          cs                   Cox &amp; Shugart 1.13266
+19      farina                          Farina 0.10153
+20      ortona                          Ortona 0.12490
+21          cd            Cosine Dissimilarity 0.00417
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.06769
-24         srr                  Lebeda’s SRR 0.04488
-25        wdrr                 Lebeda’s WDRR 0.09444
-26          kl     Kullback-Leibler Surprise 0.04684
-27          lr    Likelihood Ratio Statistic     Inf
-28       chisq                   Chi Squared 0.03308
-29   hellinger            Hellinger Distance 0.14218
-30          ad              alpha-Divergence 0.04684</code></pre>
+23         arr                   Lebeda’s ARR 0.06769
+24         srr                   Lebeda’s SRR 0.04488
+25        wdrr                  Lebeda’s WDRR 0.09444
+26          kl       Kullback-Leibler Surprise 0.04684
+27          lr      Likelihood Ratio Statistic     Inf
+28       chisq                     Chi Squared 0.03308
+29   hellinger              Hellinger Distance 0.14218
+30          ad                alpha-Divergence 0.04684</code></pre>
 </div>
 </div>
 <section id="printing" class="level3">
@@ -540,7 +540,7 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ID             Index  Value
-1    dhondt           D’Hondt 1.1365
+1    dhondt          D’Hondt 1.1365
 2        lh Loosemore &amp; Hanby 0.0816
 3 gallagher         Gallagher 0.0413
 4        ad  alpha-Divergence 0.0291</code></pre>
@@ -551,7 +551,7 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Index  Value
-1           D’Hondt 1.1365
+1          D’Hondt 1.1365
 2 Loosemore &amp; Hanby 0.0816
 3         Gallagher 0.0413
 4  alpha-Divergence 0.0291</code></pre>
@@ -563,23 +563,23 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="uocxsxvemh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uocxsxvemh table {
+<div id="laimrzmnao" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#laimrzmnao table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uocxsxvemh thead, #uocxsxvemh tbody, #uocxsxvemh tfoot, #uocxsxvemh tr, #uocxsxvemh td, #uocxsxvemh th {
+#laimrzmnao thead, #laimrzmnao tbody, #laimrzmnao tfoot, #laimrzmnao tr, #laimrzmnao td, #laimrzmnao th {
   border-style: none;
 }
 
-#uocxsxvemh p {
+#laimrzmnao p {
   margin: 0;
   padding: 0;
 }
 
-#uocxsxvemh .gt_table {
+#laimrzmnao .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -605,12 +605,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_caption {
+#laimrzmnao .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uocxsxvemh .gt_title {
+#laimrzmnao .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -622,7 +622,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#uocxsxvemh .gt_subtitle {
+#laimrzmnao .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -634,7 +634,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#uocxsxvemh .gt_heading {
+#laimrzmnao .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -646,13 +646,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_bottom_border {
+#laimrzmnao .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_col_headings {
+#laimrzmnao .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -667,7 +667,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_col_heading {
+#laimrzmnao .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -687,7 +687,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#uocxsxvemh .gt_column_spanner_outer {
+#laimrzmnao .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -699,15 +699,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#uocxsxvemh .gt_column_spanner_outer:first-child {
+#laimrzmnao .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uocxsxvemh .gt_column_spanner_outer:last-child {
+#laimrzmnao .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uocxsxvemh .gt_column_spanner {
+#laimrzmnao .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -719,11 +719,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#uocxsxvemh .gt_spanner_row {
+#laimrzmnao .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uocxsxvemh .gt_group_heading {
+#laimrzmnao .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -749,7 +749,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#uocxsxvemh .gt_empty_group_heading {
+#laimrzmnao .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -764,15 +764,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#uocxsxvemh .gt_from_md > :first-child {
+#laimrzmnao .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uocxsxvemh .gt_from_md > :last-child {
+#laimrzmnao .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uocxsxvemh .gt_row {
+#laimrzmnao .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -791,7 +791,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#uocxsxvemh .gt_stub {
+#laimrzmnao .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -804,7 +804,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#uocxsxvemh .gt_stub_row_group {
+#laimrzmnao .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -818,15 +818,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#uocxsxvemh .gt_row_group_first td {
+#laimrzmnao .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uocxsxvemh .gt_row_group_first th {
+#laimrzmnao .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uocxsxvemh .gt_summary_row {
+#laimrzmnao .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -836,16 +836,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#uocxsxvemh .gt_first_summary_row {
+#laimrzmnao .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_first_summary_row.thick {
+#laimrzmnao .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uocxsxvemh .gt_last_summary_row {
+#laimrzmnao .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -855,7 +855,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_grand_summary_row {
+#laimrzmnao .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -865,7 +865,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#uocxsxvemh .gt_first_grand_summary_row {
+#laimrzmnao .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,7 +875,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_last_grand_summary_row_top {
+#laimrzmnao .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -885,11 +885,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_striped {
+#laimrzmnao .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uocxsxvemh .gt_table_body {
+#laimrzmnao .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -898,7 +898,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_footnotes {
+#laimrzmnao .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -912,7 +912,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_footnote {
+#laimrzmnao .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -921,7 +921,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#uocxsxvemh .gt_sourcenotes {
+#laimrzmnao .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -935,7 +935,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#uocxsxvemh .gt_sourcenote {
+#laimrzmnao .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -943,63 +943,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#uocxsxvemh .gt_left {
+#laimrzmnao .gt_left {
   text-align: left;
 }
 
-#uocxsxvemh .gt_center {
+#laimrzmnao .gt_center {
   text-align: center;
 }
 
-#uocxsxvemh .gt_right {
+#laimrzmnao .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uocxsxvemh .gt_font_normal {
+#laimrzmnao .gt_font_normal {
   font-weight: normal;
 }
 
-#uocxsxvemh .gt_font_bold {
+#laimrzmnao .gt_font_bold {
   font-weight: bold;
 }
 
-#uocxsxvemh .gt_font_italic {
+#laimrzmnao .gt_font_italic {
   font-style: italic;
 }
 
-#uocxsxvemh .gt_super {
+#laimrzmnao .gt_super {
   font-size: 65%;
 }
 
-#uocxsxvemh .gt_footnote_marks {
+#laimrzmnao .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uocxsxvemh .gt_asterisk {
+#laimrzmnao .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uocxsxvemh .gt_indent_1 {
+#laimrzmnao .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uocxsxvemh .gt_indent_2 {
+#laimrzmnao .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uocxsxvemh .gt_indent_3 {
+#laimrzmnao .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uocxsxvemh .gt_indent_4 {
+#laimrzmnao .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uocxsxvemh .gt_indent_5 {
+#laimrzmnao .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1085,110 +1085,110 @@ Defaulting to continuous.</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index  Model1   Model2  Model3
-1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
-2       monroe                        Monroe 0.05321 0.020396 0.02505
-3       maxdev    Maximum Absolute Deviation 0.03413 0.013865 0.01387
-4          rae                           Rae 0.01256 0.004263 0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708 0.03753
-6      grofman                       Grofman 0.03335 0.011323 0.01534
-7     lijphart                      Lijphart 0.03071 0.005143 0.00798
-8    gallagher                     Gallagher 0.04129 0.015827 0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827 0.01944
-10       gatev                         Gatev 0.08744 0.034607 0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478 0.02990
-12      szalai                        Szalai 0.68738 0.636499 0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784 0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
-15        gini                          Gini 0.07989 0.032180 0.04213
-16    atkinson                      Atkinson 1.00000 1.000000 1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911 0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874 1.05312
-19      farina                        Farina 0.10153 0.047980 0.05482
-20      ortona                        Ortona 0.12490 0.042402 0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
+<pre><code>            ID                           Index  Model1   Model2  Model3
+1       dhondt                        D’Hondt 1.13647 1.055589 1.10148
+2       monroe                          Monroe 0.05321 0.020396 0.02505
+3       maxdev      Maximum Absolute Deviation 0.03413 0.013865 0.01387
+4          rae                             Rae 0.01256 0.004263 0.00577
+5           lh               Loosemore &amp; Hanby 0.08162 0.027708 0.03753
+6      grofman                         Grofman 0.03335 0.011323 0.01534
+7     lijphart                        Lijphart 0.03071 0.005143 0.00798
+8    gallagher                       Gallagher 0.04129 0.015827 0.01944
+9  g_gallagher           Generalized Gallagher 0.04129 0.015827 0.01944
+10       gatev                           Gatev 0.08744 0.034607 0.04227
+11    ryabtsev                        Ryabtsev 0.06195 0.024478 0.02990
+12      szalai                          Szalai 0.68738 0.636499 0.63706
+13    w_szalai                 Weighted Szalai 0.15384 0.105784 0.10847
+14          ap            Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
+15        gini                            Gini 0.07989 0.032180 0.04213
+16    atkinson                        Atkinson 1.00000 1.000000 1.00000
+17          sl                   Sainte-Laguë 0.05825 0.024911 0.02720
+18          cs                   Cox &amp; Shugart 1.13266 1.035874 1.05312
+19      farina                          Farina 0.10153 0.047980 0.05482
+20      ortona                          Ortona 0.12490 0.042402 0.05743
+21          cd            Cosine Dissimilarity 0.00417 0.000932 0.00122
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872 0.06984
-24         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf     Inf
-28       chisq                   Chi Squared 0.03308 0.026543 0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
-30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
+23         arr                   Lebeda’s ARR 0.06769 0.072872 0.06984
+24         srr                   Lebeda’s SRR 0.04488 0.023669 0.03500
+25        wdrr                  Lebeda’s WDRR 0.09444 0.036026 0.05573
+26          kl       Kullback-Leibler Surprise 0.04684 0.021767 0.02292
+27          lr      Likelihood Ratio Statistic     Inf      Inf     Inf
+28       chisq                     Chi Squared 0.03308 0.026543 0.02888
+29   hellinger              Hellinger Distance 0.14218 0.098133 0.09959
+30          ad                alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
-1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
-2       monroe                        Monroe 0.05321 0.020396      0.02505
-3       maxdev    Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4          rae                           Rae 0.01256 0.004263      0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6      grofman                       Grofman 0.03335 0.011323      0.01534
-7     lijphart                      Lijphart 0.03071 0.005143      0.00798
-8    gallagher                     Gallagher 0.04129 0.015827      0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827      0.01944
-10       gatev                         Gatev 0.08744 0.034607      0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478      0.02990
-12      szalai                        Szalai 0.68738 0.636499      0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784      0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15        gini                          Gini 0.07989 0.032180      0.04213
-16    atkinson                      Atkinson 1.00000 1.000000      1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911      0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19      farina                        Farina 0.10153 0.047980      0.05482
-20      ortona                        Ortona 0.12490 0.042402      0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23         arr                  Lebeda’s ARR 0.06769 0.072872      0.06984
-24         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf          Inf
-28       chisq                   Chi Squared 0.03308 0.026543      0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
-30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+<pre><code>            ID                           Index D'Hondt     Hare Sainte-Laguë
+1       dhondt                        D’Hondt 1.13647 1.055589       1.10148
+2       monroe                          Monroe 0.05321 0.020396       0.02505
+3       maxdev      Maximum Absolute Deviation 0.03413 0.013865       0.01387
+4          rae                             Rae 0.01256 0.004263       0.00577
+5           lh               Loosemore &amp; Hanby 0.08162 0.027708       0.03753
+6      grofman                         Grofman 0.03335 0.011323       0.01534
+7     lijphart                        Lijphart 0.03071 0.005143       0.00798
+8    gallagher                       Gallagher 0.04129 0.015827       0.01944
+9  g_gallagher           Generalized Gallagher 0.04129 0.015827       0.01944
+10       gatev                           Gatev 0.08744 0.034607       0.04227
+11    ryabtsev                        Ryabtsev 0.06195 0.024478       0.02990
+12      szalai                          Szalai 0.68738 0.636499       0.63706
+13    w_szalai                 Weighted Szalai 0.15384 0.105784       0.10847
+14          ap            Aleskerov &amp; Platonov 1.09773 1.029574       1.04611
+15        gini                            Gini 0.07989 0.032180       0.04213
+16    atkinson                        Atkinson 1.00000 1.000000       1.00000
+17          sl                   Sainte-Laguë 0.05825 0.024911       0.02720
+18          cs                   Cox &amp; Shugart 1.13266 1.035874       1.05312
+19      farina                          Farina 0.10153 0.047980       0.05482
+20      ortona                          Ortona 0.12490 0.042402       0.05743
+21          cd            Cosine Dissimilarity 0.00417 0.000932       0.00122
+22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662       0.09213
+23         arr                   Lebeda’s ARR 0.06769 0.072872       0.06984
+24         srr                   Lebeda’s SRR 0.04488 0.023669       0.03500
+25        wdrr                  Lebeda’s WDRR 0.09444 0.036026       0.05573
+26          kl       Kullback-Leibler Surprise 0.04684 0.021767       0.02292
+27          lr      Likelihood Ratio Statistic     Inf      Inf           Inf
+28       chisq                     Chi Squared 0.03308 0.026543       0.02888
+29   hellinger              Hellinger Distance 0.14218 0.098133       0.09959
+30          ad                alpha-Divergence 0.02912 0.012455       0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                           Index D'Hondt     Hare Sainte-Laguë
-1                        D’Hondt 1.13647 1.055589      1.10148
-2                         Monroe 0.05321 0.020396      0.02505
-3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4                            Rae 0.01256 0.004263      0.00577
-5              Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6                        Grofman 0.03335 0.011323      0.01534
-7                       Lijphart 0.03071 0.005143      0.00798
-8                      Gallagher 0.04129 0.015827      0.01944
-9          Generalized Gallagher 0.04129 0.015827      0.01944
-10                         Gatev 0.08744 0.034607      0.04227
-11                      Ryabtsev 0.06195 0.024478      0.02990
-12                        Szalai 0.68738 0.636499      0.63706
-13               Weighted Szalai 0.15384 0.105784      0.10847
-14          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15                          Gini 0.07989 0.032180      0.04213
-16                      Atkinson 1.00000 1.000000      1.00000
-17                  Sainte-Laguë 0.05825 0.024911      0.02720
-18                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19                        Farina 0.10153 0.047980      0.05482
-20                        Ortona 0.12490 0.042402      0.05743
-21          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23                  Lebeda’s ARR 0.06769 0.072872      0.06984
-24                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27    Likelihood Ratio Statistic     Inf      Inf          Inf
-28                   Chi Squared 0.03308 0.026543      0.02888
-29            Hellinger Distance 0.14218 0.098133      0.09959
-30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+<pre><code>                             Index D'Hondt     Hare Sainte-Laguë
+1                         D’Hondt 1.13647 1.055589       1.10148
+2                           Monroe 0.05321 0.020396       0.02505
+3       Maximum Absolute Deviation 0.03413 0.013865       0.01387
+4                              Rae 0.01256 0.004263       0.00577
+5                Loosemore &amp; Hanby 0.08162 0.027708       0.03753
+6                          Grofman 0.03335 0.011323       0.01534
+7                         Lijphart 0.03071 0.005143       0.00798
+8                        Gallagher 0.04129 0.015827       0.01944
+9            Generalized Gallagher 0.04129 0.015827       0.01944
+10                           Gatev 0.08744 0.034607       0.04227
+11                        Ryabtsev 0.06195 0.024478       0.02990
+12                          Szalai 0.68738 0.636499       0.63706
+13                 Weighted Szalai 0.15384 0.105784       0.10847
+14            Aleskerov &amp; Platonov 1.09773 1.029574       1.04611
+15                            Gini 0.07989 0.032180       0.04213
+16                        Atkinson 1.00000 1.000000       1.00000
+17                   Sainte-Laguë 0.05825 0.024911       0.02720
+18                   Cox &amp; Shugart 1.13266 1.035874       1.05312
+19                          Farina 0.10153 0.047980       0.05482
+20                          Ortona 0.12490 0.042402       0.05743
+21            Cosine Dissimilarity 0.00417 0.000932       0.00122
+22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662       0.09213
+23                   Lebeda’s ARR 0.06769 0.072872       0.06984
+24                   Lebeda’s SRR 0.04488 0.023669       0.03500
+25                  Lebeda’s WDRR 0.09444 0.036026       0.05573
+26       Kullback-Leibler Surprise 0.04684 0.021767       0.02292
+27      Likelihood Ratio Statistic     Inf      Inf           Inf
+28                     Chi Squared 0.03308 0.026543       0.02888
+29              Hellinger Distance 0.14218 0.098133       0.09959
+30                alpha-Divergence 0.02912 0.012455       0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
@@ -1198,23 +1198,23 @@ Defaulting to continuous.</code></pre>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="ofzltuihqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ofzltuihqq table {
+<div id="dairxwlbhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dairxwlbhz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ofzltuihqq thead, #ofzltuihqq tbody, #ofzltuihqq tfoot, #ofzltuihqq tr, #ofzltuihqq td, #ofzltuihqq th {
+#dairxwlbhz thead, #dairxwlbhz tbody, #dairxwlbhz tfoot, #dairxwlbhz tr, #dairxwlbhz td, #dairxwlbhz th {
   border-style: none;
 }
 
-#ofzltuihqq p {
+#dairxwlbhz p {
   margin: 0;
   padding: 0;
 }
 
-#ofzltuihqq .gt_table {
+#dairxwlbhz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1240,12 +1240,12 @@ Defaulting to continuous.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_caption {
+#dairxwlbhz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ofzltuihqq .gt_title {
+#dairxwlbhz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1257,7 +1257,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-width: 0;
 }
 
-#ofzltuihqq .gt_subtitle {
+#dairxwlbhz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1269,7 +1269,7 @@ Defaulting to continuous.</code></pre>
   border-top-width: 0;
 }
 
-#ofzltuihqq .gt_heading {
+#dairxwlbhz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1281,13 +1281,13 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_bottom_border {
+#dairxwlbhz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_col_headings {
+#dairxwlbhz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1302,7 +1302,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_col_heading {
+#dairxwlbhz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1322,7 +1322,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#ofzltuihqq .gt_column_spanner_outer {
+#dairxwlbhz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1334,15 +1334,15 @@ Defaulting to continuous.</code></pre>
   padding-right: 4px;
 }
 
-#ofzltuihqq .gt_column_spanner_outer:first-child {
+#dairxwlbhz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ofzltuihqq .gt_column_spanner_outer:last-child {
+#dairxwlbhz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ofzltuihqq .gt_column_spanner {
+#dairxwlbhz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1354,11 +1354,11 @@ Defaulting to continuous.</code></pre>
   width: 100%;
 }
 
-#ofzltuihqq .gt_spanner_row {
+#dairxwlbhz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ofzltuihqq .gt_group_heading {
+#dairxwlbhz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1384,7 +1384,7 @@ Defaulting to continuous.</code></pre>
   text-align: left;
 }
 
-#ofzltuihqq .gt_empty_group_heading {
+#dairxwlbhz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1399,15 +1399,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: middle;
 }
 
-#ofzltuihqq .gt_from_md > :first-child {
+#dairxwlbhz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ofzltuihqq .gt_from_md > :last-child {
+#dairxwlbhz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ofzltuihqq .gt_row {
+#dairxwlbhz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1426,7 +1426,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#ofzltuihqq .gt_stub {
+#dairxwlbhz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1439,7 +1439,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#ofzltuihqq .gt_stub_row_group {
+#dairxwlbhz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1453,15 +1453,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: top;
 }
 
-#ofzltuihqq .gt_row_group_first td {
+#dairxwlbhz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ofzltuihqq .gt_row_group_first th {
+#dairxwlbhz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ofzltuihqq .gt_summary_row {
+#dairxwlbhz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1471,16 +1471,16 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#ofzltuihqq .gt_first_summary_row {
+#dairxwlbhz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_first_summary_row.thick {
+#dairxwlbhz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ofzltuihqq .gt_last_summary_row {
+#dairxwlbhz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1490,7 +1490,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_grand_summary_row {
+#dairxwlbhz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1500,7 +1500,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#ofzltuihqq .gt_first_grand_summary_row {
+#dairxwlbhz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1510,7 +1510,7 @@ Defaulting to continuous.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_last_grand_summary_row_top {
+#dairxwlbhz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1520,11 +1520,11 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_striped {
+#dairxwlbhz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ofzltuihqq .gt_table_body {
+#dairxwlbhz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1533,7 +1533,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_footnotes {
+#dairxwlbhz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1547,7 +1547,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_footnote {
+#dairxwlbhz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1556,7 +1556,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#ofzltuihqq .gt_sourcenotes {
+#dairxwlbhz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1570,7 +1570,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ofzltuihqq .gt_sourcenote {
+#dairxwlbhz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1578,63 +1578,63 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#ofzltuihqq .gt_left {
+#dairxwlbhz .gt_left {
   text-align: left;
 }
 
-#ofzltuihqq .gt_center {
+#dairxwlbhz .gt_center {
   text-align: center;
 }
 
-#ofzltuihqq .gt_right {
+#dairxwlbhz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ofzltuihqq .gt_font_normal {
+#dairxwlbhz .gt_font_normal {
   font-weight: normal;
 }
 
-#ofzltuihqq .gt_font_bold {
+#dairxwlbhz .gt_font_bold {
   font-weight: bold;
 }
 
-#ofzltuihqq .gt_font_italic {
+#dairxwlbhz .gt_font_italic {
   font-style: italic;
 }
 
-#ofzltuihqq .gt_super {
+#dairxwlbhz .gt_super {
   font-size: 65%;
 }
 
-#ofzltuihqq .gt_footnote_marks {
+#dairxwlbhz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ofzltuihqq .gt_asterisk {
+#dairxwlbhz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ofzltuihqq .gt_indent_1 {
+#dairxwlbhz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ofzltuihqq .gt_indent_2 {
+#dairxwlbhz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ofzltuihqq .gt_indent_3 {
+#dairxwlbhz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ofzltuihqq .gt_indent_4 {
+#dairxwlbhz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ofzltuihqq .gt_indent_5 {
+#dairxwlbhz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1782,24 +1782,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1834,11 +1816,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

@@ -13,18 +13,13 @@ allocation(x, m, method, extra = NULL)
 
 \item{method}{a character string giving a method for computing seat allocation. See "Allocation methods" section.}
 
-\item{extra}{a numeric vector of length \code{m}. If \code{method} is \code{"custom"}, this parameter is mandatory. Otherwise, it is ignored.}
+\item{extra}{a numeric vector of length \code{m}. If \code{method} is \code{"custom divisor"} (\code{"cd"}) or \code{"custom quota"} (\code{"cq"}), this parameter is mandatory. See "About custom methods" section.}
 }
 \value{
 A tibble object with two columns.
 }
 \description{
 Largest Remainder Method
-}
-\details{
-Custom methods (\code{"custom divisor"} and \code{"custom quota"}) require \code{extra} parameter. In the case of \code{"custom divisor"} (\code{"cd"}), a numeric vector of the same length as the magnitude (\code{m}) must be specified. If the magnitude (\code{m}) is a vector of length 2 or longer, the \code{extra} must have a length equal to \code{max(m)}. For example, if \code{m = c(5, 7, 4)}, then the length of the extra must be 7.
-
-In the case of \code{"custom quota"}, \code{extra} must be a vector of the same length as \code{m}. For example, if \code{m = c(5, 7, 4)}, \code{extra} must also be a numeric vector of length 3. If length of \code{extra} is 1, the same quota is applied to all blocks.
 }
 \section{Allocation methods}{
 
@@ -66,6 +61,6 @@ allocation(x = sample_data, m = 10, method = "hare")
 allocation(x = sample_data, m = 10, method = "dt")
 
 # Custom divisor: 1.4, 3, 5, 7, ... (identical to Modified Sainte-Laguë method)
-allocation(x = sample_data, m = 10, method = "custom",
+allocation(x = sample_data, m = 10, method = "custom divisor",
            extra = c(1.4, seq(3, 19, by = 2)))
 }

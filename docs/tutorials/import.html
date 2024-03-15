@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -802,37 +802,37 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index    Value
-1       dhondt                       D’Hondt 1.054507
-2       monroe                        Monroe 0.005322
-3       maxdev    Maximum Absolute Deviation 0.002287
-4          rae                           Rae 0.000523
-5           lh             Loosemore &amp; Hanby 0.012541
-6      grofman                       Grofman 0.000685
-7     lijphart                      Lijphart 0.001698
-8    gallagher                     Gallagher 0.003814
-9  g_gallagher         Generalized Gallagher 0.003814
-10       gatev                         Gatev 0.022992
-11    ryabtsev                      Ryabtsev 0.016260
-12      szalai                        Szalai 0.016607
-13    w_szalai               Weighted Szalai 0.016319
-14          ap          Aleskerov &amp; Platonov 1.021303
-15        gini                          Gini 0.018644
-16    atkinson                      Atkinson 0.001076
-17          sl                  Sainte-Laguë 0.001055
-18          cs                 Cox &amp; Shugart 1.030364
-19      farina                        Farina 0.035109
-20      ortona                        Ortona 0.008979
-21          cd          Cosine Dissimilarity 0.000499
+<pre><code>            ID                           Index    Value
+1       dhondt                        D’Hondt 1.054507
+2       monroe                          Monroe 0.005322
+3       maxdev      Maximum Absolute Deviation 0.002287
+4          rae                             Rae 0.000523
+5           lh               Loosemore &amp; Hanby 0.012541
+6      grofman                         Grofman 0.000685
+7     lijphart                        Lijphart 0.001698
+8    gallagher                       Gallagher 0.003814
+9  g_gallagher           Generalized Gallagher 0.003814
+10       gatev                           Gatev 0.022992
+11    ryabtsev                        Ryabtsev 0.016260
+12      szalai                          Szalai 0.016607
+13    w_szalai                 Weighted Szalai 0.016319
+14          ap            Aleskerov &amp; Platonov 1.021303
+15        gini                            Gini 0.018644
+16    atkinson                        Atkinson 0.001076
+17          sl                   Sainte-Laguë 0.001055
+18          cs                   Cox &amp; Shugart 1.030364
+19      farina                          Farina 0.035109
+20      ortona                          Ortona 0.008979
+21          cd            Cosine Dissimilarity 0.000499
 22          rr Lebeda’s RR (Mixture D’Hondt) 0.051690
-23         arr                  Lebeda’s ARR 0.019756
-24         srr                  Lebeda’s SRR 0.008936
-25        wdrr                 Lebeda’s WDRR 0.025591
-26          kl     Kullback-Leibler Surprise 0.000531
-27          lr    Likelihood Ratio Statistic 0.001069
-28       chisq                   Chi Squared 0.001077
-29   hellinger            Hellinger Distance 0.011541
-30          ad              alpha-Divergence 0.000527</code></pre>
+23         arr                   Lebeda’s ARR 0.019756
+24         srr                   Lebeda’s SRR 0.008936
+25        wdrr                  Lebeda’s WDRR 0.025591
+26          kl       Kullback-Leibler Surprise 0.000531
+27          lr      Likelihood Ratio Statistic 0.001069
+28       chisq                     Chi Squared 0.001077
+29   hellinger              Hellinger Distance 0.011541
+30          ad                alpha-Divergence 0.000527</code></pre>
 </div>
 </div>
 
@@ -919,24 +919,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -971,11 +953,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

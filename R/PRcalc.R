@@ -1,10 +1,18 @@
 #' Proportional Representation Calculator
 #'
-#' @param x a \code{data.frame} or \code{tibble} object.
-#' @param m a \code{numeric} vector of magnitude.
+#' @param x a `data.frame` or `tibble` object.
+#' @param m a numeric vector of district magnitude.
 #' @param method a character string giving a method for computing seat allocation. See "Allocation methods" section.
-#' @param extra a numeric vector of length `m`. If `method` is `"custom"`, this parameter is mandatory. Otherwise, it is ignored.
+#' @param extra a numeric vector of length `m`. If `method` is `"custom divisor"` (`"cd"`) or `"custom quota"` (`"cq"`), this parameter is mandatory. See "About custom methods" section.
 #' @param threshold a threshold. It must be equal or larger than 0 (0%) and smaller than 0.1 (10%). a default is 0.
+#'
+#' @section Allocation methods:
+#' aaa
+#'
+#' @section About custom methods:
+#' Custom methods (`"custom divisor"` and `"custom quota"`) require `extra` parameter. In the case of `"custom divisor"` (`"cd"`), a numeric vector of the same length as the magnitude (`m`) must be specified. If the magnitude (`m`) is a vector of length 2 or longer, the `extra` must have a length equal to `max(m)`. For example, if `m = c(5, 7, 4)`, then the length of the extra must be 7.
+#'
+#' In the case of `"custom quota"`, `extra` must be a vector of the same length as `m`. For example, if `m = c(5, 7, 4)`, `extra` must also be a numeric vector of length 3. If length of `extra` is 1, the same quota is applied to all blocks.
 #'
 #' @import tibble
 #' @import dplyr
@@ -35,8 +43,45 @@ prcalc <- function (x,
 
   votes <- NULL
 
+  # Validator
   if (!(is.numeric(threshold) & threshold >= 0 & threshold <= 0.1)) {
     stop("threshold must be a numeric vector of length 1 that is greater than or equal to 0 and less than or equal to 0.1.")
+  }
+
+  if (is.character(method) & length(method) == 1) {
+    method <- tolower(method)
+  } else {
+    stop("method must be a vector of type character of length 1.")
+  }
+
+  if (!(method %in% c("dt", "d'hondt", "jefferson",
+                      "adams", "cambridge",
+                      "sl", "sainte-lague", "webster",
+                      "msl", "modified sainte-lague",
+                      "danish",
+                      "imperiali",
+                      "hh", "hungtington-hill",
+                      "dean",
+                      "ad",
+                      "custom divisor", "cd",
+                      "hn", "hare", "hare-niemeyer",
+                      "droop",
+                      "hb", "hagenbach-bischoff",
+                      "iq", "imperiali quota",
+                      "custom quota", "cq"))) {
+    stop("Inappropriate method.")
+  }
+
+  if (method %in% c("custom divisor", "cd"))  {
+    if (length(extra) < m) {
+      stop('If method is "custom divisor" or "cd", extra must be specified. extra must be a numeric vector of length of max(m) or longer.')
+    }
+  }
+
+  if (method %in% c("custom quota", "cq")) {
+    if (!(length(extra) == length(m) | length(extra) == 1)) {
+      stop('"extra" must be a vector of the same length as length(m) or 1.')
+    }
   }
 
   result   <- list()
@@ -50,7 +95,11 @@ prcalc <- function (x,
       select(party = 1, votes = all_of(i)) |>
       mutate(votes = if_else((votes / sum(votes)) < threshold, 0, votes))
 
-    temp2 <- allocation(temp, m[i - 1], method, extra)
+    if (method %in% c("custom quota", "cq")) {
+      temp2 <- allocation(temp, m[i - 1], method, extra[i-1])
+    } else {
+      temp2 <- allocation(temp, m[i - 1], method, extra)
+    }
 
     result_df <- result_df |>
       left_join(temp2, by = "party")
@@ -96,8 +145,9 @@ prcalc <- function (x,
          "dean"               = method_return <- "Dean method",
          # alpha-divergence
          "ad"                 = method_return <- "alpha-divergence",
-         # Custom
-         "custom"             = method_return <- "Custom",
+         # Custom divisor
+         "custom divisor"     = method_return <- "Custom divisor",
+         "cd"                 = method_return <- "Custom divisor",
          # Hare-Niemeyer quota
          "hn"                 = method_return <- "Hare-Niemeyer quota",
          "hare"               = method_return <- "Hare-Niemeyer quota",
@@ -109,10 +159,13 @@ prcalc <- function (x,
          "hagenbach-bischoff" = method_return <- "Hagenbach-Bischoff quota",
          # Imperiali quota
          "iq"                 = method_return <- "Imperiali quota",
-         "imperiali quota"    = method_return <- "Imperiali quota"
+         "imperiali quota"    = method_return <- "Imperiali quota",
+         # Custom quota
+         "cq"                 = method_return <- "Custom quota",
+         "custom quota"       = method_return <- "Custom quota"
   )
 
-  if (method != "custom") extra <- NULL
+  if (!(method %in% c("custom divisor", "cd", "custom quota", "cq"))) extra <- NULL
 
   result <- list(raw       = as.data.frame(x),
                  dist      = as.data.frame(result_df),

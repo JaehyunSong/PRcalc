@@ -3,7 +3,7 @@
 #' @param x a data.frame or tibble with two columns. The first and second column represents names of parties and numbers of votes, respectively.
 #' @param m a numeric value of district magnitude.
 #' @param method a character string giving a method for computing seat allocation. See "Allocation methods" section.
-#' @param extra a numeric vector of length `m`. If `method` is `"custom"`, this parameter is mandatory. Otherwise, it is ignored.
+#' @param extra a numeric vector of length `m`. If `method` is `"custom divisor"` (`"cd"`) or `"custom quota"` (`"cq"`), this parameter is mandatory. See "About custom methods" section.
 #'
 #' @section Allocation methods:
 #' * Highest average method
@@ -23,11 +23,6 @@
 #'    * `"hagenbach-bischoff"` (`"hb"`): Hagenbach-Bischoff quota
 #'    * `"imperiali quota"` (`"iq"`): Imperiali quota
 #'    * `"custom quota"` (`"cq"`): Custom quota. `extra` is mandatory.
-#'
-#' @details
-#' Custom methods (`"custom divisor"` and `"custom quota"`) require `extra` parameter. In the case of `"custom divisor"` (`"cd"`), a numeric vector of the same length as the magnitude (`m`) must be specified. If the magnitude (`m`) is a vector of length 2 or longer, the `extra` must have a length equal to `max(m)`. For example, if `m = c(5, 7, 4)`, then the length of the extra must be 7.
-#'
-#' In the case of `"custom quota"`, `extra` must be a vector of the same length as `m`. For example, if `m = c(5, 7, 4)`, `extra` must also be a numeric vector of length 3. If length of `extra` is 1, the same quota is applied to all blocks.
 #'
 #' @import dplyr
 #' @import tidyr
@@ -50,12 +45,14 @@
 #' allocation(x = sample_data, m = 10, method = "dt")
 #'
 #' # Custom divisor: 1.4, 3, 5, 7, ... (identical to Modified Sainte-Laguë method)
-#' allocation(x = sample_data, m = 10, method = "custom",
+#' allocation(x = sample_data, m = 10, method = "custom divisor",
 #'            extra = c(1.4, seq(3, 19, by = 2)))
 
 allocation <- function(x, m, method, extra = NULL) {
 
   votes <- temp <- party <- remainder <- NULL
+
+  names(x) <- c("party", "votes")
 
   # Validator
   if (!(is.data.frame(x) & ncol(x) == 2)) {
@@ -66,38 +63,6 @@ allocation <- function(x, m, method, extra = NULL) {
     stop("m must be a positive integer of length 1.")
   }
 
-  if (is.character(method) & length(method) == 1) {
-    method <- tolower(method)
-  } else {
-    stop("method must be a vector of type character of length 1.")
-  }
-
-  if (!(method %in% c("dt", "d'hondt", "jefferson",
-                      "adams", "cambridge",
-                      "sl", "sainte-lague", "webster",
-                      "msl", "modified sainte-lague",
-                      "danish",
-                      "imperiali",
-                      "hh", "hungtington-hill",
-                      "dean",
-                      "ad",
-                      "custom",
-                      "hn", "hare", "hare-niemeyer",
-                      "droop",
-                      "hb", "hagenbach-bischoff",
-                      "iq", "imperiali quota"))) {
-    stop("Inappropriate method.")
-  }
-
-  if (method == "custom")  {
-    if (length(extra) < m) {
-      stop('If method is "custom", extra must be specified. extra must be a numeric vector of length of max(m) or longer.')
-    }
-  }
-
-  names(x) <- c("party", "votes")
-
-
   # Highest average method
   if (method %in% c("dt", "d'hondt", "jefferson",
                     "adams", "cambridge",
@@ -106,7 +71,7 @@ allocation <- function(x, m, method, extra = NULL) {
                     "hh", "hungtington-hill",
                     "dean",
                     "ad",
-                    "custom")) {
+                    "custom divisor", "cd")) {
 
     m2 <- ceiling(m * max(x[, 2] / sum(x[, 2])))
     k  <- 0:(m2 - 1)
@@ -147,8 +112,11 @@ allocation <- function(x, m, method, extra = NULL) {
              divisor <- (1 / exp(1)) * ((k + 1)^(k + 1) / k^k) # alpha = 1
              divisor <- (((k + 1)^extra - k^extra) / extra)^(1 / (extra - 1)) # etc
            },
-           # Custom divisorinator
-           "custom"      = {
+           # Custom divisor
+           "custom divisor" = {
+             divisor <- extra
+           },
+           "cd" = {
              divisor <- extra
            }
     )
@@ -165,7 +133,8 @@ allocation <- function(x, m, method, extra = NULL) {
   if (method %in% c("hn", "hare", "hare-niemeyer",
                     "droop",
                     "hb", "hagenbach-bischoff",
-                    "iq", "imperiali quota")) {
+                    "iq", "imperiali quota",
+                    "custom quota", "cq")) {
     switch(method,
            # Hare-Niemeyer quota
            "hn"            = quota <- sum(x[, 2]) / m,
@@ -179,6 +148,8 @@ allocation <- function(x, m, method, extra = NULL) {
            # Imperiali quota
            "iq"              = quota <- sum(x[, 2]) / (2 + m),
            "imperiali quota" = quota <- sum(x[, 2]) / (2 + m),
+           "custom quota"    = quota <- extra,
+           "cq"              = quota <- extra
     )
 
     result <- x |>
