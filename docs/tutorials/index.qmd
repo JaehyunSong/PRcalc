@@ -7,6 +7,7 @@ knitr:
     fig.height: 5
     dpi: 150
     error: true
+toc: true
 ---
 
 ```{r}
