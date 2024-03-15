@@ -198,6 +198,31 @@
 #' @source 総務省
 "jp_lower_2021"
 
+#' 衆議院議員総選挙比例区得票数 (2021年; 英文)
+#'
+#' 衆議院議員総選挙比例区の得票数 (2021年; 英文)
+#'
+#' @format A data frame with 47 rows and 12 variables:
+#' \describe{
+#'   \item{ Party }{ 政党名; character }
+#'   \item{ Hokkaido }{ 北海道ブロックの得票数; numeric }
+#'   \item{ Tohoku }{ 東北ブロックの得票数; numeric }
+#'   \item{ Kitakanto }{ 北関東ブロックの得票数; numeric }
+#'   \item{ Minamikanto }{ 南関東ブロックの得票数; numeric }
+#'   \item{ Tokyo }{ 東京ブロックの得票数; numeric }
+#'   \item{ Hokuriku }{ 北陸信越ブロックの得票数; numeric }
+#'   \item{ Tokai }{ 東海ブロックの得票数; numeric }
+#'   \item{ Kinki }{ 近畿ブロックの得票数; numeric }
+#'   \item{ Chugoku }{ 中国ブロックの得票数; numeric }
+#'   \item{ Shikoku }{ 四国ブロックの得票数; numeric }
+#'   \item{ Kyushu }{ 九州ブロックの得票数; numeric }
+#' }
+#'
+#' @usage data(jp_lower_2021_en)
+#'
+#' @source 総務省
+"jp_lower_2021_en"
+
 #' 参議院議員通常選挙比例区得票数 (2019年)
 #'
 #' 参議院議員通常選挙比例区の得票数 (2019年)

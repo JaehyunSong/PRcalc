@@ -1,5 +1,9 @@
 ## News
 
+### PRcalc 0.8.7.1 (2024/03/15)
+
+* データセット（`jp_lower_2021_en`）を追加
+
 ### PRcalc 0.8.7 (2024/03/14)
 
 * 既存の`decompose()`を`decompse2()`に名称変更し、`decompose()`を`decompose2()`と`decompose3()`のラッパー関数へ変更

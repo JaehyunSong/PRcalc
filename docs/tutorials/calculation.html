@@ -387,25 +387,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 12 オリーブ   167897
 13   労働者    80055</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Japanese lower house election in 2019</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of blocks = 11 (regional blocks)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>jp_lower_2021</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Japanese lower house election in 2019 (in English)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># See "str(jp_lower_2021_en)", for the full names of parties</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of blocks = 11 (regional blocks)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021_en"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>jp_lower_2021_en</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
+1     LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     NKP   294371  456287    823930      850667  715450   322535  784976
+3     CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4     JCP   207189  292830    444115      534493  670340   225551  408606
+5     JIP   215344  258690    617531      863897  858577   361476  694630
+6     DPP    73621  195754    298056      384482  306180   133600  382734
+7     SDP    41248  101442     97963      124447   92995    71185   84220
+8   Reiwa   102086  143265    239592      302675  360387   111281  273208
+9     NHK    42916   52664     87702      111298   92353    43529   98238
+10    SSN    46142       0         0           0       0        0       0
+11    JFP        0       0         0           0   33661        0       0
+12 Yamato        0       0         0           0   16970        0       0
+13 Corona        0       0         0           0    6620        0       0
      Kinki Chugoku Shikoku  Kyushu
 1  2407699 1352723  664805 2250966
 2  1155683  436220  233407 1040756
@@ -474,26 +475,26 @@ Magnitude: 50</code></pre>
 <p>In a block system, you need to specify <code>m</code> for each block separately. Since <code>jp_lower_2021</code> has 11 blocks, the length of <code>m</code> also needs to be 11.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of regional block (D'Hondt/Jefferson method; 11 blocks)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en, </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>obj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
+1     LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     NKP   294371  456287    823930      850667  715450   322535  784976
+3     CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4     JCP   207189  292830    444115      534493  670340   225551  408606
+5     JIP   215344  258690    617531      863897  858577   361476  694630
+6     DPP    73621  195754    298056      384482  306180   133600  382734
+7     SDP    41248  101442     97963      124447   92995    71185   84220
+8   Reiwa   102086  143265    239592      302675  360387   111281  273208
+9     NHK    42916   52664     87702      111298   92353    43529   98238
+10    SSN    46142       0         0           0       0        0       0
+11    JFP        0       0         0           0   33661        0       0
+12 Yamato        0       0         0           0   16970        0       0
+13 Corona        0       0         0           0    6620        0       0
      Kinki Chugoku Shikoku  Kyushu    Total
 1  2407699 1352723  664805 2250966 19914883
 2  1155683  436220  233407 1040756  7114282
@@ -511,19 +512,19 @@ Magnitude: 50</code></pre>
 
 Result:
     Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      6         7           8     6        5     8     8
-2    公明        1      1         3           3     2        1     3     3
-3    立憲        3      4         5           5     4        3     5     3
-4    共産        0      1         1           1     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      0         1           1     0        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      0         0           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
-11   第一        0      0         0           0     0        0     0     0
-12 やまと        0      0         0           0     0        0     0     0
-13 コロナ        0      0         0           0     0        0     0     0
+1     LDP        3      6         7           8     6        5     8     8
+2     NKP        1      1         3           3     2        1     3     3
+3     CDP        3      4         5           5     4        3     5     3
+4     JCP        0      1         1           1     2        1     1     2
+5     JIP        1      1         2           3     2        1     2    10
+6     DPP        0      0         1           1     0        0     1     1
+7     SDP        0      0         0           0     0        0     0     0
+8   Reiwa        0      0         0           1     1        0     1     1
+9     NHK        0      0         0           0     0        0     0     0
+10    SSN        0      0         0           0     0        0     0     0
+11    JFP        0      0         0           0     0        0     0     0
+12 Yamato        0      0         0           0     0        0     0     0
+13 Corona        0      0         0           0     0        0     0     0
    Chugoku Shikoku Kyushu Total
 1        5       3      8    67
 2        2       1      4    24
@@ -554,26 +555,26 @@ Magnitude:
 <p>{PRcalc} offers various allocation methods. Below is an example similar to the previous one, but with the allocation methods changed to the Hare-Niemeyer (<code>"hn"</code>) method and the Sainte-Laguë method (<code>"sl"</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hare-Niemeyer method</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en, </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"hn"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>obj3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
+1     LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     NKP   294371  456287    823930      850667  715450   322535  784976
+3     CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4     JCP   207189  292830    444115      534493  670340   225551  408606
+5     JIP   215344  258690    617531      863897  858577   361476  694630
+6     DPP    73621  195754    298056      384482  306180   133600  382734
+7     SDP    41248  101442     97963      124447   92995    71185   84220
+8   Reiwa   102086  143265    239592      302675  360387   111281  273208
+9     NHK    42916   52664     87702      111298   92353    43529   98238
+10    SSN    46142       0         0           0       0        0       0
+11    JFP        0       0         0           0   33661        0       0
+12 Yamato        0       0         0           0   16970        0       0
+13 Corona        0       0         0           0    6620        0       0
      Kinki Chugoku Shikoku  Kyushu    Total
 1  2407699 1352723  664805 2250966 19914883
 2  1155683  436220  233407 1040756  7114282
@@ -591,19 +592,19 @@ Magnitude:
 
 Result:
     Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      5         7           8     5        5     8     7
-2    公明        1      1         3           2     2        1     3     4
-3    立憲        2      3         4           5     4        3     5     3
-4    共産        1      1         1           2     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      1         1           1     1        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      1         1           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
-11   第一        0      0         0           0     0        0     0     0
-12 やまと        0      0         0           0     0        0     0     0
-13 コロナ        0      0         0           0     0        0     0     0
+1     LDP        3      5         7           8     5        5     8     7
+2     NKP        1      1         3           2     2        1     3     4
+3     CDP        2      3         4           5     4        3     5     3
+4     JCP        1      1         1           2     2        1     1     2
+5     JIP        1      1         2           3     2        1     2    10
+6     DPP        0      1         1           1     1        0     1     1
+7     SDP        0      0         0           0     0        0     0     0
+8   Reiwa        0      1         1           1     1        0     1     1
+9     NHK        0      0         0           0     0        0     0     0
+10    SSN        0      0         0           0     0        0     0     0
+11    JFP        0      0         0           0     0        0     0     0
+12 Yamato        0      0         0           0     0        0     0     0
+13 Corona        0      0         0           0     0        0     0     0
    Chugoku Shikoku Kyushu Total
 1        5       2      7    62
 2        2       1      3    23
@@ -631,26 +632,26 @@ Magnitude:
          21          28          11           6          20 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sainte-Laguë/Webster method</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>), </span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"sl"</span>)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
+1     LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     NKP   294371  456287    823930      850667  715450   322535  784976
+3     CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4     JCP   207189  292830    444115      534493  670340   225551  408606
+5     JIP   215344  258690    617531      863897  858577   361476  694630
+6     DPP    73621  195754    298056      384482  306180   133600  382734
+7     SDP    41248  101442     97963      124447   92995    71185   84220
+8   Reiwa   102086  143265    239592      302675  360387   111281  273208
+9     NHK    42916   52664     87702      111298   92353    43529   98238
+10    SSN    46142       0         0           0       0        0       0
+11    JFP        0       0         0           0   33661        0       0
+12 Yamato        0       0         0           0   16970        0       0
+13 Corona        0       0         0           0    6620        0       0
      Kinki Chugoku Shikoku  Kyushu    Total
 1  2407699 1352723  664805 2250966 19914883
 2  1155683  436220  233407 1040756  7114282
@@ -668,19 +669,19 @@ Magnitude:
 
 Result:
     Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      5         7           8     5        5     8     7
-2    公明        1      2         3           2     2        1     3     4
-3    立憲        2      3         4           5     4        3     5     3
-4    共産        1      1         1           2     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      1         1           1     1        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      0         1           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
-11   第一        0      0         0           0     0        0     0     0
-12 やまと        0      0         0           0     0        0     0     0
-13 コロナ        0      0         0           0     0        0     0     0
+1     LDP        3      5         7           8     5        5     8     7
+2     NKP        1      2         3           2     2        1     3     4
+3     CDP        2      3         4           5     4        3     5     3
+4     JCP        1      1         1           2     2        1     1     2
+5     JIP        1      1         2           3     2        1     2    10
+6     DPP        0      1         1           1     1        0     1     1
+7     SDP        0      0         0           0     0        0     0     0
+8   Reiwa        0      0         1           1     1        0     1     1
+9     NHK        0      0         0           0     0        0     0     0
+10    SSN        0      0         0           0     0        0     0     0
+11    JFP        0      0         0           0     0        0     0     0
+12 Yamato        0      0         0           0     0        0     0     0
+13 Corona        0      0         0           0     0        0     0     0
    Chugoku Shikoku Kyushu Total
 1        5       3      7    63
 2        2       1      3    24
@@ -717,19 +718,19 @@ Magnitude:
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
     Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
-11   第一        0       0         0           0   33661        0       0
-12 やまと        0       0         0           0   16970        0       0
-13 コロナ        0       0         0           0    6620        0       0
+1     LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     NKP   294371  456287    823930      850667  715450   322535  784976
+3     CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4     JCP   207189  292830    444115      534493  670340   225551  408606
+5     JIP   215344  258690    617531      863897  858577   361476  694630
+6     DPP    73621  195754    298056      384482  306180   133600  382734
+7     SDP    41248  101442     97963      124447   92995    71185   84220
+8   Reiwa   102086  143265    239592      302675  360387   111281  273208
+9     NHK    42916   52664     87702      111298   92353    43529   98238
+10    SSN    46142       0         0           0       0        0       0
+11    JFP        0       0         0           0   33661        0       0
+12 Yamato        0       0         0           0   16970        0       0
+13 Corona        0       0         0           0    6620        0       0
      Kinki Chugoku Shikoku  Kyushu
 1  2407699 1352723  664805 2250966
 2  1155683  436220  233407 1040756
@@ -747,19 +748,19 @@ Magnitude:
 
 Result:
     Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      6         7           8     6        5     8     8
-2    公明        1      1         3           3     2        1     3     3
-3    立憲        3      4         5           5     4        3     5     3
-4    共産        0      1         1           1     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      0         1           1     0        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      0         0           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
-11   第一        0      0         0           0     0        0     0     0
-12 やまと        0      0         0           0     0        0     0     0
-13 コロナ        0      0         0           0     0        0     0     0
+1     LDP        3      6         7           8     6        5     8     8
+2     NKP        1      1         3           3     2        1     3     3
+3     CDP        3      4         5           5     4        3     5     3
+4     JCP        0      1         1           1     2        1     1     2
+5     JIP        1      1         2           3     2        1     2    10
+6     DPP        0      0         1           1     0        0     1     1
+7     SDP        0      0         0           0     0        0     0     0
+8   Reiwa        0      0         0           1     1        0     1     1
+9     NHK        0      0         0           0     0        0     0     0
+10    SSN        0      0         0           0     0        0     0     0
+11    JFP        0      0         0           0     0        0     0     0
+12 Yamato        0      0         0           0     0        0     0     0
+13 Corona        0      0         0           0     0        0     0     0
    Chugoku Shikoku Kyushu
 1        5       3      8
 2        2       1      4
@@ -792,17 +793,17 @@ Magnitude:
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">head =</span> <span class="dv">10</span>) <span class="co"># Show only ten rows.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-    Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
-1    自民   863300 1628233   2172065     2590787 2000084  1468380 2515841
-2    公明   294371  456287    823930      850667  715450   322535  784976
-3    立憲   682913  991505   1391149     1651562 1293281   773076 1485947
-4    共産   207189  292830    444115      534493  670340   225551  408606
-5    維新   215344  258690    617531      863897  858577   361476  694630
-6    国民    73621  195754    298056      384482  306180   133600  382734
-7    社民    41248  101442     97963      124447   92995    71185   84220
-8    れ新   102086  143265    239592      302675  360387   111281  273208
-9     N党    42916   52664     87702      111298   92353    43529   98238
-10 支なし    46142       0         0           0       0        0       0
+   Party Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
+1    LDP   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2    NKP   294371  456287    823930      850667  715450   322535  784976
+3    CDP   682913  991505   1391149     1651562 1293281   773076 1485947
+4    JCP   207189  292830    444115      534493  670340   225551  408606
+5    JIP   215344  258690    617531      863897  858577   361476  694630
+6    DPP    73621  195754    298056      384482  306180   133600  382734
+7    SDP    41248  101442     97963      124447   92995    71185   84220
+8  Reiwa   102086  143265    239592      302675  360387   111281  273208
+9    NHK    42916   52664     87702      111298   92353    43529   98238
+10   SSN    46142       0         0           0       0        0       0
      Kinki Chugoku Shikoku  Kyushu    Total
 1  2407699 1352723  664805 2250966 19914883
 2  1155683  436220  233407 1040756  7114282
@@ -816,17 +817,17 @@ Magnitude:
 10       0       0       0       0    46142
 
 Result:
-    Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
-1    自民        3      6         7           8     6        5     8     8
-2    公明        1      1         3           3     2        1     3     3
-3    立憲        3      4         5           5     4        3     5     3
-4    共産        0      1         1           1     2        1     1     2
-5    維新        1      1         2           3     2        1     2    10
-6    国民        0      0         1           1     0        0     1     1
-7    社民        0      0         0           0     0        0     0     0
-8    れ新        0      0         0           1     1        0     1     1
-9     N党        0      0         0           0     0        0     0     0
-10 支なし        0      0         0           0     0        0     0     0
+   Party Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
+1    LDP        3      6         7           8     6        5     8     8
+2    NKP        1      1         3           3     2        1     3     3
+3    CDP        3      4         5           5     4        3     5     3
+4    JCP        0      1         1           1     2        1     1     2
+5    JIP        1      1         2           3     2        1     2    10
+6    DPP        0      0         1           1     0        0     1     1
+7    SDP        0      0         0           0     0        0     0     0
+8  Reiwa        0      0         0           1     1        0     1     1
+9    NHK        0      0         0           0     0        0     0     0
+10   SSN        0      0         0           0     0        0     0     0
    Chugoku Shikoku Kyushu Total
 1        5       3      8    67
 2        2       1      4    24
@@ -857,11 +858,11 @@ Magnitude:
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
   Party   Hokkaido     Tohoku  Kitakanto Minamikanto     Tokyo   Hokuriku
-1  自民 0.33602815 0.39513793 0.35191652   0.3494307 0.3102397 0.41826883
-2  公明 0.11458003 0.11073126 0.13349259   0.1147332 0.1109759 0.09187427
-3  立憲 0.26581489 0.24061742 0.22539303   0.2227534 0.2006052 0.22021111
-4  共産 0.08064559 0.07106369 0.07195522   0.0720894 0.1039787 0.06424832
-5  維新 0.08381981 0.06277863 0.10005196   0.1165175 0.1331768 0.10296663
+1   LDP 0.33602815 0.39513793 0.35191652   0.3494307 0.3102397 0.41826883
+2   NKP 0.11458003 0.11073126 0.13349259   0.1147332 0.1109759 0.09187427
+3   CDP 0.26581489 0.24061742 0.22539303   0.2227534 0.2006052 0.22021111
+4   JCP 0.08064559 0.07106369 0.07195522   0.0720894 0.1039787 0.06424832
+5   JIP 0.08381981 0.06277863 0.10005196   0.1165175 0.1331768 0.10296663
        Tokai      Kinki    Chugoku    Shikoku     Kyushu      Total
 1 0.37391371 0.25671430 0.43364470 0.39141012 0.35689743 0.34655083
 2 0.11666607 0.12322153 0.13983978 0.13742054 0.16501499 0.12379989
@@ -871,11 +872,11 @@ Magnitude:
 
 Result:
   Party Hokkaido     Tohoku  Kitakanto Minamikanto     Tokyo   Hokuriku
-1  自民    0.375 0.46153846 0.36842105  0.36363636 0.3529412 0.45454545
-2  公明    0.125 0.07692308 0.15789474  0.13636364 0.1176471 0.09090909
-3  立憲    0.375 0.30769231 0.26315789  0.22727273 0.2352941 0.27272727
-4  共産    0.000 0.07692308 0.05263158  0.04545455 0.1176471 0.09090909
-5  維新    0.125 0.07692308 0.10526316  0.13636364 0.1176471 0.09090909
+1   LDP    0.375 0.46153846 0.36842105  0.36363636 0.3529412 0.45454545
+2   NKP    0.125 0.07692308 0.15789474  0.13636364 0.1176471 0.09090909
+3   CDP    0.375 0.30769231 0.26315789  0.22727273 0.2352941 0.27272727
+4   JCP    0.000 0.07692308 0.05263158  0.04545455 0.1176471 0.09090909
+5   JIP    0.125 0.07692308 0.10526316  0.13636364 0.1176471 0.09090909
        Tokai      Kinki    Chugoku   Shikoku Kyushu      Total
 1 0.38095238 0.28571429 0.45454545 0.5000000   0.40 0.38068182
 2 0.14285714 0.10714286 0.18181818 0.1666667   0.20 0.13636364
@@ -900,23 +901,23 @@ Magnitude:
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="dinbywbssx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dinbywbssx table {
+<div id="jbamvqozhm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jbamvqozhm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dinbywbssx thead, #dinbywbssx tbody, #dinbywbssx tfoot, #dinbywbssx tr, #dinbywbssx td, #dinbywbssx th {
+#jbamvqozhm thead, #jbamvqozhm tbody, #jbamvqozhm tfoot, #jbamvqozhm tr, #jbamvqozhm td, #jbamvqozhm th {
   border-style: none;
 }
 
-#dinbywbssx p {
+#jbamvqozhm p {
   margin: 0;
   padding: 0;
 }
 
-#dinbywbssx .gt_table {
+#jbamvqozhm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -942,12 +943,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_caption {
+#jbamvqozhm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dinbywbssx .gt_title {
+#jbamvqozhm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -959,7 +960,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#dinbywbssx .gt_subtitle {
+#jbamvqozhm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -971,7 +972,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#dinbywbssx .gt_heading {
+#jbamvqozhm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -983,13 +984,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_bottom_border {
+#jbamvqozhm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_col_headings {
+#jbamvqozhm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1004,7 +1005,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_col_heading {
+#jbamvqozhm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1024,7 +1025,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#dinbywbssx .gt_column_spanner_outer {
+#jbamvqozhm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1036,15 +1037,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#dinbywbssx .gt_column_spanner_outer:first-child {
+#jbamvqozhm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dinbywbssx .gt_column_spanner_outer:last-child {
+#jbamvqozhm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dinbywbssx .gt_column_spanner {
+#jbamvqozhm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1056,11 +1057,11 @@ Magnitude:
   width: 100%;
 }
 
-#dinbywbssx .gt_spanner_row {
+#jbamvqozhm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dinbywbssx .gt_group_heading {
+#jbamvqozhm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1086,7 +1087,7 @@ Magnitude:
   text-align: left;
 }
 
-#dinbywbssx .gt_empty_group_heading {
+#jbamvqozhm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1101,15 +1102,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#dinbywbssx .gt_from_md > :first-child {
+#jbamvqozhm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dinbywbssx .gt_from_md > :last-child {
+#jbamvqozhm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dinbywbssx .gt_row {
+#jbamvqozhm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1128,7 +1129,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#dinbywbssx .gt_stub {
+#jbamvqozhm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1141,7 +1142,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dinbywbssx .gt_stub_row_group {
+#jbamvqozhm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1155,15 +1156,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#dinbywbssx .gt_row_group_first td {
+#jbamvqozhm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dinbywbssx .gt_row_group_first th {
+#jbamvqozhm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dinbywbssx .gt_summary_row {
+#jbamvqozhm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1173,16 +1174,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dinbywbssx .gt_first_summary_row {
+#jbamvqozhm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_first_summary_row.thick {
+#jbamvqozhm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dinbywbssx .gt_last_summary_row {
+#jbamvqozhm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1192,7 +1193,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_grand_summary_row {
+#jbamvqozhm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1202,7 +1203,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dinbywbssx .gt_first_grand_summary_row {
+#jbamvqozhm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1212,7 +1213,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_last_grand_summary_row_top {
+#jbamvqozhm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1222,11 +1223,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_striped {
+#jbamvqozhm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dinbywbssx .gt_table_body {
+#jbamvqozhm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1235,7 +1236,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_footnotes {
+#jbamvqozhm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1249,7 +1250,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_footnote {
+#jbamvqozhm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1258,7 +1259,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dinbywbssx .gt_sourcenotes {
+#jbamvqozhm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1272,7 +1273,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dinbywbssx .gt_sourcenote {
+#jbamvqozhm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1280,63 +1281,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dinbywbssx .gt_left {
+#jbamvqozhm .gt_left {
   text-align: left;
 }
 
-#dinbywbssx .gt_center {
+#jbamvqozhm .gt_center {
   text-align: center;
 }
 
-#dinbywbssx .gt_right {
+#jbamvqozhm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dinbywbssx .gt_font_normal {
+#jbamvqozhm .gt_font_normal {
   font-weight: normal;
 }
 
-#dinbywbssx .gt_font_bold {
+#jbamvqozhm .gt_font_bold {
   font-weight: bold;
 }
 
-#dinbywbssx .gt_font_italic {
+#jbamvqozhm .gt_font_italic {
   font-style: italic;
 }
 
-#dinbywbssx .gt_super {
+#jbamvqozhm .gt_super {
   font-size: 65%;
 }
 
-#dinbywbssx .gt_footnote_marks {
+#jbamvqozhm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dinbywbssx .gt_asterisk {
+#jbamvqozhm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dinbywbssx .gt_indent_1 {
+#jbamvqozhm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dinbywbssx .gt_indent_2 {
+#jbamvqozhm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dinbywbssx .gt_indent_3 {
+#jbamvqozhm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dinbywbssx .gt_indent_4 {
+#jbamvqozhm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dinbywbssx .gt_indent_5 {
+#jbamvqozhm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1364,7 +1365,7 @@ Magnitude:
 <td colspan="13" id="Raw" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Raw</td>
 </tr>
 <tr class="even gt_row_group_first">
-<td class="gt_row gt_left" headers="Raw  Party">自民</td>
+<td class="gt_row gt_left" headers="Raw  Party">LDP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.336</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.395</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.352</td>
@@ -1379,7 +1380,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.347</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">公明</td>
+<td class="gt_row gt_left" headers="Raw  Party">NKP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.115</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.111</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.133</td>
@@ -1394,7 +1395,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.124</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">立憲</td>
+<td class="gt_row gt_left" headers="Raw  Party">CDP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.266</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.241</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.225</td>
@@ -1409,7 +1410,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.200</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">共産</td>
+<td class="gt_row gt_left" headers="Raw  Party">JCP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.081</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.071</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.072</td>
@@ -1424,7 +1425,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.072</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">維新</td>
+<td class="gt_row gt_left" headers="Raw  Party">JIP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.084</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.063</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.100</td>
@@ -1439,7 +1440,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.140</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">国民</td>
+<td class="gt_row gt_left" headers="Raw  Party">DPP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.029</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.048</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.048</td>
@@ -1454,7 +1455,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.045</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">社民</td>
+<td class="gt_row gt_left" headers="Raw  Party">SDP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.016</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.025</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.016</td>
@@ -1469,7 +1470,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.018</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">れ新</td>
+<td class="gt_row gt_left" headers="Raw  Party">Reiwa</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.040</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.035</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.039</td>
@@ -1484,7 +1485,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.039</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">N党</td>
+<td class="gt_row gt_left" headers="Raw  Party">NHK</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.017</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.013</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.014</td>
@@ -1499,7 +1500,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.014</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">支なし</td>
+<td class="gt_row gt_left" headers="Raw  Party">SSN</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.018</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
@@ -1514,7 +1515,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.001</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">第一</td>
+<td class="gt_row gt_left" headers="Raw  Party">JFP</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
@@ -1529,7 +1530,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.001</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Raw  Party">やまと</td>
+<td class="gt_row gt_left" headers="Raw  Party">Yamato</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
@@ -1544,7 +1545,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Raw  Total">0.000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Raw  Party">コロナ</td>
+<td class="gt_row gt_left" headers="Raw  Party">Corona</td>
 <td class="gt_row gt_right" headers="Raw  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Raw  Kitakanto">0.000</td>
@@ -1562,7 +1563,7 @@ Magnitude:
 <td colspan="13" id="Distribution" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Distribution</td>
 </tr>
 <tr class="even gt_row_group_first">
-<td class="gt_row gt_left" headers="Distribution  Party">自民</td>
+<td class="gt_row gt_left" headers="Distribution  Party">LDP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.375</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.462</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.368</td>
@@ -1577,7 +1578,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.381</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">公明</td>
+<td class="gt_row gt_left" headers="Distribution  Party">NKP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.125</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.158</td>
@@ -1592,7 +1593,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.136</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">立憲</td>
+<td class="gt_row gt_left" headers="Distribution  Party">CDP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.375</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.308</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.263</td>
@@ -1607,7 +1608,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.227</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">共産</td>
+<td class="gt_row gt_left" headers="Distribution  Party">JCP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.053</td>
@@ -1622,7 +1623,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.057</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">維新</td>
+<td class="gt_row gt_left" headers="Distribution  Party">JIP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.125</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.077</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.105</td>
@@ -1637,7 +1638,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.148</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">国民</td>
+<td class="gt_row gt_left" headers="Distribution  Party">DPP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.053</td>
@@ -1652,7 +1653,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.028</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">社民</td>
+<td class="gt_row gt_left" headers="Distribution  Party">SDP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1667,7 +1668,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">れ新</td>
+<td class="gt_row gt_left" headers="Distribution  Party">Reiwa</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1682,7 +1683,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.023</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">N党</td>
+<td class="gt_row gt_left" headers="Distribution  Party">NHK</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1697,7 +1698,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">支なし</td>
+<td class="gt_row gt_left" headers="Distribution  Party">SSN</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1712,7 +1713,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">第一</td>
+<td class="gt_row gt_left" headers="Distribution  Party">JFP</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1727,7 +1728,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Distribution  Party">やまと</td>
+<td class="gt_row gt_left" headers="Distribution  Party">Yamato</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1742,7 +1743,7 @@ Magnitude:
 <td class="gt_row gt_right" headers="Distribution  Total">0.000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Distribution  Party">コロナ</td>
+<td class="gt_row gt_left" headers="Distribution  Party">Corona</td>
 <td class="gt_row gt_right" headers="Distribution  Hokkaido">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Tohoku">0.000</td>
 <td class="gt_row gt_right" headers="Distribution  Kitakanto">0.000</td>
@@ -1779,19 +1780,19 @@ Magnitude:
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2) <span class="co"># summarize</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw Dist
-1    自民 19914883   67
-2    公明  7114282   24
-3    立憲 11492095   40
-4    共産  4166076   10
-5    維新  8050830   26
-6    国民  2593397    5
-7    社民  1018588    0
-8    れ新  2215648    4
-9     N党   796788    0
-10 支なし    46142    0
-11   第一    33661    0
-12 やまと    16970    0
-13 コロナ     6620    0</code></pre>
+1     LDP 19914883   67
+2     NKP  7114282   24
+3     CDP 11492095   40
+4     JCP  4166076   10
+5     JIP  8050830   26
+6     DPP  2593397    5
+7     SDP  1018588    0
+8   Reiwa  2215648    4
+9     NHK   796788    0
+10    SSN    46142    0
+11    JFP    33661    0
+12 Yamato    16970    0
+13 Corona     6620    0</code></pre>
 </div>
 </div>
 <p><code>prop</code> argument is also allowed in <code>summary()</code> function.</p>
@@ -1799,19 +1800,19 @@ Magnitude:
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(obj2, <span class="at">prop =</span> <span class="cn">TRUE</span>) <span class="co"># summarize with proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party      Raw   Dist
-1    自民 0.346551 0.3807
-2    公明 0.123800 0.1364
-3    立憲 0.199981 0.2273
-4    共産 0.072496 0.0568
-5    維新 0.140097 0.1477
-6    国民 0.045129 0.0284
-7    社民 0.017725 0.0000
-8    れ新 0.038556 0.0227
-9     N党 0.013865 0.0000
-10 支なし 0.000803 0.0000
-11   第一 0.000586 0.0000
-12 やまと 0.000295 0.0000
-13 コロナ 0.000115 0.0000</code></pre>
+1     LDP 0.346551 0.3807
+2     NKP 0.123800 0.1364
+3     CDP 0.199981 0.2273
+4     JCP 0.072496 0.0568
+5     JIP 0.140097 0.1477
+6     DPP 0.045129 0.0284
+7     SDP 0.017725 0.0000
+8   Reiwa 0.038556 0.0227
+9     NHK 0.013865 0.0000
+10    SSN 0.000803 0.0000
+11    JFP 0.000586 0.0000
+12 Yamato 0.000295 0.0000
+13 Corona 0.000115 0.0000</code></pre>
 </div>
 </div>
 </section>
@@ -1844,7 +1845,7 @@ Magnitude:
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some parties</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1854,7 +1855,7 @@ Magnitude:
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output only some district</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>),</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1865,7 +1866,7 @@ Magnitude:
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the facet by parties</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>),</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1877,7 +1878,7 @@ Magnitude:
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three columns</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>),</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1890,7 +1891,7 @@ Magnitude:
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use different y-axis scales for each facet</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj2, </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"共産"</span>, <span class="st">"国民"</span>),</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>),</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b  =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>),</span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">by        =</span> <span class="st">"party"</span>,</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>,</span>
@@ -1912,19 +1913,19 @@ Magnitude:
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(obj2, obj3, obj4))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party Model1 Model2 Model3
-1    自民     67     62     63
-2    公明     24     23     24
-3    立憲     40     36     36
-4    共産     10     13     13
-5    維新     26     26     26
-6    国民      5      8      7
-7    社民      0      1      1
-8    れ新      4      7      6
-9     N党      0      0      0
-10 支なし      0      0      0
-11   第一      0      0      0
-12 やまと      0      0      0
-13 コロナ      0      0      0</code></pre>
+1     LDP     67     62     63
+2     NKP     24     23     24
+3     CDP     40     36     36
+4     JCP     10     13     13
+5     JIP     26     26     26
+6     DPP      5      8      7
+7     SDP      0      1      1
+8   Reiwa      4      7      6
+9     NHK      0      0      0
+10    SSN      0      0      0
+11    JFP      0      0      0
+12 Yamato      0      0      0
+13 Corona      0      0      0</code></pre>
 </div>
 </div>
 <p>A named list structure is also available.</p>
@@ -1935,19 +1936,19 @@ Magnitude:
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Party Jefferson Hare-Niemeyer Webster
-1    自民        67            62      63
-2    公明        24            23      24
-3    立憲        40            36      36
-4    共産        10            13      13
-5    維新        26            26      26
-6    国民         5             8       7
-7    社民         0             1       1
-8    れ新         4             7       6
-9     N党         0             0       0
-10 支なし         0             0       0
-11   第一         0             0       0
-12 やまと         0             0       0
-13 コロナ         0             0       0</code></pre>
+1     LDP        67            62      63
+2     NKP        24            23      24
+3     CDP        40            36      36
+4     JCP        10            13      13
+5     JIP        26            26      26
+6     DPP         5             8       7
+7     SDP         0             1       1
+8   Reiwa         4             7       6
+9     NHK         0             0       0
+10    SSN         0             0       0
+11    JFP         0             0       0
+12 Yamato         0             0       0
+13 Corona         0             0       0</code></pre>
 </div>
 </div>
 <p>By using <code>print()</code> function with <code>subset</code> parameter, you can extract subset of the parties.</p>
@@ -1956,14 +1957,15 @@ Magnitude:
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JIP"</span>, <span class="st">"JCP"</span>, <span class="st">"DPP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Party Jefferson Hare-Niemeyer Webster
-1  自民        67            62      63
-2  公明        24            23      24
-3  立憲        40            36      36
-4  共産        10            13      13
-5  維新        26            26      26</code></pre>
+1   LDP        67            62      63
+2   NKP        24            23      24
+3   CDP        40            36      36
+4   JCP        10            13      13
+5   JIP        26            26      26
+6   DPP         5             8       7</code></pre>
 </div>
 </div>
 <p>If <code>prop = TRUE</code>, the proportion is displayed. It is also available to output tables in HTML format using <code>use_gt = TRUE</code>.</p>
@@ -1975,23 +1977,23 @@ Magnitude:
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">prop =</span> <span class="cn">TRUE</span>, <span class="at">use_gt =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="dvraywjswe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dvraywjswe table {
+<div id="twcvbciffu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#twcvbciffu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dvraywjswe thead, #dvraywjswe tbody, #dvraywjswe tfoot, #dvraywjswe tr, #dvraywjswe td, #dvraywjswe th {
+#twcvbciffu thead, #twcvbciffu tbody, #twcvbciffu tfoot, #twcvbciffu tr, #twcvbciffu td, #twcvbciffu th {
   border-style: none;
 }
 
-#dvraywjswe p {
+#twcvbciffu p {
   margin: 0;
   padding: 0;
 }
 
-#dvraywjswe .gt_table {
+#twcvbciffu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2017,12 +2019,12 @@ Magnitude:
   border-left-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_caption {
+#twcvbciffu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dvraywjswe .gt_title {
+#twcvbciffu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2034,7 +2036,7 @@ Magnitude:
   border-bottom-width: 0;
 }
 
-#dvraywjswe .gt_subtitle {
+#twcvbciffu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2046,7 +2048,7 @@ Magnitude:
   border-top-width: 0;
 }
 
-#dvraywjswe .gt_heading {
+#twcvbciffu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2058,13 +2060,13 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_bottom_border {
+#twcvbciffu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_col_headings {
+#twcvbciffu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2079,7 +2081,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_col_heading {
+#twcvbciffu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2099,7 +2101,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#dvraywjswe .gt_column_spanner_outer {
+#twcvbciffu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2111,15 +2113,15 @@ Magnitude:
   padding-right: 4px;
 }
 
-#dvraywjswe .gt_column_spanner_outer:first-child {
+#twcvbciffu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dvraywjswe .gt_column_spanner_outer:last-child {
+#twcvbciffu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dvraywjswe .gt_column_spanner {
+#twcvbciffu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2131,11 +2133,11 @@ Magnitude:
   width: 100%;
 }
 
-#dvraywjswe .gt_spanner_row {
+#twcvbciffu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dvraywjswe .gt_group_heading {
+#twcvbciffu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2161,7 +2163,7 @@ Magnitude:
   text-align: left;
 }
 
-#dvraywjswe .gt_empty_group_heading {
+#twcvbciffu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2176,15 +2178,15 @@ Magnitude:
   vertical-align: middle;
 }
 
-#dvraywjswe .gt_from_md > :first-child {
+#twcvbciffu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dvraywjswe .gt_from_md > :last-child {
+#twcvbciffu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dvraywjswe .gt_row {
+#twcvbciffu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2203,7 +2205,7 @@ Magnitude:
   overflow-x: hidden;
 }
 
-#dvraywjswe .gt_stub {
+#twcvbciffu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2216,7 +2218,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dvraywjswe .gt_stub_row_group {
+#twcvbciffu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2230,15 +2232,15 @@ Magnitude:
   vertical-align: top;
 }
 
-#dvraywjswe .gt_row_group_first td {
+#twcvbciffu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dvraywjswe .gt_row_group_first th {
+#twcvbciffu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dvraywjswe .gt_summary_row {
+#twcvbciffu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2248,16 +2250,16 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dvraywjswe .gt_first_summary_row {
+#twcvbciffu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_first_summary_row.thick {
+#twcvbciffu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dvraywjswe .gt_last_summary_row {
+#twcvbciffu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2267,7 +2269,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_grand_summary_row {
+#twcvbciffu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2277,7 +2279,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dvraywjswe .gt_first_grand_summary_row {
+#twcvbciffu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2287,7 +2289,7 @@ Magnitude:
   border-top-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_last_grand_summary_row_top {
+#twcvbciffu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2297,11 +2299,11 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_striped {
+#twcvbciffu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dvraywjswe .gt_table_body {
+#twcvbciffu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2310,7 +2312,7 @@ Magnitude:
   border-bottom-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_footnotes {
+#twcvbciffu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2324,7 +2326,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_footnote {
+#twcvbciffu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2333,7 +2335,7 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dvraywjswe .gt_sourcenotes {
+#twcvbciffu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2347,7 +2349,7 @@ Magnitude:
   border-right-color: #D3D3D3;
 }
 
-#dvraywjswe .gt_sourcenote {
+#twcvbciffu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2355,63 +2357,63 @@ Magnitude:
   padding-right: 5px;
 }
 
-#dvraywjswe .gt_left {
+#twcvbciffu .gt_left {
   text-align: left;
 }
 
-#dvraywjswe .gt_center {
+#twcvbciffu .gt_center {
   text-align: center;
 }
 
-#dvraywjswe .gt_right {
+#twcvbciffu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dvraywjswe .gt_font_normal {
+#twcvbciffu .gt_font_normal {
   font-weight: normal;
 }
 
-#dvraywjswe .gt_font_bold {
+#twcvbciffu .gt_font_bold {
   font-weight: bold;
 }
 
-#dvraywjswe .gt_font_italic {
+#twcvbciffu .gt_font_italic {
   font-style: italic;
 }
 
-#dvraywjswe .gt_super {
+#twcvbciffu .gt_super {
   font-size: 65%;
 }
 
-#dvraywjswe .gt_footnote_marks {
+#twcvbciffu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dvraywjswe .gt_asterisk {
+#twcvbciffu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dvraywjswe .gt_indent_1 {
+#twcvbciffu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dvraywjswe .gt_indent_2 {
+#twcvbciffu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dvraywjswe .gt_indent_3 {
+#twcvbciffu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dvraywjswe .gt_indent_4 {
+#twcvbciffu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dvraywjswe .gt_indent_5 {
+#twcvbciffu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2427,79 +2429,79 @@ Magnitude:
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">自民</td>
+<td class="gt_row gt_left" headers="Party">LDP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.381</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.352</td>
 <td class="gt_row gt_right" headers="Webster">0.358</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">公明</td>
+<td class="gt_row gt_left" headers="Party">NKP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.136</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.131</td>
 <td class="gt_row gt_right" headers="Webster">0.136</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">立憲</td>
+<td class="gt_row gt_left" headers="Party">CDP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.227</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.205</td>
 <td class="gt_row gt_right" headers="Webster">0.205</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">共産</td>
+<td class="gt_row gt_left" headers="Party">JCP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.057</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.074</td>
 <td class="gt_row gt_right" headers="Webster">0.074</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">維新</td>
+<td class="gt_row gt_left" headers="Party">JIP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.148</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.148</td>
 <td class="gt_row gt_right" headers="Webster">0.148</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">国民</td>
+<td class="gt_row gt_left" headers="Party">DPP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.028</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.045</td>
 <td class="gt_row gt_right" headers="Webster">0.040</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">社民</td>
+<td class="gt_row gt_left" headers="Party">SDP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.006</td>
 <td class="gt_row gt_right" headers="Webster">0.006</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">れ新</td>
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
 <td class="gt_row gt_right" headers="Jefferson">0.023</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.040</td>
 <td class="gt_row gt_right" headers="Webster">0.034</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">N党</td>
+<td class="gt_row gt_left" headers="Party">NHK</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.000</td>
 <td class="gt_row gt_right" headers="Webster">0.000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">支なし</td>
+<td class="gt_row gt_left" headers="Party">SSN</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.000</td>
 <td class="gt_row gt_right" headers="Webster">0.000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">第一</td>
+<td class="gt_row gt_left" headers="Party">JFP</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.000</td>
 <td class="gt_row gt_right" headers="Webster">0.000</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Party">やまと</td>
+<td class="gt_row gt_left" headers="Party">Yamato</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.000</td>
 <td class="gt_row gt_right" headers="Webster">0.000</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Party">コロナ</td>
+<td class="gt_row gt_left" headers="Party">Corona</td>
 <td class="gt_row gt_right" headers="Jefferson">0.000</td>
 <td class="gt_row gt_right" headers="Hare-Niemeyer">0.000</td>
 <td class="gt_row gt_right" headers="Webster">0.000</td>
@@ -2549,8 +2551,8 @@ Magnitude:
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Hare-Niemeyer"</span> <span class="ot">=</span> obj3, </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Webster"</span>       <span class="ot">=</span> obj4) <span class="sc">|&gt;</span> </span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"共産"</span>, <span class="st">"維新"</span>, </span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"国民"</span>, <span class="st">"社民"</span>, <span class="st">"れ新"</span>, <span class="st">"N党"</span>),</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"LDP"</span>, <span class="st">"NKP"</span>, <span class="st">"CDP"</span>, <span class="st">"JCP"</span>, <span class="st">"JIP"</span>, </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"DPP"</span>, <span class="st">"SDP"</span>, <span class="st">"Reiwa"</span>, <span class="st">"NHK"</span>),</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">facet =</span> <span class="cn">TRUE</span>, <span class="at">facet_col =</span> <span class="dv">3</span>, <span class="at">free_y =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">

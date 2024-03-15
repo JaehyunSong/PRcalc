@@ -27,10 +27,11 @@ The first column contains the names of political parties, and the subsequent col
 data("jp_upper_2019")
 jp_upper_2019
 
-# Japanese lower house election in 2019
+# Japanese lower house election in 2019 (in English)
+# See "str(jp_lower_2021_en)", for the full names of parties
 # Number of blocks = 11 (regional blocks)
-data("jp_lower_2021")
-jp_lower_2021
+data("jp_lower_2021_en")
+jp_lower_2021_en
 ```
 
 ## Calculation
@@ -49,7 +50,7 @@ In a block system, you need to specify `m` for each block separately. Since `jp_
 ```{r}
 #| label: calculation-2
 # Example of regional block (D'Hondt/Jefferson method; 11 blocks)
-obj2 <- prcalc(jp_lower_2021, 
+obj2 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 obj2
@@ -60,13 +61,13 @@ obj2
 ```{r}
 #| label: calculation-3
 # Hare-Niemeyer method
-obj3 <- prcalc(jp_lower_2021, 
+obj3 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "hn")
 obj3
 
 # Sainte-Laguë/Webster method
-obj4 <- prcalc(jp_lower_2021, 
+obj4 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "sl")
 obj4
@@ -127,25 +128,25 @@ plot(obj2)
 plot(obj2, angle = 90)
 # Output only some parties
 plot(obj2, 
-     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"))
+     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"))
 # Output only some district
 plot(obj2, 
-     subset_p = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki")) 
 # Divide the facet by parties
 plot(obj2, 
-     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party")
 # Three columns
 plot(obj2, 
-     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party",
      facet_col = 3)
 # Use different y-axis scales for each facet
 plot(obj2, 
-     subset_p  = c("自民", "公明", "立憲", "維新", "共産", "国民"),
+     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b  = c("Tokyo", "Kinki"),
      by        = "party",
      facet_col = 3,
@@ -179,7 +180,7 @@ list("Jefferson"     = obj2,
      "Hare-Niemeyer" = obj3, 
      "Webster"       = obj4) |> 
   compare() |> 
-  print(subset = c("自民", "公明", "立憲", "共産", "維新"))
+  print(subset = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"))
 ```
 
 If `prop = TRUE`, the proportion is displayed. It is also available to output tables in HTML format using `use_gt = TRUE`.
@@ -225,7 +226,7 @@ list("Jefferson"     = obj2,
      "Hare-Niemeyer" = obj3, 
      "Webster"       = obj4) |> 
   compare() |> 
-  plot(subset_p = c("自民", "公明", "立憲", "共産", "維新", 
-                    "国民", "社民", "れ新", "N党"),
+  plot(subset_p = c("LDP", "NKP", "CDP", "JCP", "JIP", 
+                    "DPP", "SDP", "Reiwa", "NHK"),
        facet = TRUE, facet_col = 3, free_y = FALSE)
 ```
