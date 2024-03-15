@@ -72,7 +72,7 @@ obj4 <- prcalc(jp_lower_2021,
 obj4
 ```
 
-To check the list of various allocation methods provided by {PRcalc}, please [click here](../supplement/list_of_methods.qmd).
+To check the list of various allocation methods provided by {PRcalc} and these abbreviations, please [click here](../supplement/list_of_methods.qmd).
 
 ### Printing
 

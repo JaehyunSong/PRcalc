@@ -11,7 +11,7 @@ website:
       - text: "Tutorials"
         menu:
           - tutorials/calculation.qmd
-          - tutorials/index.qmd
+          - tutorials/disproportionality.qmd
           - tutorials/decomposition.qmd
           - tutorials/import.qmd
       - text: "Supplement"
