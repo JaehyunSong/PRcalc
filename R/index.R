@@ -79,9 +79,6 @@ index.prcalc <- function(x,
   s     <- s[ord_i]
   p     <- length(v)
 
-  print(v)
-  print(s)
-
   # D'Hondt
   dhondt <- max(s / v)
   # Monroe

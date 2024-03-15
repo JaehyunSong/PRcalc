@@ -74,7 +74,7 @@ obj4 <- prcalc(jp_lower_2021_en,
 obj4
 ```
 
-To check the list of various allocation methods provided by {PRcalc} and these abbreviations, please [click here](../supplement/list_of_methods.qmd).
+Please [click here](../supplement/list_of_methods.qmd) for the list of various allocation methods provided by {PRcalc} and these abbreviations.
 
 ### Printing
 
@@ -231,3 +231,19 @@ list("Jefferson"     = obj2,
                     "DPP", "SDP", "Reiwa", "NHK"),
        facet = TRUE, facet_col = 3, free_y = FALSE)
 ```
+
+## Customized allocation methods
+
+Although {PRcalc} offers various allocation methods, it may not enough for your needs. In this case you can use fully customizable divisor (`"cd"`), quota (`"cq"`), and $\alpha$-divergence (`"ad"`).
+
+### Custom divisor
+
+```{r}
+prcalc(kr_lower_2016_en, m = 47, method = "dt", threshold = 0.03)
+prcalc(kr_lower_2016_en, m = 47, method = "cd", threshold = 0.03,
+       extra = rep(1:16, each = 3))
+```
+
+### Custom quota
+
+### $\alpha$-divergence
