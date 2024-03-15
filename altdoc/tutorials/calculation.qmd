@@ -22,10 +22,11 @@ The first column contains the names of political parties, and the subsequent col
 
 ```{r}
 #| label: dataset
-# Japanese upper house election in 2019
+# Korean general election in 2016
+# See "str(kr_lower_2016_en)", for the full names of parties
 # Number of blocks = 1 (national block)
-data("jp_upper_2019")
-jp_upper_2019
+data("kr_lower_2016_en")
+kr_lower_2016_en
 
 # Japanese lower house election in 2019 (in English)
 # See "str(jp_lower_2021_en)", for the full names of parties
@@ -36,12 +37,12 @@ jp_lower_2021_en
 
 ## Calculation
 
-To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 50 (`m = 50`) seats using the D'Hondt method (`method = "dt"`) with the `jp_upper_2019` dataset. In this case, the length of `m` is 1 because number of blocks is 1.
+To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 47 (`m = 47`) seats using the Hare-Niemeyer method (`method = "hn"`) with the `kr_lower_2016` dataset. In this case, the length of `m` is 1 because number of blocks is 1. Furthermore, by adjusting the `threshold` argument, it is possible to exclude parties with votes below a certain threshold from seat allocation. The follow is an example of threshold is 3% (0.03). Default is `threshold = 0`.
 
 ```{r}
 #| label: calculation-1
 # Example of national block (D'Hondt/Jefferson method)
-obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+obj1 <- prcalc(kr_lower_2016_en, m = 47, method = "hn", threshold = 0.03)
 obj1
 ```
 

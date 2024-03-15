@@ -283,6 +283,21 @@
 #' @source 韓国中央選挙管理委員会
 "kr_lower_2016"
 
+#' 韓国国会議員総選挙比例区得票数 (2016年; 英語)
+#'
+#' 韓国国会議員総選挙比例区の得票数 (2016年; 英語)
+#'
+#' @format A data frame with 47 rows and 2 variables:
+#' \describe{
+#'   \item{ Party }{ 政党名; character }
+#'   \item{ Vote }{ 各政党の得票数; numeric }
+#' }
+#'
+#' @usage data(kr_lower_2016_en)
+#'
+#' @source 韓国中央選挙管理委員会
+"kr_lower_2016_en"
+
 #' アメリカ州別人口 (2020年)
 #'
 #' アメリカ州別人口 (2020年)

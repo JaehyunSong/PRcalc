@@ -25,6 +25,7 @@ knitr:
 |`kr_lower_2008`|Korea|2008|Lower house|1||
 |`kr_lower_2012`|Korea|2012|Lower house|1||
 |`kr_lower_2016`|Korea|2016|Lower house|1||
+|`kr_lower_2016_en`|Korea|2016|Lower house|1|in English|
 
 ## Census
 
