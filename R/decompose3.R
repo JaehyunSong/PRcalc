@@ -59,7 +59,7 @@ decompose3.prcalc <- function(x,
   v <- x$raw[, -1]
   s <- x$dist[, -1]
 
-  temp_a <- 1 / (alpha * (alpha - 1))
+  temp_a <- 1 / (alpha^2 - alpha)
 
   names(v)[names(v) %in% special] <- paste0("s_", 1:length(special))
   names(v)[!grepl("s", names(v))] <- paste0("g_", 1:(length(x$m) - length(special)))
@@ -87,12 +87,22 @@ decompose3.prcalc <- function(x,
   special_v_prop <- special_vec1 / sum(special_vec1)
   special_s_prop <- special_vec2 / sum(special_vec2)
 
+  special_v_prop
+  special_s_prop
+
+  #cat("##################\n")
+  #cat("## Special term ##\n")
+  #cat("##################\n")
+
   if (alpha == 0) {
     special <- sum(special_v_prop * log(special_v_prop / special_s_prop))
   } else if (alpha == 1) {
     special <- sum(special_s_prop * log(special_s_prop / special_v_prop))
   } else {
     special <- sum(special_v_prop * temp_a * ((special_s_prop / special_v_prop)^alpha - 1))
+    #cat("p_h:", special_v_prop, "\n")
+    #cat("q_h:", special_s_prop, "\n")
+    #cat("========================================\n")
   }
 
 
@@ -102,9 +112,13 @@ decompose3.prcalc <- function(x,
 
   temp_ra_vec <- c("s" = NA, "g" = NA)
 
-  for (i in c("s", "g")) {
-    temp_v <- v_prop[grepl(i, names(v_prop))]
-    temp_s <- s_prop[grepl(i, names(s_prop))]
+  #cat("##########################\n")
+  #cat("## Reapportionment term ##\n")
+  #cat("##########################\n")
+
+  for (i in 1:2) {
+    temp_v <- v_prop[grepl(c("s", "g")[i], names(v_prop))]
+    temp_s <- s_prop[grepl(c("s", "g")[i], names(s_prop))]
 
     v_hj <- temp_v / sum(temp_v)
     s_hj <- temp_s / sum(temp_s)
@@ -116,14 +130,27 @@ decompose3.prcalc <- function(x,
     } else {
       v_h <- special_vec1 / sum(special_vec1)
       s_h <- special_vec2 / sum(special_vec2)
-      temp_ra_vec[i] <- sum(s_h^alpha * v_h^(1 - alpha) *
+
+      temp_ra_vec[i] <- sum(s_h[i]^alpha * v_h[i]^(1 - alpha) *
                               sum(v_hj * temp_a * ((s_hj / v_hj)^alpha - 1)))
+      #cat("Type:", c("s", "g")[i], "\n")
+      #cat("q_h:", s_h[i], "\n")
+      #cat("p_h:", v_h[i], "\n")
+      #cat("q_hj:", s_hj, "\n")
+      #cat("p_hj:", v_hj, "\n")
+      #cat("========================================\n")
     }
 
 
   }
 
-  ra <- sum(special_v_prop * temp_ra_vec)
+  if (alpha == 0) {
+    ra <- sum(special_v_prop * temp_ra_vec)
+  } else if (alpha == 1) {
+    ra <- sum(special_s_prop * temp_ra_vec)
+  } else {
+    ra <- sum(temp_ra_vec)
+  }
 
   ########################
   ## Redistricting term ##
@@ -131,9 +158,13 @@ decompose3.prcalc <- function(x,
 
   temp_rd_vec <- c("s" = NA, "g" = NA)
 
-  for (i in c("s", "g")) {
-    temp_v <- v_prop[grepl(i, names(v_prop))]
-    temp_s <- s_prop[grepl(i, names(s_prop))]
+  #cat("########################\n")
+  #cat("## Redistricting term ##\n")
+  #cat("########################\n")
+
+  for (i in 1:2) {
+    temp_v <- v_prop[grepl(c("s", "g")[i], names(v_prop))]
+    temp_s <- s_prop[grepl(c("s", "g")[i], names(s_prop))]
 
     v_hj <- temp_v / sum(temp_v)
     s_hj <- temp_s / sum(temp_s)
@@ -158,16 +189,38 @@ decompose3.prcalc <- function(x,
         v_h <- special_vec1 / sum(special_vec1)
         s_h <- special_vec2 / sum(special_vec2)
         temp_3_1 <- sum(v_hji * temp_a * ((s_hji / v_hji)^alpha - 1))
-        temp_3_2 <- sum(s_hj^alpha * v_hj^(1 - alpha) * temp_3_1)
-        temp[j]  <- sum(s_h^alpha * v_h^(1 - alpha) * temp_3_2)
+        temp_3_2 <- sum(s_hj[j]^alpha * v_hj[j]^(1 - alpha) * temp_3_1)
+        temp[j]  <- sum(s_h[i]^alpha  * v_h[i]^(1 - alpha)  * temp_3_2)
+        #cat("Type:", c("s", "g")[i], "\n")
+        #cat("District:", names(temp_v)[j], "\n")
+        #cat("q_h:", s_h[i], "\n")
+        #cat("p_h:", v_h[i], "\n")
+        #cat("q_hj:", s_hj[j], "\n")
+        #cat("p_hj:", v_hj[j], "\n")
+        #cat("q_hji:", s_hji, "\n")
+        #cat("p_hji:", v_hji, "\n")
+        #cat("p_hji:", v_hji, "\n")
+        #cat("========================================\n")
       }
     }
 
-    temp_rd_vec[i] <- sum(v_hj * temp)
+    if (alpha == 0) {
+      temp_rd_vec[i] <- sum(v_hj * temp)
+    } else if (alpha == 1) {
+      temp_rd_vec[i] <- sum(s_hj * temp)
+    } else {
+      temp_rd_vec[i] <- sum(temp)
+    }
 
   }
 
-  rd <- sum(special_v_prop * temp_rd_vec)
+  if (alpha == 0) {
+    rd <- sum(special_v_prop * temp_rd_vec)
+  } else if (alpha == 1) {
+    rd <- sum(special_s_prop * temp_rd_vec)
+  } else {
+    rd <- sum(temp_rd_vec)
+  }
 
   result <- c("d"       = special + ra + rd,
               "special" = special,

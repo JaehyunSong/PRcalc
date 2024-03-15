@@ -549,10 +549,12 @@ plot.prcalc_decomposition_compare <- function (x,
     if (value_type == "all") {
       data <- data |>
         mutate(alpha   = sum(Value),
-               Model = paste0(Model, "\n(", sprintf(d_s, alpha), ")"))
+               Model = paste0(Model, "\n(", sprintf(d_s, alpha), ")")) |>
+        mutate(Model = fct_inorder(Model))
     }
 
-    data <- data |>
+    data <- data  |>
+      mutate(Model = fct_inorder(Model)) |>
       filter(Type != "Alpha-divergence") |>
       group_by(Model) |>
       mutate(Type    = factor(Type, levels = c("Special", "Reapportionment", "Redistricting")),
