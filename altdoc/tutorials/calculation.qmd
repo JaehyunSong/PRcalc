@@ -37,8 +37,8 @@ jp_lower_2021_en
 
 ## Calculation
 
-To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 47 (`m = 47`) seats using the Hare-Niemeyer method (`method = "hn"`) with the `kr_lower_2016` dataset. In this case, the length of `m` is 1 because number of blocks is 1. Furthermore, by adjusting the `threshold` argument, it is possible to exclude parties with votes below a certain threshold from seat allocation. The follow is an example of threshold is 3% (0.03). Default is `threshold = 0`.
 
+To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 47 (`m = 47`) seats using the Hare-Niemeyer method (`method = "hn"`) with the `kr_lower_2016` dataset. In this case, the length of `m` is 1 because number of blocks is 1. Furthermore, by adjusting the `threshold` argument, it is possible to exclude parties with votes below a certain threshold from seat allocation. The follow is an example of threshold is 3% (0.03). Default is `threshold = 0`.
 ```{r}
 #| label: calculation-1
 # Example of national block (D'Hondt/Jefferson method)
@@ -99,7 +99,7 @@ In default, numbers of votes and seats are displayed. If you switch to proportio
 print(obj2, head = 5, prop = TRUE)
 ```
 
-If `use_gt = TRUE`, a result rendered using {[gt](https://gt.rstudio.com/)} package. Furthermore, the `digits` argument allows specifying the number of decimal places for the output. Default is `digits = 3`.
+If `use_gt = TRUE`, a result rendered using {[gt](https://gt.rstudio.com/)} package. Furthermore, the `digits` argument allows specifying the number of decimal places for the output. Default is `digits = 3`. In {gt} mode, district magnitudes are not displayed.
 
 ```{r}
 #| label: print-4
@@ -122,29 +122,73 @@ summary(obj2, prop = TRUE) # summarize with proportion
 
 ### Visualization
 
+{PRcalc} provides `plot()` method for `prcalc` object.
+
 ```{r}
-#| label: plot
+#| label: plot-1
 plot(obj1)
+```
+
+If the number of blocks is two or more, each block is divided into facets.
+
+```{r}
+#| label: plot-2
 plot(obj2)
+```
+
+The `angle` argument allows rotation of the x-axis scale label; the value of `angle` must be between 0 and 90.
+
+```{r}
+#| label: plot-3
 plot(obj2, angle = 90)
+```
+
+Only some parties can be displayed with the `subset_p` argument.
+
+```{r}
+#| label: plot-4
 # Output only some parties
 plot(obj2, 
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"))
+```
+
+It is also possible to display only some blocks by using the `subset_b` argument.
+
+```{r}
+#| label: plot-5
 # Output only some district
 plot(obj2, 
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki")) 
+```
+
+If `by = "party"`, the facet is divided based on party. Default is `by = "block"`.
+
+```{r}
+#| label: plot-6
 # Divide the facet by parties
 plot(obj2, 
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party")
+```
+
+The number of facet columns can be adjusted with `facet_col`.
+
+```{r}
+#| label: plot-7
 # Three columns
 plot(obj2, 
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
      subset_b = c("Tokyo", "Kinki"),
      by        = "party",
      facet_col = 3)
+```
+
+By default, all facets share the same y-axis scale. If you want to use a different scale, set `free_y` to `TRUE`.
+
+```{r}
+#| label: plot-8
 # Use different y-axis scales for each facet
 plot(obj2, 
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
@@ -228,8 +272,8 @@ list("Jefferson"     = obj2,
      "Webster"       = obj4) |> 
   compare() |> 
   plot(subset_p = c("LDP", "NKP", "CDP", "JCP", "JIP", 
-                    "DPP", "SDP", "Reiwa", "NHK"),
-       facet = TRUE, facet_col = 3, free_y = FALSE)
+                    "DPP", "SDP", "Reiwa"),
+       facet = TRUE, facet_col = 2, free_y = FALSE)
 ```
 
 ## Customized allocation methods
@@ -238,12 +282,70 @@ Although {PRcalc} offers various allocation methods, it may not enough for your 
 
 ### Custom divisor
 
+For highest averages methods, the number of votes received by each party is divided by the denominator of the determined rule, $r(k)$. For example, $k+1$th divisor of D'Hondt (Jefferson) method is $r(k) = k + 1$, such as $1, 2, 3, \dots$. In this case, we can use `method = "dt"` and we can reproduce this with custom divisors, `method = "cd"`. 
+
+The divisor is specified by the `extra` argument. Since the magnitude is 47 (`m = 47`), division is performed at most 47 times. Therefore, the length of extra must also be 47 or more. In this case, `extra = 1:47`.
+
 ```{r}
-prcalc(kr_lower_2016_en, m = 47, method = "dt", threshold = 0.03)
-prcalc(kr_lower_2016_en, m = 47, method = "cd", threshold = 0.03,
-       extra = rep(1:16, each = 3))
+#| label: custom-1
+custom1 <- prcalc(kr_lower_2016_en, m = 47, method = "dt", threshold = 0.03)
+custom2 <- prcalc(kr_lower_2016_en, m = 47, method = "cd", threshold = 0.03,
+                  extra = 1:47)
+
+list("D'Hondt" = custom1, "Custom divisor" = custom2) |> 
+  compare() |> 
+  print(use_gt = TRUE)
 ```
 
+Let's try a super weird divisor here. It shows the same divisor three times repeatedly before going to the next number. That is, the divisor is `c(1, 1, 1, 1, 2, 2, 2, 3, 3, 3, ... , 16, 16, 16)`, a vector of length 48.
+
+```{r}
+#| label: custom-2
+custom3 <- prcalc(kr_lower_2016_en, m = 47, method = "cd", threshold = 0.03,
+                  extra = rep(1:16, each = 3))
+
+list("D'Hondt" = custom1, "Weird divisor" = custom3) |> 
+  compare() |> 
+  print(use_gt = TRUE)
+```
+
+If the number of blocks is greater than or equal to 2, the length of `extra` must be greater than or equal to the maximum value of vector `m`. For example, if the number of block is 3 and `m = c(3, 7, 6)`, then the length of extra must be greater than or equal to 7.
+
 ### Custom quota
+
+Total: 23400107
+
+magnitude: 47
+
+quota = 497874.6
+
+```{r}
+#| label: custom-3
+custom4 <- prcalc(kr_lower_2016_en, m = 47, method = "hn")
+custom5 <- prcalc(kr_lower_2016_en, m = 47, method = "cq", extra = 497874.6)
+
+list("Hare" = custom4, "Custom quota" = custom5) |> 
+  compare() |> 
+  print(use_gt = TRUE)
+```
+
+The length of `extra` must be 1 or equal to the number of blocks; if the length of `extra` is 1, the same quota is applied to all blocks.
+
+```{r}
+#| label: custom-4
+custom6 <- prcalc(jp_lower_2021_en, 
+                  m      = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+                  method = "hare")
+
+custom7 <- prcalc(jp_lower_2021_en, 
+                  m      = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
+                  method = "cq",
+                  extra  = colSums(jp_lower_2021_en[, -1]) / 
+                    c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20))
+
+list("Hare" = custom6, "Custom quota" = custom7) |> 
+  compare() |> 
+  print(use_gt = TRUE)
+```
 
 ### $\alpha$-divergence

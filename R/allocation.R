@@ -137,19 +137,20 @@ allocation <- function(x, m, method, extra = NULL) {
                     "custom quota", "cq")) {
     switch(method,
            # Hare-Niemeyer quota
-           "hn"            = quota <- sum(x[, 2]) / m,
-           "hare"          = quota <- sum(x[, 2]) / m,
-           "hare-niemeyer" = quota <- sum(x[, 2]) / m,
+           "hn"                 = quota <- sum(x[, 2]) / m,
+           "hare"               = quota <- sum(x[, 2]) / m,
+           "hare-niemeyer"      = quota <- sum(x[, 2]) / m,
            # Droop quota
-           "droop" = quota <- floor(1 + (sum(x[, 2]) / (1 + m))),
+           "droop"              = quota <- floor(1 + (sum(x[, 2]) / (1 + m))),
            # Hagenbach-Bischoff quota
            "hb"                 = quota <- round(sum(x[, 2]) / (1 + m)),
            "hagenbach-bischoff" = quota <- round(sum(x[, 2]) / (1 + m)),
            # Imperiali quota
-           "iq"              = quota <- sum(x[, 2]) / (2 + m),
-           "imperiali quota" = quota <- sum(x[, 2]) / (2 + m),
-           "custom quota"    = quota <- extra,
-           "cq"              = quota <- extra
+           "iq"                 = quota <- sum(x[, 2]) / (2 + m),
+           "imperiali quota"    = quota <- sum(x[, 2]) / (2 + m),
+           # Custom quota
+           "custom quota"       = quota <- extra,
+           "cq"                 = quota <- extra
     )
 
     result <- x |>
@@ -159,6 +160,7 @@ allocation <- function(x, m, method, extra = NULL) {
              rank      = nrow(x) - rank(remainder) + 1,
              votes     = if_else(rank <= (m - sum(votes)), votes + 1, votes)) |>
       select(party, votes)
+
   }
 
 
