@@ -456,16 +456,8 @@ Attaching package: 'PRcalc'</code></pre>
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>index1 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -499,16 +491,8 @@ Attaching package: 'PRcalc'</code></pre>
 29   hellinger            Hellinger Distance 0.14218
 30          ad              alpha-Divergence 0.02912</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index   Value
 1       dhondt                       D’Hondt 1.13647
@@ -546,14 +530,14 @@ Attaching package: 'PRcalc'</code></pre>
 <section id="printing" class="level3">
 <h3 class="anchored" data-anchor-id="printing">Printing</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a index.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>index1[<span class="st">"gallagher"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> gallagher 
 0.04128719 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract a subset of indices.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, <span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ID             Index  Value
 1    dhondt           D’Hondt 1.1365
@@ -561,10 +545,10 @@ Attaching package: 'PRcalc'</code></pre>
 3 gallagher         Gallagher 0.0413
 4        ad  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide ID column.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index1, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Index  Value
 1           D’Hondt 1.1365
@@ -572,30 +556,30 @@ Attaching package: 'PRcalc'</code></pre>
 3         Gallagher 0.0413
 4  alpha-Divergence 0.0291</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use {gt} package</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(index2, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="lodznyhqot" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lodznyhqot table {
+<div id="qupzsutnru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qupzsutnru table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lodznyhqot thead, #lodznyhqot tbody, #lodznyhqot tfoot, #lodznyhqot tr, #lodznyhqot td, #lodznyhqot th {
+#qupzsutnru thead, #qupzsutnru tbody, #qupzsutnru tfoot, #qupzsutnru tr, #qupzsutnru td, #qupzsutnru th {
   border-style: none;
 }
 
-#lodznyhqot p {
+#qupzsutnru p {
   margin: 0;
   padding: 0;
 }
 
-#lodznyhqot .gt_table {
+#qupzsutnru .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -621,12 +605,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_caption {
+#qupzsutnru .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lodznyhqot .gt_title {
+#qupzsutnru .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -638,7 +622,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#lodznyhqot .gt_subtitle {
+#qupzsutnru .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -650,7 +634,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#lodznyhqot .gt_heading {
+#qupzsutnru .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -662,13 +646,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_bottom_border {
+#qupzsutnru .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_col_headings {
+#qupzsutnru .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -683,7 +667,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_col_heading {
+#qupzsutnru .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,7 +687,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#lodznyhqot .gt_column_spanner_outer {
+#qupzsutnru .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -715,15 +699,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#lodznyhqot .gt_column_spanner_outer:first-child {
+#qupzsutnru .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lodznyhqot .gt_column_spanner_outer:last-child {
+#qupzsutnru .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lodznyhqot .gt_column_spanner {
+#qupzsutnru .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -735,11 +719,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#lodznyhqot .gt_spanner_row {
+#qupzsutnru .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lodznyhqot .gt_group_heading {
+#qupzsutnru .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,7 +749,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#lodznyhqot .gt_empty_group_heading {
+#qupzsutnru .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -780,15 +764,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#lodznyhqot .gt_from_md > :first-child {
+#qupzsutnru .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lodznyhqot .gt_from_md > :last-child {
+#qupzsutnru .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lodznyhqot .gt_row {
+#qupzsutnru .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -807,7 +791,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#lodznyhqot .gt_stub {
+#qupzsutnru .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -820,7 +804,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#lodznyhqot .gt_stub_row_group {
+#qupzsutnru .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -834,15 +818,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#lodznyhqot .gt_row_group_first td {
+#qupzsutnru .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lodznyhqot .gt_row_group_first th {
+#qupzsutnru .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lodznyhqot .gt_summary_row {
+#qupzsutnru .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -852,16 +836,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#lodznyhqot .gt_first_summary_row {
+#qupzsutnru .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_first_summary_row.thick {
+#qupzsutnru .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lodznyhqot .gt_last_summary_row {
+#qupzsutnru .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -871,7 +855,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_grand_summary_row {
+#qupzsutnru .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -881,7 +865,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#lodznyhqot .gt_first_grand_summary_row {
+#qupzsutnru .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -891,7 +875,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_last_grand_summary_row_top {
+#qupzsutnru .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -901,11 +885,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_striped {
+#qupzsutnru .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lodznyhqot .gt_table_body {
+#qupzsutnru .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -914,7 +898,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_footnotes {
+#qupzsutnru .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -928,7 +912,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_footnote {
+#qupzsutnru .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -937,7 +921,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#lodznyhqot .gt_sourcenotes {
+#qupzsutnru .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -951,7 +935,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#lodznyhqot .gt_sourcenote {
+#qupzsutnru .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -959,63 +943,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#lodznyhqot .gt_left {
+#qupzsutnru .gt_left {
   text-align: left;
 }
 
-#lodznyhqot .gt_center {
+#qupzsutnru .gt_center {
   text-align: center;
 }
 
-#lodznyhqot .gt_right {
+#qupzsutnru .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lodznyhqot .gt_font_normal {
+#qupzsutnru .gt_font_normal {
   font-weight: normal;
 }
 
-#lodznyhqot .gt_font_bold {
+#qupzsutnru .gt_font_bold {
   font-weight: bold;
 }
 
-#lodznyhqot .gt_font_italic {
+#qupzsutnru .gt_font_italic {
   font-style: italic;
 }
 
-#lodznyhqot .gt_super {
+#qupzsutnru .gt_super {
   font-size: 65%;
 }
 
-#lodznyhqot .gt_footnote_marks {
+#qupzsutnru .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lodznyhqot .gt_asterisk {
+#qupzsutnru .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lodznyhqot .gt_indent_1 {
+#qupzsutnru .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lodznyhqot .gt_indent_2 {
+#qupzsutnru .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lodznyhqot .gt_indent_3 {
+#qupzsutnru .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lodznyhqot .gt_indent_4 {
+#qupzsutnru .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lodznyhqot .gt_indent_5 {
+#qupzsutnru .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1055,7 +1039,7 @@ Attaching package: 'PRcalc'</code></pre>
 <section id="visulaization" class="level3">
 <h3 class="anchored" data-anchor-id="visulaization">Visulaization</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1067,7 +1051,7 @@ Defaulting to continuous.</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">style =</span> <span class="st">"lollipop"</span>) <span class="co"># lollipop chart</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1081,7 +1065,7 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(index2, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>
@@ -1099,27 +1083,7 @@ Defaulting to continuous.</code></pre>
 <section id="comparison" class="level2">
 <h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
- [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
- [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="fu">index</span>(obj1), <span class="fu">index</span>(obj2), <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index  Model1   Model2  Model3
 1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
@@ -1153,29 +1117,9 @@ Defaulting to continuous.</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
 30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
- [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
- [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index D'Hondt     Hare Sainte-Laguë
 1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
@@ -1209,30 +1153,12 @@ Defaulting to continuous.</code></pre>
 29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
 30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3)))<span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
- [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
- [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
-                           Index D'Hondt     Hare Sainte-Laguë
+<pre><code>                           Index D'Hondt     Hare Sainte-Laguë
 1                        D’Hondt 1.13647 1.055589      1.10148
 2                         Monroe 0.05321 0.020396      0.02505
 3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
@@ -1264,51 +1190,31 @@ Defaulting to continuous.</code></pre>
 29            Hellinger Distance 0.14218 0.098133      0.09959
 30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
- [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
- [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset  =</span> <span class="fu">c</span>(<span class="st">"dhondt"</span>, <span class="st">"gallagher"</span>, <span class="st">"lh"</span>, <span class="st">"ad"</span>),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">hide_id =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="srttrfnpxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#srttrfnpxb table {
+<div id="yhwxifninn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yhwxifninn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#srttrfnpxb thead, #srttrfnpxb tbody, #srttrfnpxb tfoot, #srttrfnpxb tr, #srttrfnpxb td, #srttrfnpxb th {
+#yhwxifninn thead, #yhwxifninn tbody, #yhwxifninn tfoot, #yhwxifninn tr, #yhwxifninn td, #yhwxifninn th {
   border-style: none;
 }
 
-#srttrfnpxb p {
+#yhwxifninn p {
   margin: 0;
   padding: 0;
 }
 
-#srttrfnpxb .gt_table {
+#yhwxifninn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1334,12 +1240,12 @@ Defaulting to continuous.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_caption {
+#yhwxifninn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#srttrfnpxb .gt_title {
+#yhwxifninn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1351,7 +1257,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-width: 0;
 }
 
-#srttrfnpxb .gt_subtitle {
+#yhwxifninn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1363,7 +1269,7 @@ Defaulting to continuous.</code></pre>
   border-top-width: 0;
 }
 
-#srttrfnpxb .gt_heading {
+#yhwxifninn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1375,13 +1281,13 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_bottom_border {
+#yhwxifninn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_col_headings {
+#yhwxifninn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1396,7 +1302,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_col_heading {
+#yhwxifninn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1416,7 +1322,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#srttrfnpxb .gt_column_spanner_outer {
+#yhwxifninn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1428,15 +1334,15 @@ Defaulting to continuous.</code></pre>
   padding-right: 4px;
 }
 
-#srttrfnpxb .gt_column_spanner_outer:first-child {
+#yhwxifninn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#srttrfnpxb .gt_column_spanner_outer:last-child {
+#yhwxifninn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#srttrfnpxb .gt_column_spanner {
+#yhwxifninn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1448,11 +1354,11 @@ Defaulting to continuous.</code></pre>
   width: 100%;
 }
 
-#srttrfnpxb .gt_spanner_row {
+#yhwxifninn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#srttrfnpxb .gt_group_heading {
+#yhwxifninn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1478,7 +1384,7 @@ Defaulting to continuous.</code></pre>
   text-align: left;
 }
 
-#srttrfnpxb .gt_empty_group_heading {
+#yhwxifninn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1493,15 +1399,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: middle;
 }
 
-#srttrfnpxb .gt_from_md > :first-child {
+#yhwxifninn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#srttrfnpxb .gt_from_md > :last-child {
+#yhwxifninn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#srttrfnpxb .gt_row {
+#yhwxifninn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1520,7 +1426,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#srttrfnpxb .gt_stub {
+#yhwxifninn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1533,7 +1439,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#srttrfnpxb .gt_stub_row_group {
+#yhwxifninn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1547,15 +1453,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: top;
 }
 
-#srttrfnpxb .gt_row_group_first td {
+#yhwxifninn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#srttrfnpxb .gt_row_group_first th {
+#yhwxifninn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#srttrfnpxb .gt_summary_row {
+#yhwxifninn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1565,16 +1471,16 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#srttrfnpxb .gt_first_summary_row {
+#yhwxifninn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_first_summary_row.thick {
+#yhwxifninn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#srttrfnpxb .gt_last_summary_row {
+#yhwxifninn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1584,7 +1490,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_grand_summary_row {
+#yhwxifninn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1594,7 +1500,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#srttrfnpxb .gt_first_grand_summary_row {
+#yhwxifninn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1604,7 +1510,7 @@ Defaulting to continuous.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_last_grand_summary_row_top {
+#yhwxifninn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1614,11 +1520,11 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_striped {
+#yhwxifninn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#srttrfnpxb .gt_table_body {
+#yhwxifninn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1627,7 +1533,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_footnotes {
+#yhwxifninn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1641,7 +1547,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_footnote {
+#yhwxifninn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1650,7 +1556,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#srttrfnpxb .gt_sourcenotes {
+#yhwxifninn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1664,7 +1570,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#srttrfnpxb .gt_sourcenote {
+#yhwxifninn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1672,63 +1578,63 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#srttrfnpxb .gt_left {
+#yhwxifninn .gt_left {
   text-align: left;
 }
 
-#srttrfnpxb .gt_center {
+#yhwxifninn .gt_center {
   text-align: center;
 }
 
-#srttrfnpxb .gt_right {
+#yhwxifninn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#srttrfnpxb .gt_font_normal {
+#yhwxifninn .gt_font_normal {
   font-weight: normal;
 }
 
-#srttrfnpxb .gt_font_bold {
+#yhwxifninn .gt_font_bold {
   font-weight: bold;
 }
 
-#srttrfnpxb .gt_font_italic {
+#yhwxifninn .gt_font_italic {
   font-style: italic;
 }
 
-#srttrfnpxb .gt_super {
+#yhwxifninn .gt_super {
   font-size: 65%;
 }
 
-#srttrfnpxb .gt_footnote_marks {
+#yhwxifninn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#srttrfnpxb .gt_asterisk {
+#yhwxifninn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#srttrfnpxb .gt_indent_1 {
+#yhwxifninn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#srttrfnpxb .gt_indent_2 {
+#yhwxifninn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#srttrfnpxb .gt_indent_3 {
+#yhwxifninn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#srttrfnpxb .gt_indent_4 {
+#yhwxifninn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#srttrfnpxb .gt_indent_5 {
+#yhwxifninn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1775,31 +1681,11 @@ Defaulting to continuous.</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.38068182 0.22727273 0.14772727 0.13636364 0.05681818 0.02840909
- [7] 0.02272727 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
-[13] 0.00000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.352272727 0.204545455 0.147727273 0.130681818 0.073863636 0.045454545
- [7] 0.039772727 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000
- [1] 0.3465508289 0.1999808408 0.1400973237 0.1237998900 0.0724963883
- [6] 0.0451292573 0.0385558203 0.0177250610 0.0138653861 0.0008029446
-[11] 0.0005857553 0.0002953052 0.0001151986
- [1] 0.357954545 0.204545455 0.147727273 0.136363636 0.073863636 0.039772727
- [7] 0.034090909 0.005681818 0.000000000 0.000000000 0.000000000 0.000000000
-[13] 0.000000000</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sainte-Laguë"</span> <span class="ot">=</span> <span class="fu">index</span>(obj3))) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Values"</span>, <span class="at">y =</span> <span class="st">"Indices"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Don't know how to automatically pick scale for object of type &lt;prcalc_index&gt;.
 Defaulting to continuous.</code></pre>

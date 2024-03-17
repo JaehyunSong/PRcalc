@@ -313,11 +313,7 @@ If the number of blocks is greater than or equal to 2, the length of `extra` mus
 
 ### Custom quota
 
-Total: 23400107
-
-magnitude: 47
-
-quota = 497874.6
+For largest reminder methods, the first step is to compute quota. For Hare-Niemeyer method, quota is $\frac{v}{m}$, which $v$ is total votes and $m$ is total seats. In 2016 Korean general election (`kr_lower_2016_en`), the total number of votes cast was 23400107 and the district magnitude was 47. Thus, Hare-Niemeyer quota is $\frac{23400107}{47} \simeq 497874.6$. This custom quota must be specified with an `extra` argument.
 
 ```{r}
 #| label: custom-3
@@ -349,3 +345,24 @@ list("Hare" = custom6, "Custom quota" = custom7) |>
 ```
 
 ### $\alpha$-divergence
+
+$\alpha$-divergence (`method = "ad"`) is a highly flexible (not fully customizable) highest averages method. A divisor ($r(k)$) is calculated as follow:
+
+$$
+r(k) = \begin{cases}
+\frac{1}{e} \frac{(k + 1)^{k + 1}}{k^k}& \mbox{if}\quad\alpha = 1,\\
+\frac{1}{\log{\frac{k + 1}{k}}} & \mbox{if}\quad\alpha = 0,\\
+\Bigl(\frac{(k + 1)^\alpha - k^\alpha}{\alpha}\Bigr)^{\frac{1}{\alpha - 1}} & \mbox{otherwise.}\\
+\end{cases}
+$$
+
+For example, if $\alpha = 2$, the divisor of $\alpha$-divergence is known to coincide with that of Sainte-Laguë (Webster). $\alpha$ must be specified with an `extra` argument.
+
+```{r}
+#| message: false
+# Jefferson vs alpha = 10
+list(prcalc(jp_upper_2019, m = 50, method = "sl"),
+     prcalc(jp_upper_2019, m = 50, method = "ad", extra = 2)) |> 
+  compare() |> 
+  print(use_gt = TRUE)
+```

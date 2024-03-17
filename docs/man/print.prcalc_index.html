@@ -402,12 +402,6 @@ ignored.
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(pr_obj)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.353736700 0.158126102 0.130538236 0.098015356 0.089538935 0.069521178
- [7] 0.045539306 0.020890077 0.019729213 0.005373282 0.004039727 0.003353098
-[13] 0.001598792
- [1] 0.36 0.16 0.14 0.10 0.10 0.06 0.04 0.02 0.02 0.00 0.00 0.00 0.00</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index    Value
 1       dhondt                       D’Hondt 1.116833
 2       monroe                        Monroe 0.018918
@@ -440,14 +434,10 @@ ignored.
 29   hellinger            Hellinger Distance 0.087758
 30          ad              alpha-Divergence 0.009233</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(pr_obj) <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"lh"</span>, <span class="st">"gallagher"</span>, <span class="st">"rae"</span>, <span class="st">"dhondt"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(pr_obj) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">subset =</span> <span class="fu">c</span>(<span class="st">"lh"</span>, <span class="st">"gallagher"</span>, <span class="st">"rae"</span>, <span class="st">"dhondt"</span>, <span class="st">"ad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.353736700 0.158126102 0.130538236 0.098015356 0.089538935 0.069521178
- [7] 0.045539306 0.020890077 0.019729213 0.005373282 0.004039727 0.003353098
-[13] 0.001598792
- [1] 0.36 0.16 0.14 0.10 0.10 0.06 0.04 0.02 0.02 0.00 0.00 0.00 0.00
-         ID             Index   Value
+<pre><code>         ID             Index   Value
 1    dhondt           D’Hondt 1.11683
 2       rae               Rae 0.00466
 3        lh Loosemore &amp; Hanby 0.03032
