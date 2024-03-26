@@ -20,10 +20,12 @@ library(seatdist)
 dp <- disproportionality
 
 obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+ind1 <- index(obj1)
 v1   <- obj1$raw$Vote
 s1   <- obj1$dist$Vote
 
 obj2 <- prcalc(us_census_2020, m = 435, method = "hh")
+ind2 <- index(obj2)
 v2   <- obj2$raw$Pop
 s2   <- obj2$dist$Pop
 ```
@@ -33,24 +35,22 @@ s2   <- obj2$dist$Pop
 ### D'Hondt
 
 ::::{.columns}
-:::{.column width=49%}
+:::{.column width=29%}
 ```{r}
 #| filename: "{PRcalc}"
-index(obj1)["dhondt"]
-index(obj2)["dhondt"]
+ind1["dhondt"]
+ind2["dhondt"]
 ```
 :::
 
 :::{.column width=2%}
 :::
 
-:::{.column width=49%}
+:::{.column width=69%}
 ```{r}
 #| filename: "{seatdist}"
-dp(s = s1, v = v1, 
-   measure = "dhondt")$value
-dp(s = s2, v = v2, 
-   measure = "dhondt")$value
+dp(s = s1, v = v1, measure = "dhondt")$value
+dp(s = s2, v = v2, measure = "dhondt")$value
 ```
 :::
 ::::
@@ -58,11 +58,197 @@ dp(s = s2, v = v2,
 ### Monroe
 
 ::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["monroe"]
+ind2["monroe"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "monroe")$value
+dp(s = s2, v = v2, measure = "monroe")$value
+```
+:::
+::::
+
+### Maximum absolute deviation
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["maxdev"]
+ind2["maxdev"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "monroe")$value
+dp(s = s2, v = v2, measure = "monroe")$value
+```
+:::
+::::
+
+### Rae
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["maxdev"]
+ind2["maxdev"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "maxdev")$value
+dp(s = s2, v = v2, measure = "maxdev")$value
+```
+:::
+::::
+
+### Loosemore & Hanby
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["lh"]
+ind2["lh"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "loosemore hanby")$value
+dp(s = s2, v = v2, measure = "loosemore hanby")$value
+```
+:::
+::::
+
+### Grofman
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["grofman"]
+ind2["grofman"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "grofman")$value
+dp(s = s2, v = v2, measure = "grofman")$value
+```
+:::
+::::
+
+### Lijphart
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["lijphart"]
+ind2["lijphart"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "lijphart")$value
+dp(s = s2, v = v2, measure = "lijphart")$value
+```
+:::
+::::
+
+Since the results for each package are different, we need to be sure we know which results are correct. Lijphart index is calculated as follow:
+
+$$
+\mbox{I}_{\mbox{Lijphart}} = \frac{|s_a - v_a| + |s_b - v_b|}{2},
+$$
+
+where $s_a$ and $v_a$ are the proportion of seats and votes for the party that received the largest number of votes, and $s_b$ and $v_b$ are that for the party that received the second largest of votes. We can compute the above equation directly.
+
+```{r}
+new_s1 <- s1[order(v1, decreasing = TRUE)]
+new_v1 <- v1[order(v1, decreasing = TRUE)]
+
+new_s1 <- new_s1 / sum(new_s1)
+new_v1 <- new_v1 / sum(new_v1)
+
+new_s1
+new_v1
+
+(abs(new_s1[1] - new_v1[1]) + abs(new_s1[2] - new_v1[2])) / 2
+```
+
+The calculation results show that {PRcalc} is correct.
+
+### Gallagher
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["gallagher"]
+ind2["gallagher"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "gallagher")$value
+dp(s = s2, v = v2, measure = "gallagher")$value
+```
+:::
+::::
+
+### Generalized Gallagher
+
+* Parameter $k$ (`k`) is required. Default is 2.
+
+::::{.columns}
 :::{.column width=49%}
 ```{r}
 #| filename: "{PRcalc}"
-index(obj1)["monroe"]
-index(obj2)["monroe"]
+index(obj1, k = 2)["g_gallagher"]
+index(obj2, k = 3)["g_gallagher"]
 ```
 :::
 
@@ -72,73 +258,515 @@ index(obj2)["monroe"]
 :::{.column width=49%}
 ```{r}
 #| filename: "{seatdist}"
-dp(s = s1, v = v1, 
-   measure = "monroe")$value
-dp(s = s2, v = v2, 
-   measure = "monroe")$value
+dp(s = s1, v = v1, k = 2, 
+   measure = "kindex")$value
+dp(s = s2, v = v2, k = 3, 
+   measure = "kindex")$value
 ```
 :::
 ::::
 
-### Maximum absolute deviation
-
-### Rae
-
-### Loosemore & Hanby
-
-### Grofman
-
-### Lijphart
-
-### Gallagher
-
-### Generalized Gallagher
-
-* $k$
-
 ### Gatev
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["gatev"]
+ind2["gatev"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "gatev")$value
+dp(s = s2, v = v2, measure = "gatev")$value
+```
+:::
+::::
 
 ### Ryabtsev
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["ryabtsev"]
+ind2["ryabtsev"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "ryabtsev")$value
+dp(s = s2, v = v2, measure = "ryabtsev")$value
+```
+:::
+::::
+
 ### Szalai
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["szalai"]
+ind2["szalai"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "szalai")$value
+dp(s = s2, v = v2, measure = "szalai")$value
+```
+:::
+::::
 
 ### Weighted Szalai
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["w_szalai"]
+ind2["w_szalai"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "weighted szalai")$value
+dp(s = s2, v = v2, measure = "weighted szalai")$value
+```
+:::
+::::
+
 ### Aleskerov & Platonov
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["ap"]
+ind2["ap"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "aleskerov")$value
+dp(s = s2, v = v2, measure = "aleskerov")$value
+```
+:::
+::::
 
 ### Gini coefficient
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["gini"]
+ind2["gini"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "gini")$value
+dp(s = s2, v = v2, measure = "gini")$value
+```
+:::
+::::
+
 ### Atkinson
 
-* $\eta$
+* Parameter $\eta$ (`eta`) is required. Defualt is 2.
+
+::::{.columns}
+:::{.column width=49%}
+```{r}
+#| filename: "{PRcalc}"
+index(obj1, eta = 2)["atkinson"]
+index(obj2, eta = 3)["atkinson"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=49%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, eta = 2, 
+   measure = "atkinson")$value
+dp(s = s2, v = v2, eta = 3, 
+   measure = "atkinson")$value
+```
+:::
+::::
+
+### Generalized entropy
+
+See $\alpha$-divergence.
 
 ### Sainte-Laguë
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["sl"]
+ind2["sl"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "sainte lague")$value
+dp(s = s2, v = v2, measure = "sainte lague")$value
+```
+:::
+::::
+
 ### Cox & Shugart
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["cs"]
+ind2["cs"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "cox shugart")$value
+dp(s = s2, v = v2, measure = "cox shugart")$value
+```
+:::
+::::
 
 ### Farina
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["farina"]
+ind2["farina"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "farina")$value
+dp(s = s2, v = v2, measure = "farina")$value
+```
+:::
+::::
+
 ### Ortona
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["ortona"]
+ind2["ortona"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "ortona")$value
+dp(s = s2, v = v2, measure = "ortona")$value
+```
+:::
+::::
 
 ### Cosine Dissimilarity
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["cd"]
+ind2["cd"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "cosine")$value
+dp(s = s2, v = v2, measure = "cosine")$value
+```
+:::
+::::
+
 ### Lebeda's RR (Mixture D'Hondt)
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["rr"]
+ind2["rr"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "mixture")$value
+dp(s = s2, v = v2, measure = "mixture")$value
+```
+:::
+::::
 
 ### Lebeda's ARR
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["arr"]
+ind2["arr"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "arr")$value
+dp(s = s2, v = v2, measure = "arr")$value
+```
+:::
+::::
+
 ### Lebeda's SRR
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["srr"]
+ind2["srr"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "srr")$value
+dp(s = s2, v = v2, measure = "srr")$value
+```
+:::
+::::
 
 ### Lebeda's WDRR
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["wdrr"]
+ind2["wdrr"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "wdrr")$value
+dp(s = s2, v = v2, measure = "wdrr")$value
+```
+:::
+::::
+
 ### Kullback-Leibler Surprise
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["kl"]
+ind2["kl"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "surprise")$value
+dp(s = s2, v = v2, measure = "surprise")$value
+```
+:::
+::::
 
 ### Likelihood Ratio Statistic
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["lr"]
+ind2["lr"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "lrstat")$value
+dp(s = s2, v = v2, measure = "lrstat")$value
+```
+:::
+::::
+
 ### $\chi^2$
+
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["chisq"]
+ind2["chisq"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "chisq")$value
+dp(s = s2, v = v2, measure = "chisq")$value
+```
+:::
+::::
 
 ### Hellinger Distance
 
+::::{.columns}
+:::{.column width=29%}
+```{r}
+#| filename: "{PRcalc}"
+ind1["hellinger"]
+ind2["hellinger"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=69%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, measure = "hellinger")$value
+dp(s = s2, v = v2, measure = "hellinger")$value
+```
+:::
+::::
+
 ### $\alpha$-divergence (Generalized entropy)
 
-* $\alpha$
-* {seatdist} can only be computed for the cases where $\alpha \neq 0, 1$
+* Parameter $\alpha$ (`alpha`) is required. Default is 2.
+* $\alpha$-divergence is theoretically equivalent to generalized entropy. However, {seatdist} can only be computed for the cases where $\alpha \neq 0, 1$
+
+::::{.columns}
+:::{.column width=49%}
+```{r}
+#| filename: "{PRcalc}"
+index(obj1, alpha =  2)["ad"]
+index(obj2, alpha =  0, as_disprop = FALSE)["ad"]
+index(obj1, alpha =  1)["ad"]
+index(obj2, alpha = -1, as_disprop = FALSE)["ad"]
+index(obj1, alpha =  3)["ad"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=49%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, alpha = 2, 
+   measure = "gen entropy")$value
+dp(s = s2, v = v2, alpha = 0, 
+   measure = "gen entropy")$value
+dp(s = s1, v = v1, alpha = 1, 
+   measure = "gen entropy")$value
+dp(s = s2, v = v2, alpha = -1, 
+   measure = "gen entropy")$value
+dp(s = s1, v = v1, alpha = 3, 
+   measure = "gen entropy")$value
+```
+:::
+::::
