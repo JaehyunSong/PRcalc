@@ -175,7 +175,7 @@ index.prcalc <- function(x,
   # Chi Squared
   chisq <- sum((v[s > 0] - s[s > 0])^2 / s[s > 0])
   # Hellinger Distance
-  hellinger <- (1 / sqrt(2)) * sqrt(sum((sqrt(s) - sqrt(v))^2))
+  hellinger <- sqrt(0.5 * sum((sqrt(s) - sqrt(v))^2))
   # alpha-divergence
   if (alpha == 0) {
     # s = 0の場合、log(v / s)は Inf

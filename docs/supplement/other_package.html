@@ -1503,12 +1503,30 @@ window.Quarto = {
 <span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s1, <span class="at">v =</span> v1, <span class="at">alpha =</span> <span class="dv">3</span>, </span>
 <span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"gen entropy"</span>)<span class="sc">$</span>value</span>
 <span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.00682755</span></span>
-<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s1, <span class="at">v =</span> v1, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s2, <span class="at">v =</span> v2, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
 <span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"gen entropy"</span>)<span class="sc">$</span>value</span>
-<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.03080568</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.00129294</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+</div>
+<p><strong>Example 1:</strong> <span class="math inline">\(D^{-1} \times 2\)</span> is equivalent to Neyman’s <span class="math inline">\(\chi^2\)</span> divergence.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">index</span>(obj2, <span class="at">alpha =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)[<span class="st">"ad"</span>]</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          ad </span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.002476612</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj2)[<span class="st">"chisq"</span>]</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="do">##       chisq </span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.002476612</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Example 2:</strong> <span class="math inline">\(D^{1}\)</span> is equivalent to Kullback-Leibler surprise.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj2, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)[<span class="st">"ad"</span>]</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          ad </span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.001316731</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj2)[<span class="st">"kl"</span>]</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="do">##          kl </span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.001316731</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

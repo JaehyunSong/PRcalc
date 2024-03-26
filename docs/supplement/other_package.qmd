@@ -777,8 +777,22 @@ dp(s = s2, v = v2, alpha = -1,
    measure = "gen entropy")$value
 dp(s = s1, v = v1, alpha = 3, 
    measure = "gen entropy")$value
-dp(s = s1, v = v1, alpha = 0.5, 
+dp(s = s2, v = v2, alpha = 0.5, 
    measure = "gen entropy")$value
 ```
 :::
 ::::
+
+**Example 1:** $D^{-1} \times 2$ is equivalent to Neyman's $\chi^2$ divergence.
+
+```{r}
+2 * index(obj2, alpha = -1, as_disprop = FALSE)["ad"]
+index(obj2)["chisq"]
+```
+
+**Example 2:** $D^{1}$ is equivalent to Kullback-Leibler surprise.
+
+```{r}
+index(obj2, alpha = 1, as_disprop = FALSE)["ad"]
+index(obj2)["kl"]
+```
