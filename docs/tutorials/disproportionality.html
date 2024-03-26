@@ -476,33 +476,34 @@ Attaching package: 'PRcalc'</code></pre>
 1       dhondt                       D’Hondt 1.13647
 2       monroe                        Monroe 0.05321
 3       maxdev    Maximum Absolute Deviation 0.03413
-4          rae                           Rae 0.01256
-5           lh             Loosemore &amp; Hanby 0.08162
-6      grofman                       Grofman 0.03335
-7     lijphart                      Lijphart 0.03071
-8    gallagher                     Gallagher 0.04129
-9  g_gallagher         Generalized Gallagher 0.04129
-10       gatev                         Gatev 0.08744
-11    ryabtsev                      Ryabtsev 0.06195
-12      szalai                        Szalai 0.68738
-13    w_szalai               Weighted Szalai 0.15384
-14          ap          Aleskerov &amp; Platonov 1.09773
-15        gini                          Gini 0.07989
-16    atkinson                      Atkinson 1.00000
-17          sl                  Sainte-Laguë 0.05825
-18          cs                 Cox &amp; Shugart 1.13266
-19      farina                        Farina 0.10153
-20      ortona                        Ortona 0.12490
-21          cd          Cosine Dissimilarity 0.00417
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.00924
-24         srr                  Lebeda’s SRR 0.04488
-25        wdrr                 Lebeda’s WDRR 0.09444
-26          kl     Kullback-Leibler Surprise 0.04684
-27          lr    Likelihood Ratio Statistic     Inf
-28       chisq                   Chi Squared 0.03308
-29   hellinger            Hellinger Distance 0.14218
-30          ad              alpha-Divergence 0.02912</code></pre>
+4     mm_ratio                 Max-Min ratio     Inf
+5          rae                           Rae 0.01256
+6           lh             Loosemore &amp; Hanby 0.08162
+7      grofman                       Grofman 0.03335
+8     lijphart                      Lijphart 0.03071
+9    gallagher                     Gallagher 0.04129
+10 g_gallagher         Generalized Gallagher 0.04129
+11       gatev                         Gatev 0.08744
+12    ryabtsev                      Ryabtsev 0.06195
+13      szalai                        Szalai 0.68738
+14    w_szalai               Weighted Szalai 0.15384
+15          ap          Aleskerov &amp; Platonov 1.09773
+16        gini                          Gini 0.07989
+17    atkinson                      Atkinson 1.00000
+18          sl                  Sainte-Laguë 0.05825
+19          cs                 Cox &amp; Shugart 1.13266
+20      farina                        Farina 0.10153
+21      ortona                        Ortona 0.12490
+22          cd          Cosine Dissimilarity 0.00417
+23          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
+24         arr                  Lebeda’s ARR 0.00924
+25         srr                  Lebeda’s SRR 0.04488
+26        wdrr                 Lebeda’s WDRR 0.09444
+27          kl     Kullback-Leibler Surprise 0.04684
+28          lr    Likelihood Ratio Statistic     Inf
+29       chisq                   Chi Squared 0.03308
+30   hellinger            Hellinger Distance 0.14218
+31          ad              alpha-Divergence 0.02912</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>index2 <span class="ot">&lt;-</span> <span class="fu">index</span>(obj1, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>index2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -511,33 +512,34 @@ Attaching package: 'PRcalc'</code></pre>
 1       dhondt                       D’Hondt 1.13647
 2       monroe                        Monroe 0.05321
 3       maxdev    Maximum Absolute Deviation 0.03413
-4          rae                           Rae 0.01256
-5           lh             Loosemore &amp; Hanby 0.08162
-6      grofman                       Grofman 0.03335
-7     lijphart                      Lijphart 0.03071
-8    gallagher                     Gallagher 0.04129
-9  g_gallagher         Generalized Gallagher 0.04129
-10       gatev                         Gatev 0.08744
-11    ryabtsev                      Ryabtsev 0.06195
-12      szalai                        Szalai 0.68738
-13    w_szalai               Weighted Szalai 0.15384
-14          ap          Aleskerov &amp; Platonov 1.09773
-15        gini                          Gini 0.07989
-16    atkinson                      Atkinson 1.00000
-17          sl                  Sainte-Laguë 0.05825
-18          cs                 Cox &amp; Shugart 1.13266
-19      farina                        Farina 0.10153
-20      ortona                        Ortona 0.12490
-21          cd          Cosine Dissimilarity 0.00417
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
-23         arr                  Lebeda’s ARR 0.00924
-24         srr                  Lebeda’s SRR 0.04488
-25        wdrr                 Lebeda’s WDRR 0.09444
-26          kl     Kullback-Leibler Surprise 0.04684
-27          lr    Likelihood Ratio Statistic     Inf
-28       chisq                   Chi Squared 0.03308
-29   hellinger            Hellinger Distance 0.14218
-30          ad              alpha-Divergence 0.04684</code></pre>
+4     mm_ratio                 Max-Min ratio     Inf
+5          rae                           Rae 0.01256
+6           lh             Loosemore &amp; Hanby 0.08162
+7      grofman                       Grofman 0.03335
+8     lijphart                      Lijphart 0.03071
+9    gallagher                     Gallagher 0.04129
+10 g_gallagher         Generalized Gallagher 0.04129
+11       gatev                         Gatev 0.08744
+12    ryabtsev                      Ryabtsev 0.06195
+13      szalai                        Szalai 0.68738
+14    w_szalai               Weighted Szalai 0.15384
+15          ap          Aleskerov &amp; Platonov 1.09773
+16        gini                          Gini 0.07989
+17    atkinson                      Atkinson 1.00000
+18          sl                  Sainte-Laguë 0.05825
+19          cs                 Cox &amp; Shugart 1.13266
+20      farina                        Farina 0.10153
+21      ortona                        Ortona 0.12490
+22          cd          Cosine Dissimilarity 0.00417
+23          rr Lebeda’s RR (Mixture D’Hondt) 0.12008
+24         arr                  Lebeda’s ARR 0.00924
+25         srr                  Lebeda’s SRR 0.04488
+26        wdrr                 Lebeda’s WDRR 0.09444
+27          kl     Kullback-Leibler Surprise 0.04684
+28          lr    Likelihood Ratio Statistic     Inf
+29       chisq                   Chi Squared 0.03308
+30   hellinger            Hellinger Distance 0.14218
+31          ad              alpha-Divergence 0.04684</code></pre>
 </div>
 </div>
 <section id="printing" class="level3">
@@ -576,23 +578,23 @@ Attaching package: 'PRcalc'</code></pre>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="cuumfkfmpd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cuumfkfmpd table {
+<div id="ueknvmzfup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ueknvmzfup table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cuumfkfmpd thead, #cuumfkfmpd tbody, #cuumfkfmpd tfoot, #cuumfkfmpd tr, #cuumfkfmpd td, #cuumfkfmpd th {
+#ueknvmzfup thead, #ueknvmzfup tbody, #ueknvmzfup tfoot, #ueknvmzfup tr, #ueknvmzfup td, #ueknvmzfup th {
   border-style: none;
 }
 
-#cuumfkfmpd p {
+#ueknvmzfup p {
   margin: 0;
   padding: 0;
 }
 
-#cuumfkfmpd .gt_table {
+#ueknvmzfup .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -618,12 +620,12 @@ Attaching package: 'PRcalc'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_caption {
+#ueknvmzfup .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cuumfkfmpd .gt_title {
+#ueknvmzfup .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -635,7 +637,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-width: 0;
 }
 
-#cuumfkfmpd .gt_subtitle {
+#ueknvmzfup .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -647,7 +649,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-width: 0;
 }
 
-#cuumfkfmpd .gt_heading {
+#ueknvmzfup .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -659,13 +661,13 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_bottom_border {
+#ueknvmzfup .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_col_headings {
+#ueknvmzfup .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -680,7 +682,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_col_heading {
+#ueknvmzfup .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -700,7 +702,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#cuumfkfmpd .gt_column_spanner_outer {
+#ueknvmzfup .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -712,15 +714,15 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 4px;
 }
 
-#cuumfkfmpd .gt_column_spanner_outer:first-child {
+#ueknvmzfup .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cuumfkfmpd .gt_column_spanner_outer:last-child {
+#ueknvmzfup .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cuumfkfmpd .gt_column_spanner {
+#ueknvmzfup .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -732,11 +734,11 @@ Attaching package: 'PRcalc'</code></pre>
   width: 100%;
 }
 
-#cuumfkfmpd .gt_spanner_row {
+#ueknvmzfup .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cuumfkfmpd .gt_group_heading {
+#ueknvmzfup .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -762,7 +764,7 @@ Attaching package: 'PRcalc'</code></pre>
   text-align: left;
 }
 
-#cuumfkfmpd .gt_empty_group_heading {
+#ueknvmzfup .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -777,15 +779,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: middle;
 }
 
-#cuumfkfmpd .gt_from_md > :first-child {
+#ueknvmzfup .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cuumfkfmpd .gt_from_md > :last-child {
+#ueknvmzfup .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cuumfkfmpd .gt_row {
+#ueknvmzfup .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,7 +806,7 @@ Attaching package: 'PRcalc'</code></pre>
   overflow-x: hidden;
 }
 
-#cuumfkfmpd .gt_stub {
+#ueknvmzfup .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -817,7 +819,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#cuumfkfmpd .gt_stub_row_group {
+#ueknvmzfup .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -831,15 +833,15 @@ Attaching package: 'PRcalc'</code></pre>
   vertical-align: top;
 }
 
-#cuumfkfmpd .gt_row_group_first td {
+#ueknvmzfup .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cuumfkfmpd .gt_row_group_first th {
+#ueknvmzfup .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cuumfkfmpd .gt_summary_row {
+#ueknvmzfup .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -849,16 +851,16 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#cuumfkfmpd .gt_first_summary_row {
+#ueknvmzfup .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_first_summary_row.thick {
+#ueknvmzfup .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cuumfkfmpd .gt_last_summary_row {
+#ueknvmzfup .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -868,7 +870,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_grand_summary_row {
+#ueknvmzfup .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -878,7 +880,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#cuumfkfmpd .gt_first_grand_summary_row {
+#ueknvmzfup .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,7 +890,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_last_grand_summary_row_top {
+#ueknvmzfup .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,11 +900,11 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_striped {
+#ueknvmzfup .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cuumfkfmpd .gt_table_body {
+#ueknvmzfup .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -911,7 +913,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_footnotes {
+#ueknvmzfup .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -925,7 +927,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_footnote {
+#ueknvmzfup .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -934,7 +936,7 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#cuumfkfmpd .gt_sourcenotes {
+#ueknvmzfup .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -948,7 +950,7 @@ Attaching package: 'PRcalc'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#cuumfkfmpd .gt_sourcenote {
+#ueknvmzfup .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -956,63 +958,63 @@ Attaching package: 'PRcalc'</code></pre>
   padding-right: 5px;
 }
 
-#cuumfkfmpd .gt_left {
+#ueknvmzfup .gt_left {
   text-align: left;
 }
 
-#cuumfkfmpd .gt_center {
+#ueknvmzfup .gt_center {
   text-align: center;
 }
 
-#cuumfkfmpd .gt_right {
+#ueknvmzfup .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cuumfkfmpd .gt_font_normal {
+#ueknvmzfup .gt_font_normal {
   font-weight: normal;
 }
 
-#cuumfkfmpd .gt_font_bold {
+#ueknvmzfup .gt_font_bold {
   font-weight: bold;
 }
 
-#cuumfkfmpd .gt_font_italic {
+#ueknvmzfup .gt_font_italic {
   font-style: italic;
 }
 
-#cuumfkfmpd .gt_super {
+#ueknvmzfup .gt_super {
   font-size: 65%;
 }
 
-#cuumfkfmpd .gt_footnote_marks {
+#ueknvmzfup .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cuumfkfmpd .gt_asterisk {
+#ueknvmzfup .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cuumfkfmpd .gt_indent_1 {
+#ueknvmzfup .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cuumfkfmpd .gt_indent_2 {
+#ueknvmzfup .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cuumfkfmpd .gt_indent_3 {
+#ueknvmzfup .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cuumfkfmpd .gt_indent_4 {
+#ueknvmzfup .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cuumfkfmpd .gt_indent_5 {
+#ueknvmzfup .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1102,33 +1104,34 @@ Defaulting to continuous.</code></pre>
 1       dhondt                       D’Hondt 1.13647 1.055589 1.10148
 2       monroe                        Monroe 0.05321 0.020396 0.02505
 3       maxdev    Maximum Absolute Deviation 0.03413 0.013865 0.01387
-4          rae                           Rae 0.01256 0.004263 0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708 0.03753
-6      grofman                       Grofman 0.03335 0.011323 0.01534
-7     lijphart                      Lijphart 0.03071 0.005143 0.00798
-8    gallagher                     Gallagher 0.04129 0.015827 0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827 0.01944
-10       gatev                         Gatev 0.08744 0.034607 0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478 0.02990
-12      szalai                        Szalai 0.68738 0.636499 0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784 0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
-15        gini                          Gini 0.07989 0.032180 0.04213
-16    atkinson                      Atkinson 1.00000 1.000000 1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911 0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874 1.05312
-19      farina                        Farina 0.10153 0.047980 0.05482
-20      ortona                        Ortona 0.12490 0.042402 0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
-23         arr                  Lebeda’s ARR 0.00924 0.004051 0.00709
-24         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf     Inf
-28       chisq                   Chi Squared 0.03308 0.026543 0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
-30          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
+4     mm_ratio                 Max-Min ratio     Inf      Inf     Inf
+5          rae                           Rae 0.01256 0.004263 0.00577
+6           lh             Loosemore &amp; Hanby 0.08162 0.027708 0.03753
+7      grofman                       Grofman 0.03335 0.011323 0.01534
+8     lijphart                      Lijphart 0.03071 0.005143 0.00798
+9    gallagher                     Gallagher 0.04129 0.015827 0.01944
+10 g_gallagher         Generalized Gallagher 0.04129 0.015827 0.01944
+11       gatev                         Gatev 0.08744 0.034607 0.04227
+12    ryabtsev                      Ryabtsev 0.06195 0.024478 0.02990
+13      szalai                        Szalai 0.68738 0.636499 0.63706
+14    w_szalai               Weighted Szalai 0.15384 0.105784 0.10847
+15          ap          Aleskerov &amp; Platonov 1.09773 1.029574 1.04611
+16        gini                          Gini 0.07989 0.032180 0.04213
+17    atkinson                      Atkinson 1.00000 1.000000 1.00000
+18          sl                  Sainte-Laguë 0.05825 0.024911 0.02720
+19          cs                 Cox &amp; Shugart 1.13266 1.035874 1.05312
+20      farina                        Farina 0.10153 0.047980 0.05482
+21      ortona                        Ortona 0.12490 0.042402 0.05743
+22          cd          Cosine Dissimilarity 0.00417 0.000932 0.00122
+23          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662 0.09213
+24         arr                  Lebeda’s ARR 0.00924 0.004051 0.00709
+25         srr                  Lebeda’s SRR 0.04488 0.023669 0.03500
+26        wdrr                 Lebeda’s WDRR 0.09444 0.036026 0.05573
+27          kl     Kullback-Leibler Surprise 0.04684 0.021767 0.02292
+28          lr    Likelihood Ratio Statistic     Inf      Inf     Inf
+29       chisq                   Chi Squared 0.03308 0.026543 0.02888
+30   hellinger            Hellinger Distance 0.14218 0.098133 0.09959
+31          ad              alpha-Divergence 0.02912 0.012455 0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
@@ -1138,33 +1141,34 @@ Defaulting to continuous.</code></pre>
 1       dhondt                       D’Hondt 1.13647 1.055589      1.10148
 2       monroe                        Monroe 0.05321 0.020396      0.02505
 3       maxdev    Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4          rae                           Rae 0.01256 0.004263      0.00577
-5           lh             Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6      grofman                       Grofman 0.03335 0.011323      0.01534
-7     lijphart                      Lijphart 0.03071 0.005143      0.00798
-8    gallagher                     Gallagher 0.04129 0.015827      0.01944
-9  g_gallagher         Generalized Gallagher 0.04129 0.015827      0.01944
-10       gatev                         Gatev 0.08744 0.034607      0.04227
-11    ryabtsev                      Ryabtsev 0.06195 0.024478      0.02990
-12      szalai                        Szalai 0.68738 0.636499      0.63706
-13    w_szalai               Weighted Szalai 0.15384 0.105784      0.10847
-14          ap          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15        gini                          Gini 0.07989 0.032180      0.04213
-16    atkinson                      Atkinson 1.00000 1.000000      1.00000
-17          sl                  Sainte-Laguë 0.05825 0.024911      0.02720
-18          cs                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19      farina                        Farina 0.10153 0.047980      0.05482
-20      ortona                        Ortona 0.12490 0.042402      0.05743
-21          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23         arr                  Lebeda’s ARR 0.00924 0.004051      0.00709
-24         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27          lr    Likelihood Ratio Statistic     Inf      Inf          Inf
-28       chisq                   Chi Squared 0.03308 0.026543      0.02888
-29   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
-30          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+4     mm_ratio                 Max-Min ratio     Inf      Inf          Inf
+5          rae                           Rae 0.01256 0.004263      0.00577
+6           lh             Loosemore &amp; Hanby 0.08162 0.027708      0.03753
+7      grofman                       Grofman 0.03335 0.011323      0.01534
+8     lijphart                      Lijphart 0.03071 0.005143      0.00798
+9    gallagher                     Gallagher 0.04129 0.015827      0.01944
+10 g_gallagher         Generalized Gallagher 0.04129 0.015827      0.01944
+11       gatev                         Gatev 0.08744 0.034607      0.04227
+12    ryabtsev                      Ryabtsev 0.06195 0.024478      0.02990
+13      szalai                        Szalai 0.68738 0.636499      0.63706
+14    w_szalai               Weighted Szalai 0.15384 0.105784      0.10847
+15          ap          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
+16        gini                          Gini 0.07989 0.032180      0.04213
+17    atkinson                      Atkinson 1.00000 1.000000      1.00000
+18          sl                  Sainte-Laguë 0.05825 0.024911      0.02720
+19          cs                 Cox &amp; Shugart 1.13266 1.035874      1.05312
+20      farina                        Farina 0.10153 0.047980      0.05482
+21      ortona                        Ortona 0.12490 0.042402      0.05743
+22          cd          Cosine Dissimilarity 0.00417 0.000932      0.00122
+23          rr Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
+24         arr                  Lebeda’s ARR 0.00924 0.004051      0.00709
+25         srr                  Lebeda’s SRR 0.04488 0.023669      0.03500
+26        wdrr                 Lebeda’s WDRR 0.09444 0.036026      0.05573
+27          kl     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
+28          lr    Likelihood Ratio Statistic     Inf      Inf          Inf
+29       chisq                   Chi Squared 0.03308 0.026543      0.02888
+30   hellinger            Hellinger Distance 0.14218 0.098133      0.09959
+31          ad              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
@@ -1175,33 +1179,34 @@ Defaulting to continuous.</code></pre>
 1                        D’Hondt 1.13647 1.055589      1.10148
 2                         Monroe 0.05321 0.020396      0.02505
 3     Maximum Absolute Deviation 0.03413 0.013865      0.01387
-4                            Rae 0.01256 0.004263      0.00577
-5              Loosemore &amp; Hanby 0.08162 0.027708      0.03753
-6                        Grofman 0.03335 0.011323      0.01534
-7                       Lijphart 0.03071 0.005143      0.00798
-8                      Gallagher 0.04129 0.015827      0.01944
-9          Generalized Gallagher 0.04129 0.015827      0.01944
-10                         Gatev 0.08744 0.034607      0.04227
-11                      Ryabtsev 0.06195 0.024478      0.02990
-12                        Szalai 0.68738 0.636499      0.63706
-13               Weighted Szalai 0.15384 0.105784      0.10847
-14          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
-15                          Gini 0.07989 0.032180      0.04213
-16                      Atkinson 1.00000 1.000000      1.00000
-17                  Sainte-Laguë 0.05825 0.024911      0.02720
-18                 Cox &amp; Shugart 1.13266 1.035874      1.05312
-19                        Farina 0.10153 0.047980      0.05482
-20                        Ortona 0.12490 0.042402      0.05743
-21          Cosine Dissimilarity 0.00417 0.000932      0.00122
-22 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
-23                  Lebeda’s ARR 0.00924 0.004051      0.00709
-24                  Lebeda’s SRR 0.04488 0.023669      0.03500
-25                 Lebeda’s WDRR 0.09444 0.036026      0.05573
-26     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
-27    Likelihood Ratio Statistic     Inf      Inf          Inf
-28                   Chi Squared 0.03308 0.026543      0.02888
-29            Hellinger Distance 0.14218 0.098133      0.09959
-30              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
+4                  Max-Min ratio     Inf      Inf          Inf
+5                            Rae 0.01256 0.004263      0.00577
+6              Loosemore &amp; Hanby 0.08162 0.027708      0.03753
+7                        Grofman 0.03335 0.011323      0.01534
+8                       Lijphart 0.03071 0.005143      0.00798
+9                      Gallagher 0.04129 0.015827      0.01944
+10         Generalized Gallagher 0.04129 0.015827      0.01944
+11                         Gatev 0.08744 0.034607      0.04227
+12                      Ryabtsev 0.06195 0.024478      0.02990
+13                        Szalai 0.68738 0.636499      0.63706
+14               Weighted Szalai 0.15384 0.105784      0.10847
+15          Aleskerov &amp; Platonov 1.09773 1.029574      1.04611
+16                          Gini 0.07989 0.032180      0.04213
+17                      Atkinson 1.00000 1.000000      1.00000
+18                  Sainte-Laguë 0.05825 0.024911      0.02720
+19                 Cox &amp; Shugart 1.13266 1.035874      1.05312
+20                        Farina 0.10153 0.047980      0.05482
+21                        Ortona 0.12490 0.042402      0.05743
+22          Cosine Dissimilarity 0.00417 0.000932      0.00122
+23 Lebeda’s RR (Mixture D’Hondt) 0.12008 0.052662      0.09213
+24                  Lebeda’s ARR 0.00924 0.004051      0.00709
+25                  Lebeda’s SRR 0.04488 0.023669      0.03500
+26                 Lebeda’s WDRR 0.09444 0.036026      0.05573
+27     Kullback-Leibler Surprise 0.04684 0.021767      0.02292
+28    Likelihood Ratio Statistic     Inf      Inf          Inf
+29                   Chi Squared 0.03308 0.026543      0.02888
+30            Hellinger Distance 0.14218 0.098133      0.09959
+31              alpha-Divergence 0.02912 0.012455      0.01360</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(<span class="fu">list</span>(<span class="st">"D'Hondt"</span>      <span class="ot">=</span> <span class="fu">index</span>(obj1), </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hare"</span>         <span class="ot">=</span> <span class="fu">index</span>(obj2), </span>
@@ -1211,23 +1216,23 @@ Defaulting to continuous.</code></pre>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">use_gt  =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="bgdjzgomoe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bgdjzgomoe table {
+<div id="gjxwfzsgvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gjxwfzsgvg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bgdjzgomoe thead, #bgdjzgomoe tbody, #bgdjzgomoe tfoot, #bgdjzgomoe tr, #bgdjzgomoe td, #bgdjzgomoe th {
+#gjxwfzsgvg thead, #gjxwfzsgvg tbody, #gjxwfzsgvg tfoot, #gjxwfzsgvg tr, #gjxwfzsgvg td, #gjxwfzsgvg th {
   border-style: none;
 }
 
-#bgdjzgomoe p {
+#gjxwfzsgvg p {
   margin: 0;
   padding: 0;
 }
 
-#bgdjzgomoe .gt_table {
+#gjxwfzsgvg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1253,12 +1258,12 @@ Defaulting to continuous.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_caption {
+#gjxwfzsgvg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bgdjzgomoe .gt_title {
+#gjxwfzsgvg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1270,7 +1275,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-width: 0;
 }
 
-#bgdjzgomoe .gt_subtitle {
+#gjxwfzsgvg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1282,7 +1287,7 @@ Defaulting to continuous.</code></pre>
   border-top-width: 0;
 }
 
-#bgdjzgomoe .gt_heading {
+#gjxwfzsgvg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1294,13 +1299,13 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_bottom_border {
+#gjxwfzsgvg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_col_headings {
+#gjxwfzsgvg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1315,7 +1320,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_col_heading {
+#gjxwfzsgvg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1335,7 +1340,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#bgdjzgomoe .gt_column_spanner_outer {
+#gjxwfzsgvg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1347,15 +1352,15 @@ Defaulting to continuous.</code></pre>
   padding-right: 4px;
 }
 
-#bgdjzgomoe .gt_column_spanner_outer:first-child {
+#gjxwfzsgvg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bgdjzgomoe .gt_column_spanner_outer:last-child {
+#gjxwfzsgvg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bgdjzgomoe .gt_column_spanner {
+#gjxwfzsgvg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1367,11 +1372,11 @@ Defaulting to continuous.</code></pre>
   width: 100%;
 }
 
-#bgdjzgomoe .gt_spanner_row {
+#gjxwfzsgvg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bgdjzgomoe .gt_group_heading {
+#gjxwfzsgvg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1397,7 +1402,7 @@ Defaulting to continuous.</code></pre>
   text-align: left;
 }
 
-#bgdjzgomoe .gt_empty_group_heading {
+#gjxwfzsgvg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1412,15 +1417,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: middle;
 }
 
-#bgdjzgomoe .gt_from_md > :first-child {
+#gjxwfzsgvg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bgdjzgomoe .gt_from_md > :last-child {
+#gjxwfzsgvg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bgdjzgomoe .gt_row {
+#gjxwfzsgvg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1439,7 +1444,7 @@ Defaulting to continuous.</code></pre>
   overflow-x: hidden;
 }
 
-#bgdjzgomoe .gt_stub {
+#gjxwfzsgvg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1452,7 +1457,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#bgdjzgomoe .gt_stub_row_group {
+#gjxwfzsgvg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1466,15 +1471,15 @@ Defaulting to continuous.</code></pre>
   vertical-align: top;
 }
 
-#bgdjzgomoe .gt_row_group_first td {
+#gjxwfzsgvg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bgdjzgomoe .gt_row_group_first th {
+#gjxwfzsgvg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bgdjzgomoe .gt_summary_row {
+#gjxwfzsgvg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1484,16 +1489,16 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#bgdjzgomoe .gt_first_summary_row {
+#gjxwfzsgvg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_first_summary_row.thick {
+#gjxwfzsgvg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bgdjzgomoe .gt_last_summary_row {
+#gjxwfzsgvg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1503,7 +1508,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_grand_summary_row {
+#gjxwfzsgvg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1513,7 +1518,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#bgdjzgomoe .gt_first_grand_summary_row {
+#gjxwfzsgvg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1523,7 +1528,7 @@ Defaulting to continuous.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_last_grand_summary_row_top {
+#gjxwfzsgvg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1533,11 +1538,11 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_striped {
+#gjxwfzsgvg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bgdjzgomoe .gt_table_body {
+#gjxwfzsgvg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1546,7 +1551,7 @@ Defaulting to continuous.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_footnotes {
+#gjxwfzsgvg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1560,7 +1565,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_footnote {
+#gjxwfzsgvg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1569,7 +1574,7 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#bgdjzgomoe .gt_sourcenotes {
+#gjxwfzsgvg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1583,7 +1588,7 @@ Defaulting to continuous.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bgdjzgomoe .gt_sourcenote {
+#gjxwfzsgvg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1591,63 +1596,63 @@ Defaulting to continuous.</code></pre>
   padding-right: 5px;
 }
 
-#bgdjzgomoe .gt_left {
+#gjxwfzsgvg .gt_left {
   text-align: left;
 }
 
-#bgdjzgomoe .gt_center {
+#gjxwfzsgvg .gt_center {
   text-align: center;
 }
 
-#bgdjzgomoe .gt_right {
+#gjxwfzsgvg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bgdjzgomoe .gt_font_normal {
+#gjxwfzsgvg .gt_font_normal {
   font-weight: normal;
 }
 
-#bgdjzgomoe .gt_font_bold {
+#gjxwfzsgvg .gt_font_bold {
   font-weight: bold;
 }
 
-#bgdjzgomoe .gt_font_italic {
+#gjxwfzsgvg .gt_font_italic {
   font-style: italic;
 }
 
-#bgdjzgomoe .gt_super {
+#gjxwfzsgvg .gt_super {
   font-size: 65%;
 }
 
-#bgdjzgomoe .gt_footnote_marks {
+#gjxwfzsgvg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bgdjzgomoe .gt_asterisk {
+#gjxwfzsgvg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bgdjzgomoe .gt_indent_1 {
+#gjxwfzsgvg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bgdjzgomoe .gt_indent_2 {
+#gjxwfzsgvg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bgdjzgomoe .gt_indent_3 {
+#gjxwfzsgvg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bgdjzgomoe .gt_indent_4 {
+#gjxwfzsgvg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bgdjzgomoe .gt_indent_5 {
+#gjxwfzsgvg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

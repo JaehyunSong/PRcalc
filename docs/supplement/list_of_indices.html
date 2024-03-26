@@ -386,159 +386,181 @@ window.Quarto = {
 <td style="text-align: left;"><span class="math inline">\(\mbox{max}_i\{|s_i - v_i|\}\)</span></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Max-Min ratio</td>
+<td style="text-align: left;"><code>"mm_ratio"</code></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\max{\frac{v_i}{s_i}}}{\min{\frac{v_i}{s_i}}}\)</span></td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Rae (1967)</td>
 <td style="text-align: left;"><code>"rae"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{p}\sum_i |s_i - v_i|\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Loosemore &amp; Hanby (1971)</td>
 <td style="text-align: left;"><code>"lh"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{2}\sum_i |s_i - v_i|\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Grofman</td>
 <td style="text-align: left;"><code>"grofman"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{e}\sum_i |s_i - v_i|; e = \frac{1}{\sum_i v_i^2}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Lijphart</td>
 <td style="text-align: left;"><code>"lijphart"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{|s_a - v_a| + |s_b - v_b|}{2}; v_a &gt; v_b &gt; ...\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Gallagher (1991)</td>
 <td style="text-align: left;"><code>"gallagher"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{1}{2}\sum_i (s_i - v_i)^2}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Generalized Gallagher</td>
 <td style="text-align: left;"><code>"g_gallagher"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt[k]{\frac{1}{k}\sum_i (s_i - v_i)^k}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Gatev</td>
 <td style="text-align: left;"><code>"gatev"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i^2 + v_i^2)}}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Ryabtsev</td>
 <td style="text-align: left;"><code>"ryabtsev"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{\sum_i(s_i - v_i)^2}{\sum_i(s_i + v_i)^2}}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Szalai (Stewart 2006)</td>
 <td style="text-align: left;"><code>"szalai"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{1}{p}\sum_i \bigl(\frac{s_i - v_i}{s_i + v_i}\bigr)^2}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Weighted Szalai (Stewart 2006)</td>
 <td style="text-align: left;"><code>"w_szalai"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{1}{2}\sum_i \frac{(s_i - v_i)^2}{s_i + v_i}}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Aleskerov &amp; Platonov</td>
 <td style="text-align: left;"><code>"ap"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{\sum_i k_i \frac{s_i}{v_i}}{\sum_i k_i}; k_i = \mathbb{I}\bigl(\frac{s_i}{v_i} &gt; 1\bigr)\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Gini coefficient</td>
 <td style="text-align: left;"><code>"gini"</code></td>
 <td style="text-align: left;"><span class="math inline">\(1\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Atkinson</td>
 <td style="text-align: left;"><code>"atkinson"</code></td>
 <td style="text-align: left;"><span class="math inline">\(1 - \Bigl[\sum_i v_i \bigl(\frac{s_i}{v_i}\bigr)^{(1 - \eta)} \Bigr]^{\frac{1}{1-\eta}}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Generalized Entropy</td>
 <td style="text-align: left;"><code>"entropy"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{\alpha^2 - \alpha}\Bigl[ \sum_i v_i \bigl( \frac{s_i}{v_i} \bigr)^\alpha - 1 \Bigr]\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Sainte-Laguë (1910)</td>
 <td style="text-align: left;"><code>"sl"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sum_i \frac{(s_i - v_i)^2}{v_i}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Cox &amp; Shugart</td>
 <td style="text-align: left;"><code>"cs"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{\sum_i (s_i - \bar{s})(v_i - \bar{v})}{\sum_i(v_i - \bar{v})^2}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Farina (Kestelman 2005)</td>
 <td style="text-align: left;"><code>"farina"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\mbox{arccos}\Bigl[ \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2 \sum_i v_i^2}} \Bigr]\frac{10}{9}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Ortona</td>
 <td style="text-align: left;"><code>"ortona"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{\sum_i |s_i - v_i|}{\sum_i |u_i - v_i|}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Cosine Dissimilarity</td>
 <td style="text-align: left;"><code>"cd"</code></td>
 <td style="text-align: left;"><span class="math inline">\(1 - \frac{\sum_i s_i v_i}{\sqrt{\sum_i s_i^2}\sqrt{\sum_i v_i^2}}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Lebeda’s RR (Mixture D’Hondt)</td>
 <td style="text-align: left;"><code>"rr"</code></td>
 <td style="text-align: left;"><span class="math inline">\(1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Lebeda’s ARR</td>
 <td style="text-align: left;"><code>"arr"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{p}\Bigl( 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Lebeda’s SRR</td>
 <td style="text-align: left;"><code>"srr"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sqrt{\sum_i\Bigl(v_i - \frac{s_i}{\mbox{max}_i \frac{s_i}{v_i}}\Bigr)^2}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Lebeda’s WDRR</td>
 <td style="text-align: left;"><code>"wdrr"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{3}\Bigl(\Bigl(\sum_i |v_i - s_i|\Bigr) + \Bigl(\sum_i 1 - \frac{1}{\mbox{max}_i \frac{s_i}{v_i}} \Bigr)\Bigr)\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Kullback-Leibler Surprise</td>
 <td style="text-align: left;"><code>"kl"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sum_{s_i &gt; 0}s_i \mbox{ln} \frac{s_i}{v_i}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Likelihood Ratio Statistic</td>
 <td style="text-align: left;"><code>"lr"</code></td>
 <td style="text-align: left;"><span class="math inline">\(2\sum_i v_i \mbox{ln} \frac{v_i}{s_i}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\chi^2\)</span></td>
 <td style="text-align: left;"><code>"chisq"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\sum_{s_i &gt; 0}\frac{(v_i - s_i)^2}{s_i}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Hellinger Distance</td>
 <td style="text-align: left;"><code>"hellinger"</code></td>
 <td style="text-align: left;"><span class="math inline">\(\frac{1}{\sqrt{2}}\sqrt{\sum_i(\sqrt{s_i} - \sqrt{v_i})^2}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\alpha\)</span>-divergence</td>
 <td style="text-align: left;"><code>"ad"</code></td>
-<td style="text-align: left;">See <a href="#nte-ad" class="quarto-xref">Note&nbsp;1</a></td>
+<td style="text-align: left;">See <a href="#nte-ad" class="quarto-xref">Note&nbsp;2</a></td>
 </tr>
 </tbody>
 </table>
-<div id="nte-ad" class="callout callout-style-default callout-note callout-titled">
+<div id="nte-mm" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;1: About <span class="math inline">\(\alpha\)</span>-divergence<br>
-
+Note&nbsp;1: About Max-Min ratio
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <code>as_disprop = FALSE</code> (default), the calculation is based on each party’s total votes and total seats. This is fine when calculating disproportionality in the allocation of seats for proportional representation system. However, in a proportional representation system, there can be many parties that receive a positive number of votes but no seats. In this case, Max-Min ratio is not a useful indicator.</p>
+<p>However, when measuring malapportionment, Max-Min ratio is one of the useful indicators. In this case, <code>as_disprop = FALSE</code> must be specified or it will not be calculated correctly.</p>
+</div>
+</div>
+</div>
+<div id="nte-ad" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;2: About <span class="math inline">\(\alpha\)</span>-divergence<br>
+
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 D(\alpha) = \begin{cases}

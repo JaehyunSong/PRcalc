@@ -22,6 +22,8 @@ index <- function(x, ...) {
 #' @rdname index
 #'
 #' @import tibble
+#' @import dplyr
+#' @import tidyr
 #'
 #' @return
 #' a `prcalc_index` object.
@@ -51,7 +53,7 @@ index.prcalc <- function(x,
                          omit_zero  = TRUE,
                          ...) {
 
-  ID <- Value <- NULL
+  ID <- Value <- vote <- seat <- NULL
 
   if (as_disprop) {
     if (alpha <= 0) stop("alpha must be larger than 0.")
@@ -85,6 +87,29 @@ index.prcalc <- function(x,
   monroe <- sqrt(sum((s - v)^2) / (1 + sum(v^2)))
   # Maximum absolute deviation
   maxdev <- max(abs(s - v))
+  # Max-Min ratio
+  {
+    if (as_disprop) {
+      mm_ratio <- max(v / s) / min(v / s)
+    } else {
+      temp_v <- x$raw |>
+        pivot_longer(cols      = -1,
+                     names_to  = "blcok",
+                     values_to = "vote") |>
+        pull(vote)
+
+      temp_s <- x$dist |>
+        pivot_longer(cols      = -1,
+                     names_to  = "blcok",
+                     values_to = "seat") |>
+        pull(seat)
+
+      temp_s <- temp_s[temp_v != 0 & !is.na(temp_v)]
+      temp_v <- temp_v[temp_v != 0 & !is.na(temp_v)]
+
+      mm_ratio <- max(temp_v / temp_s) / min(temp_v / temp_s)
+    }
+  }
   # Rae index
   rae <- (1 / p) * sum(abs(s - v))
   # Loosemore–Hanby index
@@ -182,6 +207,7 @@ index.prcalc <- function(x,
     "dhondt"      = dhondt,
     "monroe"      = monroe,
     "maxdev"      = maxdev,
+    "mm_ratio"    = mm_ratio,
     "rae"         = rae,
     "lh"          = lh,
     "grofman"     = grofman,
@@ -218,6 +244,7 @@ index.prcalc <- function(x,
   attr(result, "labels") <- c("D\u2019Hondt",
                               "Monroe",
                               "Maximum Absolute Deviation",
+                              "Max-Min ratio",
                               "Rae",
                               "Loosemore & Hanby",
                               "Grofman",

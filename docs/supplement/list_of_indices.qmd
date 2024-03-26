@@ -19,6 +19,7 @@ In the case of a block system, disproportionality is not measured within individ
 |D'Hondt (Gallagher 1991)|`"dhondt"`|$\mbox{max}_i \frac{s_i}{v_i}$|
 |Monroe (1994) |`"monroe"`|$\sqrt{\frac{\sum_i (s_i - v_i)^2}{1 + \sum_i v_i^2}}$|
 |Maximum absolute deviation|`"maxdev"`|$\mbox{max}_i\{|s_i - v_i|\}$|
+|Max-Min ratio|`"mm_ratio"`|$\frac{\max{\frac{v_i}{s_i}}}{\min{\frac{v_i}{s_i}}}$|
 |Rae (1967) |`"rae"`|$\frac{1}{p}\sum_i |s_i - v_i|$|
 |Loosemore & Hanby (1971)|`"lh"`|$\frac{1}{2}\sum_i |s_i - v_i|$|
 |Grofman|`"grofman"`|$\frac{1}{e}\sum_i |s_i - v_i|; e = \frac{1}{\sum_i v_i^2}$||
@@ -47,6 +48,15 @@ In the case of a block system, disproportionality is not measured within individ
 |$\chi^2$|`"chisq"`|$\sum_{s_i > 0}\frac{(v_i - s_i)^2}{s_i}$|
 |Hellinger Distance|`"hellinger"`|$\frac{1}{\sqrt{2}}\sqrt{\sum_i(\sqrt{s_i} - \sqrt{v_i})^2}$|
 |$\alpha$-divergence|`"ad"`|See @nte-ad|
+
+:::{#nte-mm .callout-note collapse="true"}
+## About Max-Min ratio
+
+If `as_disprop = FALSE` (default), the calculation is based on each party's total votes and total seats. This is fine when calculating disproportionality in the allocation of seats for proportional representation system. However, in a proportional representation system, there can be many parties that receive a positive number of votes but no seats. In this case, Max-Min ratio is not a useful indicator.
+
+However, when measuring malapportionment, Max-Min ratio is one of the useful indicators. In this case, `as_disprop = FALSE` must be specified or it will not be calculated correctly.
+
+:::
 
 :::{#nte-ad .callout-note collapse="true"}
 ## About $\alpha$-divergence\
