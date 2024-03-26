@@ -2,7 +2,7 @@ Type: Package
 Package: PRcalc
 Title: A Proportional Representation Calculator
 Description: {PRcalc} is an R package designed for computing proportional representatives, computing disproportionality indices including alpha-divergence, and decomposing alpha-divergence. {PRcalc} can also be used to compute malapportionment in electoral district allocations.
-Version: 0.8.7.1
+Version: 0.8.7.2
 Authors@R: c(
     person("Jaehyun", "Song", 
            email = "song@kansai-u.ac.jp", 

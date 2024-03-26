@@ -57,13 +57,28 @@ index.prcalc <- function(x,
 
   if (as_disprop) {
     if (alpha <= 0) stop("alpha must be larger than 0.")
-  }
 
-  # v: voteshare (v[1] > v[2] > ...)
-  # s: seatshare (s[1] > s[2] > ...)
-  # p: number of parties
-  v     <- rowSums(as_tibble(x$raw)[, -1])
-  s     <- rowSums(as_tibble(x$dist)[, -1])
+    # v: voteshare (v[1] > v[2] > ...)
+    # s: seatshare (s[1] > s[2] > ...)
+    # p: number of parties
+    v     <- rowSums(as_tibble(x$raw)[, -1])
+    s     <- rowSums(as_tibble(x$dist)[, -1])
+  } else {
+    v <- x$raw |>
+      pivot_longer(cols      = -1,
+                   names_to  = "blcok",
+                   values_to = "vote") |>
+      pull(vote)
+
+    s <- x$dist |>
+      pivot_longer(cols      = -1,
+                   names_to  = "blcok",
+                   values_to = "seat") |>
+      pull(seat)
+
+    s <- s[temp_v != 0 & !is.na(temp_v)]
+    v <- v[temp_v != 0 & !is.na(temp_v)]
+  }
 
   if (omit_zero) {
     v        <- v / sum(v)
@@ -88,28 +103,7 @@ index.prcalc <- function(x,
   # Maximum absolute deviation
   maxdev <- max(abs(s - v))
   # Max-Min ratio
-  {
-    if (as_disprop) {
-      mm_ratio <- max(v / s) / min(v / s)
-    } else {
-      temp_v <- x$raw |>
-        pivot_longer(cols      = -1,
-                     names_to  = "blcok",
-                     values_to = "vote") |>
-        pull(vote)
-
-      temp_s <- x$dist |>
-        pivot_longer(cols      = -1,
-                     names_to  = "blcok",
-                     values_to = "seat") |>
-        pull(seat)
-
-      temp_s <- temp_s[temp_v != 0 & !is.na(temp_v)]
-      temp_v <- temp_v[temp_v != 0 & !is.na(temp_v)]
-
-      mm_ratio <- max(temp_v / temp_s) / min(temp_v / temp_s)
-    }
-  }
+  mm_ratio <- max(v / s) / min(v / s)
   # Rae index
   rae <- (1 / p) * sum(abs(s - v))
   # Loosemore–Hanby index
