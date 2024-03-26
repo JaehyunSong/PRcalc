@@ -1,0 +1,144 @@
+---
+title: "Comparison with other packages"
+knitr: 
+  opts_chunk: 
+    dev: "ragg_png"
+    fig.width: 7
+    fig.height: 5
+    dpi: 150
+    collapse: true
+---
+
+## Setting
+
+```{r}
+#| message: false
+library(tidyverse)
+library(PRcalc)
+library(seatdist)
+
+dp <- disproportionality
+
+obj1 <- prcalc(jp_upper_2019, m = 50, method = "dt")
+v1   <- obj1$raw$Vote
+s1   <- obj1$dist$Vote
+
+obj2 <- prcalc(us_census_2020, m = 435, method = "hh")
+v2   <- obj2$raw$Pop
+s2   <- obj2$dist$Pop
+```
+
+## Comparison
+
+### D'Hondt
+
+::::{.columns}
+:::{.column width=49%}
+```{r}
+#| filename: "{PRcalc}"
+index(obj1)["dhondt"]
+index(obj2)["dhondt"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=49%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, 
+   measure = "dhondt")$value
+dp(s = s2, v = v2, 
+   measure = "dhondt")$value
+```
+:::
+::::
+
+### Monroe
+
+::::{.columns}
+:::{.column width=49%}
+```{r}
+#| filename: "{PRcalc}"
+index(obj1)["monroe"]
+index(obj2)["monroe"]
+```
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=49%}
+```{r}
+#| filename: "{seatdist}"
+dp(s = s1, v = v1, 
+   measure = "monroe")$value
+dp(s = s2, v = v2, 
+   measure = "monroe")$value
+```
+:::
+::::
+
+### Maximum absolute deviation
+
+### Rae
+
+### Loosemore & Hanby
+
+### Grofman
+
+### Lijphart
+
+### Gallagher
+
+### Generalized Gallagher
+
+* $k$
+
+### Gatev
+
+### Ryabtsev
+
+### Szalai
+
+### Weighted Szalai
+
+### Aleskerov & Platonov
+
+### Gini coefficient
+
+### Atkinson
+
+* $\eta$
+
+### Sainte-Laguë
+
+### Cox & Shugart
+
+### Farina
+
+### Ortona
+
+### Cosine Dissimilarity
+
+### Lebeda's RR (Mixture D'Hondt)
+
+### Lebeda's ARR
+
+### Lebeda's SRR
+
+### Lebeda's WDRR
+
+### Kullback-Leibler Surprise
+
+### Likelihood Ratio Statistic
+
+### $\chi^2$
+
+### Hellinger Distance
+
+### $\alpha$-divergence (Generalized entropy)
+
+* $\alpha$
+* {seatdist} can only be computed for the cases where $\alpha \neq 0, 1$

@@ -19,6 +19,7 @@ website:
           - supplement/list_of_methods.qmd
           - supplement/list_of_indices.qmd
           - supplement/dataset.qmd
+          - supplement/other_package.qmd
       - text: "Functions"
         menu:
           - text: "Calculation"

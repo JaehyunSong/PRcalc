@@ -20,6 +20,32 @@ library(tidyverse)
 
 ## Two-step decomposition
 
+$\alpha$-divergence ($D^\alpha$) can be decomposed in two components---apportionment and districting as follow:
+
+$$
+\begin{align}
+D^{\alpha} = & \sum_{j = 1}^{k} v_j \frac{1}{\alpha (\alpha - 1)} \log{\frac{s_j}{v_j}} + \\
+& \sum_{j=1}^{k} (s_j)^\alpha (v_j)^{1 - \alpha} \sum_{i=1}^{k_j} v_{ji} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{ji}}{v_{ji}}\biggr)^{\alpha} - 1 \Biggr]\\\
+= & D^{\alpha}_{\mbox{apportionment}} + \sum_{j=1}^k W^{\alpha}_j D^{\alpha}_{\mbox{districting}_j}.
+\end{align}
+$$
+
+However there are two special cases, $\alpha \rightarrow 0$ and $\alpha \rightarrow 1$.
+
+$$
+\begin{align}
+D^0 = & \sum_{j = 1}^{k} v_j \log{\frac{v_j}{s_j}} + \sum_{j=1}^{k} v_j \sum_{i=1}^{k_j} v_{ji} \log{\frac{v_{ji}}{s_{ji}}} \\
+= & D^0_{\mbox{apportionment}} + \sum_{j=1}^k W^0_j D^0_{\mbox{districting}_j}.
+\end{align}
+$$
+
+$$
+\begin{align}
+D^1 = & \sum_{j = 1}^{k} s_j \log{\frac{s_j}{v_j}} + \sum_{j=1}^{k} s_j \sum_{i=1}^{k_j} s_{ji} \log{\frac{s_{ji}}{v_{ji}}} \\
+= & D^1_{\mbox{apportionment}} + \sum_{j=1}^k W^1_j D^1_{\mbox{districting}_j}.
+\end{align}
+$$
+
 ### Using a `prcalc` object.
 
 ```{r}

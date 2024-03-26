@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PRcalc</title>
+<title>PRcalc - Comparison with other packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,6 +101,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -242,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Comparison with other packages</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -293,101 +356,210 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Comparison with other packages</h1>
+</div>
 
 
 
-<section id="衆議院議員総選挙比例区得票数-2021年-英文" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="衆議院議員総選挙比例区得票数-2021年-英文">衆議院議員総選挙比例区得票数 (2021年; 英文)</h2>
-<section id="description" class="level3">
-<h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>衆議院議員総選挙比例区の得票数 (2021年; 英文)</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(seatdist)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> disproportionality</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_upper_2019, <span class="at">m =</span> <span class="dv">50</span>, <span class="at">method =</span> <span class="st">"dt"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>v1   <span class="ot">&lt;-</span> obj1<span class="sc">$</span>raw<span class="sc">$</span>Vote</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>s1   <span class="ot">&lt;-</span> obj1<span class="sc">$</span>dist<span class="sc">$</span>Vote</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(us_census_2020, <span class="at">m =</span> <span class="dv">435</span>, <span class="at">method =</span> <span class="st">"hh"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>v2   <span class="ot">&lt;-</span> obj2<span class="sc">$</span>raw<span class="sc">$</span>Pop</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>s2   <span class="ot">&lt;-</span> obj2<span class="sc">$</span>dist<span class="sc">$</span>Pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="usage" class="level3">
-<h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">data(jp_lower_2021_en)
-</code></pre>
+<section id="comparison" class="level2">
+<h2 class="anchored" data-anchor-id="comparison">Comparison</h2>
+<section id="dhondt" class="level3">
+<h3 class="anchored" data-anchor-id="dhondt">D’Hondt</h3>
+<div class="columns">
+<div class="column" style="width:49%;">
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>{PRcalc}</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj1)[<span class="st">"dhondt"</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   dhondt </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1.116833</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj2)[<span class="st">"dhondt"</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   dhondt </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1.402639</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>{seatdist}</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s1, <span class="at">v =</span> v1, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"dhondt"</span>)<span class="sc">$</span>value</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.116833</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s2, <span class="at">v =</span> v2, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"dhondt"</span>)<span class="sc">$</span>value</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.402639</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="format" class="level3">
-<h3 class="anchored" data-anchor-id="format">Format</h3>
-<p>A data frame with 47 rows and 12 variables:</p>
-<dl>
-<dt>
-Party
-</dt>
-<dd>
-政党名; character
-</dd>
-<dt>
-Hokkaido
-</dt>
-<dd>
-北海道ブロックの得票数; numeric
-</dd>
-<dt>
-Tohoku
-</dt>
-<dd>
-東北ブロックの得票数; numeric
-</dd>
-<dt>
-Kitakanto
-</dt>
-<dd>
-北関東ブロックの得票数; numeric
-</dd>
-<dt>
-Minamikanto
-</dt>
-<dd>
-南関東ブロックの得票数; numeric
-</dd>
-<dt>
-Tokyo
-</dt>
-<dd>
-東京ブロックの得票数; numeric
-</dd>
-<dt>
-Hokuriku
-</dt>
-<dd>
-北陸信越ブロックの得票数; numeric
-</dd>
-<dt>
-Tokai
-</dt>
-<dd>
-東海ブロックの得票数; numeric
-</dd>
-<dt>
-Kinki
-</dt>
-<dd>
-近畿ブロックの得票数; numeric
-</dd>
-<dt>
-Chugoku
-</dt>
-<dd>
-中国ブロックの得票数; numeric
-</dd>
-<dt>
-Shikoku
-</dt>
-<dd>
-四国ブロックの得票数; numeric
-</dd>
-<dt>
-Kyushu
-</dt>
-<dd>
-九州ブロックの得票数; numeric
-</dd>
-</dl>
+<section id="monroe" class="level3">
+<h3 class="anchored" data-anchor-id="monroe">Monroe</h3>
+<div class="columns">
+<div class="column" style="width:49%;">
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>{PRcalc}</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj1)[<span class="st">"monroe"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##     monroe </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.01891832</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj2)[<span class="st">"monroe"</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">##      monroe </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 0.004537504</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="cell" data-layout-align="center">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>{seatdist}</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s1, <span class="at">v =</span> v1, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"monroe"</span>)<span class="sc">$</span>value</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.01891832</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dp</span>(<span class="at">s =</span> s2, <span class="at">v =</span> v2, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">measure =</span> <span class="st">"monroe"</span>)<span class="sc">$</span>value</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.004537504</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="source" class="level3">
-<h3 class="anchored" data-anchor-id="source">Source</h3>
-<p>総務省</p>
+<section id="maximum-absolute-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-absolute-deviation">Maximum absolute deviation</h3>
+</section>
+<section id="rae" class="level3">
+<h3 class="anchored" data-anchor-id="rae">Rae</h3>
+</section>
+<section id="loosemore-hanby" class="level3">
+<h3 class="anchored" data-anchor-id="loosemore-hanby">Loosemore &amp; Hanby</h3>
+</section>
+<section id="grofman" class="level3">
+<h3 class="anchored" data-anchor-id="grofman">Grofman</h3>
+</section>
+<section id="lijphart" class="level3">
+<h3 class="anchored" data-anchor-id="lijphart">Lijphart</h3>
+</section>
+<section id="gallagher" class="level3">
+<h3 class="anchored" data-anchor-id="gallagher">Gallagher</h3>
+</section>
+<section id="generalized-gallagher" class="level3">
+<h3 class="anchored" data-anchor-id="generalized-gallagher">Generalized Gallagher</h3>
+<ul>
+<li><span class="math inline">\(k\)</span></li>
+</ul>
+</section>
+<section id="gatev" class="level3">
+<h3 class="anchored" data-anchor-id="gatev">Gatev</h3>
+</section>
+<section id="ryabtsev" class="level3">
+<h3 class="anchored" data-anchor-id="ryabtsev">Ryabtsev</h3>
+</section>
+<section id="szalai" class="level3">
+<h3 class="anchored" data-anchor-id="szalai">Szalai</h3>
+</section>
+<section id="weighted-szalai" class="level3">
+<h3 class="anchored" data-anchor-id="weighted-szalai">Weighted Szalai</h3>
+</section>
+<section id="aleskerov-platonov" class="level3">
+<h3 class="anchored" data-anchor-id="aleskerov-platonov">Aleskerov &amp; Platonov</h3>
+</section>
+<section id="gini-coefficient" class="level3">
+<h3 class="anchored" data-anchor-id="gini-coefficient">Gini coefficient</h3>
+</section>
+<section id="atkinson" class="level3">
+<h3 class="anchored" data-anchor-id="atkinson">Atkinson</h3>
+<ul>
+<li><span class="math inline">\(\eta\)</span></li>
+</ul>
+</section>
+<section id="sainte-laguë" class="level3">
+<h3 class="anchored" data-anchor-id="sainte-laguë">Sainte-Laguë</h3>
+</section>
+<section id="cox-shugart" class="level3">
+<h3 class="anchored" data-anchor-id="cox-shugart">Cox &amp; Shugart</h3>
+</section>
+<section id="farina" class="level3">
+<h3 class="anchored" data-anchor-id="farina">Farina</h3>
+</section>
+<section id="ortona" class="level3">
+<h3 class="anchored" data-anchor-id="ortona">Ortona</h3>
+</section>
+<section id="cosine-dissimilarity" class="level3">
+<h3 class="anchored" data-anchor-id="cosine-dissimilarity">Cosine Dissimilarity</h3>
+</section>
+<section id="lebedas-rr-mixture-dhondt" class="level3">
+<h3 class="anchored" data-anchor-id="lebedas-rr-mixture-dhondt">Lebeda’s RR (Mixture D’Hondt)</h3>
+</section>
+<section id="lebedas-arr" class="level3">
+<h3 class="anchored" data-anchor-id="lebedas-arr">Lebeda’s ARR</h3>
+</section>
+<section id="lebedas-srr" class="level3">
+<h3 class="anchored" data-anchor-id="lebedas-srr">Lebeda’s SRR</h3>
+</section>
+<section id="lebedas-wdrr" class="level3">
+<h3 class="anchored" data-anchor-id="lebedas-wdrr">Lebeda’s WDRR</h3>
+</section>
+<section id="kullback-leibler-surprise" class="level3">
+<h3 class="anchored" data-anchor-id="kullback-leibler-surprise">Kullback-Leibler Surprise</h3>
+</section>
+<section id="likelihood-ratio-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="likelihood-ratio-statistic">Likelihood Ratio Statistic</h3>
+</section>
+<section id="chi2" class="level3">
+<h3 class="anchored" data-anchor-id="chi2"><span class="math inline">\(\chi^2\)</span></h3>
+</section>
+<section id="hellinger-distance" class="level3">
+<h3 class="anchored" data-anchor-id="hellinger-distance">Hellinger Distance</h3>
+</section>
+<section id="alpha-divergence-generalized-entropy" class="level3">
+<h3 class="anchored" data-anchor-id="alpha-divergence-generalized-entropy"><span class="math inline">\(\alpha\)</span>-divergence (Generalized entropy)</h3>
+<ul>
+<li><span class="math inline">\(\alpha\)</span></li>
+<li>{seatdist} can only be computed for the cases where <span class="math inline">\(\alpha \neq 0, 1\)</span></li>
+</ul>
 
 
 </section>

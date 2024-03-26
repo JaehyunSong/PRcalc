@@ -193,6 +193,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../supplement/dataset.html">
  <span class="dropdown-text">Sample Dataset</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../supplement/other_package.html">
+ <span class="dropdown-text">Comparison with other packages</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -395,6 +399,27 @@ window.Quarto = {
 </section>
 <section id="two-step-decomposition" class="level2">
 <h2 class="anchored" data-anchor-id="two-step-decomposition">Two-step decomposition</h2>
+<p><span class="math inline">\(\alpha\)</span>-divergence (<span class="math inline">\(D^\alpha\)</span>) can be decomposed in two components—apportionment and districting as follow:</p>
+<p><span class="math display">\[
+\begin{align}
+D^{\alpha} = &amp; \sum_{j = 1}^{k} v_j \frac{1}{\alpha (\alpha - 1)} \log{\frac{s_j}{v_j}} + \\
+&amp; \sum_{j=1}^{k} (s_j)^\alpha (v_j)^{1 - \alpha} \sum_{i=1}^{k_j} v_{ji} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{ji}}{v_{ji}}\biggr)^{\alpha} - 1 \Biggr]\\\
+= &amp; D^{\alpha}_{\mbox{apportionment}} + \sum_{j=1}^k W^{\alpha}_j D^{\alpha}_{\mbox{districting}_j}.
+\end{align}
+\]</span></p>
+<p>However there are two special cases, <span class="math inline">\(\alpha \rightarrow 0\)</span> and <span class="math inline">\(\alpha \rightarrow 1\)</span>.</p>
+<p><span class="math display">\[
+\begin{align}
+D^0 = &amp; \sum_{j = 1}^{k} v_j \log{\frac{v_j}{s_j}} + \sum_{j=1}^{k} v_j \sum_{i=1}^{k_j} v_{ji} \log{\frac{v_{ji}}{s_{ji}}} \\
+= &amp; D^0_{\mbox{apportionment}} + \sum_{j=1}^k W^0_j D^0_{\mbox{districting}_j}.
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+D^1 = &amp; \sum_{j = 1}^{k} s_j \log{\frac{s_j}{v_j}} + \sum_{j=1}^{k} s_j \sum_{i=1}^{k_j} s_{ji} \log{\frac{s_{ji}}{v_{ji}}} \\
+= &amp; D^1_{\mbox{apportionment}} + \sum_{j=1}^k W^1_j D^1_{\mbox{districting}_j}.
+\end{align}
+\]</span></p>
 <section id="using-a-prcalc-object." class="level3">
 <h3 class="anchored" data-anchor-id="using-a-prcalc-object.">Using a <code>prcalc</code> object.</h3>
 <div class="cell" data-layout-align="center">
@@ -890,23 +915,23 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
 <span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="mzrzlunanz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mzrzlunanz table {
+<div id="hykwiqdaev" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hykwiqdaev table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mzrzlunanz thead, #mzrzlunanz tbody, #mzrzlunanz tfoot, #mzrzlunanz tr, #mzrzlunanz td, #mzrzlunanz th {
+#hykwiqdaev thead, #hykwiqdaev tbody, #hykwiqdaev tfoot, #hykwiqdaev tr, #hykwiqdaev td, #hykwiqdaev th {
   border-style: none;
 }
 
-#mzrzlunanz p {
+#hykwiqdaev p {
   margin: 0;
   padding: 0;
 }
 
-#mzrzlunanz .gt_table {
+#hykwiqdaev .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -932,12 +957,12 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-left-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_caption {
+#hykwiqdaev .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mzrzlunanz .gt_title {
+#hykwiqdaev .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -949,7 +974,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-width: 0;
 }
 
-#mzrzlunanz .gt_subtitle {
+#hykwiqdaev .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -961,7 +986,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-width: 0;
 }
 
-#mzrzlunanz .gt_heading {
+#hykwiqdaev .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -973,13 +998,13 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_bottom_border {
+#hykwiqdaev .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_col_headings {
+#hykwiqdaev .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -994,7 +1019,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_col_heading {
+#hykwiqdaev .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1014,7 +1039,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#mzrzlunanz .gt_column_spanner_outer {
+#hykwiqdaev .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1026,15 +1051,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 4px;
 }
 
-#mzrzlunanz .gt_column_spanner_outer:first-child {
+#hykwiqdaev .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mzrzlunanz .gt_column_spanner_outer:last-child {
+#hykwiqdaev .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mzrzlunanz .gt_column_spanner {
+#hykwiqdaev .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1046,11 +1071,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   width: 100%;
 }
 
-#mzrzlunanz .gt_spanner_row {
+#hykwiqdaev .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mzrzlunanz .gt_group_heading {
+#hykwiqdaev .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1076,7 +1101,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   text-align: left;
 }
 
-#mzrzlunanz .gt_empty_group_heading {
+#hykwiqdaev .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1091,15 +1116,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: middle;
 }
 
-#mzrzlunanz .gt_from_md > :first-child {
+#hykwiqdaev .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mzrzlunanz .gt_from_md > :last-child {
+#hykwiqdaev .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mzrzlunanz .gt_row {
+#hykwiqdaev .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,7 +1143,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#mzrzlunanz .gt_stub {
+#hykwiqdaev .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1131,7 +1156,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#mzrzlunanz .gt_stub_row_group {
+#hykwiqdaev .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1145,15 +1170,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: top;
 }
 
-#mzrzlunanz .gt_row_group_first td {
+#hykwiqdaev .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mzrzlunanz .gt_row_group_first th {
+#hykwiqdaev .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mzrzlunanz .gt_summary_row {
+#hykwiqdaev .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1163,16 +1188,16 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#mzrzlunanz .gt_first_summary_row {
+#hykwiqdaev .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_first_summary_row.thick {
+#hykwiqdaev .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mzrzlunanz .gt_last_summary_row {
+#hykwiqdaev .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1182,7 +1207,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_grand_summary_row {
+#hykwiqdaev .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1192,7 +1217,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#mzrzlunanz .gt_first_grand_summary_row {
+#hykwiqdaev .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1202,7 +1227,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_last_grand_summary_row_top {
+#hykwiqdaev .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1212,11 +1237,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_striped {
+#hykwiqdaev .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mzrzlunanz .gt_table_body {
+#hykwiqdaev .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1225,7 +1250,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_footnotes {
+#hykwiqdaev .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1239,7 +1264,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_footnote {
+#hykwiqdaev .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1248,7 +1273,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#mzrzlunanz .gt_sourcenotes {
+#hykwiqdaev .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1262,7 +1287,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#mzrzlunanz .gt_sourcenote {
+#hykwiqdaev .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1270,63 +1295,63 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#mzrzlunanz .gt_left {
+#hykwiqdaev .gt_left {
   text-align: left;
 }
 
-#mzrzlunanz .gt_center {
+#hykwiqdaev .gt_center {
   text-align: center;
 }
 
-#mzrzlunanz .gt_right {
+#hykwiqdaev .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mzrzlunanz .gt_font_normal {
+#hykwiqdaev .gt_font_normal {
   font-weight: normal;
 }
 
-#mzrzlunanz .gt_font_bold {
+#hykwiqdaev .gt_font_bold {
   font-weight: bold;
 }
 
-#mzrzlunanz .gt_font_italic {
+#hykwiqdaev .gt_font_italic {
   font-style: italic;
 }
 
-#mzrzlunanz .gt_super {
+#hykwiqdaev .gt_super {
   font-size: 65%;
 }
 
-#mzrzlunanz .gt_footnote_marks {
+#hykwiqdaev .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mzrzlunanz .gt_asterisk {
+#hykwiqdaev .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mzrzlunanz .gt_indent_1 {
+#hykwiqdaev .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mzrzlunanz .gt_indent_2 {
+#hykwiqdaev .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mzrzlunanz .gt_indent_3 {
+#hykwiqdaev .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mzrzlunanz .gt_indent_4 {
+#hykwiqdaev .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mzrzlunanz .gt_indent_5 {
+#hykwiqdaev .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
