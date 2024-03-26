@@ -23,7 +23,7 @@ knitr:
 |Huntington-Hill|`"hh"` or `"huntington-hill"`|$r(k) = \sqrt{k (k + 1)}$|0, 1.41, 2.45, 3.46, ...|
 |Dean|`"dean"`|$r(k) = \frac{2}{\frac{1}{k} + \frac{1}{k + 1}}$|0, 1.33, 2.40, 3.43, ...|
 |$\alpha$-divergence|`"ad"`|See @nte-ad |See @nte-ad |
-|Custom divisor|`"custom divisor"` or `"cd"`|See @nte-custom |See @nte-cd |
+|Custom divisor|`"custom divisor"` or `"cd"`|See @nte-cd |See @nte-cd |
 
 ## Largest reminder method
 
@@ -37,7 +37,7 @@ knitr:
 |Droop quota|`"droop"`|$Q = 1 + \frac{v}{1 + m}$|
 |Hagenbach-Bischoff quota|`"hb"` or `"hagenbach-bischoff"`|$Q = \frac{v}{1 + m}$|
 |Imperiali quota|`"iq"` or `"imperiali quota"`|$Q = \frac{v}{2 + m}$|
-|Custom quota|`"custom quota"` or `"cq"`|See @nte-cq|
+|Custom quota|`"custom quota"` or `"cq"`|See @nte-cq |
 
 :::{#nte-ad .callout-note collapse="true"}
 ## About $\alpha$-divergence
@@ -106,11 +106,13 @@ list(prcalc(jp_upper_2019, m = 50, method = "msl"),
   compare() |> 
   print(use_gt = TRUE)
 ```
+
+For detail, see "[Customized allocation methods](../tutorials/calculation.html#customized-allocation-methods)" section in calculation tutorial.
 :::
 
 :::{#nte-cq .callout-note collapse="true"}
 ## About `"custom quota"` (`"cq"`) method
 
-Please note that extra parameter (`extra`) is required. `extra` must be length of maximum value of `m` or longer.
+Please note that extra parameter (`extra`) is required. `extra` must be length of maximum value of `m` or longer. For detail, see "[Customized allocation methods](../tutorials/calculation.html#customized-allocation-methods)" section in calculation tutorial.
 
 :::
