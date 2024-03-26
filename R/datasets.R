@@ -361,3 +361,18 @@
 #' @usage data(nz_district)
 #'
 "nz_district"
+
+#' List of electoral district in Brazil (2010)
+#'
+#' List of electoral district in Brazil (2010)
+#'
+#' @format A data frame with 27 rows and 3 variables:
+#' \describe{
+#'   \item{ district }{ names of state }
+#'   \item{ population }{ number of population }
+#'   \item{ magnitude }{ electoral magnitude }
+#' }
+#'
+#' @usage data("br_district_2010")
+#'
+"br_district_2010"

@@ -11,13 +11,14 @@ toc: true
 
 ```{r}
 #| message: false
+library(tidyverse)
 library(PRcalc)
 ```
 
 ## Example 1: Electoral result
 
 ```{r}
-data(jp_lower_2021_result)
+data("jp_lower_2021_result")
 
 jp_lower_2021_result
 
@@ -38,7 +39,7 @@ plot(obj1,
 ## Example 2: Electoral district allocation (from `data.frame`)
 
 ```{r}
-data(au_district_2010)
+data("au_district_2010")
 
 au_district_2010
 
@@ -66,4 +67,35 @@ obj3 <- read_prcalc("../data/sample_dataset.csv",
                     magnitude  = "magnitude")
 
 index(obj3)
+```
+
+## Example 4: 
+
+```{r}
+data("br_district_2010")
+
+head(br_district_2010)
+
+# In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) 
+obj4 <- br_district_2010 |> 
+  mutate(region = "national") |> 
+  as_prcalc(region        = "region",
+            district      = "district",
+            population    = "population",
+            magnitude     = "magnitude",
+            distinct_name = TRUE)
+
+obj4
+
+obj5 <- br_district_2010 |> 
+  select(-magnitude) |> 
+  prcalc(m = 513, method = "hn")
+
+list(obj4, obj5) |> 
+  compare() |> 
+  plot(angle = 45)
+
+list(index(obj4), index(obj5)) |> 
+  compare() |> 
+  print(use_gt = TRUE, hide_id = TRUE)
 ```

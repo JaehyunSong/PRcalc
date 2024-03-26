@@ -340,6 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-1-electoral-result" id="toc-example-1-electoral-result" class="nav-link active" data-scroll-target="#example-1-electoral-result">Example 1: Electoral result</a></li>
   <li><a href="#example-2-electoral-district-allocation-from-data.frame" id="toc-example-2-electoral-district-allocation-from-data.frame" class="nav-link" data-scroll-target="#example-2-electoral-district-allocation-from-data.frame">Example 2: Electoral district allocation (from <code>data.frame</code>)</a></li>
   <li><a href="#example-3-electoral-district-allocation-from-.csv-file" id="toc-example-3-electoral-district-allocation-from-.csv-file" class="nav-link" data-scroll-target="#example-3-electoral-district-allocation-from-.csv-file">Example 3: Electoral district allocation (from <code>.csv</code> file)</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4:</a></li>
   </ul>
 </nav>
     </div>
@@ -366,12 +367,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="example-1-electoral-result" class="level2">
 <h2 class="anchored" data-anchor-id="example-1-electoral-result">Example 1: Electoral result</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_lower_2021_result)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021_result"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>jp_lower_2021_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -414,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-2-electoral-district-allocation-from-data.frame" class="level2">
 <h2 class="anchored" data-anchor-id="example-2-electoral-district-allocation-from-data.frame">Example 2: Electoral district allocation (from <code>data.frame</code>)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(au_district_2010)</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"au_district_2010"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>au_district_2010</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -847,6 +849,731 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 29       chisq                   Chi Squared 0.001077
 30   hellinger            Hellinger Distance 0.011541
 31          ad              alpha-Divergence 0.000527</code></pre>
+</div>
+</div>
+</section>
+<section id="example-4" class="level2">
+<h2 class="anchored" data-anchor-id="example-4">Example 4:</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"br_district_2010"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(br_district_2010)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           district magnitude population
+1         Sao Paulo        70   39924091
+2      Minas Gerais        53   19159260
+3    Rio de Janeiro        46   15180636
+4             Bahia        39   13633969
+5 Rio Grande do Sul        31   10576758
+6            Parana        30   10226737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="st">"national"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">region        =</span> <span class="st">"region"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">district      =</span> <span class="st">"district"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">population    =</span> <span class="st">"population"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">magnitude     =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">distinct_name =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Raw:
+              District national
+1            Sao Paulo 39924091
+2         Minas Gerais 19159260
+3       Rio de Janeiro 15180636
+4                Bahia 13633969
+5    Rio Grande do Sul 10576758
+6               Parana 10226737
+7           Pernambuco  8541250
+8                Ceara  8450527
+9             Maranhao  6424340
+10               Goias  5849105
+11                Para  7443904
+12      Santa Catarina  6178603
+13             Paraiba  3753633
+14      Espirito Santo  3392775
+15               Piaui  3086448
+16             Alagoas  3093994
+17               Acre    707125
+18            Amazonas  3350773
+19               Amapa   648553
+20    Distrito Federal  2469489
+21  Mato Grosso do Sul  2404256
+22         Mato Grosso  2954625
+23 Rio Grande do Norte  3121451
+24            Rondonia  1535625
+25             Roraima   425398
+26             Sergipe  2036227
+27           Tocantins  1373551
+
+Result:
+              District national
+1            Sao Paulo       70
+2         Minas Gerais       53
+3       Rio de Janeiro       46
+4                Bahia       39
+5    Rio Grande do Sul       31
+6               Parana       30
+7           Pernambuco       25
+8                Ceara       22
+9             Maranhao       18
+10               Goias       17
+11                Para       17
+12      Santa Catarina       16
+13             Paraiba       12
+14      Espirito Santo       10
+15               Piaui       10
+16             Alagoas        9
+17               Acre         8
+18            Amazonas        8
+19               Amapa        8
+20    Distrito Federal        8
+21  Mato Grosso do Sul        8
+22         Mato Grosso        8
+23 Rio Grande do Norte        8
+24            Rondonia        8
+25             Roraima        8
+26             Sergipe        8
+27           Tocantins        8
+
+Parameters:
+  Allocation method: 
+  Extra parameter: 
+  Threshold: 
+
+Magnitude: 513</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>magnitude) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prcalc</span>(<span class="at">m =</span> <span class="dv">513</span>, <span class="at">method =</span> <span class="st">"hn"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(obj4, obj5) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">angle =</span> <span class="dv">45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="import_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">index</span>(obj4), <span class="fu">index</span>(obj5)) <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="zvefediisw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zvefediisw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zvefediisw thead, #zvefediisw tbody, #zvefediisw tfoot, #zvefediisw tr, #zvefediisw td, #zvefediisw th {
+  border-style: none;
+}
+
+#zvefediisw p {
+  margin: 0;
+  padding: 0;
+}
+
+#zvefediisw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zvefediisw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zvefediisw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zvefediisw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zvefediisw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zvefediisw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvefediisw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zvefediisw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zvefediisw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zvefediisw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zvefediisw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zvefediisw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zvefediisw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zvefediisw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zvefediisw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zvefediisw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zvefediisw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zvefediisw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zvefediisw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvefediisw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zvefediisw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zvefediisw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zvefediisw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvefediisw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zvefediisw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zvefediisw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvefediisw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvefediisw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zvefediisw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvefediisw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zvefediisw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zvefediisw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zvefediisw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvefediisw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zvefediisw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zvefediisw .gt_left {
+  text-align: left;
+}
+
+#zvefediisw .gt_center {
+  text-align: center;
+}
+
+#zvefediisw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zvefediisw .gt_font_normal {
+  font-weight: normal;
+}
+
+#zvefediisw .gt_font_bold {
+  font-weight: bold;
+}
+
+#zvefediisw .gt_font_italic {
+  font-style: italic;
+}
+
+#zvefediisw .gt_super {
+  font-size: 65%;
+}
+
+#zvefediisw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zvefediisw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zvefediisw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zvefediisw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zvefediisw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zvefediisw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zvefediisw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Index</th>
+<th id="Model1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model1</th>
+<th id="Model2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">D’Hondt</td>
+<td class="gt_row gt_center" headers="Model1">6.816</td>
+<td class="gt_row gt_center" headers="Model2">1.118</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Monroe</td>
+<td class="gt_row gt_center" headers="Model1">0.080</td>
+<td class="gt_row gt_center" headers="Model2">0.003</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Maximum Absolute Deviation</td>
+<td class="gt_row gt_center" headers="Model1">0.078</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Max-Min ratio</td>
+<td class="gt_row gt_center" headers="Model1">10.726</td>
+<td class="gt_row gt_center" headers="Model2">1.312</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Rae</td>
+<td class="gt_row gt_center" headers="Model1">0.007</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Loosemore &amp; Hanby</td>
+<td class="gt_row gt_center" headers="Model1">0.094</td>
+<td class="gt_row gt_center" headers="Model2">0.007</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Grofman</td>
+<td class="gt_row gt_center" headers="Model1">0.016</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Lijphart</td>
+<td class="gt_row gt_center" headers="Model1">0.039</td>
+<td class="gt_row gt_center" headers="Model2">0.000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Gallagher</td>
+<td class="gt_row gt_center" headers="Model1">0.059</td>
+<td class="gt_row gt_center" headers="Model2">0.002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Generalized Gallagher</td>
+<td class="gt_row gt_center" headers="Model1">0.059</td>
+<td class="gt_row gt_center" headers="Model2">0.002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Gatev</td>
+<td class="gt_row gt_center" headers="Model1">0.215</td>
+<td class="gt_row gt_center" headers="Model2">0.007</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Ryabtsev</td>
+<td class="gt_row gt_center" headers="Model1">0.154</td>
+<td class="gt_row gt_center" headers="Model2">0.005</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Szalai</td>
+<td class="gt_row gt_center" headers="Model1">0.249</td>
+<td class="gt_row gt_center" headers="Model2">0.025</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Weighted Szalai</td>
+<td class="gt_row gt_center" headers="Model1">0.160</td>
+<td class="gt_row gt_center" headers="Model2">0.012</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Aleskerov &amp; Platonov</td>
+<td class="gt_row gt_center" headers="Model1">1.802</td>
+<td class="gt_row gt_center" headers="Model2">1.036</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Gini</td>
+<td class="gt_row gt_center" headers="Model1">0.139</td>
+<td class="gt_row gt_center" headers="Model2">0.008</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Atkinson</td>
+<td class="gt_row gt_center" headers="Model1">0.082</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Sainte-Laguë</td>
+<td class="gt_row gt_center" headers="Model1">0.208</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Cox &amp; Shugart</td>
+<td class="gt_row gt_center" headers="Model1">0.692</td>
+<td class="gt_row gt_center" headers="Model2">1.000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Farina</td>
+<td class="gt_row gt_center" headers="Model1">0.291</td>
+<td class="gt_row gt_center" headers="Model2">0.011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Ortona</td>
+<td class="gt_row gt_center" headers="Model1">0.119</td>
+<td class="gt_row gt_center" headers="Model2">0.009</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Cosine Dissimilarity</td>
+<td class="gt_row gt_center" headers="Model1">0.034</td>
+<td class="gt_row gt_center" headers="Model2">0.000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Lebeda’s RR (Mixture D’Hondt)</td>
+<td class="gt_row gt_center" headers="Model1">0.853</td>
+<td class="gt_row gt_center" headers="Model2">0.105</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Lebeda’s ARR</td>
+<td class="gt_row gt_center" headers="Model1">0.032</td>
+<td class="gt_row gt_center" headers="Model2">0.004</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Lebeda’s SRR</td>
+<td class="gt_row gt_center" headers="Model1">0.259</td>
+<td class="gt_row gt_center" headers="Model2">0.031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Lebeda’s WDRR</td>
+<td class="gt_row gt_center" headers="Model1">0.347</td>
+<td class="gt_row gt_center" headers="Model2">0.040</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Kullback-Leibler Surprise</td>
+<td class="gt_row gt_center" headers="Model1">0.064</td>
+<td class="gt_row gt_center" headers="Model2">0.000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Likelihood Ratio Statistic</td>
+<td class="gt_row gt_center" headers="Model1">0.099</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">Chi Squared</td>
+<td class="gt_row gt_center" headers="Model1">0.089</td>
+<td class="gt_row gt_center" headers="Model2">0.001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Index">Hellinger Distance</td>
+<td class="gt_row gt_center" headers="Model1">0.117</td>
+<td class="gt_row gt_center" headers="Model2">0.008</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Index">alpha-Divergence</td>
+<td class="gt_row gt_center" headers="Model1">0.104</td>
+<td class="gt_row gt_center" headers="Model2">0.000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </div>
 
