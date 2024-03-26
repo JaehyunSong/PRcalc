@@ -3,6 +3,16 @@ project:
 
 website:
   title: "$ALTDOC_PACKAGE_NAME"
+  favicon: figs/prcalc.png
+  twitter-card:
+    title: "PRcalc: R package for proportional representation allocation"
+    description: "Allocation! Measuring disproportionality! Decompsition! and Visualization!"
+    card-style: summary
+    image: figs/prcalc.png
+  open-graph:
+    title: "PRcalc: R package for proportional representation allocation"
+    description: "Allocation! Measuring disproportionality! Decompsition! and Visualization!"
+    image: figs/prcalc.png
   navbar:
     logo: figs/prcalc.png
     logo-alt: "PRcalc logo"
