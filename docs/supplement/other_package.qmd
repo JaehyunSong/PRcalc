@@ -796,3 +796,10 @@ index(obj2)["chisq"]
 index(obj2, alpha = 1, as_disprop = FALSE)["ad"]
 index(obj2)["kl"]
 ```
+
+**Example 3:** $\sqrt{\frac{1}{4} D^{\frac{1}{2}}}$ is equivalent to Hellinger distance.
+
+```{r}
+sqrt(index(obj2, alpha = 0.5, as_disprop = FALSE)["ad"] * 0.25)
+index(obj2)["hellinger"]
+```
