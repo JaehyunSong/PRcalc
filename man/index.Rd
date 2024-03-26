@@ -14,7 +14,7 @@ index(x, ...)
 
 \item{...}{ignored}
 
-\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{TRUE}.}
+\item{as_disprop}{Measuring disporportionality? If \code{TRUE} (default), \code{alpha} must be larger than \code{0}. For measuring malapportionment, \code{as_disprop = FALSE}.}
 
 \item{k}{a parameter for Generalized Gallagher index. Default is \code{2}.}
 

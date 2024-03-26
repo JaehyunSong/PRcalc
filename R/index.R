@@ -12,7 +12,7 @@ index <- function(x, ...) {
 #' Calculate the disproportionality indices.
 #'
 #' @param x a `prcalc` object.
-#' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
+#' @param as_disprop Measuring disporportionality? If `TRUE` (default), `alpha` must be larger than `0`. For measuring malapportionment, `as_disprop = FALSE`.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
 #' @param alpha a parameter for alpha-divergence. `alpha` must be larger than 0. Default is `2`.
@@ -76,8 +76,8 @@ index.prcalc <- function(x,
                    values_to = "seat") |>
       pull(seat)
 
-    s <- s[temp_v != 0 & !is.na(temp_v)]
-    v <- v[temp_v != 0 & !is.na(temp_v)]
+    s <- s[v != 0 & !is.na(v)]
+    v <- v[v != 0 & !is.na(v)]
   }
 
   if (omit_zero) {
