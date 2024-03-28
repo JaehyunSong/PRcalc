@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="PRcalc: R package for proportional representation allocation">
 <meta property="og:description" content="Allocation! Measuring disproportionality! Decompsition! and Visualization!">
@@ -307,10 +336,29 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="memo" class="level2">
 <h2 class="anchored" data-anchor-id="memo">Memo</h2>
+<p>重要度は現時点での重要度</p>
+<ul>
+<li>ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開プロセスに移行するならデバッグと共に最重要事項となる。</li>
+</ul>
 <section id="重要度高" class="level3">
 <h3 class="anchored" data-anchor-id="重要度高">重要度：高</h3>
 <ul>
 <li>引き続き、バグおよび計算間違いの検証</li>
+<li><code>read_prcalc()</code>、<code>as_prcalc()</code>の引数名を修正
+<ul>
+<li><code>region</code> <span class="math inline">\(\rightarrow\)</span> <code>level1</code> (or <code>l1</code>)
+<ul>
+<li>Mandatory</li>
+</ul></li>
+<li><code>district</code> <span class="math inline">\(\rightarrow\)</span> <code>levle2</code> (or <code>l2</code>)
+<ul>
+<li>Optional (全国区などの場合は不要)</li>
+</ul></li>
+<li><code>population</code> <span class="math inline">\(\rightarrow\)</span> <code>p</code></li>
+<li><code>magnitude</code> <span class="math inline">\(\rightarrow\)</span> <code>q</code></li>
+<li><code>district_name</code> <span class="math inline">\(\rightarrow\)</span> <code>l2_type = c("party", "district")</code></li>
+</ul></li>
+<li>新しいサンプルデータ（政党連合のデータ）</li>
 </ul>
 </section>
 <section id="重要度中" class="level3">

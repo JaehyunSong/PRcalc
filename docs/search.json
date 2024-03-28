@@ -4,7 +4,7 @@
     "href": "memo.html",
     "title": "PRcalc",
     "section": "",
-    "text": "引き続き、バグおよび計算間違いの検証\n\n\n\n\n\nplot()メソッドを洗練させる\n\n\n\n\n\nコードをメンテナンスしやすく\n各種ドキュメント（ヘルプ、ウェブページ）の整備\n\nReferenceも相当あるので明記する。",
+    "text": "重要度は現時点での重要度\n\nドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開プロセスに移行するならデバッグと共に最重要事項となる。\n\n\n\n\n引き続き、バグおよび計算間違いの検証\nread_prcalc()、as_prcalc()の引数名を修正\n\nregion \\(\\rightarrow\\) level1 (or l1)\n\nMandatory\n\ndistrict \\(\\rightarrow\\) levle2 (or l2)\n\nOptional (全国区などの場合は不要)\n\npopulation \\(\\rightarrow\\) p\nmagnitude \\(\\rightarrow\\) q\ndistrict_name \\(\\rightarrow\\) l2_type = c(\"party\", \"district\")\n\n新しいサンプルデータ（政党連合のデータ）\n\n\n\n\n\nplot()メソッドを洗練させる\n\n\n\n\n\nコードをメンテナンスしやすく\n各種ドキュメント（ヘルプ、ウェブページ）の整備\n\nReferenceも相当あるので明記する。",
     "crumbs": [
       "Memo"
     ]
@@ -14,7 +14,7 @@
     "href": "memo.html#memo",
     "title": "PRcalc",
     "section": "",
-    "text": "引き続き、バグおよび計算間違いの検証\n\n\n\n\n\nplot()メソッドを洗練させる\n\n\n\n\n\nコードをメンテナンスしやすく\n各種ドキュメント（ヘルプ、ウェブページ）の整備\n\nReferenceも相当あるので明記する。",
+    "text": "重要度は現時点での重要度\n\nドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開プロセスに移行するならデバッグと共に最重要事項となる。\n\n\n\n\n引き続き、バグおよび計算間違いの検証\nread_prcalc()、as_prcalc()の引数名を修正\n\nregion \\(\\rightarrow\\) level1 (or l1)\n\nMandatory\n\ndistrict \\(\\rightarrow\\) levle2 (or l2)\n\nOptional (全国区などの場合は不要)\n\npopulation \\(\\rightarrow\\) p\nmagnitude \\(\\rightarrow\\) q\ndistrict_name \\(\\rightarrow\\) l2_type = c(\"party\", \"district\")\n\n新しいサンプルデータ（政党連合のデータ）\n\n\n\n\n\nplot()メソッドを洗練させる\n\n\n\n\n\nコードをメンテナンスしやすく\n各種ドキュメント（ヘルプ、ウェブページ）の整備\n\nReferenceも相当あるので明記する。",
     "crumbs": [
       "Memo"
     ]
@@ -816,7 +816,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘PRcalc’ in publications use:\n\n  Song J, Kamahara Y (2024). _PRcalc: A Proportional Representation\n  Calculator_. R package version 0.8.6,\n  &lt;https://github.com/JaehyunSong/PRcalc/&gt;.\n\nA BibTeX entry for LaTeX users is\n\n  @Manual{,\n    title = {{PRcalc}: A Proportional Representation Calculator},\n    author = {Jaehyun Song and Yuta Kamahara},\n    year = {2024},\n    note = {R package version 0.8.6},\n    url = {https://github.com/JaehyunSong/PRcalc/},\n  }",
+    "text": "Citation\nTo cite package ‘PRcalc’ in publications use:\n\n  Song J, Kamahara Y (2024). _PRcalc: A Proportional\n  Representation Calculator_. R package version 0.8.6,\n  &lt;https://github.com/JaehyunSong/PRcalc/&gt;.\n\nA BibTeX entry for LaTeX users is\n\n  @Manual{,\n    title = {{PRcalc}: A Proportional Representation Calculator},\n    author = {Jaehyun Song and Yuta Kamahara},\n    year = {2024},\n    note = {R package version 0.8.6},\n    url = {https://github.com/JaehyunSong/PRcalc/},\n  }",
     "crumbs": [
       "Citation"
     ]
