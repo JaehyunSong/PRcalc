@@ -393,11 +393,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 93 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(jp_lower_2021_result,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">region     =</span> <span class="st">"Pref"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">district   =</span> <span class="st">"Party"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">population =</span> <span class="st">"Votes"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">magnitude  =</span> <span class="st">"Seats"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">distinct_name =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"Pref"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"Party"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"Votes"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"Seats"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"party"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1, </span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"Jimin"</span>, <span class="st">"Komei"</span>, <span class="st">"Rikken"</span>, </span>
@@ -573,63 +573,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 150            Western Australia         TANGNEY       92232         1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(au_district_2010,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">region     =</span> <span class="st">"region"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">district   =</span> <span class="st">"district"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">population =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">magnitude  =</span> <span class="st">"magnitude"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>obj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>obj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                       124294           98742              61168
-2         2                       123647           95231              59891
-3         3                            0           98915                  0
-4         4                            0           95124                  0
-5         5                            0           95362                  0
-6         6                            0           97255                  0
-7         7                            0           98463                  0
-8         8                            0           94474                  0
-9         9                            0           97605                  0
-10       10                            0          100733                  0
-11       11                            0           94654                  0
-12       12                            0          100643                  0
-13       13                            0           93646                  0
-14       14                            0           96465                  0
-15       15                            0           94026                  0
-16       16                            0           95564                  0
-17       17                            0           96340                  0
-18       18                            0           98112                  0
-19       19                            0           93837                  0
-20       20                            0           97998                  0
-21       21                            0           97719                  0
-22       22                            0           91523                  0
-23       23                            0           97730                  0
-24       24                            0           95975                  0
-25       25                            0           92535                  0
-26       26                            0           90040                  0
-27       27                            0           98520                  0
-28       28                            0           97536                  0
-29       29                            0           96061                  0
-30       30                            0           93573                  0
-31       31                            0           99616                  0
-32       32                            0           92855                  0
-33       33                            0           97578                  0
-34       34                            0           94336                  0
-35       35                            0          100170                  0
-36       36                            0           93999                  0
-37       37                            0           92140                  0
-38       38                            0           95878                  0
-39       39                            0           92391                  0
-40       40                            0           98584                  0
-41       41                            0           96588                  0
-42       42                            0           94224                  0
-43       43                            0           95286                  0
-44       44                            0           95871                  0
-45       45                            0           96708                  0
-46       46                            0           97761                  0
-47       47                            0          101446                  0
-48       48                            0           90963                  0
+   Level2 Australian Capital Territory New South Wales Northern Territory
+1       1                       124294           98742              61168
+2       2                       123647           95231              59891
+3       3                            0           98915                  0
+4       4                            0           95124                  0
+5       5                            0           95362                  0
+6       6                            0           97255                  0
+7       7                            0           98463                  0
+8       8                            0           94474                  0
+9       9                            0           97605                  0
+10     10                            0          100733                  0
+11     11                            0           94654                  0
+12     12                            0          100643                  0
+13     13                            0           93646                  0
+14     14                            0           96465                  0
+15     15                            0           94026                  0
+16     16                            0           95564                  0
+17     17                            0           96340                  0
+18     18                            0           98112                  0
+19     19                            0           93837                  0
+20     20                            0           97998                  0
+21     21                            0           97719                  0
+22     22                            0           91523                  0
+23     23                            0           97730                  0
+24     24                            0           95975                  0
+25     25                            0           92535                  0
+26     26                            0           90040                  0
+27     27                            0           98520                  0
+28     28                            0           97536                  0
+29     29                            0           96061                  0
+30     30                            0           93573                  0
+31     31                            0           99616                  0
+32     32                            0           92855                  0
+33     33                            0           97578                  0
+34     34                            0           94336                  0
+35     35                            0          100170                  0
+36     36                            0           93999                  0
+37     37                            0           92140                  0
+38     38                            0           95878                  0
+39     39                            0           92391                  0
+40     40                            0           98584                  0
+41     41                            0           96588                  0
+42     42                            0           94224                  0
+43     43                            0           95286                  0
+44     44                            0           95871                  0
+45     45                            0           96708                  0
+46     46                            0           97761                  0
+47     47                            0          101446                  0
+48     48                            0           90963                  0
    Queensland South Australia Tasmania Victoria Western Australia  Total
 1       83045           98519    71686    93447             88186 719087
 2       92661          104845    71576    97756             90079 735686
@@ -681,55 +682,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 48          0               0        0        0                 0  90963
 
 Result:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                            1               1                  1
-2         2                            1               1                  1
-3         3                            0               1                  0
-4         4                            0               1                  0
-5         5                            0               1                  0
-6         6                            0               1                  0
-7         7                            0               1                  0
-8         8                            0               1                  0
-9         9                            0               1                  0
-10       10                            0               1                  0
-11       11                            0               1                  0
-12       12                            0               1                  0
-13       13                            0               1                  0
-14       14                            0               1                  0
-15       15                            0               1                  0
-16       16                            0               1                  0
-17       17                            0               1                  0
-18       18                            0               1                  0
-19       19                            0               1                  0
-20       20                            0               1                  0
-21       21                            0               1                  0
-22       22                            0               1                  0
-23       23                            0               1                  0
-24       24                            0               1                  0
-25       25                            0               1                  0
-26       26                            0               1                  0
-27       27                            0               1                  0
-28       28                            0               1                  0
-29       29                            0               1                  0
-30       30                            0               1                  0
-31       31                            0               1                  0
-32       32                            0               1                  0
-33       33                            0               1                  0
-34       34                            0               1                  0
-35       35                            0               1                  0
-36       36                            0               1                  0
-37       37                            0               1                  0
-38       38                            0               1                  0
-39       39                            0               1                  0
-40       40                            0               1                  0
-41       41                            0               1                  0
-42       42                            0               1                  0
-43       43                            0               1                  0
-44       44                            0               1                  0
-45       45                            0               1                  0
-46       46                            0               1                  0
-47       47                            0               1                  0
-48       48                            0               1                  0
+   Level2 Australian Capital Territory New South Wales Northern Territory
+1       1                            1               1                  1
+2       2                            1               1                  1
+3       3                            0               1                  0
+4       4                            0               1                  0
+5       5                            0               1                  0
+6       6                            0               1                  0
+7       7                            0               1                  0
+8       8                            0               1                  0
+9       9                            0               1                  0
+10     10                            0               1                  0
+11     11                            0               1                  0
+12     12                            0               1                  0
+13     13                            0               1                  0
+14     14                            0               1                  0
+15     15                            0               1                  0
+16     16                            0               1                  0
+17     17                            0               1                  0
+18     18                            0               1                  0
+19     19                            0               1                  0
+20     20                            0               1                  0
+21     21                            0               1                  0
+22     22                            0               1                  0
+23     23                            0               1                  0
+24     24                            0               1                  0
+25     25                            0               1                  0
+26     26                            0               1                  0
+27     27                            0               1                  0
+28     28                            0               1                  0
+29     29                            0               1                  0
+30     30                            0               1                  0
+31     31                            0               1                  0
+32     32                            0               1                  0
+33     33                            0               1                  0
+34     34                            0               1                  0
+35     35                            0               1                  0
+36     36                            0               1                  0
+37     37                            0               1                  0
+38     38                            0               1                  0
+39     39                            0               1                  0
+40     40                            0               1                  0
+41     41                            0               1                  0
+42     42                            0               1                  0
+43     43                            0               1                  0
+44     44                            0               1                  0
+45     45                            0               1                  0
+46     46                            0               1                  0
+47     47                            0               1                  0
+48     48                            0               1                  0
    Queensland South Australia Tasmania Victoria Western Australia Total
 1           1               1        1        1                 1     8
 2           1               1        1        1                 1     8
@@ -810,45 +811,14 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 <p>Sample dataset can be downloaded from <a href="../data/sample_dataset.csv">here</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"../data/sample_dataset.csv"</span>,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">region     =</span> <span class="st">"region"</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">district   =</span> <span class="st">"district"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">population =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">magnitude  =</span> <span class="st">"magnitude"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l1 =</span> <span class="st">"region"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l2 =</span> <span class="st">"district"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">p  =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">q  =</span> <span class="st">"magnitude"</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            ID                         Index    Value
-1       dhondt                       D’Hondt 1.054507
-2       monroe                        Monroe 0.005322
-3       maxdev    Maximum Absolute Deviation 0.002287
-4     mm_ratio                 Max-Min ratio 1.139626
-5          rae                           Rae 0.000523
-6           lh             Loosemore &amp; Hanby 0.012541
-7      grofman                       Grofman 0.000685
-8     lijphart                      Lijphart 0.001698
-9    gallagher                     Gallagher 0.003814
-10 g_gallagher         Generalized Gallagher 0.003814
-11       gatev                         Gatev 0.022992
-12    ryabtsev                      Ryabtsev 0.016260
-13      szalai                        Szalai 0.016607
-14    w_szalai               Weighted Szalai 0.016319
-15          ap          Aleskerov &amp; Platonov 1.021303
-16        gini                          Gini 0.018644
-17    atkinson                      Atkinson 0.001076
-18          sl                  Sainte-Laguë 0.001055
-19          cs                 Cox &amp; Shugart 1.030364
-20      farina                        Farina 0.035109
-21      ortona                        Ortona 0.008979
-22          cd          Cosine Dissimilarity 0.000499
-23          rr Lebeda’s RR (Mixture D’Hondt) 0.051690
-24         arr                  Lebeda’s ARR 0.001077
-25         srr                  Lebeda’s SRR 0.008936
-26        wdrr                 Lebeda’s WDRR 0.025591
-27          kl     Kullback-Leibler Surprise 0.000531
-28          lr    Likelihood Ratio Statistic 0.001069
-29       chisq                   Chi Squared 0.001077
-30   hellinger            Hellinger Distance 0.011541
-31          ad              alpha-Divergence 0.000527</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error in UseMethod("index"): no applicable method for 'index' applied to an object of class "NULL"</code></pre>
 </div>
 </div>
 </section>
@@ -869,17 +839,15 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="st">"national"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">region        =</span> <span class="st">"region"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">district      =</span> <span class="st">"district"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">population    =</span> <span class="st">"population"</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">magnitude     =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">distinct_name =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"district"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"population"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"party"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-              District national
+                Level2 National
 1            Sao Paulo 39924091
 2         Minas Gerais 19159260
 3       Rio de Janeiro 15180636
@@ -909,7 +877,7 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 27           Tocantins  1373551
 
 Result:
-              District national
+                Level2 National
 1            Sao Paulo       70
 2         Minas Gerais       53
 3       Rio de Janeiro       46
@@ -964,23 +932,23 @@ Magnitude: 513</code></pre>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="gxwnbmxnuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gxwnbmxnuq table {
+<div id="tushufgjbq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tushufgjbq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gxwnbmxnuq thead, #gxwnbmxnuq tbody, #gxwnbmxnuq tfoot, #gxwnbmxnuq tr, #gxwnbmxnuq td, #gxwnbmxnuq th {
+#tushufgjbq thead, #tushufgjbq tbody, #tushufgjbq tfoot, #tushufgjbq tr, #tushufgjbq td, #tushufgjbq th {
   border-style: none;
 }
 
-#gxwnbmxnuq p {
+#tushufgjbq p {
   margin: 0;
   padding: 0;
 }
 
-#gxwnbmxnuq .gt_table {
+#tushufgjbq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1006,12 +974,12 @@ Magnitude: 513</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_caption {
+#tushufgjbq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gxwnbmxnuq .gt_title {
+#tushufgjbq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1023,7 +991,7 @@ Magnitude: 513</code></pre>
   border-bottom-width: 0;
 }
 
-#gxwnbmxnuq .gt_subtitle {
+#tushufgjbq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1035,7 +1003,7 @@ Magnitude: 513</code></pre>
   border-top-width: 0;
 }
 
-#gxwnbmxnuq .gt_heading {
+#tushufgjbq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1047,13 +1015,13 @@ Magnitude: 513</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_bottom_border {
+#tushufgjbq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_col_headings {
+#tushufgjbq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1068,7 +1036,7 @@ Magnitude: 513</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_col_heading {
+#tushufgjbq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1088,7 +1056,7 @@ Magnitude: 513</code></pre>
   overflow-x: hidden;
 }
 
-#gxwnbmxnuq .gt_column_spanner_outer {
+#tushufgjbq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1100,15 +1068,15 @@ Magnitude: 513</code></pre>
   padding-right: 4px;
 }
 
-#gxwnbmxnuq .gt_column_spanner_outer:first-child {
+#tushufgjbq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gxwnbmxnuq .gt_column_spanner_outer:last-child {
+#tushufgjbq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gxwnbmxnuq .gt_column_spanner {
+#tushufgjbq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1120,11 +1088,11 @@ Magnitude: 513</code></pre>
   width: 100%;
 }
 
-#gxwnbmxnuq .gt_spanner_row {
+#tushufgjbq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gxwnbmxnuq .gt_group_heading {
+#tushufgjbq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1150,7 +1118,7 @@ Magnitude: 513</code></pre>
   text-align: left;
 }
 
-#gxwnbmxnuq .gt_empty_group_heading {
+#tushufgjbq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1165,15 +1133,15 @@ Magnitude: 513</code></pre>
   vertical-align: middle;
 }
 
-#gxwnbmxnuq .gt_from_md > :first-child {
+#tushufgjbq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gxwnbmxnuq .gt_from_md > :last-child {
+#tushufgjbq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gxwnbmxnuq .gt_row {
+#tushufgjbq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1192,7 +1160,7 @@ Magnitude: 513</code></pre>
   overflow-x: hidden;
 }
 
-#gxwnbmxnuq .gt_stub {
+#tushufgjbq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1205,7 +1173,7 @@ Magnitude: 513</code></pre>
   padding-right: 5px;
 }
 
-#gxwnbmxnuq .gt_stub_row_group {
+#tushufgjbq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1219,15 +1187,15 @@ Magnitude: 513</code></pre>
   vertical-align: top;
 }
 
-#gxwnbmxnuq .gt_row_group_first td {
+#tushufgjbq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gxwnbmxnuq .gt_row_group_first th {
+#tushufgjbq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gxwnbmxnuq .gt_summary_row {
+#tushufgjbq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1237,16 +1205,16 @@ Magnitude: 513</code></pre>
   padding-right: 5px;
 }
 
-#gxwnbmxnuq .gt_first_summary_row {
+#tushufgjbq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_first_summary_row.thick {
+#tushufgjbq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gxwnbmxnuq .gt_last_summary_row {
+#tushufgjbq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1256,7 +1224,7 @@ Magnitude: 513</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_grand_summary_row {
+#tushufgjbq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1266,7 +1234,7 @@ Magnitude: 513</code></pre>
   padding-right: 5px;
 }
 
-#gxwnbmxnuq .gt_first_grand_summary_row {
+#tushufgjbq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1276,7 +1244,7 @@ Magnitude: 513</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_last_grand_summary_row_top {
+#tushufgjbq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1286,11 +1254,11 @@ Magnitude: 513</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_striped {
+#tushufgjbq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gxwnbmxnuq .gt_table_body {
+#tushufgjbq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1299,7 +1267,7 @@ Magnitude: 513</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_footnotes {
+#tushufgjbq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1313,7 +1281,7 @@ Magnitude: 513</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_footnote {
+#tushufgjbq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1322,7 +1290,7 @@ Magnitude: 513</code></pre>
   padding-right: 5px;
 }
 
-#gxwnbmxnuq .gt_sourcenotes {
+#tushufgjbq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1336,7 +1304,7 @@ Magnitude: 513</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gxwnbmxnuq .gt_sourcenote {
+#tushufgjbq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1344,63 +1312,63 @@ Magnitude: 513</code></pre>
   padding-right: 5px;
 }
 
-#gxwnbmxnuq .gt_left {
+#tushufgjbq .gt_left {
   text-align: left;
 }
 
-#gxwnbmxnuq .gt_center {
+#tushufgjbq .gt_center {
   text-align: center;
 }
 
-#gxwnbmxnuq .gt_right {
+#tushufgjbq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gxwnbmxnuq .gt_font_normal {
+#tushufgjbq .gt_font_normal {
   font-weight: normal;
 }
 
-#gxwnbmxnuq .gt_font_bold {
+#tushufgjbq .gt_font_bold {
   font-weight: bold;
 }
 
-#gxwnbmxnuq .gt_font_italic {
+#tushufgjbq .gt_font_italic {
   font-style: italic;
 }
 
-#gxwnbmxnuq .gt_super {
+#tushufgjbq .gt_super {
   font-size: 65%;
 }
 
-#gxwnbmxnuq .gt_footnote_marks {
+#tushufgjbq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gxwnbmxnuq .gt_asterisk {
+#tushufgjbq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gxwnbmxnuq .gt_indent_1 {
+#tushufgjbq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gxwnbmxnuq .gt_indent_2 {
+#tushufgjbq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gxwnbmxnuq .gt_indent_3 {
+#tushufgjbq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gxwnbmxnuq .gt_indent_4 {
+#tushufgjbq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gxwnbmxnuq .gt_indent_5 {
+#tushufgjbq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

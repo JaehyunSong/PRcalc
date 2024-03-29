@@ -87,10 +87,11 @@ Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 ```{r}
 #| error: true
 obj4 <- read_prcalc("../data/sample_dataset.csv",
-                    region     = "region",
-                    district   = "district",
-                    population = "electorates",
-                    magnitude  = "magnitude")
+                    l1   = "region",
+                    l2   = "district",
+                    p    = "electorates",
+                    q    = "magnitude",
+                    type = "district")
 
 print(obj4, head = 10)
 
@@ -109,9 +110,10 @@ head(au_district_2010)
 
 # If all mangnitudes are 1, "magnitude" can be omitted.
 obj5 <- as_prcalc(au_district_2010,
-                  region     = "region",
-                  district   = "district",
-                  population = "electorates")
+                  l1   = "region",
+                  l2   = "district",
+                  p    = "electorates",
+                  type = "district")
 
 print(obj5, head = 10)
 
@@ -126,11 +128,11 @@ data(jp_lower_2021_result)
 head(jp_lower_2021_result)
 
 obj6 <- as_prcalc(jp_lower_2021_result,
-                  region        = "Pref",
-                  district      = "Party",
-                  population    = "Votes",
-                  magnitude     = "Seats",
-                  distinct_name = TRUE)
+                  l1   = "Pref",
+                  l2   = "Party",
+                  p    = "Votes",
+                  q    = "Seats",
+                  type = "party")
 
 print(obj6, head = 10)
 
@@ -144,26 +146,39 @@ decompose(obj6, alpha = 0, as_disprop = FALSE)
 If `special` is defined, three-step decomposition is conducted.
 
 ```{r}
-data(nz_district)
+data("nz_district")
 
 nz_1949 <- nz_district |>
   dplyr::filter(year == 1949) |>
-  as_prcalc(region     = "region",
-            district   = "district",
-            population = "electorates",
-            magnitude  = "magnitude")
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district")
 
 nz_1972 <- nz_district |>
   dplyr::filter(year == 1972) |>
-  as_prcalc()
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district")
 
 nz_1990 <- nz_district |>
   dplyr::filter(year == 1990) |>
-  as_prcalc()
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district")
 
 nz_2011 <- nz_district |>
   dplyr::filter(year == 2011) |>
-  as_prcalc()
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district")
 
 (decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori"))
 (decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori"))
@@ -191,7 +206,12 @@ list("1949" = decompose_1949,
 nz_decompose_all <- nz_district |> 
   group_by(year) |> 
   nest() |> 
-  mutate(data      = map(data, \(x) as_prcalc(x)),
+  mutate(data      = map(data, \(x) as_prcalc(x,
+                                              l1   = "region",
+                                              l2   = "district",
+                                              p    = "electorates",
+                                              q    = "magnitude",
+                                              type = "district")),
          decompose = map(data, \(x) decompose(x, 
                                               alpha      = 0,
                                               as_disprop = FALSE,

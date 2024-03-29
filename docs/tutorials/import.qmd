@@ -23,11 +23,11 @@ data("jp_lower_2021_result")
 jp_lower_2021_result
 
 obj1 <- as_prcalc(jp_lower_2021_result,
-                  region     = "Pref",
-                  district   = "Party",
-                  population = "Votes",
-                  magnitude  = "Seats",
-                  distinct_name = TRUE)
+                  l1   = "Pref",
+                  l2   = "Party",
+                  p    = "Votes",
+                  q    = "Seats",
+                  type = "party")
 
 plot(obj1, 
      subset_p  = c("Jimin", "Komei", "Rikken", 
@@ -44,10 +44,11 @@ data("au_district_2010")
 au_district_2010
 
 obj2 <- as_prcalc(au_district_2010,
-                  region     = "region",
-                  district   = "district",
-                  population = "electorates",
-                  magnitude  = "magnitude")
+                  l1   = "region",
+                  l2   = "district",
+                  p    = "electorates",
+                  q    = "magnitude",
+                  type = "district")
 
 obj2
 
@@ -61,10 +62,10 @@ Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 ```{r}
 #| error: true
 obj3 <- read_prcalc("../data/sample_dataset.csv",
-                    region     = "region",
-                    district   = "district",
-                    population = "electorates",
-                    magnitude  = "magnitude")
+                    l1 = "region",
+                    l2 = "district",
+                    p  = "electorates",
+                    q  = "magnitude")
 
 index(obj3)
 ```
@@ -78,12 +79,10 @@ head(br_district_2010)
 
 # In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) 
 obj4 <- br_district_2010 |> 
-  mutate(region = "national") |> 
-  as_prcalc(region        = "region",
-            district      = "district",
-            population    = "population",
-            magnitude     = "magnitude",
-            distinct_name = TRUE)
+  as_prcalc(l1   = "district",
+            p    = "population",
+            q    = "magnitude",
+            type = "party")
 
 obj4
 

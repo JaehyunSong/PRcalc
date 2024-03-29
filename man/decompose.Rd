@@ -40,10 +40,11 @@ decompose(obj)
 data("au_district_2010")
 
 au_data <- au_district_2010 |>
-  as_prcalc(region     = "region",
-            district   = "district",
-            population = "electorates",
-            magnitude  = "magnitude")
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district")
 
 decompose(au_data, alpha = 0, as_disprop = FALSE)
 
@@ -52,10 +53,11 @@ data("nz_district")
 
 nz_district |>
   dplyr::filter(year == 2011) |>
-  as_prcalc(region     = "region",
-            district   = "district",
-            population = "electorates",
-            magnitude  = "magnitude") |>
+  as_prcalc(l1   = "region",
+            l2   = "district",
+            p    = "electorates",
+            q    = "magnitude",
+            type = "district") |>
   decompose(alpha = 0, as_disprop = FALSE, special = "Maori")
 }
 \references{

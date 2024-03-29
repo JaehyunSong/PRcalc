@@ -26,18 +26,6 @@ a \code{prcalc_decomposition} object.
 \description{
 Decomposition using a \code{prcalc} object with three-step.
 }
-\examples{
-data(nz_district)
-
-nz_1949 <- nz_district |>
-  dplyr::filter(year == 1949) |>
-  as_prcalc(region     = "region",
-            district   = "district",
-            population = "electorates",
-            magnitude  = "magnitude")
-
-decompose3(nz_1949, special = "Maori")
-}
 \references{
 \itemize{
 \item{Yuta, Kamahara, Junichiro Wada, and Yuko Kasuya. 2021. "Malapportionment in space and time: Decompose it!" \emph{Electoral Studies}. 71: 102301.}

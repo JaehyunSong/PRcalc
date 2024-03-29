@@ -522,92 +522,24 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 <p>Sample dataset can be downloaded from <a href="../data/sample_dataset.csv">here</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"../data/sample_dataset.csv"</span>,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">region     =</span> <span class="st">"region"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">district   =</span> <span class="st">"district"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">population =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">magnitude  =</span> <span class="st">"magnitude"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj4, <span class="at">head =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj4, <span class="at">head =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Raw:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                       124294           98742              61168
-2         2                       123647           95231              59891
-3         3                            0           98915                  0
-4         4                            0           95124                  0
-5         5                            0           95362                  0
-6         6                            0           97255                  0
-7         7                            0           98463                  0
-8         8                            0           94474                  0
-9         9                            0           97605                  0
-10       10                            0          100733                  0
-   Queensland South Australia Tasmania Victoria Western Australia  Total
-1       83045           98519    71686    93447             88186 719087
-2       92661          104845    71576    97756             90079 735686
-3       91856           97860    71350    89131             89536 538648
-4       92197           99775    71122   100610             90430 549258
-5       91961          100216    72875    88124             85811 534349
-6       94533          102281        0   101342             89649 485060
-7       90130           96233        0    92317             93378 470521
-8       85225          101510        0    86220             93930 461359
-9       89726          104280        0   101512             92340 485463
-10      83724           99023        0    91924             92902 468306
-
-Result:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                            1               1                  1
-2         2                            1               1                  1
-3         3                            0               1                  0
-4         4                            0               1                  0
-5         5                            0               1                  0
-6         6                            0               1                  0
-7         7                            0               1                  0
-8         8                            0               1                  0
-9         9                            0               1                  0
-10       10                            0               1                  0
-   Queensland South Australia Tasmania Victoria Western Australia Total
-1           1               1        1        1                 1     8
-2           1               1        1        1                 1     8
-3           1               1        1        1                 1     6
-4           1               1        1        1                 1     6
-5           1               1        1        1                 1     6
-6           1               1        0        1                 1     5
-7           1               1        0        1                 1     5
-8           1               1        0        1                 1     5
-9           1               1        0        1                 1     5
-10          1               1        0        1                 1     5
-
-Parameters:
-  Allocation method: 
-  Extra parameter: 
-  Threshold: 
-
-Magnitude: 
-Australian Capital Territory              New South Wales 
-                           2                           48 
-          Northern Territory                   Queensland 
-                           2                           30 
-             South Australia                     Tasmania 
-                          11                            5 
-                    Victoria            Western Australia 
-                          37                           15 </code></pre>
+<pre><code>NULL</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj4, <span class="at">alpha =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>alpha = 2 
-alpha-divergence  Reapportionment    Redistricting 
-     0.004661456      0.003545961      0.001115495 
-
-Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error in UseMethod("decompose"): no applicable method for 'decompose' applied to an object of class "NULL"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj4, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>alpha = 0 
-alpha-divergence  Reapportionment    Redistricting 
-     0.004280586      0.003107794      0.001172792 
-
-Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error in UseMethod("decompose"): no applicable method for 'decompose' applied to an object of class "NULL"</code></pre>
 </div>
 </div>
 </section>
@@ -628,24 +560,25 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If all mangnitudes are 1, "magnitude" can be omitted.</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(au_district_2010,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">region     =</span> <span class="st">"region"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">district   =</span> <span class="st">"district"</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">population =</span> <span class="st">"electorates"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj5, <span class="at">head =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj5, <span class="at">head =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                       124294           98742              61168
-2         2                       123647           95231              59891
-3         3                            0           98915                  0
-4         4                            0           95124                  0
-5         5                            0           95362                  0
-6         6                            0           97255                  0
-7         7                            0           98463                  0
-8         8                            0           94474                  0
-9         9                            0           97605                  0
-10       10                            0          100733                  0
+   Level2 Australian Capital Territory New South Wales Northern Territory
+1       1                       124294           98742              61168
+2       2                       123647           95231              59891
+3       3                            0           98915                  0
+4       4                            0           95124                  0
+5       5                            0           95362                  0
+6       6                            0           97255                  0
+7       7                            0           98463                  0
+8       8                            0           94474                  0
+9       9                            0           97605                  0
+10     10                            0          100733                  0
    Queensland South Australia Tasmania Victoria Western Australia  Total
 1       83045           98519    71686    93447             88186 719087
 2       92661          104845    71576    97756             90079 735686
@@ -659,17 +592,17 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 10      83724           99023        0    91924             92902 468306
 
 Result:
-   District Australian Capital Territory New South Wales Northern Territory
-1         1                            1               1                  1
-2         2                            1               1                  1
-3         3                            0               1                  0
-4         4                            0               1                  0
-5         5                            0               1                  0
-6         6                            0               1                  0
-7         7                            0               1                  0
-8         8                            0               1                  0
-9         9                            0               1                  0
-10       10                            0               1                  0
+   Level2 Australian Capital Territory New South Wales Northern Territory
+1       1                            1               1                  1
+2       2                            1               1                  1
+3       3                            0               1                  0
+4       4                            0               1                  0
+5       5                            0               1                  0
+6       6                            0               1                  0
+7       7                            0               1                  0
+8       8                            0               1                  0
+9       9                            0               1                  0
+10     10                            0               1                  0
    Queensland South Australia Tasmania Victoria Western Australia Total
 1           1               1        1        1                 1     8
 2           1               1        1        1                 1     8
@@ -731,16 +664,16 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 6 Jimin Hokuriku    1468380     5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>obj6 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(jp_lower_2021_result,</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">region        =</span> <span class="st">"Pref"</span>,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">district      =</span> <span class="st">"Party"</span>,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">population    =</span> <span class="st">"Votes"</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">magnitude     =</span> <span class="st">"Seats"</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">distinct_name =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"Pref"</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"Party"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"Votes"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"Seats"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"party"</span>)</span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obj6, <span class="at">head =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
-   District Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
+     Level2 Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
 1     Jimin   863300 1628233   2172065     2590787 2000084  1468380 2515841
 2     Komei   294371  456287    823930      850667  715450   322535  784976
 3    Rikken   682913  991505   1391149     1651562 1293281   773076 1485947
@@ -764,7 +697,7 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 10       0       0       0       0    46142
 
 Result:
-   District Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
+     Level2 Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
 1     Jimin        3      6         7           7     5        5     8     8
 2     Komei        1      2         3           2     2        1     3     4
 3    Rikken        2      3         5           5     4        3     5     4
@@ -823,28 +756,41 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 <h2 class="anchored" data-anchor-id="three-step-decomposition">Three-step Decomposition</h2>
 <p>If <code>special</code> is defined, three-step decomposition is conducted.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(nz_district)</span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"nz_district"</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>nz_1949 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1949</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">region     =</span> <span class="st">"region"</span>,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">district   =</span> <span class="st">"district"</span>,</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">population =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">magnitude  =</span> <span class="st">"magnitude"</span>)</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>nz_1972 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1972</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>()</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>nz_1990 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1990</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>()</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>nz_2011 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2011</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>()</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>(decompose_1949 <span class="ot">&lt;-</span> <span class="fu">decompose</span>(nz_1949, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">special =</span> <span class="st">"Maori"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>nz_1972 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1972</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>nz_1990 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1990</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>nz_2011 <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2011</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>(decompose_1949 <span class="ot">&lt;-</span> <span class="fu">decompose</span>(nz_1949, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">special =</span> <span class="st">"Maori"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 1 
 alpha-divergence          Special  Reapportionment    Redistricting 
@@ -910,37 +856,42 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>nz_decompose_all <span class="ot">&lt;-</span> nz_district <span class="sc">|&gt;</span> </span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> </span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data      =</span> <span class="fu">map</span>(data, \(x) <span class="fu">as_prcalc</span>(x)),</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">decompose =</span> <span class="fu">map</span>(data, \(x) <span class="fu">decompose</span>(x, </span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">alpha      =</span> <span class="dv">0</span>,</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">as_disprop =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">special    =</span> <span class="st">"Maori"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(decompose)</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nz_decompose_all) <span class="ot">&lt;-</span> <span class="fu">unique</span>(nz_district<span class="sc">$</span>year)</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>nz_decompose_all <span class="sc">|&gt;</span> </span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data      =</span> <span class="fu">map</span>(data, \(x) <span class="fu">as_prcalc</span>(x,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">type =</span> <span class="st">"district"</span>)),</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">decompose =</span> <span class="fu">map</span>(data, \(x) <span class="fu">decompose</span>(x, </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">alpha      =</span> <span class="dv">0</span>,</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">as_disprop =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">special    =</span> <span class="st">"Maori"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(decompose)</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nz_decompose_all) <span class="ot">&lt;-</span> <span class="fu">unique</span>(nz_district<span class="sc">$</span>year)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>nz_decompose_all <span class="sc">|&gt;</span> </span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="wyobbzsnlx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wyobbzsnlx table {
+<div id="mqqczyvexb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mqqczyvexb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wyobbzsnlx thead, #wyobbzsnlx tbody, #wyobbzsnlx tfoot, #wyobbzsnlx tr, #wyobbzsnlx td, #wyobbzsnlx th {
+#mqqczyvexb thead, #mqqczyvexb tbody, #mqqczyvexb tfoot, #mqqczyvexb tr, #mqqczyvexb td, #mqqczyvexb th {
   border-style: none;
 }
 
-#wyobbzsnlx p {
+#mqqczyvexb p {
   margin: 0;
   padding: 0;
 }
 
-#wyobbzsnlx .gt_table {
+#mqqczyvexb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -966,12 +917,12 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-left-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_caption {
+#mqqczyvexb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wyobbzsnlx .gt_title {
+#mqqczyvexb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -983,7 +934,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-width: 0;
 }
 
-#wyobbzsnlx .gt_subtitle {
+#mqqczyvexb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -995,7 +946,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-width: 0;
 }
 
-#wyobbzsnlx .gt_heading {
+#mqqczyvexb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1007,13 +958,13 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_bottom_border {
+#mqqczyvexb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_col_headings {
+#mqqczyvexb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1028,7 +979,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_col_heading {
+#mqqczyvexb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1048,7 +999,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#wyobbzsnlx .gt_column_spanner_outer {
+#mqqczyvexb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1060,15 +1011,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 4px;
 }
 
-#wyobbzsnlx .gt_column_spanner_outer:first-child {
+#mqqczyvexb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wyobbzsnlx .gt_column_spanner_outer:last-child {
+#mqqczyvexb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wyobbzsnlx .gt_column_spanner {
+#mqqczyvexb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1080,11 +1031,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   width: 100%;
 }
 
-#wyobbzsnlx .gt_spanner_row {
+#mqqczyvexb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wyobbzsnlx .gt_group_heading {
+#mqqczyvexb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1110,7 +1061,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   text-align: left;
 }
 
-#wyobbzsnlx .gt_empty_group_heading {
+#mqqczyvexb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1125,15 +1076,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: middle;
 }
 
-#wyobbzsnlx .gt_from_md > :first-child {
+#mqqczyvexb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wyobbzsnlx .gt_from_md > :last-child {
+#mqqczyvexb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wyobbzsnlx .gt_row {
+#mqqczyvexb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1152,7 +1103,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#wyobbzsnlx .gt_stub {
+#mqqczyvexb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1165,7 +1116,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#wyobbzsnlx .gt_stub_row_group {
+#mqqczyvexb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1179,15 +1130,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: top;
 }
 
-#wyobbzsnlx .gt_row_group_first td {
+#mqqczyvexb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wyobbzsnlx .gt_row_group_first th {
+#mqqczyvexb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wyobbzsnlx .gt_summary_row {
+#mqqczyvexb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1197,16 +1148,16 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#wyobbzsnlx .gt_first_summary_row {
+#mqqczyvexb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_first_summary_row.thick {
+#mqqczyvexb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wyobbzsnlx .gt_last_summary_row {
+#mqqczyvexb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1216,7 +1167,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_grand_summary_row {
+#mqqczyvexb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1226,7 +1177,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#wyobbzsnlx .gt_first_grand_summary_row {
+#mqqczyvexb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1236,7 +1187,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_last_grand_summary_row_top {
+#mqqczyvexb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1246,11 +1197,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_striped {
+#mqqczyvexb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wyobbzsnlx .gt_table_body {
+#mqqczyvexb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1259,7 +1210,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_footnotes {
+#mqqczyvexb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1273,7 +1224,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_footnote {
+#mqqczyvexb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1282,7 +1233,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#wyobbzsnlx .gt_sourcenotes {
+#mqqczyvexb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1296,7 +1247,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#wyobbzsnlx .gt_sourcenote {
+#mqqczyvexb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1304,63 +1255,63 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#wyobbzsnlx .gt_left {
+#mqqczyvexb .gt_left {
   text-align: left;
 }
 
-#wyobbzsnlx .gt_center {
+#mqqczyvexb .gt_center {
   text-align: center;
 }
 
-#wyobbzsnlx .gt_right {
+#mqqczyvexb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wyobbzsnlx .gt_font_normal {
+#mqqczyvexb .gt_font_normal {
   font-weight: normal;
 }
 
-#wyobbzsnlx .gt_font_bold {
+#mqqczyvexb .gt_font_bold {
   font-weight: bold;
 }
 
-#wyobbzsnlx .gt_font_italic {
+#mqqczyvexb .gt_font_italic {
   font-style: italic;
 }
 
-#wyobbzsnlx .gt_super {
+#mqqczyvexb .gt_super {
   font-size: 65%;
 }
 
-#wyobbzsnlx .gt_footnote_marks {
+#mqqczyvexb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wyobbzsnlx .gt_asterisk {
+#mqqczyvexb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wyobbzsnlx .gt_indent_1 {
+#mqqczyvexb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wyobbzsnlx .gt_indent_2 {
+#mqqczyvexb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wyobbzsnlx .gt_indent_3 {
+#mqqczyvexb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wyobbzsnlx .gt_indent_4 {
+#mqqczyvexb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wyobbzsnlx .gt_indent_5 {
+#mqqczyvexb .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

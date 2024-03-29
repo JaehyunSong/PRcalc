@@ -4,28 +4,20 @@
 \alias{as_prcalc}
 \title{Transformation from \code{data.frame} to \code{prcalc}}
 \usage{
-as_prcalc(
-  x,
-  region = "region",
-  district = "district",
-  population = "electorates",
-  magnitude = "magnitude",
-  distinct_name = FALSE,
-  ...
-)
+as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("party", "district"), ...)
 }
 \arguments{
 \item{x}{a \code{data.frame} or \code{tibble} object.}
 
-\item{region}{a character (mandatory). A column name of region or state.}
+\item{l1}{a character (mandatory). A column name of region or state.}
 
-\item{district}{a character (mandatory). A column name of district.}
+\item{l2}{a character (optional). A column name of party or district.}
 
-\item{population}{a character (mandatory). A column name of population.}
+\item{p}{a character (mandatory). A column name of population.}
 
-\item{magnitude}{a character (optional). A column name of magnitude. If \code{NULL}, magnitudes of all districts are replaced by \code{1}.}
+\item{q}{a character (optional). A column name of magnitude. If \code{NULL}, magnitudes of all districts are replaced by \code{1}.}
 
-\item{distinct_name}{If \code{TRUE}, all district names are distinct. Default is \code{FALSE}.}
+\item{type}{a type of \code{l2}. If \code{"party"}, vector of \code{l2} represents parties. If \code{"district"}, vector of \code{l2} represents electoral district.}
 
 \item{...}{ignored}
 }
@@ -42,10 +34,11 @@ an object \code{x} must include three columns---region(state) name, district nam
 data(au_district_2010)
 
 obj <- as_prcalc(au_district_2010,
-                 region     = "region",
-                 district   = "district",
-                 population = "electorates",
-                 magnitude  = "magnitude")
+                 l1   = "region",
+                 l2   = "district",
+                 p    = "electorates",
+                 q    = "magnitude",
+                 type = "district")
 obj
 }
 \seealso{
