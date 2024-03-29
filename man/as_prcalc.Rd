@@ -4,7 +4,7 @@
 \alias{as_prcalc}
 \title{Transformation from \code{data.frame} to \code{prcalc}}
 \usage{
-as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("party", "district"), ...)
+as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
 }
 \arguments{
 \item{x}{a \code{data.frame} or \code{tibble} object.}

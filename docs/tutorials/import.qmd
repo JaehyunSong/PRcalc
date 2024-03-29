@@ -61,6 +61,7 @@ Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 
 ```{r}
 #| error: true
+# Because default value of `type` is `"district"`, you can omit it.
 obj3 <- read_prcalc("../data/sample_dataset.csv",
                     l1 = "region",
                     l2 = "district",

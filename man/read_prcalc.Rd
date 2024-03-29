@@ -4,7 +4,7 @@
 \alias{read_prcalc}
 \title{Transformation from \code{.csv} to \code{prcalc}}
 \usage{
-read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("party", "district"), ...)
+read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
 }
 \arguments{
 \item{x}{a \code{data.frame} or \code{tibble} object.}

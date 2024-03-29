@@ -37,12 +37,12 @@ decompose3 <- function(x, ...) {
 #' data(nz_district)
 #'
 #' nz_1949 <- nz_district |>
-#'   dplyr::filter(year == 1949) |>
+#'   subset(year == 1949) |>
 #'   as_prcalc(l1   = "region",
 #'             l2   = "district",
 #'             p    = "electorates",
 #'             q    = "magnitude",
-#'             type = "district)
+#'             type = "district")
 #'
 #' decompose3(nz_1949, special = "Maori")
 
