@@ -1,14 +1,14 @@
-#' Transformation from `data.frame` to `prcalc`
-#' @param x a `data.frame` or `tibble` object.
-#' @param l1 a character (mandatory). A column name of region or state.
-#' @param l2 a character (optional). A column name of party or district.
-#' @param p a character (mandatory). A column name of population.
-#' @param q a character (optional). A column name of magnitude. If `NULL`, magnitudes of all districts are replaced by `1`.
-#' @param type a type of `l2`. If `"party"`, vector of `l2` represents parties. If `"district"`, vector of `l2` represents electoral district.
+#' Transformation from `.csv` or `data.frame` (`tibble`) to `prcalc` object.
+#' @param x a path of `.csv` file (`read_prcalc()`), or name of `data.frame` or `tibble` object (`as_prcalc()`).
+#' @param l1 a character. \emph{Mandatory.} A column name of level 1 (region or state).
+#' @param l2 a character. \emph{Optional.} A column name of level 2 (party or district).
+#' @param p a character. \emph{Mandatory.} A column name of population or number of electorates.
+#' @param q a character. \emph{Optional.} A column name of magnitude or number of allocated seats. If `NULL`, replaced by `1`.
+#' @param type a type of `l2`. \emph{Mandatory.} If `"party"`, vector of `l2` represents parties. If `"district"`, vector of `l2` represents electoral district. Default is `"district"`.
 #' @param ... ignored
 #'
 #' @details
-#' an object `x` must include three columns---region(state) name, district name, and population (number of electorates). A column of magnitude is optional.
+#' At least two columns of `x` are required---`l1` and `p`.
 #'
 #' @return
 #' a `prcalc` object.
@@ -17,24 +17,48 @@
 #' @import tibble
 #' @import dplyr
 #' @import tidyr
+#' @import tidyselect
 #'
 #' @rdname as_prcalc
 #'
 #' @export
 #'
-#' @seealso
-#' \code{\link{read_prcalc}}
-#'
 #' @examples
-#' data(au_district_2010)
+#' data("jp_lower_2021_result")
 #'
-#' obj <- as_prcalc(au_district_2010,
-#'                  l1   = "region",
-#'                  l2   = "district",
-#'                  p    = "electorates",
-#'                  q    = "magnitude",
-#'                  type = "district")
-#' obj
+#' as_prcalc(jp_lower_2021_result,
+#'           l1   = "Pref",
+#'           l2   = "Party",
+#'           p    = "Votes",
+#'           q    = "Seats",
+#'           type = "party")
+#'
+#' data("br_district_2010")
+#' # Brazil has single block PR system, l2 can be omitted.
+#' # If type = "party", raw names of districts are preserved.
+#' br_district_2010 |>
+#'   as_prcalc(l1   = "district",
+#'             p    = "population",
+#'             q    = "magnitude",
+#'             type = "party")
+#'
+#' data("au_district_2010")
+#' # Because all of magnitude are 1 and type of l2 is district,
+#' # you can omit q and type arguments.
+#' as_prcalc(au_district_2010,
+#'           l1   = "region",
+#'           l2   = "district",
+#'           p    = "electorates")
+#' # You can import .csv format and transfrom into prcalc object directly.
+#' \dontrun{
+#' read_prcalc("data/my_file.csv",
+#'             l1   = "region",
+#'             l2   = "district",
+#'             p    = "electorates",
+#'             q    = "magnitude",
+#'             type = "district")
+#' }
+
 as_prcalc <- function(x,
                       l1,
                       l2   = NULL,
@@ -84,11 +108,11 @@ as_prcalc <- function(x,
         mutate("Level1" = "National",
                .before  = Level2)
 
-        temp_df2 <- temp_df |>
-          select("Level2" = all_of(l1),
-                 all_of(q)) |>
-          mutate("Level1" = "National",
-                 .before  = Level2)
+      temp_df2 <- temp_df |>
+        select("Level2" = all_of(l1),
+               all_of(q)) |>
+        mutate("Level1" = "National",
+               .before  = Level2)
     } else {
       temp_df1 <- temp_df |>
         select("Level1" = all_of(l1),

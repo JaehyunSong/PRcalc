@@ -2,20 +2,18 @@
 
 重要度は現時点での重要度
 
-* ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開プロセスに移行するならデバッグと共に最重要事項となる。
+* たとえば、ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開フェーズへ移行したらデバッグと共に最重要事項となる。
 
 ### 重要度：高
 
 * 引き続き、バグおよび計算間違いの検証
-* `read_prcalc()`、`as_prcalc()`の引数名を修正
-  * `region` $\rightarrow$ `level1` (or `l1`)
-    * Mandatory
-  * `district` $\rightarrow$ `levle2` (or `l2`)
-    * Optional (全国区などの場合は不要)
-  * `population` $\rightarrow$ `p`
-  * `magnitude` $\rightarrow$ `q`
-  * `district_name` $\rightarrow$ `l2_type = c("party", "district")` 
 * 新しいサンプルデータ（政党連合のデータ）
+* `index()`関数
+   * 現状だと`Total`列を使って計算（=政党がobservation）
+      * ただ、この場合、`decompose()`と`index()`の結果が一致しない（参院は一致、衆院は不一致）。
+   * 引数を追加し、「政党をobservation（現在の`index()`）」にするか「都道府県をobservation」にするか「政党$\times$都道府県をobservation（現在の`decompose()`）」にするかを指定できるようにする。
+   * `unit = c("l1", "l2", "both")`とか?
+      * `"l1"`は都道府県、`"l2"`は政党、`"both"`は政党$\times$都道府県
 
 ### 重要度：中
 

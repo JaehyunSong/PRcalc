@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -255,7 +255,7 @@ window.Quarto = {
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="./man/read_prcalc.html">
+    <a class="dropdown-item" href="./man/read_prcalc.qmd">
  <span class="dropdown-text">read_prcalc()</span></a>
   </li>  
         <li>
@@ -338,27 +338,25 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="memo">Memo</h2>
 <p>重要度は現時点での重要度</p>
 <ul>
-<li>ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開プロセスに移行するならデバッグと共に最重要事項となる。</li>
+<li>たとえば、ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開フェーズへ移行したらデバッグと共に最重要事項となる。</li>
 </ul>
 <section id="重要度高" class="level3">
 <h3 class="anchored" data-anchor-id="重要度高">重要度：高</h3>
 <ul>
 <li>引き続き、バグおよび計算間違いの検証</li>
-<li><code>read_prcalc()</code>、<code>as_prcalc()</code>の引数名を修正
-<ul>
-<li><code>region</code> <span class="math inline">\(\rightarrow\)</span> <code>level1</code> (or <code>l1</code>)
-<ul>
-<li>Mandatory</li>
-</ul></li>
-<li><code>district</code> <span class="math inline">\(\rightarrow\)</span> <code>levle2</code> (or <code>l2</code>)
-<ul>
-<li>Optional (全国区などの場合は不要)</li>
-</ul></li>
-<li><code>population</code> <span class="math inline">\(\rightarrow\)</span> <code>p</code></li>
-<li><code>magnitude</code> <span class="math inline">\(\rightarrow\)</span> <code>q</code></li>
-<li><code>district_name</code> <span class="math inline">\(\rightarrow\)</span> <code>l2_type = c("party", "district")</code></li>
-</ul></li>
 <li>新しいサンプルデータ（政党連合のデータ）</li>
+<li><code>index()</code>関数
+<ul>
+<li>現状だと<code>Total</code>列を使って計算（=政党がobservation）
+<ul>
+<li>ただ、この場合、<code>decompose()</code>と<code>index()</code>の結果が一致しない（参院は一致、衆院は不一致）。</li>
+</ul></li>
+<li>引数を追加し、「政党をobservation（現在の<code>index()</code>）」にするか「都道府県をobservation」にするか「政党<span class="math inline">\(\times\)</span>都道府県をobservation（現在の<code>decompose()</code>）」にするかを指定できるようにする。</li>
+<li><code>unit = c("l1", "l2", "both")</code>とか?
+<ul>
+<li><code>"l1"</code>は都道府県、<code>"l2"</code>は政党、<code>"both"</code>は政党<span class="math inline">\(\times\)</span>都道府県</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="重要度中" class="level3">

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="../man/read_prcalc.html">
+    <a class="dropdown-item" href="../man/read_prcalc.qmd">
  <span class="dropdown-text">read_prcalc()</span></a>
   </li>  
         <li>
@@ -339,15 +339,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="transformation-from-data.frame-to-prcalc" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="transformation-from-data.frame-to-prcalc">Transformation from <code>data.frame</code> to <code>prcalc</code></h2>
+<section id="transformation-from-.csv-or-data.frame-tibble-to-prcalc-object." class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="transformation-from-.csv-or-data.frame-tibble-to-prcalc-object.">Transformation from <code>.csv</code> or <code>data.frame</code> (<code>tibble</code>) to <code>prcalc</code> object.</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Transformation from <code>data.frame</code> to <code>prcalc</code></p>
+<p>Transformation from <code>.csv</code> or <code>data.frame</code> (<code>tibble</code>) to <code>prcalc</code> object.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
 <pre><code class="language-R">as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
+
+read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -358,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code id="as_prcalc_:_x">x</code>
 </td>
 <td>
-a <code>data.frame</code> or <code>tibble</code> object.
+a path of <code>.csv</code> file (<code>read_prcalc()</code>), or name of <code>data.frame</code> or <code>tibble</code> object (<code>as_prcalc()</code>).
 </td>
 </tr>
 <tr>
@@ -366,7 +368,7 @@ a <code>data.frame</code> or <code>tibble</code> object.
 <code id="as_prcalc_:_l1">l1</code>
 </td>
 <td>
-a character (mandatory). A column name of region or state.
+a character. <em>Mandatory.</em> A column name of level 1 (region or state).
 </td>
 </tr>
 <tr>
@@ -374,7 +376,7 @@ a character (mandatory). A column name of region or state.
 <code id="as_prcalc_:_l2">l2</code>
 </td>
 <td>
-a character (optional). A column name of party or district.
+a character. <em>Optional.</em> A column name of level 2 (party or district).
 </td>
 </tr>
 <tr>
@@ -382,7 +384,7 @@ a character (optional). A column name of party or district.
 <code id="as_prcalc_:_p">p</code>
 </td>
 <td>
-a character (mandatory). A column name of population.
+a character. <em>Mandatory.</em> A column name of population or number of electorates.
 </td>
 </tr>
 <tr>
@@ -390,7 +392,7 @@ a character (mandatory). A column name of population.
 <code id="as_prcalc_:_q">q</code>
 </td>
 <td>
-a character (optional). A column name of magnitude. If <code>NULL</code>, magnitudes of all districts are replaced by <code>1</code>.
+a character. <em>Optional.</em> A column name of magnitude or number of allocated seats. If <code>NULL</code>, replaced by <code>1</code>.
 </td>
 </tr>
 <tr>
@@ -398,7 +400,7 @@ a character (optional). A column name of magnitude. If <code>NULL</code>, magnit
 <code id="as_prcalc_:_type">type</code>
 </td>
 <td>
-a type of <code>l2</code>. If <code>“party”</code>, vector of <code>l2</code> represents parties. If <code>“district”</code>, vector of <code>l2</code> represents electoral district.
+a type of <code>l2</code>. <em>Mandatory.</em> If <code>“party”</code>, vector of <code>l2</code> represents parties. If <code>“district”</code>, vector of <code>l2</code> represents electoral district. Default is <code>“district”</code>.
 </td>
 </tr>
 <tr>
@@ -413,246 +415,49 @@ ignored
 </section>
 <section id="details" class="level3">
 <h3 class="anchored" data-anchor-id="details">Details</h3>
-<p>an object <code>x</code> must include three columns—region(state) name, district name, and population (number of electorates). A column of magnitude is optional.</p>
+<p>At least two columns of <code>x</code> are required—<code>l1</code> and <code>p</code>.</p>
 </section>
 <section id="value" class="level3">
 <h3 class="anchored" data-anchor-id="value">Value</h3>
 <p>a <code>prcalc</code> object.</p>
-</section>
-<section id="see-also" class="level3">
-<h3 class="anchored" data-anchor-id="see-also">See Also</h3>
-<p><code>read_prcalc</code></p>
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(au_district_2010)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021_result"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(au_district_2010,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">type =</span> <span class="st">"district"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>obj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Raw:
-   Level2 Australian Capital Territory New South Wales Northern Territory
-1       1                       124294           98742              61168
-2       2                       123647           95231              59891
-3       3                            0           98915                  0
-4       4                            0           95124                  0
-5       5                            0           95362                  0
-6       6                            0           97255                  0
-7       7                            0           98463                  0
-8       8                            0           94474                  0
-9       9                            0           97605                  0
-10     10                            0          100733                  0
-11     11                            0           94654                  0
-12     12                            0          100643                  0
-13     13                            0           93646                  0
-14     14                            0           96465                  0
-15     15                            0           94026                  0
-16     16                            0           95564                  0
-17     17                            0           96340                  0
-18     18                            0           98112                  0
-19     19                            0           93837                  0
-20     20                            0           97998                  0
-21     21                            0           97719                  0
-22     22                            0           91523                  0
-23     23                            0           97730                  0
-24     24                            0           95975                  0
-25     25                            0           92535                  0
-26     26                            0           90040                  0
-27     27                            0           98520                  0
-28     28                            0           97536                  0
-29     29                            0           96061                  0
-30     30                            0           93573                  0
-31     31                            0           99616                  0
-32     32                            0           92855                  0
-33     33                            0           97578                  0
-34     34                            0           94336                  0
-35     35                            0          100170                  0
-36     36                            0           93999                  0
-37     37                            0           92140                  0
-38     38                            0           95878                  0
-39     39                            0           92391                  0
-40     40                            0           98584                  0
-41     41                            0           96588                  0
-42     42                            0           94224                  0
-43     43                            0           95286                  0
-44     44                            0           95871                  0
-45     45                            0           96708                  0
-46     46                            0           97761                  0
-47     47                            0          101446                  0
-48     48                            0           90963                  0
-   Queensland South Australia Tasmania Victoria Western Australia  Total
-1       83045           98519    71686    93447             88186 719087
-2       92661          104845    71576    97756             90079 735686
-3       91856           97860    71350    89131             89536 538648
-4       92197           99775    71122   100610             90430 549258
-5       91961          100216    72875    88124             85811 534349
-6       94533          102281        0   101342             89649 485060
-7       90130           96233        0    92317             93378 470521
-8       85225          101510        0    86220             93930 461359
-9       89726          104280        0   101512             92340 485463
-10      83724           99023        0    91924             92902 468306
-11      91349          100156        0    87710             89562 463431
-12      82535               0        0    95299             91907 370384
-13      92573               0        0   100852             91775 378846
-14      93364               0        0    95571             90817 376217
-15      91044               0        0    97521             92232 374823
-16      91371               0        0    93918                 0 280853
-17      94434               0        0   113675                 0 304449
-18      93113               0        0    90409                 0 281634
-19      97407               0        0   108891                 0 300135
-20      87046               0        0    89529                 0 274573
-21      97892               0        0    92914                 0 288525
-22      90139               0        0   102769                 0 284431
-23      89150               0        0    95146                 0 282026
-24      92730               0        0    89626                 0 278331
-25      82768               0        0    97956                 0 273259
-26      86651               0        0   116976                 0 293667
-27      94594               0        0    89824                 0 282938
-28      98239               0        0    88413                 0 284188
-29      92607               0        0   115811                 0 304479
-30      85296               0        0    93285                 0 272154
-31          0               0        0   102881                 0 202497
-32          0               0        0    97766                 0 190621
-33          0               0        0    90931                 0 188509
-34          0               0        0    90182                 0 184518
-35          0               0        0    90811                 0 190981
-36          0               0        0    92236                 0 186235
-37          0               0        0    98588                 0 190728
-38          0               0        0        0                 0  95878
-39          0               0        0        0                 0  92391
-40          0               0        0        0                 0  98584
-41          0               0        0        0                 0  96588
-42          0               0        0        0                 0  94224
-43          0               0        0        0                 0  95286
-44          0               0        0        0                 0  95871
-45          0               0        0        0                 0  96708
-46          0               0        0        0                 0  97761
-47          0               0        0        0                 0 101446
-48          0               0        0        0                 0  90963
-
-Result:
-   Level2 Australian Capital Territory New South Wales Northern Territory
-1       1                            1               1                  1
-2       2                            1               1                  1
-3       3                            0               1                  0
-4       4                            0               1                  0
-5       5                            0               1                  0
-6       6                            0               1                  0
-7       7                            0               1                  0
-8       8                            0               1                  0
-9       9                            0               1                  0
-10     10                            0               1                  0
-11     11                            0               1                  0
-12     12                            0               1                  0
-13     13                            0               1                  0
-14     14                            0               1                  0
-15     15                            0               1                  0
-16     16                            0               1                  0
-17     17                            0               1                  0
-18     18                            0               1                  0
-19     19                            0               1                  0
-20     20                            0               1                  0
-21     21                            0               1                  0
-22     22                            0               1                  0
-23     23                            0               1                  0
-24     24                            0               1                  0
-25     25                            0               1                  0
-26     26                            0               1                  0
-27     27                            0               1                  0
-28     28                            0               1                  0
-29     29                            0               1                  0
-30     30                            0               1                  0
-31     31                            0               1                  0
-32     32                            0               1                  0
-33     33                            0               1                  0
-34     34                            0               1                  0
-35     35                            0               1                  0
-36     36                            0               1                  0
-37     37                            0               1                  0
-38     38                            0               1                  0
-39     39                            0               1                  0
-40     40                            0               1                  0
-41     41                            0               1                  0
-42     42                            0               1                  0
-43     43                            0               1                  0
-44     44                            0               1                  0
-45     45                            0               1                  0
-46     46                            0               1                  0
-47     47                            0               1                  0
-48     48                            0               1                  0
-   Queensland South Australia Tasmania Victoria Western Australia Total
-1           1               1        1        1                 1     8
-2           1               1        1        1                 1     8
-3           1               1        1        1                 1     6
-4           1               1        1        1                 1     6
-5           1               1        1        1                 1     6
-6           1               1        0        1                 1     5
-7           1               1        0        1                 1     5
-8           1               1        0        1                 1     5
-9           1               1        0        1                 1     5
-10          1               1        0        1                 1     5
-11          1               1        0        1                 1     5
-12          1               0        0        1                 1     4
-13          1               0        0        1                 1     4
-14          1               0        0        1                 1     4
-15          1               0        0        1                 1     4
-16          1               0        0        1                 0     3
-17          1               0        0        1                 0     3
-18          1               0        0        1                 0     3
-19          1               0        0        1                 0     3
-20          1               0        0        1                 0     3
-21          1               0        0        1                 0     3
-22          1               0        0        1                 0     3
-23          1               0        0        1                 0     3
-24          1               0        0        1                 0     3
-25          1               0        0        1                 0     3
-26          1               0        0        1                 0     3
-27          1               0        0        1                 0     3
-28          1               0        0        1                 0     3
-29          1               0        0        1                 0     3
-30          1               0        0        1                 0     3
-31          0               0        0        1                 0     2
-32          0               0        0        1                 0     2
-33          0               0        0        1                 0     2
-34          0               0        0        1                 0     2
-35          0               0        0        1                 0     2
-36          0               0        0        1                 0     2
-37          0               0        0        1                 0     2
-38          0               0        0        0                 0     1
-39          0               0        0        0                 0     1
-40          0               0        0        0                 0     1
-41          0               0        0        0                 0     1
-42          0               0        0        0                 0     1
-43          0               0        0        0                 0     1
-44          0               0        0        0                 0     1
-45          0               0        0        0                 0     1
-46          0               0        0        0                 0     1
-47          0               0        0        0                 0     1
-48          0               0        0        0                 0     1
-
-Parameters:
-  Allocation method: 
-  Extra parameter: 
-  Threshold: 
-
-Magnitude: 
-Australian Capital Territory              New South Wales 
-                           2                           48 
-          Northern Territory                   Queensland 
-                           2                           30 
-             South Australia                     Tasmania 
-                          11                            5 
-                    Victoria            Western Australia 
-                          37                           15 </code></pre>
-</div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as_prcalc</span>(jp_lower_2021_result,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">l1   =</span> <span class="st">"Pref"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">l2   =</span> <span class="st">"Party"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">p    =</span> <span class="st">"Votes"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">q    =</span> <span class="st">"Seats"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"party"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"br_district_2010"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil has single block PR system, l2 can be omitted.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># If type = "party", raw names of districts are preserved.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>br_district_2010 <span class="sc">|&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"district"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"population"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"party"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"au_district_2010"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Because all of magnitude are 1 and type of l2 is district,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># you can omit q and type arguments.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">as_prcalc</span>(au_district_2010,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">p    =</span> <span class="st">"electorates"</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># You can import .csv format and transfrom into prcalc object directly.</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">read_prcalc</span>(<span class="st">"data/my_file.csv"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
