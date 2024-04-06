@@ -1,7 +1,7 @@
 #' Decomposition using a `prcalc` object with three-step.
 #' @param x a `prcalc` object.
 #' @param special a character. names of special district.
-#' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
+# #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
 #' @param alpha Default is `0`.
 #' @param ... ignored
 #'
@@ -48,12 +48,12 @@ decompose3 <- function(x, ...) {
 
 decompose3.prcalc <- function(x,
                               special    = NULL,
-                              as_disprop = FALSE,
+                              #as_disprop = FALSE,
                               alpha      = 0,
                               ...) {
 
-  if (!inherits(x, "prcalc")) stop("Error!")
-  if (length(x$m) < 2) stop("Error!")
+  if (!inherits(x, "prcalc")) stop('Error! "prcalc" class is required.')
+  if (length(x$m) < 2) stop('Error! a "prcalc" object must have a two-dimensional structure, for example, state and party, state and district.')
 
   special_names <- special
 

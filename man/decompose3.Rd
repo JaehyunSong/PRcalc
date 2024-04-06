@@ -7,7 +7,7 @@
 \usage{
 decompose3(x, ...)
 
-\method{decompose3}{prcalc}(x, special = NULL, as_disprop = FALSE, alpha = 0, ...)
+\method{decompose3}{prcalc}(x, special = NULL, alpha = 0, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
@@ -15,8 +15,6 @@ decompose3(x, ...)
 \item{...}{ignored}
 
 \item{special}{a character. names of special district.}
-
-\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{FALSE}.}
 
 \item{alpha}{Default is \code{0}.}
 }

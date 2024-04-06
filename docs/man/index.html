@@ -350,7 +350,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code class="language-R">index(x, ...)
 
 ## S3 method for class 'prcalc'
-index(x, as_disprop = TRUE, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
+index(
+  x,
+  k = 2,
+  eta = 2,
+  alpha = 2,
+  unit = c("l2", "l1", "joint"),
+  omit_zero = TRUE,
+  ...
+)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -370,14 +378,6 @@ a <code>prcalc</code> object.
 </td>
 <td>
 ignored
-</td>
-</tr>
-<tr>
-<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_as_disprop">as_disprop</code>
-</td>
-<td>
-Measuring disporportionality? If <code>TRUE</code> (default), <code>alpha</code> must be larger than <code>0</code>. For measuring malapportionment, <code>as_disprop = FALSE</code>.
 </td>
 </tr>
 <tr>
@@ -406,6 +406,14 @@ a parameter for alpha-divergence. <code>alpha</code> must be larger than 0. Defa
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
+<code id="index_:_unit">unit</code>
+</td>
+<td>
+A unit of observation. This argument is valid only when p (e.g., votes or population) and q (e.g., seats or magnitudes) are two-dimensional structures. If <code>“l2”</code> (abbr. of "level 2"), the disproportionality is measured based on marginal distribution of level 2, such as parties or district. If <code>“l1”</code> (abbr. of "level 1"), the disproportionality is measured based on marginal distribution of level 1, such as states or region. If <code>“joint”</code>, the disproportionality is measured based on joint distribution of level 1 and 2. If you want to match the result of <code>decompose()</code>, use <code>“joint”</code>. Default is <code>“l2”</code>.
+</td>
+</tr>
+<tr>
+<td style="white-space: nowrap; font-family: monospace; vertical-align: top">
 <code id="index_:_omit_zero">omit_zero</code>
 </td>
 <td>
@@ -422,10 +430,10 @@ If <code>TRUE</code>, parties with 0 votes and 0 seats are ignored. Default is <
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>
 <li>
-<p>Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.</p>
+<p>Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". <em>Comparative Political Studies.</em> 12 (1): 3–27.</p>
 </li>
 <li>
-<p>Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.</p>
+<p>Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". <em>Electoral Studies.</em> 10: 33–51.</p>
 </li>
 </ul>
 </section>

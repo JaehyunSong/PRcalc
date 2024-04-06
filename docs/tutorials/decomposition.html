@@ -374,6 +374,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#three-step-decomposition" id="toc-three-step-decomposition" class="nav-link" data-scroll-target="#three-step-decomposition">Three-step Decomposition</a></li>
   <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">Comparison</a></li>
+  <li><a href="#comparison-between-index-and-decompose" id="toc-comparison-between-index-and-decompose" class="nav-link" data-scroll-target="#comparison-between-index-and-decompose">Comparison between <code>index()</code> and `decompose()</a></li>
   </ul>
 </nav>
     </div>
@@ -432,17 +433,17 @@ D^1 = &amp; \sum_{j = 1}^{k} s_j \log{\frac{s_j}{v_j}} + \sum_{j=1}^{k} s_j \sum
 <section id="using-a-prcalc-object." class="level3">
 <h3 class="anchored" data-anchor-id="using-a-prcalc-object.">Using a <code>prcalc</code> object.</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(jp_lower_2021)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021_en"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">20</span>),</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"dt"</span>)</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">prcalc</span>(jp_lower_2021_en,</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">m =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">19</span>, <span class="dv">11</span>, <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">19</span>),</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">method =</span> <span class="st">"msl"</span>)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
@@ -536,8 +537,7 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 <div class="cell-output cell-output-error">
 <pre><code>Error in UseMethod("decompose"): no applicable method for 'decompose' applied to an object of class "NULL"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj4, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj4, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in UseMethod("decompose"): no applicable method for 'decompose' applied to an object of class "NULL"</code></pre>
 </div>
@@ -638,8 +638,7 @@ alpha-divergence  Reapportionment    Redistricting
 
 Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj5, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj5, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 0 
 alpha-divergence  Reapportionment    Redistricting 
@@ -739,8 +738,7 @@ alpha-divergence  Reapportionment    Redistricting
 
 Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj6, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj6, <span class="at">alpha =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 0 
 alpha-divergence  Reapportionment    Redistricting 
@@ -864,34 +862,33 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
 <span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">type =</span> <span class="st">"district"</span>)),</span>
 <span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">decompose =</span> <span class="fu">map</span>(data, \(x) <span class="fu">decompose</span>(x, </span>
 <span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">alpha      =</span> <span class="dv">0</span>,</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">as_disprop =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">special    =</span> <span class="st">"Maori"</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(decompose)</span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nz_decompose_all) <span class="ot">&lt;-</span> <span class="fu">unique</span>(nz_district<span class="sc">$</span>year)</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>nz_decompose_all <span class="sc">|&gt;</span> </span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">special    =</span> <span class="st">"Maori"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(decompose)</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nz_decompose_all) <span class="ot">&lt;-</span> <span class="fu">unique</span>(nz_district<span class="sc">$</span>year)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>nz_decompose_all <span class="sc">|&gt;</span> </span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="rqiyljmnhq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rqiyljmnhq table {
+<div id="lzqaufuwak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lzqaufuwak table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rqiyljmnhq thead, #rqiyljmnhq tbody, #rqiyljmnhq tfoot, #rqiyljmnhq tr, #rqiyljmnhq td, #rqiyljmnhq th {
+#lzqaufuwak thead, #lzqaufuwak tbody, #lzqaufuwak tfoot, #lzqaufuwak tr, #lzqaufuwak td, #lzqaufuwak th {
   border-style: none;
 }
 
-#rqiyljmnhq p {
+#lzqaufuwak p {
   margin: 0;
   padding: 0;
 }
 
-#rqiyljmnhq .gt_table {
+#lzqaufuwak .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -917,12 +914,12 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-left-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_caption {
+#lzqaufuwak .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rqiyljmnhq .gt_title {
+#lzqaufuwak .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -934,7 +931,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-width: 0;
 }
 
-#rqiyljmnhq .gt_subtitle {
+#lzqaufuwak .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -946,7 +943,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-width: 0;
 }
 
-#rqiyljmnhq .gt_heading {
+#lzqaufuwak .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -958,13 +955,13 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_bottom_border {
+#lzqaufuwak .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_col_headings {
+#lzqaufuwak .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -979,7 +976,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_col_heading {
+#lzqaufuwak .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -999,7 +996,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#rqiyljmnhq .gt_column_spanner_outer {
+#lzqaufuwak .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1011,15 +1008,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 4px;
 }
 
-#rqiyljmnhq .gt_column_spanner_outer:first-child {
+#lzqaufuwak .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rqiyljmnhq .gt_column_spanner_outer:last-child {
+#lzqaufuwak .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rqiyljmnhq .gt_column_spanner {
+#lzqaufuwak .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1031,11 +1028,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   width: 100%;
 }
 
-#rqiyljmnhq .gt_spanner_row {
+#lzqaufuwak .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rqiyljmnhq .gt_group_heading {
+#lzqaufuwak .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1061,7 +1058,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   text-align: left;
 }
 
-#rqiyljmnhq .gt_empty_group_heading {
+#lzqaufuwak .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1076,15 +1073,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: middle;
 }
 
-#rqiyljmnhq .gt_from_md > :first-child {
+#lzqaufuwak .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rqiyljmnhq .gt_from_md > :last-child {
+#lzqaufuwak .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rqiyljmnhq .gt_row {
+#lzqaufuwak .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1103,7 +1100,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   overflow-x: hidden;
 }
 
-#rqiyljmnhq .gt_stub {
+#lzqaufuwak .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1116,7 +1113,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#rqiyljmnhq .gt_stub_row_group {
+#lzqaufuwak .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1130,15 +1127,15 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   vertical-align: top;
 }
 
-#rqiyljmnhq .gt_row_group_first td {
+#lzqaufuwak .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rqiyljmnhq .gt_row_group_first th {
+#lzqaufuwak .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rqiyljmnhq .gt_summary_row {
+#lzqaufuwak .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1148,16 +1145,16 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#rqiyljmnhq .gt_first_summary_row {
+#lzqaufuwak .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_first_summary_row.thick {
+#lzqaufuwak .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rqiyljmnhq .gt_last_summary_row {
+#lzqaufuwak .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1167,7 +1164,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_grand_summary_row {
+#lzqaufuwak .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1177,7 +1174,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#rqiyljmnhq .gt_first_grand_summary_row {
+#lzqaufuwak .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,7 +1184,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-top-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_last_grand_summary_row_top {
+#lzqaufuwak .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1197,11 +1194,11 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_striped {
+#lzqaufuwak .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rqiyljmnhq .gt_table_body {
+#lzqaufuwak .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1210,7 +1207,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-bottom-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_footnotes {
+#lzqaufuwak .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1224,7 +1221,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_footnote {
+#lzqaufuwak .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1233,7 +1230,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#rqiyljmnhq .gt_sourcenotes {
+#lzqaufuwak .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1247,7 +1244,7 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   border-right-color: #D3D3D3;
 }
 
-#rqiyljmnhq .gt_sourcenote {
+#lzqaufuwak .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1255,63 +1252,63 @@ Note: "alpha-divergence" is sum of "Special", "Reapportionment" and "Redistictin
   padding-right: 5px;
 }
 
-#rqiyljmnhq .gt_left {
+#lzqaufuwak .gt_left {
   text-align: left;
 }
 
-#rqiyljmnhq .gt_center {
+#lzqaufuwak .gt_center {
   text-align: center;
 }
 
-#rqiyljmnhq .gt_right {
+#lzqaufuwak .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rqiyljmnhq .gt_font_normal {
+#lzqaufuwak .gt_font_normal {
   font-weight: normal;
 }
 
-#rqiyljmnhq .gt_font_bold {
+#lzqaufuwak .gt_font_bold {
   font-weight: bold;
 }
 
-#rqiyljmnhq .gt_font_italic {
+#lzqaufuwak .gt_font_italic {
   font-style: italic;
 }
 
-#rqiyljmnhq .gt_super {
+#lzqaufuwak .gt_super {
   font-size: 65%;
 }
 
-#rqiyljmnhq .gt_footnote_marks {
+#lzqaufuwak .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rqiyljmnhq .gt_asterisk {
+#lzqaufuwak .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rqiyljmnhq .gt_indent_1 {
+#lzqaufuwak .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rqiyljmnhq .gt_indent_2 {
+#lzqaufuwak .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rqiyljmnhq .gt_indent_3 {
+#lzqaufuwak .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rqiyljmnhq .gt_indent_4 {
+#lzqaufuwak .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rqiyljmnhq .gt_indent_5 {
+#lzqaufuwak .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1524,6 +1521,4114 @@ Note: "alpha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</
 <p><img src="decomposition_files/figure-html/comparison-decomposition-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+<section id="comparison-between-index-and-decompose" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-between-index-and-decompose">Comparison between <code>index()</code> and `decompose()</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_upper_2019"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj1)[<span class="st">"ad"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        ad 
+0.02912491 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj1)[<span class="st">"d"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         d 
+0.05493881 </code></pre>
+</div>
+</div>
+<p>In default (<code>unit = "l2"</code>), disproportionality indices are measured based on the marginal distribution of level 2 (in this case, party).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div id="bfyrspnydf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bfyrspnydf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bfyrspnydf thead, #bfyrspnydf tbody, #bfyrspnydf tfoot, #bfyrspnydf tr, #bfyrspnydf td, #bfyrspnydf th {
+  border-style: none;
+}
+
+#bfyrspnydf p {
+  margin: 0;
+  padding: 0;
+}
+
+#bfyrspnydf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bfyrspnydf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bfyrspnydf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bfyrspnydf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bfyrspnydf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bfyrspnydf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bfyrspnydf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bfyrspnydf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bfyrspnydf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bfyrspnydf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bfyrspnydf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bfyrspnydf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bfyrspnydf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bfyrspnydf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bfyrspnydf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyrspnydf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bfyrspnydf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bfyrspnydf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bfyrspnydf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyrspnydf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bfyrspnydf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyrspnydf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bfyrspnydf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyrspnydf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyrspnydf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyrspnydf .gt_left {
+  text-align: left;
+}
+
+#bfyrspnydf .gt_center {
+  text-align: center;
+}
+
+#bfyrspnydf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bfyrspnydf .gt_font_normal {
+  font-weight: normal;
+}
+
+#bfyrspnydf .gt_font_bold {
+  font-weight: bold;
+}
+
+#bfyrspnydf .gt_font_italic {
+  font-style: italic;
+}
+
+#bfyrspnydf .gt_super {
+  font-size: 65%;
+}
+
+#bfyrspnydf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bfyrspnydf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bfyrspnydf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bfyrspnydf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bfyrspnydf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bfyrspnydf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bfyrspnydf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">863300</td>
+<td class="gt_row gt_right" headers="Tohoku">1628233</td>
+<td class="gt_row gt_right" headers="Kitakanto">2172065</td>
+<td class="gt_row gt_right" headers="Minamikanto">2590787</td>
+<td class="gt_row gt_right" headers="Tokyo">2000084</td>
+<td class="gt_row gt_right" headers="Hokuriku">1468380</td>
+<td class="gt_row gt_right" headers="Tokai">2515841</td>
+<td class="gt_row gt_right" headers="Kinki">2407699</td>
+<td class="gt_row gt_right" headers="Chugoku">1352723</td>
+<td class="gt_row gt_right" headers="Shikoku">664805</td>
+<td class="gt_row gt_right" headers="Kyushu">2250966</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">19914883</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido">294371</td>
+<td class="gt_row gt_right" headers="Tohoku">456287</td>
+<td class="gt_row gt_right" headers="Kitakanto">823930</td>
+<td class="gt_row gt_right" headers="Minamikanto">850667</td>
+<td class="gt_row gt_right" headers="Tokyo">715450</td>
+<td class="gt_row gt_right" headers="Hokuriku">322535</td>
+<td class="gt_row gt_right" headers="Tokai">784976</td>
+<td class="gt_row gt_right" headers="Kinki">1155683</td>
+<td class="gt_row gt_right" headers="Chugoku">436220</td>
+<td class="gt_row gt_right" headers="Shikoku">233407</td>
+<td class="gt_row gt_right" headers="Kyushu">1040756</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">7114282</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">682913</td>
+<td class="gt_row gt_right" headers="Tohoku">991505</td>
+<td class="gt_row gt_right" headers="Kitakanto">1391149</td>
+<td class="gt_row gt_right" headers="Minamikanto">1651562</td>
+<td class="gt_row gt_right" headers="Tokyo">1293281</td>
+<td class="gt_row gt_right" headers="Hokuriku">773076</td>
+<td class="gt_row gt_right" headers="Tokai">1485947</td>
+<td class="gt_row gt_right" headers="Kinki">1090666</td>
+<td class="gt_row gt_right" headers="Chugoku">573324</td>
+<td class="gt_row gt_right" headers="Shikoku">291871</td>
+<td class="gt_row gt_right" headers="Kyushu">1266801</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">11492095</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido">207189</td>
+<td class="gt_row gt_right" headers="Tohoku">292830</td>
+<td class="gt_row gt_right" headers="Kitakanto">444115</td>
+<td class="gt_row gt_right" headers="Minamikanto">534493</td>
+<td class="gt_row gt_right" headers="Tokyo">670340</td>
+<td class="gt_row gt_right" headers="Hokuriku">225551</td>
+<td class="gt_row gt_right" headers="Tokai">408606</td>
+<td class="gt_row gt_right" headers="Kinki">736156</td>
+<td class="gt_row gt_right" headers="Chugoku">173117</td>
+<td class="gt_row gt_right" headers="Shikoku">108021</td>
+<td class="gt_row gt_right" headers="Kyushu">365658</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">4166076</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido">215344</td>
+<td class="gt_row gt_right" headers="Tohoku">258690</td>
+<td class="gt_row gt_right" headers="Kitakanto">617531</td>
+<td class="gt_row gt_right" headers="Minamikanto">863897</td>
+<td class="gt_row gt_right" headers="Tokyo">858577</td>
+<td class="gt_row gt_right" headers="Hokuriku">361476</td>
+<td class="gt_row gt_right" headers="Tokai">694630</td>
+<td class="gt_row gt_right" headers="Kinki">3180219</td>
+<td class="gt_row gt_right" headers="Chugoku">286302</td>
+<td class="gt_row gt_right" headers="Shikoku">173826</td>
+<td class="gt_row gt_right" headers="Kyushu">540338</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">8050830</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido">73621</td>
+<td class="gt_row gt_right" headers="Tohoku">195754</td>
+<td class="gt_row gt_right" headers="Kitakanto">298056</td>
+<td class="gt_row gt_right" headers="Minamikanto">384482</td>
+<td class="gt_row gt_right" headers="Tokyo">306180</td>
+<td class="gt_row gt_right" headers="Hokuriku">133600</td>
+<td class="gt_row gt_right" headers="Tokai">382734</td>
+<td class="gt_row gt_right" headers="Kinki">303480</td>
+<td class="gt_row gt_right" headers="Chugoku">113899</td>
+<td class="gt_row gt_right" headers="Shikoku">122082</td>
+<td class="gt_row gt_right" headers="Kyushu">279509</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">2593397</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">41248</td>
+<td class="gt_row gt_right" headers="Tohoku">101442</td>
+<td class="gt_row gt_right" headers="Kitakanto">97963</td>
+<td class="gt_row gt_right" headers="Minamikanto">124447</td>
+<td class="gt_row gt_right" headers="Tokyo">92995</td>
+<td class="gt_row gt_right" headers="Hokuriku">71185</td>
+<td class="gt_row gt_right" headers="Tokai">84220</td>
+<td class="gt_row gt_right" headers="Kinki">100980</td>
+<td class="gt_row gt_right" headers="Chugoku">52638</td>
+<td class="gt_row gt_right" headers="Shikoku">30249</td>
+<td class="gt_row gt_right" headers="Kyushu">221221</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">1018588</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido">102086</td>
+<td class="gt_row gt_right" headers="Tohoku">143265</td>
+<td class="gt_row gt_right" headers="Kitakanto">239592</td>
+<td class="gt_row gt_right" headers="Minamikanto">302675</td>
+<td class="gt_row gt_right" headers="Tokyo">360387</td>
+<td class="gt_row gt_right" headers="Hokuriku">111281</td>
+<td class="gt_row gt_right" headers="Tokai">273208</td>
+<td class="gt_row gt_right" headers="Kinki">292483</td>
+<td class="gt_row gt_right" headers="Chugoku">94446</td>
+<td class="gt_row gt_right" headers="Shikoku">52941</td>
+<td class="gt_row gt_right" headers="Kyushu">243284</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">2215648</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido">42916</td>
+<td class="gt_row gt_right" headers="Tohoku">52664</td>
+<td class="gt_row gt_right" headers="Kitakanto">87702</td>
+<td class="gt_row gt_right" headers="Minamikanto">111298</td>
+<td class="gt_row gt_right" headers="Tokyo">92353</td>
+<td class="gt_row gt_right" headers="Hokuriku">43529</td>
+<td class="gt_row gt_right" headers="Tokai">98238</td>
+<td class="gt_row gt_right" headers="Kinki">111539</td>
+<td class="gt_row gt_right" headers="Chugoku">36758</td>
+<td class="gt_row gt_right" headers="Shikoku">21285</td>
+<td class="gt_row gt_right" headers="Kyushu">98506</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">796788</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido">46142</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">46142</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">33661</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">33661</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">16970</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">16970</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">6620</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">6620</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido">2569130</td>
+<td class="gt_row gt_right" headers="Tohoku">4120670</td>
+<td class="gt_row gt_right" headers="Kitakanto">6172103</td>
+<td class="gt_row gt_right" headers="Minamikanto">7414308</td>
+<td class="gt_row gt_right" headers="Tokyo">6446898</td>
+<td class="gt_row gt_right" headers="Hokuriku">3510613</td>
+<td class="gt_row gt_right" headers="Tokai">6728400</td>
+<td class="gt_row gt_right" headers="Kinki">9378905</td>
+<td class="gt_row gt_right" headers="Chugoku">3119427</td>
+<td class="gt_row gt_right" headers="Shikoku">1698487</td>
+<td class="gt_row gt_right" headers="Kyushu">6307039</td>
+<td class="gt_row gt_right" headers="Total">57465980</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="ersoifjrcw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ersoifjrcw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ersoifjrcw thead, #ersoifjrcw tbody, #ersoifjrcw tfoot, #ersoifjrcw tr, #ersoifjrcw td, #ersoifjrcw th {
+  border-style: none;
+}
+
+#ersoifjrcw p {
+  margin: 0;
+  padding: 0;
+}
+
+#ersoifjrcw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ersoifjrcw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ersoifjrcw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ersoifjrcw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ersoifjrcw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ersoifjrcw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ersoifjrcw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ersoifjrcw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ersoifjrcw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ersoifjrcw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ersoifjrcw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ersoifjrcw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ersoifjrcw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ersoifjrcw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ersoifjrcw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ersoifjrcw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ersoifjrcw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ersoifjrcw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ersoifjrcw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ersoifjrcw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ersoifjrcw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ersoifjrcw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ersoifjrcw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ersoifjrcw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ersoifjrcw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ersoifjrcw .gt_left {
+  text-align: left;
+}
+
+#ersoifjrcw .gt_center {
+  text-align: center;
+}
+
+#ersoifjrcw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ersoifjrcw .gt_font_normal {
+  font-weight: normal;
+}
+
+#ersoifjrcw .gt_font_bold {
+  font-weight: bold;
+}
+
+#ersoifjrcw .gt_font_italic {
+  font-style: italic;
+}
+
+#ersoifjrcw .gt_super {
+  font-size: 65%;
+}
+
+#ersoifjrcw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ersoifjrcw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ersoifjrcw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ersoifjrcw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ersoifjrcw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ersoifjrcw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ersoifjrcw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">3</td>
+<td class="gt_row gt_right" headers="Tohoku">6</td>
+<td class="gt_row gt_right" headers="Kitakanto">7</td>
+<td class="gt_row gt_right" headers="Minamikanto">8</td>
+<td class="gt_row gt_right" headers="Tokyo">6</td>
+<td class="gt_row gt_right" headers="Hokuriku">5</td>
+<td class="gt_row gt_right" headers="Tokai">8</td>
+<td class="gt_row gt_right" headers="Kinki">8</td>
+<td class="gt_row gt_right" headers="Chugoku">5</td>
+<td class="gt_row gt_right" headers="Shikoku">3</td>
+<td class="gt_row gt_right" headers="Kyushu">8</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">67</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido">1</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">3</td>
+<td class="gt_row gt_right" headers="Minamikanto">3</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">3</td>
+<td class="gt_row gt_right" headers="Kinki">3</td>
+<td class="gt_row gt_right" headers="Chugoku">2</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">4</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">3</td>
+<td class="gt_row gt_right" headers="Tohoku">4</td>
+<td class="gt_row gt_right" headers="Kitakanto">5</td>
+<td class="gt_row gt_right" headers="Minamikanto">5</td>
+<td class="gt_row gt_right" headers="Tokyo">4</td>
+<td class="gt_row gt_right" headers="Hokuriku">3</td>
+<td class="gt_row gt_right" headers="Tokai">5</td>
+<td class="gt_row gt_right" headers="Kinki">3</td>
+<td class="gt_row gt_right" headers="Chugoku">3</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">4</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">1</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">2</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">1</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido">1</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">2</td>
+<td class="gt_row gt_right" headers="Minamikanto">3</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">2</td>
+<td class="gt_row gt_right" headers="Kinki">10</td>
+<td class="gt_row gt_right" headers="Chugoku">1</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">2</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">1</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">1</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">1</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">1</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">1</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total" style="background-color: #4169E1; color: #FFFFFF">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido">8</td>
+<td class="gt_row gt_right" headers="Tohoku">13</td>
+<td class="gt_row gt_right" headers="Kitakanto">19</td>
+<td class="gt_row gt_right" headers="Minamikanto">22</td>
+<td class="gt_row gt_right" headers="Tokyo">17</td>
+<td class="gt_row gt_right" headers="Hokuriku">11</td>
+<td class="gt_row gt_right" headers="Tokai">21</td>
+<td class="gt_row gt_right" headers="Kinki">28</td>
+<td class="gt_row gt_right" headers="Chugoku">11</td>
+<td class="gt_row gt_right" headers="Shikoku">6</td>
+<td class="gt_row gt_right" headers="Kyushu">20</td>
+<td class="gt_row gt_right" headers="Total">176</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>If <code>unit = "l1"</code>, disproportionality indices are measured based on marginal distribution of level 1 (in this case, prefecture).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div id="prqcfhvidk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#prqcfhvidk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#prqcfhvidk thead, #prqcfhvidk tbody, #prqcfhvidk tfoot, #prqcfhvidk tr, #prqcfhvidk td, #prqcfhvidk th {
+  border-style: none;
+}
+
+#prqcfhvidk p {
+  margin: 0;
+  padding: 0;
+}
+
+#prqcfhvidk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#prqcfhvidk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#prqcfhvidk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#prqcfhvidk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#prqcfhvidk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#prqcfhvidk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#prqcfhvidk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#prqcfhvidk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#prqcfhvidk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#prqcfhvidk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#prqcfhvidk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#prqcfhvidk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#prqcfhvidk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#prqcfhvidk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#prqcfhvidk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#prqcfhvidk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#prqcfhvidk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#prqcfhvidk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#prqcfhvidk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#prqcfhvidk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#prqcfhvidk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#prqcfhvidk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#prqcfhvidk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#prqcfhvidk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#prqcfhvidk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#prqcfhvidk .gt_left {
+  text-align: left;
+}
+
+#prqcfhvidk .gt_center {
+  text-align: center;
+}
+
+#prqcfhvidk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#prqcfhvidk .gt_font_normal {
+  font-weight: normal;
+}
+
+#prqcfhvidk .gt_font_bold {
+  font-weight: bold;
+}
+
+#prqcfhvidk .gt_font_italic {
+  font-style: italic;
+}
+
+#prqcfhvidk .gt_super {
+  font-size: 65%;
+}
+
+#prqcfhvidk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#prqcfhvidk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#prqcfhvidk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#prqcfhvidk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#prqcfhvidk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#prqcfhvidk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#prqcfhvidk .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">863300</td>
+<td class="gt_row gt_right" headers="Tohoku">1628233</td>
+<td class="gt_row gt_right" headers="Kitakanto">2172065</td>
+<td class="gt_row gt_right" headers="Minamikanto">2590787</td>
+<td class="gt_row gt_right" headers="Tokyo">2000084</td>
+<td class="gt_row gt_right" headers="Hokuriku">1468380</td>
+<td class="gt_row gt_right" headers="Tokai">2515841</td>
+<td class="gt_row gt_right" headers="Kinki">2407699</td>
+<td class="gt_row gt_right" headers="Chugoku">1352723</td>
+<td class="gt_row gt_right" headers="Shikoku">664805</td>
+<td class="gt_row gt_right" headers="Kyushu">2250966</td>
+<td class="gt_row gt_right" headers="Total">19914883</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido">294371</td>
+<td class="gt_row gt_right" headers="Tohoku">456287</td>
+<td class="gt_row gt_right" headers="Kitakanto">823930</td>
+<td class="gt_row gt_right" headers="Minamikanto">850667</td>
+<td class="gt_row gt_right" headers="Tokyo">715450</td>
+<td class="gt_row gt_right" headers="Hokuriku">322535</td>
+<td class="gt_row gt_right" headers="Tokai">784976</td>
+<td class="gt_row gt_right" headers="Kinki">1155683</td>
+<td class="gt_row gt_right" headers="Chugoku">436220</td>
+<td class="gt_row gt_right" headers="Shikoku">233407</td>
+<td class="gt_row gt_right" headers="Kyushu">1040756</td>
+<td class="gt_row gt_right" headers="Total">7114282</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">682913</td>
+<td class="gt_row gt_right" headers="Tohoku">991505</td>
+<td class="gt_row gt_right" headers="Kitakanto">1391149</td>
+<td class="gt_row gt_right" headers="Minamikanto">1651562</td>
+<td class="gt_row gt_right" headers="Tokyo">1293281</td>
+<td class="gt_row gt_right" headers="Hokuriku">773076</td>
+<td class="gt_row gt_right" headers="Tokai">1485947</td>
+<td class="gt_row gt_right" headers="Kinki">1090666</td>
+<td class="gt_row gt_right" headers="Chugoku">573324</td>
+<td class="gt_row gt_right" headers="Shikoku">291871</td>
+<td class="gt_row gt_right" headers="Kyushu">1266801</td>
+<td class="gt_row gt_right" headers="Total">11492095</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido">207189</td>
+<td class="gt_row gt_right" headers="Tohoku">292830</td>
+<td class="gt_row gt_right" headers="Kitakanto">444115</td>
+<td class="gt_row gt_right" headers="Minamikanto">534493</td>
+<td class="gt_row gt_right" headers="Tokyo">670340</td>
+<td class="gt_row gt_right" headers="Hokuriku">225551</td>
+<td class="gt_row gt_right" headers="Tokai">408606</td>
+<td class="gt_row gt_right" headers="Kinki">736156</td>
+<td class="gt_row gt_right" headers="Chugoku">173117</td>
+<td class="gt_row gt_right" headers="Shikoku">108021</td>
+<td class="gt_row gt_right" headers="Kyushu">365658</td>
+<td class="gt_row gt_right" headers="Total">4166076</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido">215344</td>
+<td class="gt_row gt_right" headers="Tohoku">258690</td>
+<td class="gt_row gt_right" headers="Kitakanto">617531</td>
+<td class="gt_row gt_right" headers="Minamikanto">863897</td>
+<td class="gt_row gt_right" headers="Tokyo">858577</td>
+<td class="gt_row gt_right" headers="Hokuriku">361476</td>
+<td class="gt_row gt_right" headers="Tokai">694630</td>
+<td class="gt_row gt_right" headers="Kinki">3180219</td>
+<td class="gt_row gt_right" headers="Chugoku">286302</td>
+<td class="gt_row gt_right" headers="Shikoku">173826</td>
+<td class="gt_row gt_right" headers="Kyushu">540338</td>
+<td class="gt_row gt_right" headers="Total">8050830</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido">73621</td>
+<td class="gt_row gt_right" headers="Tohoku">195754</td>
+<td class="gt_row gt_right" headers="Kitakanto">298056</td>
+<td class="gt_row gt_right" headers="Minamikanto">384482</td>
+<td class="gt_row gt_right" headers="Tokyo">306180</td>
+<td class="gt_row gt_right" headers="Hokuriku">133600</td>
+<td class="gt_row gt_right" headers="Tokai">382734</td>
+<td class="gt_row gt_right" headers="Kinki">303480</td>
+<td class="gt_row gt_right" headers="Chugoku">113899</td>
+<td class="gt_row gt_right" headers="Shikoku">122082</td>
+<td class="gt_row gt_right" headers="Kyushu">279509</td>
+<td class="gt_row gt_right" headers="Total">2593397</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">41248</td>
+<td class="gt_row gt_right" headers="Tohoku">101442</td>
+<td class="gt_row gt_right" headers="Kitakanto">97963</td>
+<td class="gt_row gt_right" headers="Minamikanto">124447</td>
+<td class="gt_row gt_right" headers="Tokyo">92995</td>
+<td class="gt_row gt_right" headers="Hokuriku">71185</td>
+<td class="gt_row gt_right" headers="Tokai">84220</td>
+<td class="gt_row gt_right" headers="Kinki">100980</td>
+<td class="gt_row gt_right" headers="Chugoku">52638</td>
+<td class="gt_row gt_right" headers="Shikoku">30249</td>
+<td class="gt_row gt_right" headers="Kyushu">221221</td>
+<td class="gt_row gt_right" headers="Total">1018588</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido">102086</td>
+<td class="gt_row gt_right" headers="Tohoku">143265</td>
+<td class="gt_row gt_right" headers="Kitakanto">239592</td>
+<td class="gt_row gt_right" headers="Minamikanto">302675</td>
+<td class="gt_row gt_right" headers="Tokyo">360387</td>
+<td class="gt_row gt_right" headers="Hokuriku">111281</td>
+<td class="gt_row gt_right" headers="Tokai">273208</td>
+<td class="gt_row gt_right" headers="Kinki">292483</td>
+<td class="gt_row gt_right" headers="Chugoku">94446</td>
+<td class="gt_row gt_right" headers="Shikoku">52941</td>
+<td class="gt_row gt_right" headers="Kyushu">243284</td>
+<td class="gt_row gt_right" headers="Total">2215648</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido">42916</td>
+<td class="gt_row gt_right" headers="Tohoku">52664</td>
+<td class="gt_row gt_right" headers="Kitakanto">87702</td>
+<td class="gt_row gt_right" headers="Minamikanto">111298</td>
+<td class="gt_row gt_right" headers="Tokyo">92353</td>
+<td class="gt_row gt_right" headers="Hokuriku">43529</td>
+<td class="gt_row gt_right" headers="Tokai">98238</td>
+<td class="gt_row gt_right" headers="Kinki">111539</td>
+<td class="gt_row gt_right" headers="Chugoku">36758</td>
+<td class="gt_row gt_right" headers="Shikoku">21285</td>
+<td class="gt_row gt_right" headers="Kyushu">98506</td>
+<td class="gt_row gt_right" headers="Total">796788</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido">46142</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">46142</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">33661</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">33661</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">16970</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">16970</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">6620</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">6620</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">2569130</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">4120670</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">6172103</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">7414308</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">6446898</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">3510613</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">6728400</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">9378905</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">3119427</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">1698487</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">6307039</td>
+<td class="gt_row gt_right" headers="Total">57465980</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="iizputhhda" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iizputhhda table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#iizputhhda thead, #iizputhhda tbody, #iizputhhda tfoot, #iizputhhda tr, #iizputhhda td, #iizputhhda th {
+  border-style: none;
+}
+
+#iizputhhda p {
+  margin: 0;
+  padding: 0;
+}
+
+#iizputhhda .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#iizputhhda .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#iizputhhda .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#iizputhhda .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#iizputhhda .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iizputhhda .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iizputhhda .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iizputhhda .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#iizputhhda .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#iizputhhda .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#iizputhhda .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#iizputhhda .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#iizputhhda .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#iizputhhda .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#iizputhhda .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#iizputhhda .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#iizputhhda .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#iizputhhda .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#iizputhhda .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iizputhhda .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#iizputhhda .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#iizputhhda .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#iizputhhda .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iizputhhda .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#iizputhhda .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#iizputhhda .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iizputhhda .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iizputhhda .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#iizputhhda .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iizputhhda .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#iizputhhda .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#iizputhhda .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iizputhhda .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iizputhhda .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iizputhhda .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iizputhhda .gt_left {
+  text-align: left;
+}
+
+#iizputhhda .gt_center {
+  text-align: center;
+}
+
+#iizputhhda .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#iizputhhda .gt_font_normal {
+  font-weight: normal;
+}
+
+#iizputhhda .gt_font_bold {
+  font-weight: bold;
+}
+
+#iizputhhda .gt_font_italic {
+  font-style: italic;
+}
+
+#iizputhhda .gt_super {
+  font-size: 65%;
+}
+
+#iizputhhda .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#iizputhhda .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#iizputhhda .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#iizputhhda .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#iizputhhda .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#iizputhhda .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#iizputhhda .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">3</td>
+<td class="gt_row gt_right" headers="Tohoku">6</td>
+<td class="gt_row gt_right" headers="Kitakanto">7</td>
+<td class="gt_row gt_right" headers="Minamikanto">8</td>
+<td class="gt_row gt_right" headers="Tokyo">6</td>
+<td class="gt_row gt_right" headers="Hokuriku">5</td>
+<td class="gt_row gt_right" headers="Tokai">8</td>
+<td class="gt_row gt_right" headers="Kinki">8</td>
+<td class="gt_row gt_right" headers="Chugoku">5</td>
+<td class="gt_row gt_right" headers="Shikoku">3</td>
+<td class="gt_row gt_right" headers="Kyushu">8</td>
+<td class="gt_row gt_right" headers="Total">67</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido">1</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">3</td>
+<td class="gt_row gt_right" headers="Minamikanto">3</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">3</td>
+<td class="gt_row gt_right" headers="Kinki">3</td>
+<td class="gt_row gt_right" headers="Chugoku">2</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">4</td>
+<td class="gt_row gt_right" headers="Total">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">3</td>
+<td class="gt_row gt_right" headers="Tohoku">4</td>
+<td class="gt_row gt_right" headers="Kitakanto">5</td>
+<td class="gt_row gt_right" headers="Minamikanto">5</td>
+<td class="gt_row gt_right" headers="Tokyo">4</td>
+<td class="gt_row gt_right" headers="Hokuriku">3</td>
+<td class="gt_row gt_right" headers="Tokai">5</td>
+<td class="gt_row gt_right" headers="Kinki">3</td>
+<td class="gt_row gt_right" headers="Chugoku">3</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">4</td>
+<td class="gt_row gt_right" headers="Total">40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">1</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">2</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">1</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido">1</td>
+<td class="gt_row gt_right" headers="Tohoku">1</td>
+<td class="gt_row gt_right" headers="Kitakanto">2</td>
+<td class="gt_row gt_right" headers="Minamikanto">3</td>
+<td class="gt_row gt_right" headers="Tokyo">2</td>
+<td class="gt_row gt_right" headers="Hokuriku">1</td>
+<td class="gt_row gt_right" headers="Tokai">2</td>
+<td class="gt_row gt_right" headers="Kinki">10</td>
+<td class="gt_row gt_right" headers="Chugoku">1</td>
+<td class="gt_row gt_right" headers="Shikoku">1</td>
+<td class="gt_row gt_right" headers="Kyushu">2</td>
+<td class="gt_row gt_right" headers="Total">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">1</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">1</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">1</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">1</td>
+<td class="gt_row gt_right" headers="Tokyo">1</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">1</td>
+<td class="gt_row gt_right" headers="Kinki">1</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido">0</td>
+<td class="gt_row gt_right" headers="Tohoku">0</td>
+<td class="gt_row gt_right" headers="Kitakanto">0</td>
+<td class="gt_row gt_right" headers="Minamikanto">0</td>
+<td class="gt_row gt_right" headers="Tokyo">0</td>
+<td class="gt_row gt_right" headers="Hokuriku">0</td>
+<td class="gt_row gt_right" headers="Tokai">0</td>
+<td class="gt_row gt_right" headers="Kinki">0</td>
+<td class="gt_row gt_right" headers="Chugoku">0</td>
+<td class="gt_row gt_right" headers="Shikoku">0</td>
+<td class="gt_row gt_right" headers="Kyushu">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">8</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">13</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">19</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">22</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">17</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">11</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">21</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">28</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">11</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">20</td>
+<td class="gt_row gt_right" headers="Total">176</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj1, <span class="at">unit =</span> <span class="st">"l1"</span>)[<span class="st">"ad"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         ad 
+0.002314718 </code></pre>
+</div>
+</div>
+<p>Since <span class="math inline">\(\alpha\)</span>-divergence in <code>decompose()</code> is measured based on the joint distribution of level 1 and level 2, the <code>unit</code> argument in index() must be <code>"joint"</code> due to reproduce the same result as in <code>decompose()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<div id="dkqofvxczf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dkqofvxczf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dkqofvxczf thead, #dkqofvxczf tbody, #dkqofvxczf tfoot, #dkqofvxczf tr, #dkqofvxczf td, #dkqofvxczf th {
+  border-style: none;
+}
+
+#dkqofvxczf p {
+  margin: 0;
+  padding: 0;
+}
+
+#dkqofvxczf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dkqofvxczf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dkqofvxczf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dkqofvxczf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dkqofvxczf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dkqofvxczf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dkqofvxczf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dkqofvxczf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dkqofvxczf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dkqofvxczf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dkqofvxczf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dkqofvxczf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dkqofvxczf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dkqofvxczf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dkqofvxczf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkqofvxczf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dkqofvxczf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dkqofvxczf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dkqofvxczf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkqofvxczf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dkqofvxczf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkqofvxczf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dkqofvxczf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkqofvxczf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dkqofvxczf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dkqofvxczf .gt_left {
+  text-align: left;
+}
+
+#dkqofvxczf .gt_center {
+  text-align: center;
+}
+
+#dkqofvxczf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dkqofvxczf .gt_font_normal {
+  font-weight: normal;
+}
+
+#dkqofvxczf .gt_font_bold {
+  font-weight: bold;
+}
+
+#dkqofvxczf .gt_font_italic {
+  font-style: italic;
+}
+
+#dkqofvxczf .gt_super {
+  font-size: 65%;
+}
+
+#dkqofvxczf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dkqofvxczf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dkqofvxczf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dkqofvxczf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dkqofvxczf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dkqofvxczf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dkqofvxczf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">863300</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">1628233</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">2172065</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">2590787</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">2000084</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">1468380</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">2515841</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">2407699</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">1352723</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">664805</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">2250966</td>
+<td class="gt_row gt_right" headers="Total">19914883</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">294371</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">456287</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">823930</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">850667</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">715450</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">322535</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">784976</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">1155683</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">436220</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">233407</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">1040756</td>
+<td class="gt_row gt_right" headers="Total">7114282</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">682913</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">991505</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">1391149</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">1651562</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">1293281</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">773076</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">1485947</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">1090666</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">573324</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">291871</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">1266801</td>
+<td class="gt_row gt_right" headers="Total">11492095</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">207189</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">292830</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">444115</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">534493</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">670340</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">225551</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">408606</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">736156</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">173117</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">108021</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">365658</td>
+<td class="gt_row gt_right" headers="Total">4166076</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">215344</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">258690</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">617531</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">863897</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">858577</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">361476</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">694630</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">3180219</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">286302</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">173826</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">540338</td>
+<td class="gt_row gt_right" headers="Total">8050830</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">73621</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">195754</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">298056</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">384482</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">306180</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">133600</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">382734</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">303480</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">113899</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">122082</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">279509</td>
+<td class="gt_row gt_right" headers="Total">2593397</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">41248</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">101442</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">97963</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">124447</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">92995</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">71185</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">84220</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">100980</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">52638</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">30249</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">221221</td>
+<td class="gt_row gt_right" headers="Total">1018588</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">102086</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">143265</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">239592</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">302675</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">360387</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">111281</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">273208</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">292483</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">94446</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">52941</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">243284</td>
+<td class="gt_row gt_right" headers="Total">2215648</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">42916</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">52664</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">87702</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">111298</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">92353</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">43529</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">98238</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">111539</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">36758</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">21285</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">98506</td>
+<td class="gt_row gt_right" headers="Total">796788</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">46142</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">46142</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">33661</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">33661</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">16970</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">16970</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">6620</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">6620</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido">2569130</td>
+<td class="gt_row gt_right" headers="Tohoku">4120670</td>
+<td class="gt_row gt_right" headers="Kitakanto">6172103</td>
+<td class="gt_row gt_right" headers="Minamikanto">7414308</td>
+<td class="gt_row gt_right" headers="Tokyo">6446898</td>
+<td class="gt_row gt_right" headers="Hokuriku">3510613</td>
+<td class="gt_row gt_right" headers="Tokai">6728400</td>
+<td class="gt_row gt_right" headers="Kinki">9378905</td>
+<td class="gt_row gt_right" headers="Chugoku">3119427</td>
+<td class="gt_row gt_right" headers="Shikoku">1698487</td>
+<td class="gt_row gt_right" headers="Kyushu">6307039</td>
+<td class="gt_row gt_right" headers="Total">57465980</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="hkhxexndim" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hkhxexndim table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hkhxexndim thead, #hkhxexndim tbody, #hkhxexndim tfoot, #hkhxexndim tr, #hkhxexndim td, #hkhxexndim th {
+  border-style: none;
+}
+
+#hkhxexndim p {
+  margin: 0;
+  padding: 0;
+}
+
+#hkhxexndim .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hkhxexndim .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hkhxexndim .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hkhxexndim .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hkhxexndim .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hkhxexndim .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hkhxexndim .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hkhxexndim .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hkhxexndim .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hkhxexndim .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hkhxexndim .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hkhxexndim .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hkhxexndim .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hkhxexndim .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hkhxexndim .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkhxexndim .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hkhxexndim .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hkhxexndim .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hkhxexndim .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkhxexndim .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hkhxexndim .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkhxexndim .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hkhxexndim .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkhxexndim .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hkhxexndim .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkhxexndim .gt_left {
+  text-align: left;
+}
+
+#hkhxexndim .gt_center {
+  text-align: center;
+}
+
+#hkhxexndim .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hkhxexndim .gt_font_normal {
+  font-weight: normal;
+}
+
+#hkhxexndim .gt_font_bold {
+  font-weight: bold;
+}
+
+#hkhxexndim .gt_font_italic {
+  font-style: italic;
+}
+
+#hkhxexndim .gt_super {
+  font-size: 65%;
+}
+
+#hkhxexndim .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hkhxexndim .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hkhxexndim .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hkhxexndim .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hkhxexndim .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hkhxexndim .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hkhxexndim .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Party" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Party</th>
+<th id="Hokkaido" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokkaido</th>
+<th id="Tohoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tohoku</th>
+<th id="Kitakanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kitakanto</th>
+<th id="Minamikanto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minamikanto</th>
+<th id="Tokyo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokyo</th>
+<th id="Hokuriku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hokuriku</th>
+<th id="Tokai" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tokai</th>
+<th id="Kinki" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kinki</th>
+<th id="Chugoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Chugoku</th>
+<th id="Shikoku" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Shikoku</th>
+<th id="Kyushu" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Kyushu</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">LDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">7</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">8</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">5</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">8</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">8</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">5</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">8</td>
+<td class="gt_row gt_right" headers="Total">67</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">NKP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">4</td>
+<td class="gt_row gt_right" headers="Total">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">CDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">4</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">5</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">5</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">4</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">5</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">4</td>
+<td class="gt_row gt_right" headers="Total">40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">JCP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Total">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JIP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">10</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="Total">26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">DPP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Total">5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">SDP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Reiwa</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">NHK</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">SSN</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">JFP</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Yamato</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Party">Corona</td>
+<td class="gt_row gt_right" headers="Hokkaido" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tohoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kitakanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Minamikanto" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokyo" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Hokuriku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Tokai" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kinki" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Chugoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Shikoku" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Kyushu" style="background-color: #4169E1; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="Total">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Party">Total</td>
+<td class="gt_row gt_right" headers="Hokkaido">8</td>
+<td class="gt_row gt_right" headers="Tohoku">13</td>
+<td class="gt_row gt_right" headers="Kitakanto">19</td>
+<td class="gt_row gt_right" headers="Minamikanto">22</td>
+<td class="gt_row gt_right" headers="Tokyo">17</td>
+<td class="gt_row gt_right" headers="Hokuriku">11</td>
+<td class="gt_row gt_right" headers="Tokai">21</td>
+<td class="gt_row gt_right" headers="Kinki">28</td>
+<td class="gt_row gt_right" headers="Chugoku">11</td>
+<td class="gt_row gt_right" headers="Shikoku">6</td>
+<td class="gt_row gt_right" headers="Kyushu">20</td>
+<td class="gt_row gt_right" headers="Total">176</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj1, <span class="at">unit =</span> <span class="st">"joint"</span>)[<span class="st">"ad"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        ad 
+0.05493881 </code></pre>
 </div>
 </div>
 

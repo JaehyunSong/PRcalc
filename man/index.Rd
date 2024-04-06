@@ -7,20 +7,28 @@
 \usage{
 index(x, ...)
 
-\method{index}{prcalc}(x, as_disprop = TRUE, k = 2, eta = 2, alpha = 2, omit_zero = TRUE, ...)
+\method{index}{prcalc}(
+  x,
+  k = 2,
+  eta = 2,
+  alpha = 2,
+  unit = c("l2", "l1", "joint"),
+  omit_zero = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
 
 \item{...}{ignored}
 
-\item{as_disprop}{Measuring disporportionality? If \code{TRUE} (default), \code{alpha} must be larger than \code{0}. For measuring malapportionment, \code{as_disprop = FALSE}.}
-
 \item{k}{a parameter for Generalized Gallagher index. Default is \code{2}.}
 
 \item{eta}{a parameter for Atkinson index. Default is \code{2}.}
 
 \item{alpha}{a parameter for alpha-divergence. \code{alpha} must be larger than 0. Default is \code{2}.}
+
+\item{unit}{A unit of observation. This argument is valid only when p (e.g., votes or population) and q (e.g., seats or magnitudes) are two-dimensional structures. If \code{"l2"} (abbr. of "level 2"), the disproportionality is measured based on marginal distribution of level 2, such as parties or district. If \code{"l1"} (abbr. of "level 1"), the disproportionality is measured based on marginal distribution of level 1, such as states or region. If \code{"joint"}, the disproportionality is measured based on joint distribution of level 1 and 2. If you want to match the result of \code{\link{decompose}()}, use \code{"joint"}. Default is \code{"l2"}.}
 
 \item{omit_zero}{If \code{TRUE}, parties with 0 votes and 0 seats are ignored. Default is \code{TRUE}.}
 }
@@ -42,7 +50,7 @@ obj_index["gallagher"] # Extract Gallagher index
 }
 \references{
 \itemize{
-\item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.}
-\item{Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.}
+\item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". \emph{Comparative Political Studies.} 12 (1): 3–27.}
+\item{Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". \emph{Electoral Studies.} 10: 33–51.}
 }
 }

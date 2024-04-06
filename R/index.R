@@ -12,10 +12,11 @@ index <- function(x, ...) {
 #' Calculate the disproportionality indices.
 #'
 #' @param x a `prcalc` object.
-#' @param as_disprop Measuring disporportionality? If `TRUE` (default), `alpha` must be larger than `0`. For measuring malapportionment, `as_disprop = FALSE`.
+# #' @param as_disprop Measuring disporportionality? If `TRUE` (default), `alpha` must be larger than `0`. For measuring malapportionment, `as_disprop = FALSE`.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
 #' @param alpha a parameter for alpha-divergence. `alpha` must be larger than 0. Default is `2`.
+#' @param unit A unit of observation. This argument is valid only when p (e.g., votes or population) and q (e.g., seats or magnitudes) are two-dimensional structures. If `"l2"` (abbr. of "level 2"), the disproportionality is measured based on marginal distribution of level 2, such as parties or district. If `"l1"` (abbr. of "level 1"), the disproportionality is measured based on marginal distribution of level 1, such as states or region. If `"joint"`, the disproportionality is measured based on joint distribution of level 1 and 2. If you want to match the result of \code{\link{decompose}()}, use `"joint"`. Default is `"l2"`.
 #' @param omit_zero If `TRUE`, parties with 0 votes and 0 seats are ignored. Default is `TRUE`.
 #' @param ... ignored
 #'
@@ -31,8 +32,8 @@ index <- function(x, ...) {
 #'
 #' @references
 #' \itemize{
-#' \item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". Comparative Political Studies. 12 (1): 3–27.}
-#' \item{Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". Electoral Studies. 10: 33–51.}
+#' \item{Laakso, Markku and Rein Taagepera. 1979. ""Effective" Number of Parties: A Measure with Application to West Europe". \emph{Comparative Political Studies.} 12 (1): 3–27.}
+#' \item{Gallagher, Michael. 1991. "Proportionality, Disproportionality and Electoral Systems". \emph{Electoral Studies.} 10: 33–51.}
 #' }
 #'
 #' @examples
@@ -46,24 +47,32 @@ index <- function(x, ...) {
 #' obj_index["gallagher"] # Extract Gallagher index
 
 index.prcalc <- function(x,
-                         as_disprop = TRUE,
+                         #as_disprop = TRUE,
                          k          = 2,
                          eta        = 2,
                          alpha      = 2,
+                         unit       = c("l2", "l1", "joint"),
                          omit_zero  = TRUE,
                          ...) {
 
   ID <- Value <- vote <- seat <- NULL
 
-  if (as_disprop) {
-    if (alpha <= 0) stop("alpha must be larger than 0.")
+  unit <- match.arg(unit)
 
+  #if (as_disprop) {
+  #  if (alpha <= 0) stop("alpha must be larger than 0.")
+  #}
+
+  if (unit == "l2") {
     # v: voteshare (v[1] > v[2] > ...)
     # s: seatshare (s[1] > s[2] > ...)
     # p: number of parties
-    v     <- rowSums(as_tibble(x$raw)[, -1])
-    s     <- rowSums(as_tibble(x$dist)[, -1])
-  } else {
+    v <- rowSums(as_tibble(x$raw)[, -1])
+    s <- rowSums(as_tibble(x$dist)[, -1])
+  } else if (unit == "l1") {
+    v <- colSums(as_tibble(x$raw)[, -1])
+    s <- colSums(as_tibble(x$dist)[, -1])
+  } else if (unit == "joint") {
     v <- x$raw |>
       pivot_longer(cols      = -1,
                    names_to  = "blcok",

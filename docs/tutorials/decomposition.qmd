@@ -49,17 +49,17 @@ $$
 ### Using a `prcalc` object.
 
 ```{r}
-data(jp_lower_2021)
+data("jp_lower_2021_en")
 
-obj1 <- prcalc(jp_lower_2021,
+obj1 <- prcalc(jp_lower_2021_en,
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20),
                method = "dt")
 
-obj2 <- prcalc(jp_lower_2021,
+obj2 <- prcalc(jp_lower_2021_en,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "dt")
 
-obj3 <- prcalc(jp_lower_2021,
+obj3 <- prcalc(jp_lower_2021_en,
                m = c(8, 13, 19, 23, 19, 11, 20, 29, 10, 5, 19),
                method = "msl")
 
@@ -96,8 +96,7 @@ obj4 <- read_prcalc("../data/sample_dataset.csv",
 print(obj4, head = 10)
 
 decompose(obj4, alpha = 2)
-# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
-decompose(obj4, alpha = 0, as_disprop = FALSE)
+decompose(obj4, alpha = 0)
 ```
 
 
@@ -118,8 +117,7 @@ obj5 <- as_prcalc(au_district_2010,
 print(obj5, head = 10)
 
 decompose(obj5, alpha = 2)
-# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
-decompose(obj5, alpha = 0, as_disprop = FALSE)
+decompose(obj5, alpha = 0)
 ```
 
 ```{r}
@@ -137,8 +135,7 @@ obj6 <- as_prcalc(jp_lower_2021_result,
 print(obj6, head = 10)
 
 decompose(obj6, alpha = 2)
-# By default (i.e., for disproportionality), alpha cannot be less than 0. To use alpha less than 0, add as_disprop = FALSE.
-decompose(obj6, alpha = 0, as_disprop = FALSE)
+decompose(obj6, alpha = 0)
 ```
 
 ## Three-step Decomposition
@@ -214,7 +211,6 @@ nz_decompose_all <- nz_district |>
                                               type = "district")),
          decompose = map(data, \(x) decompose(x, 
                                               alpha      = 0,
-                                              as_disprop = FALSE,
                                               special    = "Maori"))) |> 
   pull(decompose)
 
@@ -262,4 +258,73 @@ compare(list("D'Hondt"                           = decompose(obj1),
              "D'Hondt + Modified magnitudes"     = decompose(obj2),
              "Modified-SL + Modified magnitudes" = decompose(obj3))) |>
   plot(facet = TRUE, value_type = "text", digits = 5)
+```
+
+## Comparison between `index()` and `decompose()
+
+```{r}
+data("jp_upper_2019")
+
+index(obj1)["ad"]
+decompose(obj1)["d"]
+```
+
+In default (`unit = "l2"`), disproportionality indices are measured based on the marginal distribution of level 2 (in this case, party).
+
+```{r}
+#| echo: false
+library(gt)
+
+temp_obj1 <- obj1
+temp_obj1$raw[14, ] <- c("Total", colSums(obj1$raw[, -1]))
+temp_obj1$dist[14, ] <- c("Total", colSums(obj1$dist[, -1]))
+temp_raw  <- temp_obj1$raw |> 
+  mutate(across(-1, \(x) as.numeric(x)))
+temp_dist <- temp_obj1$dist |> 
+  mutate(across(-1, \(x) as.numeric(x)))
+
+temp_raw$Total  <- rowSums(temp_raw[, -1])
+temp_dist$Total <- rowSums(temp_dist[, -1])
+
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 13, rows = 1:13, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 13, rows = 1:13, palette = "royalblue")
+```
+
+If `unit = "l1"`, disproportionality indices are measured based on marginal distribution of level 1 (in this case, prefecture).
+
+```{r}
+#| echo: false
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 2:12, rows = 14, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 2:12, rows = 14, palette = "royalblue")
+```
+
+```{r}
+index(obj1, unit = "l1")["ad"]
+```
+
+Since $\alpha$-divergence in `decompose()` is measured based on the joint distribution of level 1 and level 2, the `unit` argument in index() must be `"joint"` due to reproduce the same result as in `decompose()`.
+
+```{r}
+#| echo: false
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 2:12, rows = 1:13, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 2:12, rows = 1:13, palette = "royalblue")
+```
+
+```{r}
+index(obj1, unit = "joint")["ad"]
 ```

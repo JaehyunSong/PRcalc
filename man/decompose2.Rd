@@ -4,14 +4,12 @@
 \alias{decompose2}
 \title{Decomposition using a \code{prcalc} object with two-step.}
 \usage{
-decompose2(x, as_disprop = TRUE, alpha = 2, ...)
+decompose2(x, alpha = 2, ...)
 
-decompose2(x, as_disprop = TRUE, alpha = 2, ...)
+decompose2(x, alpha = 2, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
-
-\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{TRUE}.}
 
 \item{alpha}{Default is \code{2} and it must be larger than \code{0}.}
 
