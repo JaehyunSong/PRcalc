@@ -260,7 +260,7 @@ compare(list("D'Hondt"                           = decompose(obj1),
   plot(facet = TRUE, value_type = "text", digits = 5)
 ```
 
-## Comparison between `index()` and `decompose()
+## Comparison between `index()` and `decompose()`
 
 ```{r}
 data("jp_upper_2019")

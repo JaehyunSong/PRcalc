@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="PRcalc: R package for proportional representation allocation">
 <meta property="og:description" content="Allocation! Measuring disproportionality! Decompsition! and Visualization!">
@@ -307,6 +336,19 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="news" class="level2">
 <h2 class="anchored" data-anchor-id="news">News</h2>
+<section id="prcalc-0.8.7.3-20240406" class="level3">
+<h3 class="anchored" data-anchor-id="prcalc-0.8.7.3-20240406">PRcalc 0.8.7.3 (2024/04/06)</h3>
+<ul>
+<li><code>index()</code>および<code>decompose()</code>関数の<code>as_disprop</code>引数を削除しました。</li>
+<li><code>index()</code>に<code>unit</code>引数が追加されました。
+<ul>
+<li>得票、人口、議席などのデータが2次元の場合のみ有効で、単一ブロックのような1次元の場合は無視されます。</li>
+<li><code>"l1"</code>、<code>"l2"</code>（既定値）、<code>"joint"</code>から選択できます。</li>
+<li><code>"l2"</code>（level 2）の場合、level 2（政党、選挙区など）の周辺分布に基づいて非比例性指標が計算され、<code>"l1"</code>（level 1）はlevel 1（地域や州など）の周辺分布を使用します。</li>
+<li><code>"joint"</code>はlevel 1とlevel 2の同時分布が仕様します。この場合、<span class="math inline">\(\alpha\)</span>-divergenceは<code>decomose()</code>のそれと一致するようになります。</li>
+</ul></li>
+</ul>
+</section>
 <section id="prcalc-0.8.7.2-20240326" class="level3">
 <h3 class="anchored" data-anchor-id="prcalc-0.8.7.2-20240326">PRcalc 0.8.7.2 (2024/03/26)</h3>
 <ul>
