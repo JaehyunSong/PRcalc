@@ -361,8 +361,10 @@ For example, if $\alpha = 2$, the divisor of $\alpha$-divergence is known to coi
 ```{r}
 #| message: false
 # Jefferson vs alpha = 10
-list(prcalc(jp_upper_2019, m = 50, method = "sl"),
-     prcalc(jp_upper_2019, m = 50, method = "ad", extra = 2)) |> 
+list(prcalc(kr_lower_2016_en, m = 47, threshold = 0.03, 
+            method = "sl"),
+     prcalc(kr_lower_2016_en, m = 47, threshold = 0.03, 
+            method = "ad", extra = 2)) |> 
   compare() |> 
   print(use_gt = TRUE)
 ```

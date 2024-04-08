@@ -13,26 +13,36 @@ toc: true
 ```{r}
 #| label: setup
 library(PRcalc)
+library(tidyverse)
+library(gt)
 ```
 
 ## Preparation
 
 ```{r}
 #| label: dataset
-data("jp_lower_2021")
-jp_lower_2021
+data("jp_lower_2021_en")
 
-obj1 <- prcalc(jp_lower_2021, 
+# D'Hondt / Jefferson method
+obj1 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "dt")
 
-obj2 <- prcalc(jp_lower_2021, 
+# Hare-Niemeyer method
+obj2 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "hare")
 
-obj3 <- prcalc(jp_lower_2021, 
+# Sainte-Laguë / Webster method
+obj3 <- prcalc(jp_lower_2021_en, 
                m = c(8, 13, 19, 22, 17, 11, 21, 28, 11, 6, 20), 
                method = "sl")
+
+list("Jefferson" = obj1,
+     "Hare"      = obj2,
+     "Webster"   = obj3) |> 
+  compare() |> 
+  print(use_gt = TRUE)
 ```
 
 ## Calculation of disproportionality indices.
@@ -43,28 +53,66 @@ obj3 <- prcalc(jp_lower_2021,
    * `alpha`：For $\alpha$-divergence
 
 ```{r}
-#| label: index
-index1 <- index(obj1)
+#| label: index-1
+index1 <- index(obj1) # k = 2; eta = 2; alpha = 2
 index1
-index2 <- index(obj1, alpha = 1)
+```
+
+```{r}
+#| label: index-2
+index2 <- index(obj1, alpha = 1) # k = 2; eta = 2; alpha = 1
 index2
 ```
 
 ### Printing
 
-```{r}
-#| label: print
-# Extract a index.
-index1["gallagher"]
+You can extract specific indices using `[` operator. 
 
+```{r}
+#| label: print-1
+# Extract Gallagher index.
+index1["gallagher"]
+```
+
+```{r}
+#| label: print-2
+# Extract Gallagher index and alpha-divergence.
+index1[c("gallagher", "ad")]
+```
+
+The identifiers for each indicator are as follows:
+
+```{r}
+#| label: print-id
+#| echo: false
+
+tibble(ID   = attr(index1, "names"),
+       Name = attr(index1, "labels")) |> 
+  gt()
+```
+
+The `subset` argument of `print()` function can be used to output the result in a tabular format.
+
+```{r}
+#| label: print-3
 # Extract a subset of indices.
 print(index1, subset = c("dhondt", "gallagher", "lh", "ad"))
+```
 
+The `hide_id` argument can also be used to hide the ID column.
+
+```{r}
+#| label: print-4
 # Hide ID column.
 print(index1, 
       subset  = c("dhondt", "gallagher", "lh", "ad"),
       hide_id = TRUE)
+```
 
+The `use_gt` argument can be used to print results using {gt} package.
+
+```{r}
+#| label: print-5
 # Use {gt} package
 print(index2, 
       subset  = c("dhondt", "gallagher", "lh", "ad"),
@@ -118,4 +166,106 @@ compare(list("D'Hondt"      = index(obj1),
              "Sainte-Laguë" = index(obj3))) |> 
   plot() +
   ggplot2::labs(x = "Values", y = "Indices", fill = "Method")
+```
+
+## Marginal and joint distribution
+
+```{r}
+tiny_data <- jp_lower_2021_en |> 
+  filter(Party %in% c("LDP", "NKP", "CDP", "JCP", "JIP")) |> 
+  select(Party, Tokyo, Tokai, Kinki, Kyushu)
+
+tiny_obj <- prcalc(tiny_data, m = c(30, 20, 40, 20), method = "dt")
+tiny_obj
+```
+
+```{r}
+#| echo: false
+library(gt)
+temp_obj <- tiny_obj
+temp_obj$raw[6, ]  <- c("Total", colSums(tiny_obj$raw[, -1]))
+temp_obj$dist[6, ] <- c("Total", colSums(tiny_obj$dist[, -1]))
+
+temp_raw  <- temp_obj$raw |> 
+  mutate(across(-1, \(x) as.numeric(x)))
+temp_dist <- temp_obj$dist |> 
+  mutate(across(-1, \(x) as.numeric(x)))
+
+temp_raw$Total  <- rowSums(temp_raw[, -1])
+temp_dist$Total <- rowSums(temp_dist[, -1])
+```
+
+### Using marginal distribution of rows
+
+`unit = "l2"`
+
+政党が選挙区にまたがる場合、使える。
+
+完全にnestされている場合、level2の周辺化は意味がない。level1かjointを使おう。
+
+```{r}
+#| echo: false
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 6, rows = 1:5, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 6, rows = 1:5, palette = "royalblue")
+
+tibble(Party = temp_raw$Party[1:5],
+       Vote  = temp_raw$Total[1:5],
+       Seat  = temp_dist$Total[1:5]) |> 
+  gt()
+```
+
+### Using marginal distribution of columns
+
+`unit = "l1"`
+
+level2がlevel1に完全にnestされている場合に使う。
+
+```{r}
+#| echo: false
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 2:5, rows = 6, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 2:5, rows = 6, palette = "royalblue")
+
+tibble(Party = names(temp_raw)[2:5],
+       Vote  = unlist(temp_raw[6, 2:5]),
+       Seat  = unlist(temp_dist[6, 2:5])) |> 
+  gt()
+```
+
+### Using joint distritubion
+
+`unit = "joint"`
+
+```{r}
+#| echo: false
+temp_raw |> 
+  gt() |> 
+  data_color(columns = 2:5, rows = 1:5, palette = "royalblue")
+
+temp_dist |> 
+  gt() |> 
+  data_color(columns = 2:5, rows = 1:5, palette = "royalblue")
+
+temp_raw[1:5, 1:5] |> 
+  pivot_longer(cols      = -Party,
+               names_to  = "Pref",
+               values_to = "Vote") |> 
+  left_join(temp_dist[1:5, 1:5] |> 
+              pivot_longer(cols      = -Party,
+                           names_to  = "Pref",
+                           values_to = "Seat"),
+            by = c("Party", "Pref")) |> 
+  mutate(Party_Pref = paste(Party, Pref, sep = "_"),
+         .before    = Party) |> 
+  select(-Party, -Pref) |> 
+  gt()
 ```
