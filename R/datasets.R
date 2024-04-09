@@ -376,3 +376,22 @@
 #' @usage data("br_district_2010")
 #'
 "br_district_2010"
+
+#' List of electoral district in Italy (2006)
+#'
+#' List of electoral district in Italy (2006)
+#'
+#' @format A data frame with 27 rows and 3 variables:
+#' \describe{
+#'   \item{ region }{ names of region }
+#'   \item{ district }{ names of district }
+#'   \item{ population }{ number of population }
+#'   \item{ mag }{ electoral magnitude }
+#' }
+#'
+#' @section Special region/district:
+#' There are four special region---"EUROPA", "AMERICA MERIDIONALE", "AMERICA SETTENTRIONALE E CENTRALE", and "AFRICA ASIA OCEANIA ANTARTIDE".
+#'
+#' @usage data("it_distirct_2006")
+#'
+"it_distirct_2006"
