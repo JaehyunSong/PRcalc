@@ -449,6 +449,20 @@
     "text": "Decomposition using a prcalc object with three-step.\n\n\n\ndecompose3(x, ...)\n\n## S3 method for class 'prcalc'\ndecompose3(x, special = NULL, alpha = 0, ...)\n\n\n\n\n\n\n\nx\n\n\na prcalc object.\n\n\n\n\n…\n\n\nignored\n\n\n\n\nspecial\n\n\na character. names of special district.\n\n\n\n\nalpha\n\n\nDefault is 0.\n\n\n\n\n\n\na prcalc_decomposition object.\n\n\n\n\n\nYuta, Kamahara, Junichiro Wada, and Yuko Kasuya. 2021. \"Malapportionment in space and time: Decompose it!\" Electoral Studies. 71: 102301.\n\n\n\n\n\ndecompose, decompose2\ndecompose\n\n\n\n\nlibrary(PRcalc)\n\ndata(nz_district)\n\nnz_1949 &lt;- nz_district |&gt;\n  subset(year == 1949) |&gt;\n  as_prcalc(l1   = \"region\",\n            l2   = \"district\",\n            p    = \"electorates\",\n            q    = \"magnitude\",\n            type = \"district\")\n\ndecompose3(nz_1949, special = \"Maori\")\n\nalpha = 0 \nalpha-divergence          Special  Reapportionment    Redistricting \n    1.398816e-02     4.686074e-03     3.761550e-06     9.298328e-03 \n\nNote: \"alha-divergence\" is sum of \"Special\", \"Reapportionment\" and \"Redisticting\" terms."
   },
   {
+    "objectID": "man/it_distirct_2006.html",
+    "href": "man/it_distirct_2006.html",
+    "title": "PRcalc",
+    "section": "",
+    "text": "List of electoral district in Italy (2006)\n\n\n\ndata(\"it_distirct_2006\")\n\n\n\n\nA data frame with 27 rows and 3 variables:\n\n\nregion\n\n\nnames of region\n\n\ndistrict\n\n\nnames of district\n\n\npopulation\n\n\nnumber of population\n\n\nmag\n\n\nelectoral magnitude\n\n\n\n\n\nThere are four special region—\"EUROPA\", \"AMERICA MERIDIONALE\", \"AMERICA SETTENTRIONALE E CENTRALE\", and \"AFRICA ASIA OCEANIA ANTARTIDE\"."
+  },
+  {
+    "objectID": "man/it_distirct_2006.html#list-of-electoral-district-in-italy-2006",
+    "href": "man/it_distirct_2006.html#list-of-electoral-district-in-italy-2006",
+    "title": "PRcalc",
+    "section": "",
+    "text": "List of electoral district in Italy (2006)\n\n\n\ndata(\"it_distirct_2006\")\n\n\n\n\nA data frame with 27 rows and 3 variables:\n\n\nregion\n\n\nnames of region\n\n\ndistrict\n\n\nnames of district\n\n\npopulation\n\n\nnumber of population\n\n\nmag\n\n\nelectoral magnitude\n\n\n\n\n\nThere are four special region—\"EUROPA\", \"AMERICA MERIDIONALE\", \"AMERICA SETTENTRIONALE E CENTRALE\", and \"AFRICA ASIA OCEANIA ANTARTIDE\"."
+  },
+  {
     "objectID": "man/plot.prcalc.html",
     "href": "man/plot.prcalc.html",
     "title": "PRcalc",
@@ -774,7 +788,7 @@
     "href": "supplement/dataset.html#electoral-districts",
     "title": "Sample Dataset",
     "section": "Electoral districts",
-    "text": "Electoral districts\n\nyear: election year\nregion: the name of the state / prefecture\ndistrict: the name of the district\nelectorates: the electorates of the district\nmagnitude: the magnitudes of the district\n\n\n\n\nName\nCountry\nYear\nSpecial district\n\n\n\n\nau_district_2010\nAustralia\n2010\nnone\n\n\nnz_district\nNew Zealand\n1949-2011\n\"Maori\""
+    "text": "Electoral districts\n\nyear: election year\nregion: the name of the state / prefecture\ndistrict: the name of the district\nelectorates: the electorates of the district\nmagnitude: the magnitudes of the district\n\n\n\n\n\n\n\n\n\n\nName\nCountry\nYear\nSpecial district\n\n\n\n\nau_district_2010\nAustralia\n2010\nnone\n\n\nbr_district_2010\nBrazil\n2010\nnone\n\n\nnz_district\nNew Zealand\n1949-2011\n\"Maori\"\n\n\nit_district_2006\nItaly\n2006\n\"EUROPA\", \"AMERICA MERIDIONALE\", \"AMERICA SETTENTRIONALE E CENTRALE\", and \"AFRICA ASIA OCEANIA ANTARTIDE\""
   },
   {
     "objectID": "supplement/dataset.html#electoral-results",
