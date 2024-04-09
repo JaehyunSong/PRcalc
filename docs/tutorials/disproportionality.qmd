@@ -10,14 +10,14 @@ knitr:
 toc: true
 ---
 
+## Preparation
+
 ```{r}
 #| label: setup
+#| message: false
 library(PRcalc)
 library(tidyverse)
-library(gt)
 ```
-
-## Preparation
 
 ```{r}
 #| label: dataset
@@ -170,6 +170,8 @@ compare(list("D'Hondt"      = index(obj1),
 
 ## Marginal and joint distribution
 
+For illustration purposes, we extract some parties and districts from `jp_lower_2021_en` and allocate seats.
+
 ```{r}
 tiny_data <- jp_lower_2021_en |> 
   filter(Party %in% c("LDP", "NKP", "CDP", "JCP", "JIP")) |> 
@@ -177,7 +179,10 @@ tiny_data <- jp_lower_2021_en |>
 
 tiny_obj <- prcalc(tiny_data, m = c(30, 20, 40, 20), method = "dt")
 tiny_obj
+index(tiny_obj)["ad"]
 ```
+
+Calculating $\alpha$-diveregen from `tiny_obj` yields a result of `r round(index(tiny_obj)["ad"], 5)` ($\alpha$ = 2). Disproportionality is calculated based on the number of votes and seats. However, if the same party spans multiple districts, the results will vary depending on how votes and seats are defined. {PRcalc} defines the number of votes and seats obtained using the marginal or simultaneous distribution of the vote and seat matrices.
 
 ```{r}
 #| echo: false
@@ -197,11 +202,7 @@ temp_dist$Total <- rowSums(temp_dist[, -1])
 
 ### Using marginal distribution of rows
 
-`unit = "l2"`
-
-政党が選挙区にまたがる場合、使える。
-
-完全にnestされている場合、level2の周辺化は意味がない。level1かjointを使おう。
+When parties (level 2) span districts (level 1), as in `tiny_obj`, the marginal distribution of rows (level 2) can be used as the number of votes and seats. That is, the sum of the votes and seats won by each party in each district is used. 
 
 ```{r}
 #| echo: false
@@ -219,11 +220,17 @@ tibble(Party = temp_raw$Party[1:5],
   gt()
 ```
 
+Use the peripheral distribution of rows by setting `unit = "l2"`, which is the default.
+
+```{r}
+index(tiny_obj, unit = "l2")["ad"]
+```
+
+However, if level 2 is completely nested instead of spanning level 1, then the marginalization of level 2 is meaningless. In this case, we recommend peripheral distribution of level 1 (`"l1"`) or joint distribution (`"joint"`).
+
 ### Using marginal distribution of columns
 
-`unit = "l1"`
-
-level2がlevel1に完全にnestされている場合に使う。
+If `unit = "l1"`, the marginal distribution of column (level 1; in this example, district) is used as the number of votes and seats.
 
 ```{r}
 #| echo: false
@@ -241,9 +248,15 @@ tibble(Party = names(temp_raw)[2:5],
   gt()
 ```
 
+```{r}
+index(tiny_obj, unit = "l1")["ad"]
+```
+
+The $\alpha$-divergence in the case of marginalization in district matches the value of reapportionment-stage in decomposition.
+
 ### Using joint distritubion
 
-`unit = "joint"`
+If `unit = "joint"`, the votes and seats won by each party in their respective districts are used as is.
 
 ```{r}
 #| echo: false
@@ -268,4 +281,26 @@ temp_raw[1:5, 1:5] |>
          .before    = Party) |> 
   select(-Party, -Pref) |> 
   gt()
+```
+
+```{r}
+index(tiny_obj, unit = "joint")["ad"]
+```
+
+### `index()` and `decompose()`
+
+```{r}
+decompose(tiny_obj)
+```
+
+The $\alpha$-divergence in the case of marginalization in district (`unit = "l1"`) matches the value of reapportionment-stage in decomposition.
+
+```{r}
+index(tiny_obj, unit = "l1")["ad"]
+```
+
+The $\alpha$-divergence based on joint distribution (`unit = "joint"`) is consistent with $\alpha$-divergence in decomposition.
+
+```{r}
+index(tiny_obj, unit = "joint")["ad"]
 ```
