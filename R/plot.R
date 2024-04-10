@@ -465,10 +465,11 @@ plot.prcalc_index_compare <- function (x,
 #' @method plot prcalc_decomposition_compare
 #'
 #' @param x a `prcalc_decomposition_compare` object.
+#' @param percentage If `TRUE`, the percentage of each element is displayed. If `facet = TRUE`, it is ignored.
 #' @param facet Default is `FALSE`.
 #' @param bar_width Default is `0.75`.
 #' @param value_type `"all"`, `"total"`, or `"none"`. If `"total"`, only alpha-divergences are displayed. Default is `"all"`.
-#' @param value_angle Algle of values. Default is `0`.
+#' @param value_angle Angle of values. Default is `0`.
 #' @param value_size Default is `3`. If `value_type == "none"`, it is ignored.
 #' @param x_angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
 #' @param font_size a font size. Default is `12`.
@@ -521,6 +522,7 @@ plot.prcalc_index_compare <- function (x,
 
 
 plot.prcalc_decomposition_compare <- function (x,
+                                               percentage   = FALSE,
                                                facet        = FALSE,
                                                bar_width    = 0.75,
                                                value_type   = "all",
@@ -546,10 +548,23 @@ plot.prcalc_decomposition_compare <- function (x,
 
   if (!facet) {
 
+    if (percentage) {
+      data <- data |>
+        group_by(Model) |>
+        mutate(alpha = sum(Value) / 2,
+               Value = Value / sum(Value) * 200,
+               Value = if_else(Type == "Alpha-divergence", Value / 2, Value)) |>
+        ungroup()
+    } else {
+      data <- data |>
+        group_by(Model) |>
+        mutate(alpha = sum(Value) / 2) |>
+        ungroup()
+    }
+
     if (value_type == "all") {
       data <- data |>
-        mutate(alpha   = sum(Value),
-               Model = paste0(Model, "\n(", sprintf(d_s, alpha), ")")) |>
+        mutate(Model = paste0(Model, "\n(", sprintf(d_s, alpha), ")")) |>
         mutate(Model = fct_inorder(Model))
     }
 
@@ -557,7 +572,9 @@ plot.prcalc_decomposition_compare <- function (x,
       mutate(Model = fct_inorder(Model)) |>
       filter(Type != "Alpha-divergence") |>
       group_by(Model) |>
-      mutate(Type    = factor(Type, levels = c("Special", "Reapportionment", "Redistricting")),
+      mutate(Type    = factor(Type, levels = c("Special",
+                                               "Reapportionment",
+                                               "Redistricting")),
              alpha   = sum(Value)) |>
       arrange(Model, desc(Type)) |>
       mutate(base = cumsum(Value),

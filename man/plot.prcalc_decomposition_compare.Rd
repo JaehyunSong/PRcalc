@@ -6,6 +6,7 @@
 \usage{
 \method{plot}{prcalc_decomposition_compare}(
   x,
+  percentage = FALSE,
   facet = FALSE,
   bar_width = 0.75,
   value_type = "all",
@@ -22,13 +23,15 @@
 \arguments{
 \item{x}{a \code{prcalc_decomposition_compare} object.}
 
+\item{percentage}{If \code{TRUE}, the percentage of each element is displayed. If \code{facet = TRUE}, it is ignored.}
+
 \item{facet}{Default is \code{FALSE}.}
 
 \item{bar_width}{Default is \code{0.75}.}
 
 \item{value_type}{\code{"all"}, \code{"total"}, or \code{"none"}. If \code{"total"}, only alpha-divergences are displayed. Default is \code{"all"}.}
 
-\item{value_angle}{Algle of values. Default is \code{0}.}
+\item{value_angle}{Angle of values. Default is \code{0}.}
 
 \item{value_size}{Default is \code{3}. If \code{value_type == "none"}, it is ignored.}
 
