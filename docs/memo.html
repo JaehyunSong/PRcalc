@@ -310,6 +310,10 @@ ul.task-list li input[type="checkbox"] {
 <p>重要度は現時点での重要度</p>
 <ul>
 <li>たとえば、ドキュメント、ヘルプの整備が重要でないということではなく、現時点では重要でないとのこと。中身が安定し、公開フェーズへ移行したらデバッグと共に最重要事項となる。</li>
+<li><code>as_prcalc()</code>、<code>read_prcalc()</code>の<code>type</code>引数は現在、<code>"party"</code>と<code>"district"</code>になっているが、これは<code>"span"</code>と<code>"nested"</code>にした方が良いかも。
+<ul>
+<li>政党（level 2）が地域（level 1）をまたがる（span）なら<code>"span"</code>、選挙区（level 2）が地域（level 1）のサブグループであれば、<code>"nested"</code>に。</li>
+</ul></li>
 </ul>
 <section id="重要度高" class="level3">
 <h3 class="anchored" data-anchor-id="重要度高">重要度：高</h3>
