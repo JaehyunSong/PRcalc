@@ -60,13 +60,17 @@ decompose2 <- function(x,
   s_j <- s_j / sum(s_j)
 
   raw_prop <- x$raw |>
-    mutate(across(-1, \(x) x / sum(x)))
+    mutate(across(-1, \(x) x / sum(x)),
+           across(-1, \(x) if_else(is.nan(x), 0, x)))
 
   dist_prop <- x$dist |>
-    mutate(across(-1, \(x) x / sum(x)))
+    mutate(across(-1, \(x) x / sum(x)),
+           across(-1, \(x) if_else(is.nan(x), 0, x)))
 
   if (alpha == 0) {
-    ra <- sum(v_j * log(v_j / s_j))
+    v_s <- log(v_j / s_j)
+    #v_s[is.nan(v_s) | is.infinite(v_s)] <- 0
+    ra  <- sum(v_j * v_s)
 
     for (i in 2:ncol(raw_prop)) {
       v_ij <- raw_prop[, i]
@@ -74,7 +78,8 @@ decompose2 <- function(x,
 
       v_s <- log(v_ij / s_ij)
 
-      v_s[is.nan(v_s) | is.infinite(v_s)] <- 0
+      #v_s[is.nan(v_s) | is.infinite(v_s)] <- 0
+      v_s[is.nan(v_s)] <- 0
 
       #temp <- v_j[i-1] * sum(v_ij * log(v_ij / s_ij))
       temp <- v_j[i-1] * sum(v_ij * v_s)
@@ -83,7 +88,9 @@ decompose2 <- function(x,
     }
 
   } else if (alpha == 1) {
-    ra <- sum(s_j * log(s_j / v_j))
+    s_v <- log(s_j / v_j)
+    s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+    ra  <- sum(s_j * s_v)
 
     for (i in 2:ncol(raw_prop)) {
       v_ij <- raw_prop[, i]
@@ -96,17 +103,18 @@ decompose2 <- function(x,
 
       s_v <- log(s_ij / v_ij)
 
-      #s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
+      s_v[is.nan(s_v) | is.infinite(s_v)] <- 0
       s_v[s_ij == 0] <- 0
 
-      #temp <- s_j[i-1] * sum(s_ij * log(s_ij / v_ij))
       temp <- s_j[i-1] * sum(s_ij * s_v)
 
       rd[i - 1] <- temp
     }
   } else {
     temp_a <- 1 / (alpha * (alpha - 1))
-    ra <- sum(v_j * ((s_j / v_j)^alpha - 1)) * temp_a
+    s_v_a  <- (s_j / v_j)^alpha
+    s_v_a[is.infinite(s_v_a)] <- 0
+    ra <- sum(v_j * (s_v_a - 1)) * temp_a
 
     rd <- NULL
 
@@ -122,9 +130,14 @@ decompose2 <- function(x,
       s_v <- s_ij / v_ij
 
       s_v_a <- s_v^alpha
-      #s_v_a[is.infinite(s_v_a)] <- 0
+      s_j_a <- s_j[i-1]^alpha
+      v_j_a <- v_j[i-1]^(1 - alpha)
 
-      temp <- s_j[i-1]^alpha * v_j[i-1]^(1 - alpha) * sum(temp_a * v_ij * (s_v_a - 1))
+      s_v_a[is.infinite(s_v_a)] <- 0
+      s_j_a[is.infinite(s_j_a)] <- 0
+      v_j_a[is.infinite(v_j_a)] <- 0
+
+      temp <- s_j_a * v_j_a * sum(temp_a * v_ij * (s_v_a - 1))
 
       rd[i - 1] <- temp
     }

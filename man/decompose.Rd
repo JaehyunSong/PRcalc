@@ -5,16 +5,14 @@
 \alias{decompose.prcalc}
 \title{Decomposition using a \code{prcalc} object.}
 \usage{
-decompose(x, as_disprop = TRUE, alpha = 2, special = NULL, ...)
+decompose(x, alpha = 2, special = NULL, ...)
 
-\method{decompose}{prcalc}(x, as_disprop = TRUE, alpha = 2, special = NULL, ...)
+\method{decompose}{prcalc}(x, alpha = 2, special = NULL, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
 
-\item{as_disprop}{If \code{TRUE}, \code{alpha} must be larger than \code{0}. Default is \code{TRUE}.}
-
-\item{alpha}{Default is \code{2} and it must be larger than \code{0}.}
+\item{alpha}{Default is \code{2}. If the goal is to calculate disproportionality, \code{alpha} should be greater than \code{0}.}
 
 \item{special}{a character. names of special district. If it is defined, three-step decomposition is conducted.}
 

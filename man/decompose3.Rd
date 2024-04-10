@@ -7,7 +7,7 @@
 \usage{
 decompose3(x, ...)
 
-\method{decompose3}{prcalc}(x, special = NULL, alpha = 0, ...)
+\method{decompose3}{prcalc}(x, special = NULL, alpha = 2, ...)
 }
 \arguments{
 \item{x}{a \code{prcalc} object.}
@@ -16,7 +16,7 @@ decompose3(x, ...)
 
 \item{special}{a character. names of special district.}
 
-\item{alpha}{Default is \code{0}.}
+\item{alpha}{Default is \code{2}.}
 }
 \value{
 a \code{prcalc_decomposition} object.

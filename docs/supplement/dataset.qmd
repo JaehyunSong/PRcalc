@@ -52,7 +52,7 @@ knitr:
 |`au_district_2010`|Australia|2010|none|
 |`br_district_2010`|Brazil|2010|none|
 |`nz_district`|New Zealand|1949-2011|`"Maori"`|
-|`it_district_2006`|Italy|2006|`"EUROPA"`, `"AMERICA MERIDIONALE"`, `"AMERICA SETTENTRIONALE E CENTRALE"`, and `"AFRICA ASIA OCEANIA ANTARTIDE"`|
+|`it_district_2006`|Italy|2006|`"OVERSEAS"`|
 
 ## Electoral results
 
@@ -64,3 +64,4 @@ knitr:
 |Name|Country|Year|Type|
 |:---|:---|---:|:---|
 |`jp_lower_2021_result`|Japan|2010|Lower house|
+|`it_lower_2006`|Italy|2006|Lower house|

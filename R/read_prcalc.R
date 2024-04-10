@@ -11,12 +11,17 @@ read_prcalc <- function(x,
 
   result <- NULL
 
+  type <- match.arg(type)
+
   temp_df <- read.csv(x)
 
-  reuslt <- as_prcalc(temp_df,
-                      l1 = l1, l2 = l2,
-                      p = p, q = q,
+  result <- as_prcalc(temp_df,
+                      l1 = l1,
+                      l2 = l2,
+                      p  = p,
+                      q  = q,
                       type = type)
+
 
   result
 }

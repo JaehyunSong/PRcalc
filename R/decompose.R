@@ -1,7 +1,7 @@
 #' Decomposition using a `prcalc` object.
 #' @param x a `prcalc` object.
-#' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
-#' @param alpha Default is `2` and it must be larger than `0`.
+# #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
+#' @param alpha Default is `2`. If the goal is to calculate disproportionality, `alpha` should be greater than `0`.
 #' @param special a character. names of special district. If it is defined, three-step decomposition is conducted.
 #' @param ... ignored
 #'
@@ -23,7 +23,7 @@
 #' }
 #'
 decompose <- function(x,
-                      as_disprop = TRUE,
+                      #as_disprop = TRUE,
                       alpha      = 2,
                       special    = NULL,
                       ...) {
@@ -69,19 +69,19 @@ decompose <- function(x,
 #'   decompose(alpha = 0, as_disprop = FALSE, special = "Maori")
 
 decompose.prcalc <- function(x,
-                             as_disprop = TRUE,
+                             #as_disprop = TRUE,
                              alpha      = 2,
                              special    = NULL,
                              ...) {
 
   if (is.null(special)) {
     result <- decompose2(x,
-                         as_disprop = as_disprop,
+                         #as_disprop = as_disprop,
                          alpha      = alpha)
   } else {
     result <- decompose3(x,
                          special    = special,
-                         as_disprop = as_disprop,
+                         #as_disprop = as_disprop,
                          alpha      = alpha)
   }
 

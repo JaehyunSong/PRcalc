@@ -395,3 +395,19 @@
 #' @usage data("it_distirct_2006")
 #'
 "it_distirct_2006"
+
+#' Result in Italy lower house election (2006)
+#'
+#' Result in Italy lower house election (2006)
+#'
+#' @format A data frame with 46 rows and 4 variables:
+#' \describe{
+#'   \item{ coalition }{ name of coalition }
+#'   \item{ party }{ name of party }
+#'   \item{ votes }{ number of votes }
+#'   \item{ seats }{ number of seats }
+#' }
+#'
+#' @usage data("it_lower_2006")
+#'
+"it_lower_2006"

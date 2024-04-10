@@ -2,7 +2,7 @@
 #' @param x a `prcalc` object.
 #' @param special a character. names of special district.
 # #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
-#' @param alpha Default is `0`.
+#' @param alpha Default is `2`.
 #' @param ... ignored
 #'
 #' @return
@@ -49,7 +49,7 @@ decompose3 <- function(x, ...) {
 decompose3.prcalc <- function(x,
                               special    = NULL,
                               #as_disprop = FALSE,
-                              alpha      = 0,
+                              alpha      = 2,
                               ...) {
 
   if (!inherits(x, "prcalc")) stop('Error! "prcalc" class is required.')

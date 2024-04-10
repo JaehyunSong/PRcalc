@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code class="language-R">decompose3(x, ...)
 
 ## S3 method for class 'prcalc'
-decompose3(x, special = NULL, alpha = 0, ...)
+decompose3(x, special = NULL, alpha = 2, ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -385,7 +385,7 @@ a character. names of special district.
 <code id="decompose3_:_alpha">alpha</code>
 </td>
 <td>
-Default is <code>0</code>.
+Default is <code>2</code>.
 </td>
 </tr>
 </tbody></table>
@@ -424,9 +424,9 @@ Default is <code>0</code>.
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose3</span>(nz_1949, <span class="at">special =</span> <span class="st">"Maori"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>alpha = 0 
+<pre><code>alpha = 2 
 alpha-divergence          Special  Reapportionment    Redistricting 
-    1.398816e-02     4.686074e-03     3.761550e-06     9.298328e-03 
+    6.037171e-02     6.536250e-03     3.606409e-06     5.383185e-02 
 
 Note: "alha-divergence" is sum of "Special", "Reapportionment" and "Redisticting" terms.</code></pre>
 </div>

@@ -21,7 +21,7 @@ List of electoral district in Italy (2006)
 }
 \section{Special region/district}{
 
-There are four special region---"EUROPA", "AMERICA MERIDIONALE", "AMERICA SETTENTRIONALE E CENTRALE", and "AFRICA ASIA OCEANIA ANTARTIDE".
+There are four special region---"OVERSEAS".
 }
 
 \keyword{datasets}

@@ -85,7 +85,6 @@ decompose(obj1, alpha = 3)
 Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 
 ```{r}
-#| error: true
 obj4 <- read_prcalc("../data/sample_dataset.csv",
                     l1   = "region",
                     l2   = "district",
@@ -94,7 +93,6 @@ obj4 <- read_prcalc("../data/sample_dataset.csv",
                     type = "district")
 
 print(obj4, head = 10)
-
 decompose(obj4, alpha = 2)
 decompose(obj4, alpha = 0)
 ```
@@ -107,7 +105,7 @@ data(au_district_2010)
 
 head(au_district_2010)
 
-# If all mangnitudes are 1, "magnitude" can be omitted.
+# If all magnitudes are 1, "q" can be omitted.
 obj5 <- as_prcalc(au_district_2010,
                   l1   = "region",
                   l2   = "district",
@@ -262,69 +260,4 @@ compare(list("D'Hondt"                           = decompose(obj1),
 
 ## Comparison between `index()` and `decompose()`
 
-```{r}
-data("jp_upper_2019")
-
-index(obj1)["ad"]
-decompose(obj1)["d"]
-```
-
-In default (`unit = "l2"`), disproportionality indices are measured based on the marginal distribution of level 2 (in this case, party).
-
-```{r}
-#| echo: false
-library(gt)
-
-temp_obj1 <- obj1
-temp_obj1$raw[14, ] <- c("Total", colSums(obj1$raw[, -1]))
-temp_obj1$dist[14, ] <- c("Total", colSums(obj1$dist[, -1]))
-temp_raw  <- temp_obj1$raw |> 
-  mutate(across(-1, \(x) as.numeric(x)))
-temp_dist <- temp_obj1$dist |> 
-  mutate(across(-1, \(x) as.numeric(x)))
-
-temp_raw$Total  <- rowSums(temp_raw[, -1])
-temp_dist$Total <- rowSums(temp_dist[, -1])
-
-temp_raw |> 
-  gt() |> 
-  data_color(columns = 13, rows = 1:13, palette = "royalblue")
-
-temp_dist |> 
-  gt() |> 
-  data_color(columns = 13, rows = 1:13, palette = "royalblue")
-```
-
-If `unit = "l1"`, disproportionality indices are measured based on marginal distribution of level 1 (in this case, prefecture).
-
-```{r}
-#| echo: false
-temp_raw |> 
-  gt() |> 
-  data_color(columns = 2:12, rows = 14, palette = "royalblue")
-
-temp_dist |> 
-  gt() |> 
-  data_color(columns = 2:12, rows = 14, palette = "royalblue")
-```
-
-```{r}
-index(obj1, unit = "l1")["ad"]
-```
-
-Since $\alpha$-divergence in `decompose()` is measured based on the joint distribution of level 1 and level 2, the `unit` argument in index() must be `"joint"` due to reproduce the same result as in `decompose()`.
-
-```{r}
-#| echo: false
-temp_raw |> 
-  gt() |> 
-  data_color(columns = 2:12, rows = 1:13, palette = "royalblue")
-
-temp_dist |> 
-  gt() |> 
-  data_color(columns = 2:12, rows = 1:13, palette = "royalblue")
-```
-
-```{r}
-index(obj1, unit = "joint")["ad"]
-```
+Please see "Marginal and joint distribution" in [*Measuring disproportionality*](disproportionality.qmd).
