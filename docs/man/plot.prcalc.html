@@ -353,9 +353,9 @@ plot(
   type = "both",
   prop = TRUE,
   show_total = TRUE,
-  by = "block",
-  subset_b = NULL,
-  subset_p = NULL,
+  by = c("l1", "l2"),
+  subset_l1 = NULL,
+  subset_l2 = NULL,
   free_y = FALSE,
   font_size = 12,
   angle = 0,
@@ -405,23 +405,23 @@ If <code>TRUE</code>, a facet names "Total" is diplayed. Default is <code>TRUE</
 <code id="plot.prcalc_:_by">by</code>
 </td>
 <td>
-Facets by blocks (<code>“block”</code>) or parties (<code>“party”</code>). Default is <code>“block”</code>.
+Facets by level 1 (<code>“l1”</code>) or level 2 (<code>“l2”</code>). Default is <code>“l1”</code>.
 </td>
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_subset_b">subset_b</code>
+<code id="plot.prcalc_:_subset_l1">subset_l1</code>
 </td>
 <td>
-a character vector of block names.
+a character vector. a subset of level 1.
 </td>
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_subset_p">subset_p</code>
+<code id="plot.prcalc_:_subset_l2">subset_l2</code>
 </td>
 <td>
-a character vector of party names.
+a character vector. a subset of level 2.
 </td>
 </tr>
 <tr>
@@ -506,7 +506,7 @@ Ignored
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">subset_l2 =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>, <span class="st">"国民"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -514,7 +514,7 @@ Ignored
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>), <span class="at">facet_col =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">subset_l1 =</span> <span class="fu">c</span>(<span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>), <span class="at">facet_col =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -522,9 +522,9 @@ Ignored
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">by =</span> <span class="st">"party"</span>,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_b =</span> <span class="fu">c</span>(<span class="st">"Hokkaido"</span>, <span class="st">"Tohoku"</span>, <span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pr_obj2, <span class="at">by =</span> <span class="st">"l2"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_l2 =</span> <span class="fu">c</span>(<span class="st">"自民"</span>, <span class="st">"公明"</span>, <span class="st">"立憲"</span>, <span class="st">"維新"</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_l1 =</span> <span class="fu">c</span>(<span class="st">"Hokkaido"</span>, <span class="st">"Tohoku"</span>, <span class="st">"Tokyo"</span>, <span class="st">"Kinki"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

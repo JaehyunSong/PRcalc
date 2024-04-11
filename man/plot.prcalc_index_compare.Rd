@@ -29,7 +29,7 @@
 
 \item{point_size}{Default is \code{5}.}
 
-\item{facet}{政党ごとにfacet分割. Default is \code{FALSE}.}
+\item{facet}{Separate facets by indices? Default is \code{FALSE}.}
 
 \item{free_x}{Default is \code{TRUE}.}
 

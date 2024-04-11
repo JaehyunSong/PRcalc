@@ -6,7 +6,7 @@
 \usage{
 \method{plot}{prcalc_compare}(
   x,
-  subset_p = NULL,
+  subset_l2 = NULL,
   bar_width = 0.75,
   facet = FALSE,
   free_y = TRUE,
@@ -20,11 +20,11 @@
 \arguments{
 \item{x}{a \code{prcalc_compare} object.}
 
-\item{subset_p}{a character vector. A subset of parties.}
+\item{subset_l2}{a character vector. A subset of level 2.}
 
 \item{bar_width}{Default is \code{0.75}.}
 
-\item{facet}{Separate facets by parties? Default is \code{FALSE}.}
+\item{facet}{Separate facets by level 2? Default is \code{FALSE}.}
 
 \item{free_y}{Default is \code{TRUE}.}
 

@@ -143,7 +143,7 @@ The `angle` argument allows rotation of the x-axis scale label; the value of `an
 plot(obj2, angle = 90)
 ```
 
-Only some parties can be displayed with the `subset_p` argument.
+Only some level 2 can be displayed with the `subset_l2` argument.
 
 ```{r}
 #| label: plot-4
@@ -152,25 +152,25 @@ plot(obj2,
      subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"))
 ```
 
-It is also possible to display only some blocks by using the `subset_b` argument.
+It is also possible to display only some level 1 by using the `subset_l1` argument.
 
 ```{r}
 #| label: plot-5
 # Output only some district
 plot(obj2, 
-     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
-     subset_b = c("Tokyo", "Kinki")) 
+     subset_l1 = c("Tokyo", "Kinki"),
+     subset_l2 = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP")) 
 ```
 
-If `by = "party"`, the facet is divided based on party. Default is `by = "block"`.
+If `by = "l2"`, the facet is divided based on level 2 Default is `by = "l1"` (level 1).
 
 ```{r}
 #| label: plot-6
 # Divide the facet by parties
 plot(obj2, 
-     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
-     subset_b = c("Tokyo", "Kinki"),
-     by        = "party")
+     subset_l1 = c("Tokyo", "Kinki"),
+     subset_l2 = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
+     by        = "l2")
 ```
 
 The number of facet columns can be adjusted with `facet_col`.
@@ -179,9 +179,9 @@ The number of facet columns can be adjusted with `facet_col`.
 #| label: plot-7
 # Three columns
 plot(obj2, 
-     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
-     subset_b = c("Tokyo", "Kinki"),
-     by        = "party",
+     subset_l1 = c("Tokyo", "Kinki"),
+     subset_l2 = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
+     by        = "l2",
      facet_col = 3)
 ```
 
@@ -191,9 +191,9 @@ By default, all facets share the same y-axis scale. If you want to use a differe
 #| label: plot-8
 # Use different y-axis scales for each facet
 plot(obj2, 
-     subset_p = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
-     subset_b  = c("Tokyo", "Kinki"),
-     by        = "party",
+     subset_l1 = c("Tokyo", "Kinki"),
+     subset_l2 = c("LDP", "NKP", "CDP", "JIP", "JCP", "DPP"),
+     by        = "l2",
      facet_col = 3,
      free_y    = TRUE)
 ```

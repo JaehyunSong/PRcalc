@@ -6,9 +6,9 @@
 #' @param type a plot of votes (`"raw"`), allocation (`"dist"`), or both (`"both"`). Default is `"both"`.
 #' @param prop Output at a percentage. If `type` is `"both"`, it is ignored. Default is `TRUE`.
 #' @param show_total If `TRUE`, a facet names "Total" is diplayed. Default is `TRUE`.
-#' @param by Facets by blocks (`"block"`) or parties (`"party"`). Default is `"block"`.
-#' @param subset_b a character vector of block names.
-#' @param subset_p a character vector of party names.
+#' @param by Facets by level 1 (`"l1"`) or level 2 (`"l2"`). Default is `"l1"`.
+#' @param subset_l1 a character vector. a subset of level 1.
+#' @param subset_l2 a character vector. a subset of level 2.
 #' @param free_y If `FALSE`, y-axes are fixed over all facets. Default is `TRUE`.
 #' @param font_size a font size.
 #' @param angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
@@ -36,20 +36,20 @@
 #'                   m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
 #'                   method = "hare")
 #' plot(pr_obj2, angle = 90)
-#' plot(pr_obj2, subset_p = c("自民", "公明", "立憲", "維新", "国民"))
-#' plot(pr_obj2, subset_b = c("Tokyo", "Kinki"), facet_col = 1)
-#' plot(pr_obj2, by = "party",
-#'      subset_p = c("自民", "公明", "立憲", "維新"),
-#'      subset_b = c("Hokkaido", "Tohoku", "Tokyo", "Kinki"))
+#' plot(pr_obj2, subset_l2 = c("自民", "公明", "立憲", "維新", "国民"))
+#' plot(pr_obj2, subset_l1 = c("Tokyo", "Kinki"), facet_col = 1)
+#' plot(pr_obj2, by = "l2",
+#'      subset_l2 = c("自民", "公明", "立憲", "維新"),
+#'      subset_l1 = c("Hokkaido", "Tohoku", "Tokyo", "Kinki"))
 #'
 
 plot.prcalc <- function (x,
                          type       = "both",
                          prop       = TRUE,
                          show_total = TRUE,
-                         by         = "block",
-                         subset_b   = NULL,
-                         subset_p   = NULL,
+                         by         = c("l1", "l2"),
+                         subset_l1  = NULL,
+                         subset_l2  = NULL,
                          free_y     = FALSE,
                          font_size  = 12,
                          angle      = 0,
@@ -58,6 +58,8 @@ plot.prcalc <- function (x,
                          ...) {
 
   block <- party <- values <- NULL
+
+  by <- match.arg(by)
 
   raw_df  <- as_tibble(x$raw)
   dist_df <- as_tibble(x$dist)
@@ -77,18 +79,18 @@ plot.prcalc <- function (x,
 
     raw_df <- raw_df |>
       pivot_longer(cols      = -1,
-                   names_to  = "block",
+                   names_to  = "l1",
                    values_to = "values")
 
     dist_df <- dist_df |>
       pivot_longer(cols      = -1,
-                   names_to  = "block",
+                   names_to  = "l1",
                    values_to = "values")
 
     temp_df <- bind_rows(list("Raw" = raw_df, "Dist" = dist_df),
                          .id = "Type")
 
-    names(temp_df) <- c("type", "party", "block", "values")
+    names(temp_df) <- c("type", "l2", "l1", "values")
 
   } else if (type == "raw") {
 
@@ -96,12 +98,12 @@ plot.prcalc <- function (x,
 
     raw_df <- raw_df |>
       pivot_longer(cols      = -1,
-                   names_to  = "block",
+                   names_to  = "l1",
                    values_to = "values")
 
     temp_df <- raw_df
 
-    names(temp_df) <- c("party", "block", "values")
+    names(temp_df) <- c("l2", "l1", "values")
 
   } else if (type == "dist") {
 
@@ -109,38 +111,38 @@ plot.prcalc <- function (x,
 
     dist_df <- dist_df |>
       pivot_longer(cols      = -1,
-                   names_to  = "block",
+                   names_to  = "l1",
                    values_to = "values")
 
     temp_df <- dist_df
 
-    names(temp_df) <- c("party", "block", "values")
+    names(temp_df) <- c("l2", "l1", "values")
 
   }
 
-  if (!is.null(subset_b)) temp_df <- filter(temp_df, block %in% subset_b)
-  if (!is.null(subset_p)) temp_df <- filter(temp_df, party %in% subset_p)
+  if (!is.null(subset_l1)) temp_df <- filter(temp_df, l1 %in% subset_l1)
+  if (!is.null(subset_l2)) temp_df <- filter(temp_df, l2 %in% subset_l2)
 
   temp_df <- temp_df |>
-    mutate(across(type:block, \(x) as.character(x))) |>
+    mutate(across(type:l1, \(x) as.character(x))) |>
     mutate(type  = fct_inorder(type),
-           party = fct_inorder(party),
-           block = fct_inorder(block))
+           l2    = fct_inorder(l2),
+           l1    = fct_inorder(l1))
 
   if (ncol(x$raw) == 2) {
     result <- temp_df |>
-      ggplot(aes(x = party, y = values))
+      ggplot(aes(x = l2, y = values))
   } else {
-    if (by == "block") {
+    if (by == "l1") {
       result <- temp_df |>
-        ggplot(aes(x = party, y = values)) +
-        facet_wrap(~block,
+        ggplot(aes(x = l2, y = values)) +
+        facet_wrap(~l1,
                    scales = if_else(free_y, "free_y", "fixed"),
                    ncol   = facet_col)
-    } else if (by == "party") {
+    } else if (by == "l2") {
       result <- temp_df |>
-        ggplot(aes(x = block, y = values)) +
-        facet_wrap(~party,
+        ggplot(aes(x = l1, y = values)) +
+        facet_wrap(~l2,
                    scales = if_else(free_y, "free_y", "fixed"),
                    ncol   = facet_col)
     }
@@ -149,12 +151,12 @@ plot.prcalc <- function (x,
   if (type %in% c("raw", "dist")) {
     result <- result +
       geom_col() +
-      labs(x = "Parties", y = "Distribution") +
+      labs(x = "Level 2", y = "Distribution") +
       theme_bw(base_size = font_size)
   } else {
     result <- result +
       geom_col(aes(fill = type), position = position_dodge2()) +
-      labs(x = "Parties", y = "Distribution", fill = "") +
+      labs(x = "Level 2", y = "Distribution", fill = "") +
       theme_bw(base_size = font_size) +
       theme(legend.position = legend_pos)
   }
@@ -173,9 +175,9 @@ plot.prcalc <- function (x,
 #' @method plot prcalc_compare
 #'
 #' @param x a `prcalc_compare` object.
-#' @param subset_p a character vector. A subset of parties.
+#' @param subset_l2 a character vector. A subset of level 2.
 #' @param bar_width Default is `0.75`.
-#' @param facet Separate facets by parties? Default is `FALSE`.
+#' @param facet Separate facets by level 2? Default is `FALSE`.
 #' @param free_y Default is `TRUE`.
 #' @param font_size a font size. Default is `12`.
 #' @param angle an angle of x-ticks label (`0` to `90`). Defualt is `0`.
@@ -206,7 +208,7 @@ plot.prcalc <- function (x,
 #'   plot()
 
 plot.prcalc_compare <- function (x,
-                                 subset_p   = NULL,
+                                 subset_l2  = NULL,
                                  bar_width  = 0.75,
                                  facet      = FALSE,
                                  free_y     = TRUE,
@@ -229,32 +231,33 @@ plot.prcalc_compare <- function (x,
                  names_to  = "Model",
                  values_to = "Value")
 
-  if (!is.null(subset_p)) {
-    data <- data |>
-      filter(Party %in% subset_p)
-  }
 
-  names(data)[1] <- "Party"
+  names(data)[1] <- "l2"
+
+  if (!is.null(subset_l2)) {
+    data <- data |>
+      filter(l2 %in% subset_l2)
+  }
 
   if (facet) {
     result <- data |>
-      mutate(Party = fct_inorder(Party),
+      mutate(l2    = fct_inorder(as.character(l2)),
              Model = fct_inorder(Model)) |>
       ggplot(aes(x = Model, y = Value)) +
-      facet_wrap(~Party,
+      facet_wrap(~l2,
                  scales = if_else(free_y, "free_y", "fixed"),
                  ncol = facet_col)
   } else {
     result <- data |>
-      mutate(Party = fct_inorder(Party),
+      mutate(l2    = fct_inorder(as.character(l2)),
              Model = fct_inorder(Model)) |>
-      ggplot(aes(x = Party, y = Value, fill = Model))
+      ggplot(aes(x = l2, y = Value, fill = Model))
   }
 
   result <- result +
     geom_col(width = bar_width,
              position = position_dodge2()) +
-    labs(x = "Parties", y = "Distribution") +
+    labs(x = "Level 2", y = "Distribution") +
     theme_bw(base_size = font_size) +
     theme(legend.position = legend_pos)
 
@@ -351,7 +354,7 @@ plot.prcalc_index <- function (x,
 #' @param style Plot style. Lollipop (`"lollipop`) or bar plot (`"bar"`). Default is `"bar"`.
 #' @param bar_width Default is `0.75`.
 #' @param point_size Default is `5`.
-#' @param facet 政党ごとにfacet分割. Default is `FALSE`.
+#' @param facet Separate facets by indices? Default is `FALSE`.
 #' @param free_x Default is `TRUE`.
 #' @param font_size a font size. Default is `12`.
 #' @param facet_col a number of columns of facets. Default is `4`.

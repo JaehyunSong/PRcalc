@@ -192,7 +192,18 @@ list("1949" = decompose_1949,
      "2011" = decompose_2011) |> 
   compare() |> 
   plot() +
-  labs(title = "Electoral districts in New Zealand",
+  labs(x = "Year (D1)",
+       title = "Electoral districts in New Zealand",
+       caption = expression(paste("Three-step decomposition with ", alpha, " = 1")))
+
+list("1949" = decompose_1949,
+     "1972" = decompose_1972,
+     "1990" = decompose_1990,
+     "2011" = decompose_2011) |> 
+  compare() |> 
+  plot(percentage = TRUE) +
+  labs(x = "Year (D1)", y = "(%)",
+       title = "Electoral districts in New Zealand",
        caption = expression(paste("Three-step decomposition with ", alpha, " = 1")))
 ```
 

@@ -3,8 +3,8 @@
 ### PRcalc 0.8.7.3 (2024/04/11)
 
 * `plot()`
-   * `percentage`引数の追加
-   * l1 l2
+   * `percentage`引数の追加（`prcalc_decomposition_compare`）
+   * 一部引数名の変更
 * `as_prcalc()`、`read_prcalc()`
    * `unit`の実引数を`"district"`と`"party"`から`"nested"`と`"span"`へ
 

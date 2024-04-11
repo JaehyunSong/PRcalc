@@ -9,9 +9,9 @@
   type = "both",
   prop = TRUE,
   show_total = TRUE,
-  by = "block",
-  subset_b = NULL,
-  subset_p = NULL,
+  by = c("l1", "l2"),
+  subset_l1 = NULL,
+  subset_l2 = NULL,
   free_y = FALSE,
   font_size = 12,
   angle = 0,
@@ -29,11 +29,11 @@
 
 \item{show_total}{If \code{TRUE}, a facet names "Total" is diplayed. Default is \code{TRUE}.}
 
-\item{by}{Facets by blocks (\code{"block"}) or parties (\code{"party"}). Default is \code{"block"}.}
+\item{by}{Facets by level 1 (\code{"l1"}) or level 2 (\code{"l2"}). Default is \code{"l1"}.}
 
-\item{subset_b}{a character vector of block names.}
+\item{subset_l1}{a character vector. a subset of level 1.}
 
-\item{subset_p}{a character vector of party names.}
+\item{subset_l2}{a character vector. a subset of level 2.}
 
 \item{free_y}{If \code{FALSE}, y-axes are fixed over all facets. Default is \code{TRUE}.}
 
@@ -64,10 +64,10 @@ pr_obj2 <- prcalc(jp_lower_2021,
                   m = c(8, 14, 20, 21, 17, 11, 21, 30, 11, 6, 21),
                   method = "hare")
 plot(pr_obj2, angle = 90)
-plot(pr_obj2, subset_p = c("自民", "公明", "立憲", "維新", "国民"))
-plot(pr_obj2, subset_b = c("Tokyo", "Kinki"), facet_col = 1)
-plot(pr_obj2, by = "party",
-     subset_p = c("自民", "公明", "立憲", "維新"),
-     subset_b = c("Hokkaido", "Tohoku", "Tokyo", "Kinki"))
+plot(pr_obj2, subset_l2 = c("自民", "公明", "立憲", "維新", "国民"))
+plot(pr_obj2, subset_l1 = c("Tokyo", "Kinki"), facet_col = 1)
+plot(pr_obj2, by = "l2",
+     subset_l2 = c("自民", "公明", "立憲", "維新"),
+     subset_l1 = c("Hokkaido", "Tohoku", "Tokyo", "Kinki"))
 
 }
