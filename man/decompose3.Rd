@@ -33,7 +33,7 @@ nz_1949 <- nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
 decompose3(nz_1949, special = "Maori")
 }

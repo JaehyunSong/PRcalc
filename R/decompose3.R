@@ -1,7 +1,6 @@
 #' Decomposition using a `prcalc` object with three-step.
 #' @param x a `prcalc` object.
 #' @param special a character. names of special district.
-# #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `FALSE`.
 #' @param alpha Default is `2`.
 #' @param ... ignored
 #'
@@ -42,13 +41,12 @@ decompose3 <- function(x, ...) {
 #'             l2   = "district",
 #'             p    = "electorates",
 #'             q    = "magnitude",
-#'             type = "district")
+#'             type = "nested")
 #'
 #' decompose3(nz_1949, special = "Maori")
 
 decompose3.prcalc <- function(x,
                               special    = NULL,
-                              #as_disprop = FALSE,
                               alpha      = 2,
                               ...) {
 

@@ -37,8 +37,8 @@ jp_lower_2021_en
 
 ## Calculation
 
-
 To calculate seat allocation using the `prcalc()` function, you need to specify the following: data (`x`), electoral magnitude (`m`), and allocation method (`method`). Below is an example of allocating 47 (`m = 47`) seats using the Hare-Niemeyer method (`method = "hn"`) with the `kr_lower_2016` dataset. In this case, the length of `m` is 1 because number of blocks is 1. Furthermore, by adjusting the `threshold` argument, it is possible to exclude parties with votes below a certain threshold from seat allocation. The follow is an example of threshold is 3% (0.03). Default is `threshold = 0`.
+
 ```{r}
 #| label: calculation-1
 # Example of national block (D'Hondt/Jefferson method)

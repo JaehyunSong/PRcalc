@@ -1,5 +1,13 @@
 ## News
 
+### PRcalc 0.8.7.3 (2024/04/11)
+
+* `plot()`
+   * `percentage`引数の追加
+   * l1 l2
+* `as_prcalc()`、`read_prcalc()`
+   * `unit`の実引数を`"district"`と`"party"`から`"nested"`と`"span"`へ
+
 ### PRcalc 0.8.7.3 (2024/04/06)
 
 * `index()`および`decompose()`関数の`as_disprop`引数を削除しました。

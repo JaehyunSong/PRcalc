@@ -1,6 +1,5 @@
 #' Decomposition using a `prcalc` object with two-step.
 #' @param x a `prcalc` object.
-# #' @param as_disprop If `TRUE`, `alpha` must be larger than `0`. Default is `TRUE`.
 #' @param alpha Default is `2` and it must be larger than `0`.
 #' @param ... ignored
 #'
@@ -40,16 +39,11 @@ decompose2 <- function(x, ...) {
 #' decompose2(obj)
 
 decompose2 <- function(x,
-                       #as_disprop = TRUE,
                        alpha = 2,
                        ...) {
 
   if (!inherits(x, "prcalc")) stop('Error! "prcalc" class is required.')
   if (length(x$m) < 2) stop('Error! a "prcalc" object must have a two-dimensional structure, for example, state and party, state and district.')
-
-  #if (as_disprop) {
-  #  if (alpha <= 0) stop("alpha must be larger than 0.")
-  #}
 
   ra <- rd <- NULL
 

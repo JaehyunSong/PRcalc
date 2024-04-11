@@ -90,7 +90,7 @@ obj4 <- read_prcalc("../data/sample_dataset.csv",
                     l2   = "district",
                     p    = "electorates",
                     q    = "magnitude",
-                    type = "district")
+                    type = "nested")
 
 print(obj4, head = 10)
 decompose(obj4, alpha = 2)
@@ -110,7 +110,7 @@ obj5 <- as_prcalc(au_district_2010,
                   l1   = "region",
                   l2   = "district",
                   p    = "electorates",
-                  type = "district")
+                  type = "nested")
 
 print(obj5, head = 10)
 
@@ -128,7 +128,7 @@ obj6 <- as_prcalc(jp_lower_2021_result,
                   l2   = "Party",
                   p    = "Votes",
                   q    = "Seats",
-                  type = "party")
+                  type = "span")
 
 print(obj6, head = 10)
 
@@ -149,7 +149,7 @@ nz_1949 <- nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
 nz_1972 <- nz_district |>
   dplyr::filter(year == 1972) |>
@@ -157,7 +157,7 @@ nz_1972 <- nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
 nz_1990 <- nz_district |>
   dplyr::filter(year == 1990) |>
@@ -165,7 +165,7 @@ nz_1990 <- nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
 nz_2011 <- nz_district |>
   dplyr::filter(year == 2011) |>
@@ -173,7 +173,7 @@ nz_2011 <- nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
 (decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori"))
 (decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori"))
@@ -206,7 +206,7 @@ nz_decompose_all <- nz_district |>
                                               l2   = "district",
                                               p    = "electorates",
                                               q    = "magnitude",
-                                              type = "district")),
+                                              type = "nested")),
          decompose = map(data, \(x) decompose(x, 
                                               alpha      = 0,
                                               special    = "Maori"))) |> 

@@ -4,7 +4,7 @@
 #' @param l2 a character. \emph{Optional.} A column name of level 2 (party or district).
 #' @param p a character. \emph{Mandatory.} A column name of population or number of electorates.
 #' @param q a character. \emph{Optional.} A column name of magnitude or number of allocated seats. If `NULL`, replaced by `1`.
-#' @param type a type of `l2`. \emph{Mandatory.} If `"party"`, vector of `l2` represents parties. If `"district"`, vector of `l2` represents electoral district. Default is `"district"`.
+#' @param type a type of `l2`. \emph{Mandatory.} If `"span"`, vector of `l2` represents parties. If `"nested"`, vector of `l2` represents electoral district. Default is `"nested"`.
 #' @param ... ignored
 #'
 #' @details
@@ -31,7 +31,7 @@
 #'           l2   = "Party",
 #'           p    = "Votes",
 #'           q    = "Seats",
-#'           type = "party")
+#'           type = "span")
 #'
 #' data("br_district_2010")
 #' # Brazil has single block PR system, l2 can be omitted.
@@ -40,7 +40,7 @@
 #'   as_prcalc(l1   = "district",
 #'             p    = "population",
 #'             q    = "magnitude",
-#'             type = "party")
+#'             type = "span")
 #'
 #' data("au_district_2010")
 #' # Because all of magnitude are 1 and type of l2 is district,
@@ -49,14 +49,14 @@
 #'           l1   = "region",
 #'           l2   = "district",
 #'           p    = "electorates")
-#' # You can import .csv format and transfrom into prcalc object directly.
+#' # You can import .csv format and transform into prcalc object directly.
 #' \dontrun{
 #' read_prcalc("data/my_file.csv",
 #'             l1   = "region",
 #'             l2   = "district",
 #'             p    = "electorates",
 #'             q    = "magnitude",
-#'             type = "district")
+#'             type = "nested")
 #' }
 
 as_prcalc <- function(x,
@@ -64,7 +64,7 @@ as_prcalc <- function(x,
                       l2   = NULL,
                       p,
                       q    = NULL,
-                      type = c("district", "party"),
+                      type = c("nested", "span"),
                       ...) {
 
   Level1 <- Level2 <- NULL
@@ -127,7 +127,7 @@ as_prcalc <- function(x,
 
   }
 
-  if (type == "district") {
+  if (type == "nested") {
     v_df <- temp_df1 |>
       group_by(Level1) |>
       mutate(Level2 = 1:n()) |>

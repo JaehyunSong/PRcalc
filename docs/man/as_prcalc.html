@@ -347,9 +347,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
+<pre><code class="language-R">as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("nested", "span"), ...)
 
-read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
+read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("nested", "span"), ...)
 </code></pre>
 </section>
 <section id="arguments" class="level3">
@@ -400,7 +400,7 @@ a character. <em>Optional.</em> A column name of magnitude or number of allocate
 <code id="as_prcalc_:_type">type</code>
 </td>
 <td>
-a type of <code>l2</code>. <em>Mandatory.</em> If <code>“party”</code>, vector of <code>l2</code> represents parties. If <code>“district”</code>, vector of <code>l2</code> represents electoral district. Default is <code>“district”</code>.
+a type of <code>l2</code>. <em>Mandatory.</em> If <code>“span”</code>, vector of <code>l2</code> represents parties. If <code>“nested”</code>, vector of <code>l2</code> represents electoral district. Default is <code>“nested”</code>.
 </td>
 </tr>
 <tr>
@@ -433,7 +433,7 @@ ignored
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">l2   =</span> <span class="st">"Party"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">p    =</span> <span class="st">"Votes"</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">q    =</span> <span class="st">"Seats"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"party"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"span"</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"br_district_2010"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Brazil has single block PR system, l2 can be omitted.</span></span>
@@ -442,7 +442,7 @@ ignored
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"district"</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"population"</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"party"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"span"</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"au_district_2010"</span>)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Because all of magnitude are 1 and type of l2 is district,</span></span>
@@ -451,13 +451,13 @@ ignored
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">p    =</span> <span class="st">"electorates"</span>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># You can import .csv format and transfrom into prcalc object directly.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># You can import .csv format and transform into prcalc object directly.</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">read_prcalc</span>(<span class="st">"data/my_file.csv"</span>,</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"district"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"nested"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

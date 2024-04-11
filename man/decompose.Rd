@@ -42,9 +42,9 @@ au_data <- au_district_2010 |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 
-decompose(au_data, alpha = 0, as_disprop = FALSE)
+decompose(au_data, alpha = 0)
 
 # three-step decomposition
 data("nz_district")
@@ -55,8 +55,8 @@ nz_district |>
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district") |>
-  decompose(alpha = 0, as_disprop = FALSE, special = "Maori")
+            type = "nested") |>
+  decompose(alpha = 0, special = "Maori")
 }
 \references{
 \itemize{

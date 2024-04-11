@@ -6,7 +6,7 @@ read_prcalc <- function(x,
                         l2   = NULL,
                         p,
                         q    = NULL,
-                        type = c("district", "party"),
+                        type = c("nested", "span"),
                         ...) {
 
   result <- NULL

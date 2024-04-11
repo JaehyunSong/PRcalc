@@ -15,6 +15,18 @@ library(tidyverse)
 library(PRcalc)
 ```
 
+{PRcalc} supports two types of data structures---"netsed" and "span". This represents the relationship between level 1 and level 2, where level 1 means state or region and level 2 means district or party. For example, if level 1 is state and level 2 is political party, the party would nominate candidates to multiple states. We describe this as "level 2 **span**s level 1". On the other hand, if the constituency is within a state, we call it "level 2 **nested** in level 1". The following figure shows the difference between "nested" and "span" structure. In {PRcalc}, default is `"nestd"`.
+
+:::{.panel-tabset}
+## nested
+
+![](figs/import_nested.png)
+
+## span
+
+![](figs/import_span.png)
+:::
+
 ## Example 1: Electoral result
 
 ```{r}
@@ -27,7 +39,7 @@ obj1 <- as_prcalc(jp_lower_2021_result,
                   l2   = "Party",
                   p    = "Votes",
                   q    = "Seats",
-                  type = "party")
+                  type = "span")
 
 plot(obj1, 
      subset_p  = c("Jimin", "Komei", "Rikken", 
@@ -48,7 +60,7 @@ obj2 <- as_prcalc(au_district_2010,
                   l2   = "district",
                   p    = "electorates",
                   q    = "magnitude",
-                  type = "district")
+                  type = "nested")
 
 obj2
 
@@ -83,7 +95,7 @@ obj4 <- br_district_2010 |>
   as_prcalc(l1   = "district",
             p    = "population",
             q    = "magnitude",
-            type = "party")
+            type = "span")
 
 obj4
 

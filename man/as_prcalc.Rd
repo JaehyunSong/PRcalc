@@ -5,9 +5,9 @@
 \alias{read_prcalc}
 \title{Transformation from \code{.csv} or \code{data.frame} (\code{tibble}) to \code{prcalc} object.}
 \usage{
-as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
+as_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("nested", "span"), ...)
 
-read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
+read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("nested", "span"), ...)
 }
 \arguments{
 \item{x}{a path of \code{.csv} file (\code{read_prcalc()}), or name of \code{data.frame} or \code{tibble} object (\code{as_prcalc()}).}
@@ -20,7 +20,7 @@ read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("district", "party"), ...)
 
 \item{q}{a character. \emph{Optional.} A column name of magnitude or number of allocated seats. If \code{NULL}, replaced by \code{1}.}
 
-\item{type}{a type of \code{l2}. \emph{Mandatory.} If \code{"party"}, vector of \code{l2} represents parties. If \code{"district"}, vector of \code{l2} represents electoral district. Default is \code{"district"}.}
+\item{type}{a type of \code{l2}. \emph{Mandatory.} If \code{"span"}, vector of \code{l2} represents parties. If \code{"nested"}, vector of \code{l2} represents electoral district. Default is \code{"nested"}.}
 
 \item{...}{ignored}
 }
@@ -41,7 +41,7 @@ as_prcalc(jp_lower_2021_result,
           l2   = "Party",
           p    = "Votes",
           q    = "Seats",
-          type = "party")
+          type = "span")
 
 data("br_district_2010")
 # Brazil has single block PR system, l2 can be omitted.
@@ -50,7 +50,7 @@ br_district_2010 |>
   as_prcalc(l1   = "district",
             p    = "population",
             q    = "magnitude",
-            type = "party")
+            type = "span")
 
 data("au_district_2010")
 # Because all of magnitude are 1 and type of l2 is district,
@@ -59,13 +59,13 @@ as_prcalc(au_district_2010,
           l1   = "region",
           l2   = "district",
           p    = "electorates")
-# You can import .csv format and transfrom into prcalc object directly.
+# You can import .csv format and transform into prcalc object directly.
 \dontrun{
 read_prcalc("data/my_file.csv",
             l1   = "region",
             l2   = "district",
             p    = "electorates",
             q    = "magnitude",
-            type = "district")
+            type = "nested")
 }
 }
