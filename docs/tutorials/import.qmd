@@ -15,7 +15,7 @@ library(tidyverse)
 library(PRcalc)
 ```
 
-{PRcalc} supports two types of data structures---"netsed" and "span". This represents the relationship between level 1 and level 2, where level 1 means state or region and level 2 means district or party. For example, if level 1 is state and level 2 is political party, the party would nominate candidates to multiple states. We describe this as "level 2 **span**s level 1". On the other hand, if the constituency is within a state, we call it "level 2 **nested** in level 1". The following figure shows the difference between "nested" and "span" structure. In {PRcalc}, default is `"nestd"`.
+{PRcalc} supports two types of data structures---"nested" and "span". This represents the relationship between level 1 and level 2, where level 1 means state or region and level 2 means district or party. For example, if level 1 is state and level 2 is political party, the party would nominate candidates to multiple states. We describe this as "level 2 **span**s level 1". On the other hand, if the constituency is within a state, we call it "level 2 **nested** in level 1". The following figure shows the difference between "nested" and "span" structure. In {PRcalc}, default is `"nestd"`.
 
 :::{.panel-tabset}
 ## nested
