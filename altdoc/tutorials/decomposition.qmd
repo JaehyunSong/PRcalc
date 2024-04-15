@@ -24,8 +24,8 @@ $\alpha$-divergence ($D^\alpha$) can be decomposed in two components---apportion
 
 $$
 \begin{align}
-D^{\alpha} = & \sum_{j = 1}^{k} v_j \frac{1}{\alpha (\alpha - 1)} \log{\frac{s_j}{v_j}} + \\
-& \sum_{j=1}^{k} (s_j)^\alpha (v_j)^{1 - \alpha} \sum_{i=1}^{k_j} v_{ji} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{ji}}{v_{ji}}\biggr)^{\alpha} - 1 \Biggr]\\\
+D^{\alpha} = & \underbrace{\sum_{j = 1}^{k} v_j \frac{1}{\alpha (\alpha - 1)} \log{\frac{s_j}{v_j}}}_{\mbox{approtionment term}} + \\
+& \underbrace{\sum_{j=1}^{k} (s_j)^\alpha (v_j)^{1 - \alpha} \sum_{i=1}^{k_j} v_{j_i} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{j_i}}{v_{j_i}}\biggr)^{\alpha} - 1 \Biggr]}_{\mbox{districting term}}\\\
 = & D^{\alpha}_{\mbox{apportionment}} + \sum_{j=1}^k W^{\alpha}_j D^{\alpha}_{\mbox{districting}_j}.
 \end{align}
 $$
@@ -34,19 +34,17 @@ However there are two special cases, $\alpha \rightarrow 0$ and $\alpha \rightar
 
 $$
 \begin{align}
-D^0 = & \sum_{j = 1}^{k} v_j \log{\frac{v_j}{s_j}} + \sum_{j=1}^{k} v_j \sum_{i=1}^{k_j} v_{ji} \log{\frac{v_{ji}}{s_{ji}}} \\
+D^0 = & \underbrace{\sum_{j = 1}^{k} v_j \log{\frac{v_j}{s_j}}}_{\mbox{approtionment}} + \underbrace{\sum_{j=1}^{k} v_j \sum_{i=1}^{k_j} v_{j_i} \log{\frac{v_{j_i}}{s_{j_i}}}}_{\mbox{districting}} \\
 = & D^0_{\mbox{apportionment}} + \sum_{j=1}^k W^0_j D^0_{\mbox{districting}_j}.
 \end{align}
 $$
 
 $$
 \begin{align}
-D^1 = & \sum_{j = 1}^{k} s_j \log{\frac{s_j}{v_j}} + \sum_{j=1}^{k} s_j \sum_{i=1}^{k_j} s_{ji} \log{\frac{s_{ji}}{v_{ji}}} \\
+D^1 = & \underbrace{\sum_{j = 1}^{k} s_j \log{\frac{s_j}{v_j}}}_{\mbox{approtionment}} + \underbrace{\sum_{j=1}^{k} s_j \sum_{i=1}^{k_j} s_{j_i} \log{\frac{s_{j_i}}{v_{j_i}}}}_{\mbox{districting}} \\
 = & D^1_{\mbox{apportionment}} + \sum_{j=1}^k W^1_j D^1_{\mbox{districting}_j}.
 \end{align}
 $$
-
-### Using a `prcalc` object.
 
 ```{r}
 data("jp_lower_2021_en")
@@ -70,75 +68,69 @@ decompose(obj3)
 
 Different $\alpha$ also available. Default is 2.
 
+:::{.panel-tabset}
+## $\alpha$ = 0.5
+
 ```{r}
 decompose(obj1, alpha = 0.5)
+```
+
+## $\alpha$ = 1
+
+```{r}
 decompose(obj1, alpha = 1)
-decompose(obj1, alpha = 1.5)
+```
+
+## $\alpha$ = 2
+
+```{r}
 decompose(obj1, alpha = 2)
+```
+
+## $\alpha$ = 3
+
+```{r}
 decompose(obj1, alpha = 3)
 ```
-
-### Import `prcalc` object and decomposition.
-
-#### From `.csv` format
-
-Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
-
-```{r}
-obj4 <- read_prcalc("../data/sample_dataset.csv",
-                    l1   = "region",
-                    l2   = "district",
-                    p    = "electorates",
-                    q    = "magnitude",
-                    type = "nested")
-
-print(obj4, head = 10)
-decompose(obj4, alpha = 2)
-decompose(obj4, alpha = 0)
-```
-
-
-#### From `data.frame`
-
-```{r}
-data(au_district_2010)
-
-head(au_district_2010)
-
-# If all magnitudes are 1, "q" can be omitted.
-obj5 <- as_prcalc(au_district_2010,
-                  l1   = "region",
-                  l2   = "district",
-                  p    = "electorates",
-                  type = "nested")
-
-print(obj5, head = 10)
-
-decompose(obj5, alpha = 2)
-decompose(obj5, alpha = 0)
-```
-
-```{r}
-data(jp_lower_2021_result)
-
-head(jp_lower_2021_result)
-
-obj6 <- as_prcalc(jp_lower_2021_result,
-                  l1   = "Pref",
-                  l2   = "Party",
-                  p    = "Votes",
-                  q    = "Seats",
-                  type = "span")
-
-print(obj6, head = 10)
-
-decompose(obj6, alpha = 2)
-decompose(obj6, alpha = 0)
-```
+:::
 
 ## Three-step Decomposition
 
-If `special` is defined, three-step decomposition is conducted.
+If there is a level 0, such as overseas constituencies or minority constituencies, $\alpha$-divergence ($D^\alpha$) can be decomposed into three components---special, apportionment and districting terms as follow:
+
+$$
+\begin{align}
+D^{\alpha} = & 
+\underbrace{\sum_{h = 1}^{k} v_h \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{h}}{v_{h}}\biggr)^{\alpha} - 1 \Biggr]}_{\mbox{special}} + \\
+& \underbrace{\sum_{h = 1}^{k} (s_h)^{\alpha} (v_h)^{1 - \alpha} \sum_{j=1}^{k_j} v_{h_j} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{h_j}}{v_{h_j}}\biggr)^{\alpha} - 1 \Biggr]}_{\mbox{approtionment}} \\
+& \underbrace{\sum_{h = 1}^{k} (s_h)^{\alpha} (v_h)^{1 - \alpha} \sum_{j=1}^{k_j} (s_{h_j})^{\alpha} (v_{h_j})^{1 - \alpha} \sum_{i=1}^{k_{h_j}} v_{h_{j_i}} \frac{1}{\alpha (\alpha - 1)} \Biggl[\biggl(\frac{s_{h_{j_i}}}{v_{h_{j_i}}}\biggr)^{\alpha} - 1 \Biggr]}_{\mbox{districting}} \\
+= & D^{\alpha}_{\mbox{special}} + \sum_{h=1}^{k}W_h^{\alpha} D^{\alpha}_{\mbox{apportionment}_h} + \sum_{h=1}^{k} \sum_{j=1}^{k_h} w_{h_j}^{\alpha} D^{\alpha}_{\mbox{districting}_{h_j}}.
+\end{align}
+$$
+
+However there are two special cases, $\alpha \rightarrow 0$ and $\alpha \rightarrow 1$.
+
+$$
+\begin{align}
+D^0 = & 
+\underbrace{\sum_{h=1}^{k} v_h \biggl(\log{\frac{v_h}{s_h}}\biggr)}_{\mbox{special}} + 
+\underbrace{\sum_{h=1}^{k} v_h \sum_{j=1}^{k_h} v_{h_j} \biggl(\log{\frac{v_{h_j}}{s_{h_j}}}\biggr)}_{\mbox{apportionment}} + \\
+& \underbrace{\sum_{h=1}^{k} v_h \sum_{j=1}^{k_h} v_{h_j} \sum_{i=1}^{k_{h_j}} \biggl(\log{\frac{v_{h_{j_i}}}{s_{h_{j_i}}}}\biggr)}_{\mbox{districting}} \\
+= & D^0_{\mbox{special}} + \sum_{h=1}^{k}W_h^0 D^0_{\mbox{apportionment}_h} + \sum_{h=1}^{k} \sum_{j=1}^{k_h} w_{h_j}^0 D^0_{\mbox{districting}_{h_j}}.
+\end{align}
+$$
+
+$$
+\begin{align}
+D^1 = & 
+\underbrace{\sum_{h=1}^{k} s_h \biggl(\log{\frac{s_h}{v_h}}\biggr)}_{\mbox{special}} + 
+\underbrace{\sum_{h=1}^{k} s_h \sum_{j=1}^{k_h} v_{h_j} \biggl(\log{\frac{s_{h_j}}{v_{h_j}}}\biggr)}_{\mbox{apportionment}} + \\
+& \underbrace{\sum_{h=1}^{k} s_h \sum_{j=1}^{k_h} s_{h_j} \sum_{i=1}^{k_{h_j}} \biggl(\log{\frac{s_{h_{j_i}}}{v_{h_{j_i}}}}\biggr)}_{\mbox{districting}} \\
+= & D^1_{\mbox{special}} + \sum_{h=1}^{k}W_h^1 D^1_{\mbox{apportionment}_h} + \sum_{h=1}^{k} \sum_{j=1}^{k_h} w_{h_j}^1 D^1_{\mbox{districting}_{h_j}}.
+\end{align}
+$$
+
+A `special` argument must be specified for three-step decomposition. In the case of New Zealand in 1949, four Maori electoral districts were in the special region, `"Maori"`.
 
 ```{r}
 data("nz_district")
@@ -151,6 +143,35 @@ nz_1949 <- nz_district |>
             q    = "magnitude",
             type = "nested")
 
+nz_1949
+```
+
+These four Maori electoral districts are treated as a special region (`"Maori"`) and assigned to `special` argument (`special = "Maori"`).
+
+```{r}
+decompose(nz_1949, alpha = 1, special = "Maori")
+```
+
+## Comparison
+
+```{r}
+#| label: comparison-decomposition
+compare(list("D'Hondt"                           = decompose(obj1),
+             "D'Hondt + Modified magnitudes"     = decompose(obj2),
+             "Modified-SL + Modified magnitudes" = decompose(obj3))) 
+
+list("Scenario 1" = decompose(obj1),
+     "Scenario 2" = decompose(obj2),
+     "Scenario 3" = decompose(obj3)) |> 
+  compare() |> 
+  print(use_gt = TRUE, digits = 5)
+```
+
+## Visualization
+
+後ほど、{purrr}を使ったより効率的なやり方を紹介する。
+
+```{r}
 nz_1972 <- nz_district |>
   dplyr::filter(year == 1972) |>
   as_prcalc(l1   = "region",
@@ -175,22 +196,22 @@ nz_2011 <- nz_district |>
             q    = "magnitude",
             type = "nested")
 
-(decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori"))
-(decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori"))
-(decompose_1990 <- decompose(nz_1990, alpha = 1, special = "Maori"))
-(decompose_2011 <- decompose(nz_2011, alpha = 1, special = "Maori"))
+decompose_1949 <- decompose(nz_1949, alpha = 1, special = "Maori")
+decompose_1972 <- decompose(nz_1972, alpha = 1, special = "Maori")
+decompose_1990 <- decompose(nz_1990, alpha = 1, special = "Maori")
+decompose_2011 <- decompose(nz_2011, alpha = 1, special = "Maori")
 
-list("1949" = decompose_1949,
-     "1972" = decompose_1972,
-     "1990" = decompose_1990,
-     "2011" = decompose_2011) |> 
-  compare() 
+nz_compare <- list("1949" = decompose_1949,
+                   "1972" = decompose_1972,
+                   "1990" = decompose_1990,
+                   "2011" = decompose_2011) |> 
+  compare()
 
-list("1949" = decompose_1949,
-     "1972" = decompose_1972,
-     "1990" = decompose_1990,
-     "2011" = decompose_2011) |> 
-  compare() |> 
+print(nz_compare, use_gt = TRUE, digits = 5)
+```
+
+```{r}
+nz_compare |> 
   plot() +
   labs(x = "Year (D1)",
        title = "Electoral districts in New Zealand",
@@ -206,6 +227,8 @@ list("1949" = decompose_1949,
        title = "Electoral districts in New Zealand",
        caption = expression(paste("Three-step decomposition with ", alpha, " = 1")))
 ```
+
+## Compatibility with {purrr}
 
 ```{r}
 # 1949-2011
@@ -248,25 +271,6 @@ nz_decompose_all |>
 nz_decompose_all |> 
   compare() |> 
   plot(facet = TRUE, value_size = 2, digits = 5)
-```
-
-## Comparison
-
-```{r}
-#| label: comparison-decomposition
-compare(list("D'Hondt"                           = decompose(obj1),
-             "D'Hondt + Modified magnitudes"     = decompose(obj2),
-             "Modified-SL + Modified magnitudes" = decompose(obj3))) 
-
-compare(list("D'Hondt"                          = decompose(obj1),
-             "D'Hondt\nModified magnitudes"     = decompose(obj2),
-             "Modified-SL\nModified magnitudes" = decompose(obj3)))  |> 
-  plot()
-
-compare(list("D'Hondt"                           = decompose(obj1),
-             "D'Hondt + Modified magnitudes"     = decompose(obj2),
-             "Modified-SL + Modified magnitudes" = decompose(obj3))) |>
-  plot(facet = TRUE, value_type = "text", digits = 5)
 ```
 
 ## Comparison between `index()` and `decompose()`

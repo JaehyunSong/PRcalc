@@ -9,11 +9,9 @@ knitr:
 toc: true
 ---
 
-```{r}
-#| message: false
-library(tidyverse)
-library(PRcalc)
-```
+In this section, we introduce how to convert tabular data that has already been allocated into `Prcalc` class objects.
+
+## Nested and spanned structure
 
 {PRcalc} supports two types of data structures---"nested" and "span". This represents the relationship between level 1 and level 2, where level 1 means state or region and level 2 means district or party. For example, if level 1 is state and level 2 is political party, the party would nominate candidates to multiple states. We describe this as "level 2 **span**s level 1". On the other hand, if the constituency is within a state, we call it "level 2 **nested** in level 1". The following figure shows the difference between "nested" and "span" structure. In {PRcalc}, default is `"nestd"`.
 
@@ -27,13 +25,27 @@ library(PRcalc)
 ![](figs/import_span.png)
 :::
 
-## Example 1: Electoral result
+## Example 1: Spanned structure
+
+```{r}
+#| message: false
+library(tidyverse)
+library(PRcalc)
+```
+
+Load sample dataset, `jp_lower_2021_result`.
 
 ```{r}
 data("jp_lower_2021_result")
 
 jp_lower_2021_result
+```
 
+This dataset contains the number of votes and seats won by each party in each prefecture. For example, *Jimin* party received 863300 votes and won 3 seat in *Hokkaido*.
+
+Level 1 (`l1`) here is `"Pref"` (prefectures) and level 2 (`l2`) is `"Party"` (parties). Also, `p` (before conversion) and `q` (after conversion) are the `"Votes"` (number of votes) and `"Seats"` (seats), respectively. Since the parties are across prefectures, the `type` is specified as `"span"`.
+
+```{r}
 obj1 <- as_prcalc(jp_lower_2021_result,
                   l1   = "Pref",
                   l2   = "Party",
@@ -41,6 +53,12 @@ obj1 <- as_prcalc(jp_lower_2021_result,
                   q    = "Seats",
                   type = "span")
 
+obj1
+```
+
+If you have a dataset that has already been calculated, a `PRcalc` class object can be created instead of using `prcalc()` function.
+
+```{r}
 plot(obj1, 
      subset_p  = c("Jimin", "Komei", "Rikken", 
                    "Kyosan", "Ishin", "Kokumin"),
@@ -48,18 +66,24 @@ plot(obj1,
      angle     = 25)
 ```
 
-## Example 2: Electoral district allocation (from `data.frame`)
+## Example 2: Nested structure
+
+A sample dataset `au_district_2010` contains information on the number of electoral district constants. In this case, each constituency (`"district"`) is nested in a region (`"region"`).
 
 ```{r}
 data("au_district_2010")
 
 au_district_2010
+```
 
+The number before conversion (`p`) is the number of electorates (`"electorates"`); the number after conversion (`q`) is the number of seats (`"magnitude"`). However, if all `q` are 1, as in this example, the `q` argument can be omitted.
+
+```{r}
 obj2 <- as_prcalc(au_district_2010,
                   l1   = "region",
                   l2   = "district",
                   p    = "electorates",
-                  q    = "magnitude",
+                  q    = "magnitude",   # omittable
                   type = "nested")
 
 obj2
@@ -67,9 +91,9 @@ obj2
 decompose(obj2, alpha = 0, as_disprop = FALSE)
 ```
 
-## Example 3: Electoral district allocation (from `.csv` file)
+## Example 3: Using `.csv` file
 
-Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
+With `read_prcalc()`, you can create a `PRcalc` class object directly from a `.csv` file. Sample dataset can be downloaded from [here](../data/sample_dataset.csv).
 
 ```{r}
 #| error: true
@@ -83,14 +107,19 @@ obj3 <- read_prcalc("../data/sample_dataset.csv",
 index(obj3)
 ```
 
-## Example 4: 
+## Example 4: Single level
+
+A sample dataset, `br_district_2010` is the Brazilian electoral districts in 2010.
 
 ```{r}
 data("br_district_2010")
 
-head(br_district_2010)
+br_district_2010
+```
 
-# In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) 
+This dataset is a one-dimensional structure, whereas previous examples were two-dimensional structures, such as constituency and party, or region and constituency. In such a one-dimensional structure, `l2` can be omitted.
+
+```{r}
 obj4 <- br_district_2010 |> 
   as_prcalc(l1   = "district",
             p    = "population",
@@ -98,16 +127,4 @@ obj4 <- br_district_2010 |>
             type = "span")
 
 obj4
-
-obj5 <- br_district_2010 |> 
-  select(-magnitude) |> 
-  prcalc(m = 513, method = "hn")
-
-list(obj4, obj5) |> 
-  compare() |> 
-  plot(angle = 45)
-
-list(index(obj4), index(obj5)) |> 
-  compare() |> 
-  print(use_gt = TRUE, hide_id = TRUE)
 ```

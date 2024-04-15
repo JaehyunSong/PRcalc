@@ -337,10 +337,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-1-electoral-result" id="toc-example-1-electoral-result" class="nav-link active" data-scroll-target="#example-1-electoral-result">Example 1: Electoral result</a></li>
-  <li><a href="#example-2-electoral-district-allocation-from-data.frame" id="toc-example-2-electoral-district-allocation-from-data.frame" class="nav-link" data-scroll-target="#example-2-electoral-district-allocation-from-data.frame">Example 2: Electoral district allocation (from <code>data.frame</code>)</a></li>
-  <li><a href="#example-3-electoral-district-allocation-from-.csv-file" id="toc-example-3-electoral-district-allocation-from-.csv-file" class="nav-link" data-scroll-target="#example-3-electoral-district-allocation-from-.csv-file">Example 3: Electoral district allocation (from <code>.csv</code> file)</a></li>
-  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4:</a></li>
+  <li><a href="#nested-and-spanned-structure" id="toc-nested-and-spanned-structure" class="nav-link active" data-scroll-target="#nested-and-spanned-structure">Nested and spanned structure</a></li>
+  <li><a href="#example-1-spanned-structure" id="toc-example-1-spanned-structure" class="nav-link" data-scroll-target="#example-1-spanned-structure">Example 1: Spanned structure</a></li>
+  <li><a href="#example-2-nested-structure" id="toc-example-2-nested-structure" class="nav-link" data-scroll-target="#example-2-nested-structure">Example 2: Nested structure</a></li>
+  <li><a href="#example-3-using-.csv-file" id="toc-example-3-using-.csv-file" class="nav-link" data-scroll-target="#example-3-using-.csv-file">Example 3: Using <code>.csv</code> file</a></li>
+  <li><a href="#example-4-single-level" id="toc-example-4-single-level" class="nav-link" data-scroll-target="#example-4-single-level">Example 4: Single level</a></li>
   </ul>
 </nav>
     </div>
@@ -366,10 +367,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>In this section, we introduce how to convert tabular data that has already been allocated into <code>Prcalc</code> class objects.</p>
+<section id="nested-and-spanned-structure" class="level2">
+<h2 class="anchored" data-anchor-id="nested-and-spanned-structure">Nested and spanned structure</h2>
 <p>{PRcalc} supports two types of data structures—“nested” and “span”. This represents the relationship between level 1 and level 2, where level 1 means state or region and level 2 means district or party. For example, if level 1 is state and level 2 is political party, the party would nominate candidates to multiple states. We describe this as “level 2 <strong>span</strong>s level 1”. On the other hand, if the constituency is within a state, we call it “level 2 <strong>nested</strong> in level 1”. The following figure shows the difference between “nested” and “span” structure. In {PRcalc}, default is <code>"nestd"</code>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">nested</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">span</a></li></ul>
@@ -382,8 +382,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="example-1-electoral-result" class="level2">
-<h2 class="anchored" data-anchor-id="example-1-electoral-result">Example 1: Electoral result</h2>
+</section>
+<section id="example-1-spanned-structure" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-spanned-structure">Example 1: Spanned structure</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PRcalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Load sample dataset, <code>jp_lower_2021_result</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"jp_lower_2021_result"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -404,6 +410,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10 Jimin Shikoku      664805     2
 # ℹ 93 more rows</code></pre>
 </div>
+</div>
+<p>This dataset contains the number of votes and seats won by each party in each prefecture. For example, <em>Jimin</em> party received 863300 votes and won 3 seat in <em>Hokkaido</em>.</p>
+<p>Level 1 (<code>l1</code>) here is <code>"Pref"</code> (prefectures) and level 2 (<code>l2</code>) is <code>"Party"</code> (parties). Also, <code>p</code> (before conversion) and <code>q</code> (after conversion) are the <code>"Votes"</code> (number of votes) and <code>"Seats"</code> (seats), respectively. Since the parties are across prefectures, the <code>type</code> is specified as <code>"span"</code>.</p>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(jp_lower_2021_result,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"Pref"</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"Party"</span>,</span>
@@ -411,26 +421,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"Seats"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"span"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"Jimin"</span>, <span class="st">"Komei"</span>, <span class="st">"Rikken"</span>, </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Kyosan"</span>, <span class="st">"Ishin"</span>, <span class="st">"Kokumin"</span>),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">angle     =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>obj1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Raw:
+     Level2 Hokkaido  Tohoku Kitakanto Minamikanto   Tokyo Hokuriku   Tokai
+1     Jimin   863300 1628233   2172065     2590787 2000084  1468380 2515841
+2     Komei   294371  456287    823930      850667  715450   322535  784976
+3    Rikken   682913  991505   1391149     1651562 1293281   773076 1485947
+4    Kyosan   207189  292830    444115      534493  670340   225551  408606
+5     Ishin   215344  258690    617531      863897  858577   361476  694630
+6   Kokumin    73621  195754    298056      384482  306180   133600  382734
+7    Shamin    41248  101442     97963      124447   92995    71185   84220
+8     Reiwa   102086  143265    239592      302675  360387   111281  273208
+9       NHK    42916   52664     87702      111298   92353    43529   98238
+10 Sijinasi    46142       0         0           0       0        0       0
+11  Daiichi        0       0         0           0   33661        0       0
+12   Yamato        0       0         0           0   16970        0       0
+13   Corona        0       0         0           0    6620        0       0
+     Kinki Chugoku Shikoku  Kyushu    Total
+1  2407699 1352723  664805 2250966 19914883
+2  1155683  436220  233407 1040756  7114282
+3  1090666  573324  291871 1266801 11492095
+4   736156  173117  108021  365658  4166076
+5  3180219  286302  173826  540338  8050830
+6   303480  113899  122082  279509  2593397
+7   100980   52638   30249  221221  1018588
+8   292483   94446   52941  243284  2215648
+9   111539   36758   21285   98506   796788
+10       0       0       0       0    46142
+11       0       0       0       0    33661
+12       0       0       0       0    16970
+13       0       0       0       0     6620
+
+Result:
+     Level2 Hokkaido Tohoku Kitakanto Minamikanto Tokyo Hokuriku Tokai Kinki
+1     Jimin        3      6         7           7     5        5     8     8
+2     Komei        1      2         3           2     2        1     3     4
+3    Rikken        2      3         5           5     4        3     5     4
+4    Kyosan        1      1         1           2     2        1     1     2
+5     Ishin        1      1         2           3     2        1     2    10
+6   Kokumin        0      1         1           1     1        0     1     1
+7    Shamin        0      0         0           0     0        0     0     0
+8     Reiwa        0      0         1           1     1        0     1     1
+9       NHK        0      0         0           0     0        0     0     0
+10 Sijinasi        0      0         0           0     0        0     0     0
+11  Daiichi        0      0         0           0     0        0     0     0
+12   Yamato        0      0         0           0     0        0     0     0
+13   Corona        0      0         0           0     0        0     0     0
+   Chugoku Shikoku Kyushu Total
+1        5       2      8    64
+2        2       1      3    24
+3        2       1      4    38
+4        1       0      1    13
+5        1       1      2    26
+6        0       1      1     8
+7        0       0      1     1
+8        0       0      1     6
+9        0       0      0     0
+10       0       0      0     0
+11       0       0      0     0
+12       0       0      0     0
+13       0       0      0     0
+
+Parameters:
+  Allocation method: 
+  Extra parameter: 
+  Threshold: 
+
+Magnitude: 
+   Hokkaido      Tohoku   Kitakanto Minamikanto       Tokyo    Hokuriku 
+          8          14          20          21          17          11 
+      Tokai       Kinki     Chugoku     Shikoku      Kyushu 
+         21          30          11           6          21 </code></pre>
+</div>
+</div>
+<p>If you have a dataset that has already been calculated, a <code>PRcalc</code> class object can be created instead of using <code>prcalc()</code> function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(obj1, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">subset_p  =</span> <span class="fu">c</span>(<span class="st">"Jimin"</span>, <span class="st">"Komei"</span>, <span class="st">"Rikken"</span>, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Kyosan"</span>, <span class="st">"Ishin"</span>, <span class="st">"Kokumin"</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">facet_col =</span> <span class="dv">3</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">angle     =</span> <span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="import_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
+<p><img src="import_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="example-2-electoral-district-allocation-from-data.frame" class="level2">
-<h2 class="anchored" data-anchor-id="example-2-electoral-district-allocation-from-data.frame">Example 2: Electoral district allocation (from <code>data.frame</code>)</h2>
+<section id="example-2-nested-structure" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-nested-structure">Example 2: Nested structure</h2>
+<p>A sample dataset <code>au_district_2010</code> contains information on the number of electoral district constants. In this case, each constituency (<code>"district"</code>) is nested in a region (<code>"region"</code>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"au_district_2010"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>au_district_2010</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"au_district_2010"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>au_district_2010</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                          region        district electorates magnitude
 1   Australian Capital Territory        CANBERRA      124294         1
@@ -584,14 +671,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 149            Western Australia            SWAN       90817         1
 150            Western Australia         TANGNEY       92232         1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(au_district_2010,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"nested"</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>obj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The number before conversion (<code>p</code>) is the number of electorates (<code>"electorates"</code>); the number after conversion (<code>q</code>) is the number of seats (<code>"magnitude"</code>). However, if all <code>q</code> are 1, as in this example, the <code>q</code> argument can be omitted.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="fu">as_prcalc</span>(au_district_2010,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l1   =</span> <span class="st">"region"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l2   =</span> <span class="st">"district"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">p    =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">q    =</span> <span class="st">"magnitude"</span>,   <span class="co"># omittable</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type =</span> <span class="st">"nested"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>obj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
    Level2 Australian Capital Territory New South Wales Northern Territory
@@ -808,7 +898,7 @@ Australian Capital Territory              New South Wales
                     Victoria            Western Australia 
                           37                           15 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj2, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decompose</span>(obj2, <span class="at">alpha =</span> <span class="dv">0</span>, <span class="at">as_disprop =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>alpha = 0 
 alpha-divergence  Reapportionment    Redistricting 
@@ -818,18 +908,18 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 </div>
 </div>
 </section>
-<section id="example-3-electoral-district-allocation-from-.csv-file" class="level2">
-<h2 class="anchored" data-anchor-id="example-3-electoral-district-allocation-from-.csv-file">Example 3: Electoral district allocation (from <code>.csv</code> file)</h2>
-<p>Sample dataset can be downloaded from <a href="../data/sample_dataset.csv">here</a>.</p>
+<section id="example-3-using-.csv-file" class="level2">
+<h2 class="anchored" data-anchor-id="example-3-using-.csv-file">Example 3: Using <code>.csv</code> file</h2>
+<p>With <code>read_prcalc()</code>, you can create a <code>PRcalc</code> class object directly from a <code>.csv</code> file. Sample dataset can be downloaded from <a href="../data/sample_dataset.csv">here</a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Because default value of `type` is `"district"`, you can omit it.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"../data/sample_dataset.csv"</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l1 =</span> <span class="st">"region"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l2 =</span> <span class="st">"district"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">p  =</span> <span class="st">"electorates"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">q  =</span> <span class="st">"magnitude"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Because default value of `type` is `"district"`, you can omit it.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="fu">read_prcalc</span>(<span class="st">"../data/sample_dataset.csv"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l1 =</span> <span class="st">"region"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">l2 =</span> <span class="st">"district"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">p  =</span> <span class="st">"electorates"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">q  =</span> <span class="st">"magnitude"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">index</span>(obj3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            ID                         Index    Value
 1       dhondt                       D’Hondt 1.054507
@@ -866,29 +956,53 @@ Note: "alha-divergence" is sum of "Reapportionment" and "Redisticting" terms.</c
 </div>
 </div>
 </section>
-<section id="example-4" class="level2">
-<h2 class="anchored" data-anchor-id="example-4">Example 4:</h2>
+<section id="example-4-single-level" class="level2">
+<h2 class="anchored" data-anchor-id="example-4-single-level">Example 4: Single level</h2>
+<p>A sample dataset, <code>br_district_2010</code> is the Brazilian electoral districts in 2010.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"br_district_2010"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(br_district_2010)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"br_district_2010"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>br_district_2010</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           district magnitude population
-1         Sao Paulo        70   39924091
-2      Minas Gerais        53   19159260
-3    Rio de Janeiro        46   15180636
-4             Bahia        39   13633969
-5 Rio Grande do Sul        31   10576758
-6            Parana        30   10226737</code></pre>
+<pre><code>              district magnitude population
+1            Sao Paulo        70   39924091
+2         Minas Gerais        53   19159260
+3       Rio de Janeiro        46   15180636
+4                Bahia        39   13633969
+5    Rio Grande do Sul        31   10576758
+6               Parana        30   10226737
+7           Pernambuco        25    8541250
+8                Ceara        22    8450527
+9             Maranhao        18    6424340
+10               Goias        17    5849105
+11                Para        17    7443904
+12      Santa Catarina        16    6178603
+13             Paraiba        12    3753633
+14      Espirito Santo        10    3392775
+15               Piaui        10    3086448
+16             Alagoas         9    3093994
+17               Acre          8     707125
+18            Amazonas         8    3350773
+19               Amapa         8     648553
+20    Distrito Federal         8    2469489
+21  Mato Grosso do Sul         8    2404256
+22         Mato Grosso         8    2954625
+23 Rio Grande do Norte         8    3121451
+24            Rondonia         8    1535625
+25             Roraima         8     425398
+26             Sergipe         8    2036227
+27           Tocantins         8    1373551</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Brazil, proportionality is followed as a principle, with the exception that there should be a minimum of eight (8) members and a maximum of seventy (70) members per state. (source: Wikipedia) </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"district"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"population"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"span"</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This dataset is a one-dimensional structure, whereas previous examples were two-dimensional structures, such as constituency and party, or region and constituency. In such a one-dimensional structure, <code>l2</code> can be omitted.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_prcalc</span>(<span class="at">l1   =</span> <span class="st">"district"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">p    =</span> <span class="st">"population"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">q    =</span> <span class="st">"magnitude"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">type =</span> <span class="st">"span"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>obj4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Raw:
                 Level2 National
@@ -956,636 +1070,6 @@ Parameters:
   Threshold: 
 
 Magnitude: 513</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> br_district_2010 <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>magnitude) <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prcalc</span>(<span class="at">m =</span> <span class="dv">513</span>, <span class="at">method =</span> <span class="st">"hn"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(obj4, obj5) <span class="sc">|&gt;</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">angle =</span> <span class="dv">45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="import_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1050"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="fu">index</span>(obj4), <span class="fu">index</span>(obj5)) <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compare</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">use_gt =</span> <span class="cn">TRUE</span>, <span class="at">hide_id =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<div id="rmutfzetam" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rmutfzetam table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#rmutfzetam thead, #rmutfzetam tbody, #rmutfzetam tfoot, #rmutfzetam tr, #rmutfzetam td, #rmutfzetam th {
-  border-style: none;
-}
-
-#rmutfzetam p {
-  margin: 0;
-  padding: 0;
-}
-
-#rmutfzetam .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#rmutfzetam .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#rmutfzetam .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#rmutfzetam .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#rmutfzetam .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#rmutfzetam .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#rmutfzetam .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#rmutfzetam .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#rmutfzetam .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#rmutfzetam .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#rmutfzetam .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#rmutfzetam .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#rmutfzetam .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#rmutfzetam .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#rmutfzetam .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rmutfzetam .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#rmutfzetam .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#rmutfzetam .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#rmutfzetam .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rmutfzetam .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#rmutfzetam .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rmutfzetam .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#rmutfzetam .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rmutfzetam .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rmutfzetam .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rmutfzetam .gt_left {
-  text-align: left;
-}
-
-#rmutfzetam .gt_center {
-  text-align: center;
-}
-
-#rmutfzetam .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#rmutfzetam .gt_font_normal {
-  font-weight: normal;
-}
-
-#rmutfzetam .gt_font_bold {
-  font-weight: bold;
-}
-
-#rmutfzetam .gt_font_italic {
-  font-style: italic;
-}
-
-#rmutfzetam .gt_super {
-  font-size: 65%;
-}
-
-#rmutfzetam .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#rmutfzetam .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#rmutfzetam .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#rmutfzetam .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#rmutfzetam .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#rmutfzetam .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#rmutfzetam .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Index" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Index</th>
-<th id="Model1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model1</th>
-<th id="Model2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model2</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">D’Hondt</td>
-<td class="gt_row gt_center" headers="Model1">6.816</td>
-<td class="gt_row gt_center" headers="Model2">1.118</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Monroe</td>
-<td class="gt_row gt_center" headers="Model1">0.080</td>
-<td class="gt_row gt_center" headers="Model2">0.003</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Maximum Absolute Deviation</td>
-<td class="gt_row gt_center" headers="Model1">0.078</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Max-Min ratio</td>
-<td class="gt_row gt_center" headers="Model1">10.726</td>
-<td class="gt_row gt_center" headers="Model2">1.312</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Rae</td>
-<td class="gt_row gt_center" headers="Model1">0.007</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Loosemore &amp; Hanby</td>
-<td class="gt_row gt_center" headers="Model1">0.094</td>
-<td class="gt_row gt_center" headers="Model2">0.007</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Grofman</td>
-<td class="gt_row gt_center" headers="Model1">0.016</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Lijphart</td>
-<td class="gt_row gt_center" headers="Model1">0.039</td>
-<td class="gt_row gt_center" headers="Model2">0.000</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Gallagher</td>
-<td class="gt_row gt_center" headers="Model1">0.059</td>
-<td class="gt_row gt_center" headers="Model2">0.002</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Generalized Gallagher</td>
-<td class="gt_row gt_center" headers="Model1">0.059</td>
-<td class="gt_row gt_center" headers="Model2">0.002</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Gatev</td>
-<td class="gt_row gt_center" headers="Model1">0.215</td>
-<td class="gt_row gt_center" headers="Model2">0.007</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Ryabtsev</td>
-<td class="gt_row gt_center" headers="Model1">0.154</td>
-<td class="gt_row gt_center" headers="Model2">0.005</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Szalai</td>
-<td class="gt_row gt_center" headers="Model1">0.249</td>
-<td class="gt_row gt_center" headers="Model2">0.025</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Weighted Szalai</td>
-<td class="gt_row gt_center" headers="Model1">0.160</td>
-<td class="gt_row gt_center" headers="Model2">0.012</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Aleskerov &amp; Platonov</td>
-<td class="gt_row gt_center" headers="Model1">1.802</td>
-<td class="gt_row gt_center" headers="Model2">1.036</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Gini</td>
-<td class="gt_row gt_center" headers="Model1">0.139</td>
-<td class="gt_row gt_center" headers="Model2">0.008</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Atkinson</td>
-<td class="gt_row gt_center" headers="Model1">0.082</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Sainte-Laguë</td>
-<td class="gt_row gt_center" headers="Model1">0.208</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Cox &amp; Shugart</td>
-<td class="gt_row gt_center" headers="Model1">0.692</td>
-<td class="gt_row gt_center" headers="Model2">1.000</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Farina</td>
-<td class="gt_row gt_center" headers="Model1">0.291</td>
-<td class="gt_row gt_center" headers="Model2">0.011</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Ortona</td>
-<td class="gt_row gt_center" headers="Model1">0.119</td>
-<td class="gt_row gt_center" headers="Model2">0.009</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Cosine Dissimilarity</td>
-<td class="gt_row gt_center" headers="Model1">0.034</td>
-<td class="gt_row gt_center" headers="Model2">0.000</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Lebeda’s RR (Mixture D’Hondt)</td>
-<td class="gt_row gt_center" headers="Model1">0.853</td>
-<td class="gt_row gt_center" headers="Model2">0.105</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Lebeda’s ARR</td>
-<td class="gt_row gt_center" headers="Model1">0.032</td>
-<td class="gt_row gt_center" headers="Model2">0.004</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Lebeda’s SRR</td>
-<td class="gt_row gt_center" headers="Model1">0.259</td>
-<td class="gt_row gt_center" headers="Model2">0.031</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Lebeda’s WDRR</td>
-<td class="gt_row gt_center" headers="Model1">0.347</td>
-<td class="gt_row gt_center" headers="Model2">0.040</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Kullback-Leibler Surprise</td>
-<td class="gt_row gt_center" headers="Model1">0.064</td>
-<td class="gt_row gt_center" headers="Model2">0.000</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Likelihood Ratio Statistic</td>
-<td class="gt_row gt_center" headers="Model1">0.099</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">Chi Squared</td>
-<td class="gt_row gt_center" headers="Model1">0.089</td>
-<td class="gt_row gt_center" headers="Model2">0.001</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Index">Hellinger Distance</td>
-<td class="gt_row gt_center" headers="Model1">0.117</td>
-<td class="gt_row gt_center" headers="Model2">0.008</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Index">alpha-Divergence</td>
-<td class="gt_row gt_center" headers="Model1">0.104</td>
-<td class="gt_row gt_center" headers="Model2">0.000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
 </div>
 </div>
 
