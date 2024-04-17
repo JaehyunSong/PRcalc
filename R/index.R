@@ -12,7 +12,6 @@ index <- function(x, ...) {
 #' Calculate the disproportionality indices.
 #'
 #' @param x a `prcalc` object.
-# #' @param as_disprop Measuring disporportionality? If `TRUE` (default), `alpha` must be larger than `0`. For measuring malapportionment, `as_disprop = FALSE`.
 #' @param k a parameter for Generalized Gallagher index. Default is `2`.
 #' @param eta a parameter for Atkinson index. Default is `2`.
 #' @param alpha a parameter for alpha-divergence. `alpha` must be larger than 0. Default is `2`.
@@ -47,7 +46,6 @@ index <- function(x, ...) {
 #' obj_index["gallagher"] # Extract Gallagher index
 
 index.prcalc <- function(x,
-                         #as_disprop = TRUE,
                          k          = 2,
                          eta        = 2,
                          alpha      = 2,
@@ -58,10 +56,6 @@ index.prcalc <- function(x,
   ID <- Value <- vote <- seat <- NULL
 
   unit <- match.arg(unit)
-
-  #if (as_disprop) {
-  #  if (alpha <= 0) stop("alpha must be larger than 0.")
-  #}
 
   if (unit == "l2") {
     # v: voteshare (v[1] > v[2] > ...)
