@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,12 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="../man/read_prcalc.qmd">
- <span class="dropdown-text">read_prcalc()</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../man/as_prcalc.html">
- <span class="dropdown-text">as_prcalc()</span></a>
+ <span class="dropdown-text">read_prcalc() / as_prcalc()</span></a>
   </li>  
     </ul>
   </li>
@@ -323,6 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../session.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session info.</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../memo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memo</span></a>
   </div>
@@ -370,7 +372,7 @@ plot(
 <table>
 <tbody><tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_x">x</code>
+<code id="x">x</code>
 </td>
 <td>
 a <code>prcalc</code> object.
@@ -378,7 +380,7 @@ a <code>prcalc</code> object.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_type">type</code>
+<code id="type">type</code>
 </td>
 <td>
 a plot of votes (<code>“raw”</code>), allocation (<code>“dist”</code>), or both (<code>“both”</code>). Default is <code>“both”</code>.
@@ -386,7 +388,7 @@ a plot of votes (<code>“raw”</code>), allocation (<code>“dist”</code>), 
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_prop">prop</code>
+<code id="prop">prop</code>
 </td>
 <td>
 Output at a percentage. If <code>type</code> is <code>“both”</code>, it is ignored. Default is <code>TRUE</code>.
@@ -394,7 +396,7 @@ Output at a percentage. If <code>type</code> is <code>“both”</code>, it is i
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_show_total">show_total</code>
+<code id="show_total">show_total</code>
 </td>
 <td>
 If <code>TRUE</code>, a facet names "Total" is diplayed. Default is <code>TRUE</code>.
@@ -402,7 +404,7 @@ If <code>TRUE</code>, a facet names "Total" is diplayed. Default is <code>TRUE</
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_by">by</code>
+<code id="by">by</code>
 </td>
 <td>
 Facets by level 1 (<code>“l1”</code>) or level 2 (<code>“l2”</code>). Default is <code>“l1”</code>.
@@ -410,7 +412,7 @@ Facets by level 1 (<code>“l1”</code>) or level 2 (<code>“l2”</code>). De
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_subset_l1">subset_l1</code>
+<code id="subset_l1">subset_l1</code>
 </td>
 <td>
 a character vector. a subset of level 1.
@@ -418,7 +420,7 @@ a character vector. a subset of level 1.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_subset_l2">subset_l2</code>
+<code id="subset_l2">subset_l2</code>
 </td>
 <td>
 a character vector. a subset of level 2.
@@ -426,7 +428,7 @@ a character vector. a subset of level 2.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_free_y">free_y</code>
+<code id="free_y">free_y</code>
 </td>
 <td>
 If <code>FALSE</code>, y-axes are fixed over all facets. Default is <code>TRUE</code>.
@@ -434,7 +436,7 @@ If <code>FALSE</code>, y-axes are fixed over all facets. Default is <code>TRUE</
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_font_size">font_size</code>
+<code id="font_size">font_size</code>
 </td>
 <td>
 a font size.
@@ -442,7 +444,7 @@ a font size.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_angle">angle</code>
+<code id="angle">angle</code>
 </td>
 <td>
 an angle of x-ticks label (<code>0</code> to <code>90</code>). Defualt is <code>0</code>.
@@ -450,7 +452,7 @@ an angle of x-ticks label (<code>0</code> to <code>90</code>). Defualt is <code>
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_facet_col">facet_col</code>
+<code id="facet_col">facet_col</code>
 </td>
 <td>
 a number of columns of facets.
@@ -458,7 +460,7 @@ a number of columns of facets.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_legend_pos">legend_pos</code>
+<code id="legend_pos">legend_pos</code>
 </td>
 <td>
 a position of legend. Default is <code>“bottom”</code>
@@ -466,7 +468,7 @@ a position of legend. Default is <code>“bottom”</code>
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="plot.prcalc_:_...">…</code>
+<code id="...">…</code>
 </td>
 <td>
 Ignored

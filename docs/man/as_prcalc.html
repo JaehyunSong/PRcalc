@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,12 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="../man/read_prcalc.qmd">
- <span class="dropdown-text">read_prcalc()</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../man/as_prcalc.html">
- <span class="dropdown-text">as_prcalc()</span></a>
+ <span class="dropdown-text">read_prcalc() / as_prcalc()</span></a>
   </li>  
     </ul>
   </li>
@@ -323,6 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../session.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session info.</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../memo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memo</span></a>
   </div>
@@ -357,7 +359,7 @@ read_prcalc(x, l1, l2 = NULL, p, q = NULL, type = c("nested", "span"), ...)
 <table>
 <tbody><tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_x">x</code>
+<code id="x">x</code>
 </td>
 <td>
 a path of <code>.csv</code> file (<code>read_prcalc()</code>), or name of <code>data.frame</code> or <code>tibble</code> object (<code>as_prcalc()</code>).
@@ -365,7 +367,7 @@ a path of <code>.csv</code> file (<code>read_prcalc()</code>), or name of <code>
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_l1">l1</code>
+<code id="l1">l1</code>
 </td>
 <td>
 a character. <em>Mandatory.</em> A column name of level 1 (region or state).
@@ -373,7 +375,7 @@ a character. <em>Mandatory.</em> A column name of level 1 (region or state).
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_l2">l2</code>
+<code id="l2">l2</code>
 </td>
 <td>
 a character. <em>Optional.</em> A column name of level 2 (party or district).
@@ -381,7 +383,7 @@ a character. <em>Optional.</em> A column name of level 2 (party or district).
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_p">p</code>
+<code id="p">p</code>
 </td>
 <td>
 a character. <em>Mandatory.</em> A column name of population or number of electorates.
@@ -389,7 +391,7 @@ a character. <em>Mandatory.</em> A column name of population or number of electo
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_q">q</code>
+<code id="q">q</code>
 </td>
 <td>
 a character. <em>Optional.</em> A column name of magnitude or number of allocated seats. If <code>NULL</code>, replaced by <code>1</code>.
@@ -397,7 +399,7 @@ a character. <em>Optional.</em> A column name of magnitude or number of allocate
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_type">type</code>
+<code id="type">type</code>
 </td>
 <td>
 a type of <code>l2</code>. <em>Mandatory.</em> If <code>“span”</code>, vector of <code>l2</code> represents parties. If <code>“nested”</code>, vector of <code>l2</code> represents electoral district. Default is <code>“nested”</code>.
@@ -405,7 +407,7 @@ a type of <code>l2</code>. <em>Mandatory.</em> If <code>“span”</code>, vecto
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="as_prcalc_:_...">…</code>
+<code id="...">…</code>
 </td>
 <td>
 ignored

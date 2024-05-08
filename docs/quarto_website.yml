@@ -73,9 +73,7 @@ website:
             href: man/plot.prcalc_decomposition_compare.qmd
           - text: "---"
           - text: "Utilities"
-          - text: "read_prcalc()"
-            href: man/read_prcalc.qmd
-          - text: "as_prcalc()"
+          - text: "read_prcalc() / as_prcalc()"
             href: man/as_prcalc.qmd
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
@@ -95,6 +93,8 @@ website:
         file: $ALTDOC_CODE_OF_CONDUCT
       - text: Citation
         file: $ALTDOC_CITATION
+      - text: "Session info."
+        file: session.qmd
       - text: Memo
         file: memo.md
 

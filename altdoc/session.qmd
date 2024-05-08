@@ -1,0 +1,39 @@
+---
+title: "Development environment"
+format: html
+---
+
+```{r}
+#| include: false
+ff_ver <- system('plutil -extract "CFBundleShortVersionString" binary1 /Applications/Firefox.app/Contents/Info.plist -o -', intern = TRUE) |>
+  stringr::str_extract("[0-9]+\\.[0-9]+.+") |>
+  stringr::str_replace("\b", "")
+
+rs_ver1 <- system('plutil -extract "CFBundleShortVersionString" binary1 /Applications/RStudio.app/Contents/Info.plist -o -', intern = TRUE) |>
+  stringr::str_replace("-daily", "") |>
+  stringr::str_extract("202[0-9]\\.[0-9]+\\.[0-9]+\\+[0-9]+")
+```
+
+* `r sessionInfo()$running`
+* Firefox `r ff_ver`
+* `r version$version.string`
+* RStudio `r rs_ver1`
+* Quarto `r quarto::quarto_inspect()$quarto$version`
+* R package {quarto} `r packageVersion("quarto")`
+
+## Session information
+
+```{r}
+#| echo: false
+sessionInfo()
+```
+
+## Packages
+
+```{r}
+#| echo: false
+tibble::tibble(Package = names(installed.packages()[,3]),
+               Version = unname(installed.packages()[,3])) |>
+  kableExtra::kbl() |>
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```

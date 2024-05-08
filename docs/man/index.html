@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,12 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="../man/read_prcalc.qmd">
- <span class="dropdown-text">read_prcalc()</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../man/as_prcalc.html">
- <span class="dropdown-text">as_prcalc()</span></a>
+ <span class="dropdown-text">read_prcalc() / as_prcalc()</span></a>
   </li>  
     </ul>
   </li>
@@ -323,6 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../session.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session info.</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../memo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memo</span></a>
   </div>
@@ -366,7 +368,7 @@ index(
 <table>
 <tbody><tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_x">x</code>
+<code id="x">x</code>
 </td>
 <td>
 a <code>prcalc</code> object.
@@ -374,7 +376,7 @@ a <code>prcalc</code> object.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_...">…</code>
+<code id="...">…</code>
 </td>
 <td>
 ignored
@@ -382,7 +384,7 @@ ignored
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_k">k</code>
+<code id="k">k</code>
 </td>
 <td>
 a parameter for Generalized Gallagher index. Default is <code>2</code>.
@@ -390,7 +392,7 @@ a parameter for Generalized Gallagher index. Default is <code>2</code>.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_eta">eta</code>
+<code id="eta">eta</code>
 </td>
 <td>
 a parameter for Atkinson index. Default is <code>2</code>.
@@ -398,7 +400,7 @@ a parameter for Atkinson index. Default is <code>2</code>.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_alpha">alpha</code>
+<code id="alpha">alpha</code>
 </td>
 <td>
 a parameter for alpha-divergence. <code>alpha</code> must be larger than 0. Default is <code>2</code>.
@@ -406,7 +408,7 @@ a parameter for alpha-divergence. <code>alpha</code> must be larger than 0. Defa
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_unit">unit</code>
+<code id="unit">unit</code>
 </td>
 <td>
 A unit of observation. This argument is valid only when p (e.g., votes or population) and q (e.g., seats or magnitudes) are two-dimensional structures. If <code>“l2”</code> (abbr. of "level 2"), the disproportionality is measured based on marginal distribution of level 2, such as parties or district. If <code>“l1”</code> (abbr. of "level 1"), the disproportionality is measured based on marginal distribution of level 1, such as states or region. If <code>“joint”</code>, the disproportionality is measured based on joint distribution of level 1 and 2. If you want to match the result of <code>decompose()</code>, use <code>“joint”</code>. Default is <code>“l2”</code>.
@@ -414,7 +416,7 @@ A unit of observation. This argument is valid only when p (e.g., votes or popula
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="index_:_omit_zero">omit_zero</code>
+<code id="omit_zero">omit_zero</code>
 </td>
 <td>
 If <code>TRUE</code>, parties with 0 votes and 0 seats are ignored. Default is <code>TRUE</code>.

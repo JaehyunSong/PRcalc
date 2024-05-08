@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,12 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Utilities</li>
         <li>
-    <a class="dropdown-item" href="../man/read_prcalc.qmd">
- <span class="dropdown-text">read_prcalc()</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../man/as_prcalc.html">
- <span class="dropdown-text">as_prcalc()</span></a>
+ <span class="dropdown-text">read_prcalc() / as_prcalc()</span></a>
   </li>  
     </ul>
   </li>
@@ -323,6 +319,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../session.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session info.</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../memo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Memo</span></a>
   </div>
@@ -355,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table>
 <tbody><tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="allocation_:_x">x</code>
+<code id="x">x</code>
 </td>
 <td>
 a data.frame or tibble with two columns. The first and second column represents names of parties and numbers of votes, respectively.
@@ -363,7 +365,7 @@ a data.frame or tibble with two columns. The first and second column represents 
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="allocation_:_m">m</code>
+<code id="m">m</code>
 </td>
 <td>
 a numeric value of district magnitude.
@@ -371,7 +373,7 @@ a numeric value of district magnitude.
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="allocation_:_method">method</code>
+<code id="method">method</code>
 </td>
 <td>
 a character string giving a method for computing seat allocation. See "Allocation methods" section.
@@ -379,7 +381,7 @@ a character string giving a method for computing seat allocation. See "Allocatio
 </tr>
 <tr>
 <td style="white-space: nowrap; font-family: monospace; vertical-align: top">
-<code id="allocation_:_extra">extra</code>
+<code id="extra">extra</code>
 </td>
 <td>
 a numeric vector of length <code>m</code>. If <code>method</code> is <code>“custom divisor”</code> (<code>“cd”</code>) or <code>“custom quota”</code> (<code>“cq”</code>), this parameter is mandatory. See "About custom methods" section.
