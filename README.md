@@ -16,9 +16,9 @@ representation system and computes the degree of **disproportionality**.
 It also enables to calculate the seat allocation by choosing the several
 methods of seat allocation for territorially defined constituencies and
 computes the degree of **malapportionment**. Notably, this package can
-be utilized to decompose *α*-divergence for *inter-* and *intra-*party
-disproportionality as well as *inter-* and *intra-*state
-malapportionment.
+be utilized to decompose *α*-divergence for *inter-* and
+*intra-*coalition disproportionality as well as *inter-* and
+*intra-*state malapportionment.
 
 ## Installation
 

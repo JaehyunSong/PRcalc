@@ -23,7 +23,7 @@ Please use {PRcalc} ONLY for testing purposes.
 
 ## Description
 
-  {PRcalc} is an R package that calculates the seat allocation by selecting the highest average methods for the proportional representation system and computes the degree of **disproportionality**. It also enables to calculate the seat allocation by choosing the several methods of seat allocation for territorially defined constituencies and computes the degree of **malapportionment**. Notably, this package can be utilized to decompose $\alpha$-divergence for *inter-* and *intra-*party disproportionality as well as *inter-* and *intra-*state malapportionment.
+  {PRcalc} is an R package that calculates  the seat allocation by selecting the highest average methods for the proportional representation system and computes the degree of **disproportionality**. It also enables to calculate the seat allocation by choosing the several methods  of seat allocation for territorially defined constituencies and computes the degree of **malapportionment**. Notably, this package can be utilized to decompose $\alpha$-divergence for *inter-* and *intra-*coalition disproportionality as well as *inter-* and *intra-*state malapportionment.
 
 ## Installation
 
